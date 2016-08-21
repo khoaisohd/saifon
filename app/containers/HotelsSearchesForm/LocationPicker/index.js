@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
-import { RouterContext } from 'react-router';
 import { browserHistory } from 'react-router'
 
 class HotelsSearchesFormLocationPicker extends React.Component {
   submit() {
-    this.props.submitLocation(fromJS({
+    const { submitLocation } = this.props;
+    submitLocation(fromJS({
       code: 'SG',
       name: 'Singapore'
     }));
