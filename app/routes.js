@@ -68,6 +68,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/hotels/overlay/travellers-picker',
+      name: 'hotels-searches-form-travellers-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelsSearchesForm/TravellersPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

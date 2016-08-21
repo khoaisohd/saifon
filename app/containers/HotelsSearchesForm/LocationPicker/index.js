@@ -4,7 +4,7 @@ class HotelsSearchesFormLocationPicker extends React.Component {
   render() {
     return (
       <div>
-        Location Picker
+        Select location
       </div>
     );
   }

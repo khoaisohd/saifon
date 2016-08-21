@@ -4,7 +4,7 @@ class HotelsSearchesFormDatePicker extends React.Component {
   render() {
     return (
       <div>
-        Date Picker
+        Select date
       </div>
     );
   }
