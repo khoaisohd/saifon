@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
-import styles from './styles.css';
 
 class HotelsSearchesForm extends React.Component {
   render() {
@@ -14,7 +13,7 @@ class HotelsSearchesForm extends React.Component {
         <div className={appStyles.toolbar}>
           Hotel Search Form
         </div>
-        <div className={styles.formContainer}>
+        <div className={appStyles.containerBody}>
           <div>
             <Link to="/hotels/overlay/location-picker">Location</Link>
             <div>{location.get('name')} - {location.get('code')}</div>

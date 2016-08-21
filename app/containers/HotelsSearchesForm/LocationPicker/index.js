@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
 import { browserHistory } from 'react-router'
+import appStyles from 'containers/App/styles.css';
 
 class HotelsSearchesFormLocationPicker extends React.Component {
   submit() {
@@ -17,8 +18,10 @@ class HotelsSearchesFormLocationPicker extends React.Component {
   render() {
     return (
       <div>
-        Select location
-        <div>
+        <div className={appStyles.toolbar}>
+          Select location
+        </div>
+        <div className={appStyles.containerBody}>
           <button onClick={this.submit.bind(this)}>Submit</button>
         </div>
       </div>

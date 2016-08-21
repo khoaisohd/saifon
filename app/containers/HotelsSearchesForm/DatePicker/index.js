@@ -2,6 +2,7 @@ import React from 'react';
 import { submitTiming } from '../actions';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
+import appStyles from 'containers/App/styles.css';
 
 class HotelsSearchesFormDatePicker extends React.Component {
   submit() {
@@ -13,8 +14,8 @@ class HotelsSearchesFormDatePicker extends React.Component {
   render() {
     return (
       <div>
-        Select date
-        <div>
+        <div className={appStyles.toolbar}>Select date</div>
+        <div className={appStyles.containerBody}>
           <button onClick={this.submit.bind(this)}>Submit</button>
         </div>
       </div>
