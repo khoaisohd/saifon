@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router'
 import appStyles from 'containers/App/styles.css';
 
-class HotelsSearchesFormDatePicker extends React.Component {
+class DatePicker extends React.Component {
   submit() {
     const { submitTiming } = this.props;
     submitTiming('01-12-2016', '06-12-2016');
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
   submitTiming: (checkIn, checkOut) => dispatch(submitTiming(checkIn, checkOut)),
 });
 
-export default connect(null, mapDispatchToProps)(HotelsSearchesFormDatePicker);
+export default connect(null, mapDispatchToProps)(DatePicker);

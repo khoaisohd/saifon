@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 import { browserHistory } from 'react-router'
 import appStyles from 'containers/App/styles.css';
 
-class HotelsSearchesFormTravellersPicker extends React.Component {
+class TravellersPicker extends React.Component {
   submit() {
     const { submitTravellers } = this.props;
     submitTravellers(2, 3);
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => ({
   submitTravellers: (roomsCount, guestsCount) => dispatch(submitTravellers(roomsCount, guestsCount)),
 });
 
-export default connect(null, mapDispatchToProps)(HotelsSearchesFormTravellersPicker);
+export default connect(null, mapDispatchToProps)(TravellersPicker);
