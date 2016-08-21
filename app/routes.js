@@ -34,6 +34,32 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/hotels',
+      name: 'hotels-searches-form',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/HotelsSearchesForm/reducer'),
+          System.import('containers/HotelsSearchesForm'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('hotelsSearchesForm', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/hotels/overlay/date-picker',
+      name: 'hotels-searches-form-date-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelsSearchesForm/DatePicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
@@ -41,6 +67,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },
+    }
   ];
 }

@@ -1,0 +1,1 @@
+export const SUBMIT_LOCATION_CODE = 'HotelsSearchesForm/SUBMIT_LOCATION_CODE';
