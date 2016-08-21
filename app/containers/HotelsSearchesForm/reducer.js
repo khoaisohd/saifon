@@ -1,18 +1,18 @@
 import {
-  SUBMIT_LOCATION_CODE,
+  SUBMIT_LOCATION,
 } from './constants';
 
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
-  search: {},
+  location: {},
 });
 
 function hotelsSearchesFormReducer(state = initialState, action) {
   switch (action.type) {
-    case SUBMIT_LOCATION_CODE:
+    case SUBMIT_LOCATION:
       return state
-        .setIn(['search', 'locationCode'], action.locationCode);
+        .set('location', action.location);
     default:
       return state;
   }

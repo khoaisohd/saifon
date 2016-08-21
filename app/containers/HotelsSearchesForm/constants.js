@@ -1,1 +1,1 @@
-export const SUBMIT_LOCATION_CODE = 'HotelsSearchesForm/SUBMIT_LOCATION_CODE';
+export const SUBMIT_LOCATION = 'HotelsSearchesForm/SUBMIT_LOCATION';
