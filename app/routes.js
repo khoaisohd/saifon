@@ -34,6 +34,48 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/hotels',
+      name: 'hotels-searches-form',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/HotelSearchForm/reducer'),
+          System.import('containers/HotelSearchForm'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('HotelSearchForm', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/hotels/overlay/date-picker',
+      name: 'hotels-searches-form-date-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/DatePicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/hotels/overlay/location-picker',
+      name: 'hotels-searches-form-location-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/LocationPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/hotels/overlay/travellers-picker',
+      name: 'hotels-searches-form-travellers-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/TravellersPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
@@ -41,6 +83,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },
+    }
   ];
 }
