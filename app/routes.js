@@ -60,6 +60,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/hotels/overlay/location-picker',
+      name: 'hotels-searches-form-location-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelsSearchesForm/LocationPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -7,6 +7,9 @@ class HotelsSearchesForm extends React.Component {
       <div>
         Hotel Search Form
         <div>
+          <Link to="/hotels/overlay/location-picker">Location</Link>
+        </div>
+        <div>
           <Link to="/hotels/overlay/date-picker">Check in && Check out</Link>
         </div>
       </div>
