@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
+import appStyles from 'containers/App/styles.css';
+import styles from './styles.css';
 
 class HotelsSearchesForm extends React.Component {
   render() {
@@ -9,20 +11,24 @@ class HotelsSearchesForm extends React.Component {
 
     return (
       <div>
-        Hotel Search Form
-        <div>
-          <Link to="/hotels/overlay/location-picker">Location</Link>
-          <div>{location.get('name')} - {location.get('code')}</div>
+        <div className={appStyles.toolbar}>
+          Hotel Search Form
         </div>
-        <div>
-          <Link to="/hotels/overlay/date-picker">Check in && Check out</Link>
-          <div>{checkIn} -> {checkOut}</div>
+        <div className={styles.formContainer}>
+          <div>
+            <Link to="/hotels/overlay/location-picker">Location</Link>
+            <div>{location.get('name')} - {location.get('code')}</div>
+          </div>
+          <div>
+            <Link to="/hotels/overlay/date-picker">Check in && Check out</Link>
+            <div>{checkIn} -> {checkOut}</div>
+          </div>
+          <div>
+            <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
+            <div>{roomsCount} - {guestsCount}</div>
+          </div>
+          <Link to={searchResultUrl}>Searches</Link>
         </div>
-        <div>
-          <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
-          <div>{roomsCount} - {guestsCount}</div>
-        </div>
-        <Link to={searchResultUrl}>Searches</Link>
       </div>
     );
   }
