@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 class HotelsSearchesForm extends React.Component {
   render() {
-    const { location, checkIn, checkOut } = this.props;
+    const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
+    const searchResultUrl = `/hotels/${location.get('code')}/${checkIn}/${checkOut}/${guestsCount}/${roomsCount}/`;
+
     return (
       <div>
         Hotel Search Form
@@ -18,7 +20,9 @@ class HotelsSearchesForm extends React.Component {
         </div>
         <div>
           <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
+          <div>{roomsCount} - {guestsCount}</div>
         </div>
+        <Link to={searchResultUrl}>Searches</Link>
       </div>
     );
   }
@@ -28,6 +32,8 @@ const mapStateToProps = state => ({
   location: state.getIn(['hotelsSearchesForm', 'location']),
   checkIn: state.getIn(['hotelsSearchesForm', 'checkIn']),
   checkOut: state.getIn(['hotelsSearchesForm', 'checkOut']),
+  roomsCount: state.getIn(['hotelsSearchesForm', 'roomsCount']),
+  guestsCount: state.getIn(['hotelsSearchesForm', 'guestsCount']),
 });
 
 const mapDispatchToProps = dispatch => ({
