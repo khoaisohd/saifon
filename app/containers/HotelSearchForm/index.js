@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 
-class HotelsSearchesForm extends React.Component {
+class HotelSearchForm extends React.Component {
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
     const searchResultUrl = `/hotels/${location.get('code')}/${checkIn}/${checkOut}/${guestsCount}/${roomsCount}/`;
@@ -34,15 +34,15 @@ class HotelsSearchesForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  location: state.getIn(['hotelsSearchesForm', 'location']),
-  checkIn: state.getIn(['hotelsSearchesForm', 'checkIn']),
-  checkOut: state.getIn(['hotelsSearchesForm', 'checkOut']),
-  roomsCount: state.getIn(['hotelsSearchesForm', 'roomsCount']),
-  guestsCount: state.getIn(['hotelsSearchesForm', 'guestsCount']),
+  location: state.getIn(['HotelSearchForm', 'location']),
+  checkIn: state.getIn(['HotelSearchForm', 'checkIn']),
+  checkOut: state.getIn(['HotelSearchForm', 'checkOut']),
+  roomsCount: state.getIn(['HotelSearchForm', 'roomsCount']),
+  guestsCount: state.getIn(['HotelSearchForm', 'guestsCount']),
 });
 
 const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HotelsSearchesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(HotelSearchForm);

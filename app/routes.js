@@ -38,14 +38,14 @@ export default function createRoutes(store) {
       name: 'hotels-searches-form',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/HotelsSearchesForm/reducer'),
-          System.import('containers/HotelsSearchesForm'),
+          System.import('containers/HotelSearchForm/reducer'),
+          System.import('containers/HotelSearchForm'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('hotelsSearchesForm', reducer.default);
+          injectReducer('HotelSearchForm', reducer.default);
           renderRoute(component);
         });
 
@@ -55,7 +55,7 @@ export default function createRoutes(store) {
       path: '/hotels/overlay/date-picker',
       name: 'hotels-searches-form-date-picker',
       getComponent(nextState, cb) {
-        System.import('containers/HotelsSearchesForm/DatePicker')
+        System.import('containers/HotelSearchForm/DatePicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -63,7 +63,7 @@ export default function createRoutes(store) {
       path: '/hotels/overlay/location-picker',
       name: 'hotels-searches-form-location-picker',
       getComponent(nextState, cb) {
-        System.import('containers/HotelsSearchesForm/LocationPicker')
+        System.import('containers/HotelSearchForm/LocationPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -71,7 +71,7 @@ export default function createRoutes(store) {
       path: '/hotels/overlay/travellers-picker',
       name: 'hotels-searches-form-travellers-picker',
       getComponent(nextState, cb) {
-        System.import('containers/HotelsSearchesForm/TravellersPicker')
+        System.import('containers/HotelSearchForm/TravellersPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

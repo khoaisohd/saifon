@@ -2,15 +2,18 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { Link } from 'react-router'
+import appStyles from 'containers/App/styles.css';
 
 class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <h1>
-          <FormattedMessage {...messages.header} />
-        </h1>
-        <Link to="/hotels">Hotels</Link>
+        <div className={appStyles.toolbar}>
+          Wego
+        </div>
+        <div className={appStyles.containerBody}>
+          <Link to="/hotels">Hotels</Link>
+        </div>
       </div>
     );
   }
