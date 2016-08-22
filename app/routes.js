@@ -35,7 +35,7 @@ export default function createRoutes(store) {
       },
     },
     
-    // Hotel Search Form start
+    // Hotel Search Form START
     {
       path: '/hotels',
       name: 'hotel-search-form',
@@ -82,7 +82,7 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
-    // Hotel Search Form End
+    // Hotel Search Form END
     
     {
       path: '*',
