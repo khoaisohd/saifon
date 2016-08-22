@@ -1,7 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function

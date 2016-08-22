@@ -1,7 +1,7 @@
 import React from 'react';
 import { submitTiming } from '../actions';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class DatePicker extends React.Component {
@@ -22,7 +22,6 @@ class DatePicker extends React.Component {
     );
   }
 }
-
 
 const mapDispatchToProps = dispatch => ({
   submitTiming: (checkIn, checkOut) => dispatch(submitTiming(checkIn, checkOut)),
