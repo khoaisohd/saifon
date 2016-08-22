@@ -14,7 +14,7 @@ const initialState = fromJS({
   guestsCount: null,
 });
 
-function HotelSearchFormReducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SUBMIT_LOCATION:
       return state
@@ -31,5 +31,3 @@ function HotelSearchFormReducer(state = initialState, action) {
       return state;
   }
 }
-
-export default HotelSearchFormReducer;

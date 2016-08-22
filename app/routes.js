@@ -34,7 +34,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
-    // Hotel Search Form START
+    // Hotel Search Form
     {
       path: '/hotels',
       name: 'hotel-search-form',
@@ -81,7 +81,35 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
-    // Hotel Search Form END
+    //Hotel Search Result
+    {
+      path: '/hotels/:locationId/:checkIn/:checkOut/:guestsCount/:roomsCount',
+      name: 'hotel-search-result',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/HotelSearchResult/reducer'),
+          System.import('containers/HotelSearchResult'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('HotelSearchResult', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/hotels/:locationId/:checkIn/:checkOut/:guestsCount/:roomsCount/overlay/filters',
+      name: 'hotel-search-result-filters',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchResult/Filters')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
     {
       path: '*',
       name: 'notfound',
