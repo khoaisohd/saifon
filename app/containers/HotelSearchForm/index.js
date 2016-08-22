@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
+import 'containers/HotelSearchForm/DatePicker';
+import 'containers/HotelSearchForm/LocationPicker';
+import 'containers/HotelSearchForm/TravellersPicker';
 
 class HotelSearchForm extends React.Component {
   render() {
