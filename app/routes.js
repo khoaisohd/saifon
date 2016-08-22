@@ -34,7 +34,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
-    
     // Hotel Search Form START
     {
       path: '/hotels',
@@ -83,7 +82,6 @@ export default function createRoutes(store) {
       },
     },
     // Hotel Search Form END
-    
     {
       path: '*',
       name: 'notfound',
@@ -92,6 +90,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }
+    },
   ];
 }

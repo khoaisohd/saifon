@@ -1,12 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router'
-import { connect } from 'react-redux';
-import appStyles from 'containers/App/styles.css';
+// Preload form asset
 import 'containers/HotelSearchForm/DatePicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
 
-class HotelSearchForm extends React.Component {
+import React from 'react';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import appStyles from 'containers/App/styles.css';
+
+class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
     const searchResultUrl = `/hotels/${location.get('code')}/${checkIn}/${checkOut}/${guestsCount}/${roomsCount}/`;
@@ -44,8 +46,4 @@ const mapStateToProps = state => ({
   guestsCount: state.getIn(['HotelSearchForm', 'guestsCount']),
 });
 
-const mapDispatchToProps = dispatch => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HotelSearchForm);
+export default connect(mapStateToProps, null)(HotelSearchForm);

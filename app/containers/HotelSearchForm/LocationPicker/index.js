@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class LocationPicker extends React.Component {
@@ -10,7 +10,7 @@ class LocationPicker extends React.Component {
     const { submitLocation } = this.props;
     submitLocation(fromJS({
       code: 'SG',
-      name: 'Singapore'
+      name: 'Singapore',
     }));
     browserHistory.goBack();
   }

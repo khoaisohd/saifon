@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitTravellers } from '../actions';
-import { fromJS } from 'immutable';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class TravellersPicker extends React.Component {
