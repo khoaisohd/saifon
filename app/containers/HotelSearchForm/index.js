@@ -1,4 +1,4 @@
-// Preload form asset
+// Preload form assets
 import 'containers/HotelSearchForm/DatePicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
@@ -16,7 +16,7 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
     return (
       <div>
         <div className={appStyles.toolbar}>
-          Hotel Search Form
+          Hotel Search
         </div>
         <div className={appStyles.containerBody}>
           <div>
