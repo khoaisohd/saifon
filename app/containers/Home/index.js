@@ -1,25 +1,20 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a neccessity for you then you can refactor it and remove
- * the linting exception.
- */
-
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { Link } from 'react-router';
+import appStyles from 'containers/App/styles.css';
 
-export default class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
+class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <div className={appStyles.toolbar}>
+          Wego
+        </div>
+        <div className={appStyles.containerBody}>
+          <Link to="/hotels">Hotels</Link>
+        </div>
+      </div>
     );
   }
 }
+
+export default Home;
