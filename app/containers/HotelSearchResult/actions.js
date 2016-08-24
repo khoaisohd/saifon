@@ -31,7 +31,7 @@ export const removeFilterStarType = starType => {
 export const submitSearch = search => dispatch => {
   const api = new HotelSearchApi();
 
-  api.submitSearch(search).then(response => dispatch({
+  api.submitSearch({ search }).then(response => dispatch({
     hotels: fromJS(response.hotels),
     type: STORE_HOTELS,
   }));
