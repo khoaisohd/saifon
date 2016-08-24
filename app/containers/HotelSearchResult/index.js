@@ -9,13 +9,12 @@ import { submitSearch } from './actions';
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
-    this.filterPath = `${props.location.pathname}overlay/filter`;
     const { checkIn, checkOut, guestsCount, locationId, roomsCount } = props.routeParams;
     props.search({ checkIn, checkOut, guestsCount, locationId, roomsCount });
   }
 
   render() {
-    const { hotels } = this.props;
+    const { hotels, location } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -26,7 +25,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <button>Sort</button>
           </div>
           <div>
-            <Link to={this.filterPath}>Filter</Link>
+            <Link to={`${location.pathname}/overlay/filters`}>Filter</Link>
           </div>
           <div>
             {hotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}

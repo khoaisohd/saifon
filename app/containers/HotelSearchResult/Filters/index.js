@@ -6,29 +6,20 @@ import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class Filters extends React.Component {
-  addFilter() {
-    this.props.addFilterStarType('FIRST_STAR');
-    browserHistory.goBack();
-  }
-  
-  removeFilter() {
-    this.props.removeFilterStarType('FIRST_STAR');
-    browserHistory.goBack();
-  }
-
   render() {
-    const { filter } = this.props;
+    const { filter, addFilterStarType, removeFilterStarType } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={this.addFilter.bind(this)}>Add</button>
-          <button onClick={this.removeFilter.bind(this)}>Remove</button>
+          <button onClick={() => addFilterStarType('FIRST_STAR')}>Add</button>
+          <button onClick={() => removeFilterStarType('FIRST_STAR')}>Remove</button>
           <div>
             Filter: { JSON.stringify(filter.toJS()) }
           </div>
+          <button onClick={() => browserHistory.goBack()}>Done</button>
         </div>
       </div>
     );
@@ -44,4 +35,4 @@ const mapStateToProps = state => ({
   filter: state.getIn(['HotelSearchResult', 'filter']),
 });
 
-export default connect(null, mapDispatchToProps)(Filters);
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
