@@ -3,6 +3,7 @@ import {
   STORE_SORT,
   ADD_FILTER_STAR_TYPE,
   REMOVE_FILTER_STAR_TYPE,
+  STORE_HOTELS,
 } from './constants';
 
 const initialState = fromJS({
@@ -14,11 +15,6 @@ const initialState = fromJS({
     order: 'ASC'
   },
   hotels: [],
-  bestRates: null,
-  hotelsCount: null,
-  priceRange: null,
-  offset: 0,
-  limit: 20,
 });
 
 export default (state = initialState, action) => {
@@ -30,6 +26,9 @@ export default (state = initialState, action) => {
     case STORE_SORT:
       return state
         .set('sort', action.sort);
+    case STORE_HOTELS:
+      return state
+        .set('hotels', action.hotels);
     default:
       return state;
   }

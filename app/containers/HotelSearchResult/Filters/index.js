@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
-class Filter extends React.Component {
+class Filters extends React.Component {
   addFilter() {
     this.props.addFilterStarType('FIRST_STAR');
     browserHistory.goBack();
@@ -17,6 +17,7 @@ class Filter extends React.Component {
   }
 
   render() {
+    const { filter } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -25,6 +26,9 @@ class Filter extends React.Component {
         <div className={appStyles.containerBody}>
           <button onClick={this.addFilter.bind(this)}>Add</button>
           <button onClick={this.removeFilter.bind(this)}>Remove</button>
+          <div>
+            Filter: { JSON.stringify(filter.toJS()) }
+          </div>
         </div>
       </div>
     );
@@ -37,6 +41,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
+  filter: state.getIn(['HotelSearchResult', 'filter']),
 });
 
-export default connect(null, mapDispatchToProps)(Filter);
+export default connect(null, mapDispatchToProps)(Filters);

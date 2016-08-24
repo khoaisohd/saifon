@@ -4,25 +4,18 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
-import { storeSearch, submitSearch } from './actions';
-import { fromJS } from 'immutable';
+import { submitSearch } from './actions';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
-    const { routeParams, filter, sort, submitSearch, offset, limit } = props;
-    const search = fromJS({
-      checkIn: routeParams.checkIn,
-      checkOut: routeParams.checkOut,
-      guestsCount: routeParams.guestsCount,
-      locationId: routeParams.locationId,
-      roomsCount: routeParams.roomsCount,
-    });
-    submitSearch(search, filter, sort, offset, limit);
     this.filterPath = `${props.location.pathname}overlay/filter`;
+    const { checkIn, checkOut, guestsCount, locationId, roomsCount } = props.routeParams;
+    props.search({ checkIn, checkOut, guestsCount, locationId, roomsCount });
   }
 
   render() {
+    const { hotels } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -36,7 +29,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <Link to={this.filterPath}>Filter</Link>
           </div>
           <div>
-            Listing
+            {hotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}
           </div>
         </div>
       </div>
@@ -44,15 +37,13 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   }
 }
 
-const mapStateToProps = state => () => ({
-  filter: state.getIn(['HotelSearchResult', 'filter']),
+const mapStateToProps = state => ({
+  hotels: state.getIn(['HotelSearchResult', 'hotels']),
   sort: state.getIn(['HotelSearchResult', 'sort']),
-  offset: state.getIn(['HotelSearchResult', 'offset']),
-  limit: state.getIn(['HotelSearchResult', 'limit']),
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitSearch: (search, filter, sort, offset, limit) => dispatch(submitSearch(search, filter, sort, offset, limit)),
+  search: search => dispatch(submitSearch(search)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult);
