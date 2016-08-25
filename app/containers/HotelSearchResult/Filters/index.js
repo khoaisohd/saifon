@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFilterStarType, removeFilterStarType } from '../actions';
+import { filterByStar } from '../actions';
 import appStyles from 'containers/App/styles.css';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { filters, addFilterStarType, removeFilterStarType } = this.props;
+    const { filters, filterByStar } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={() => addFilterStarType('ONE_STAR')}>Add</button>
-          <button onClick={() => removeFilterStarType('ONE_STAR')}>Remove</button>
+          <button onClick={() => filterByStar('ONE_STAR', true)}>Add</button>
+          <button onClick={() => filterByStar('ONE_STAR', false)}>Remove</button>
           <div>
             Filter: { JSON.stringify(filters.toJS()) }
           </div>
@@ -29,8 +29,7 @@ Filters.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addFilterStarType: starType => dispatch(addFilterStarType(starType)),
-  removeFilterStarType: starType => dispatch(removeFilterStarType(starType)),
+  filterByStar: (star, selected) => dispatch(filterByStar(star, selected)),
 });
 
 const mapStateToProps = state => ({

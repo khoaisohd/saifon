@@ -1,8 +1,7 @@
 import reducer from '../reducer';
 import { fromJS } from 'immutable';
 import {
-  addFilterStarType,
-  removeFilterStarType,
+  filterByStar,
   displayHotels,
 } from '../actions';
 
@@ -14,18 +13,10 @@ describe('HotelSearchResult/reducer', () => {
     state = reducer(undefined, {});
   });
 
-  describe('addFilterStarType', () => {
+  describe('filterByStar', () => {
     it('adds the star type into filters', () => {
-      newState = reducer(state, addFilterStarType('ST'));
-      expect(newState.getIn(['filters', 'starTypes', 'ST'])).to.equal(true);
-    });
-  });
-
-  describe('removeFilterStarType', () => {
-    it('removes the star type from filters', () => {
-      newState = reducer(state, addFilterStarType('ST'));
-      newState = reducer(newState, removeFilterStarType('ST'));
-      expect(newState.getIn(['filters', 'starTypes', 'ST'])).to.equal(false);
+      newState = reducer(state, filterByStar('ST', true));
+      expect(newState.getIn(['filters', 'stars', 'ST'])).to.equal(true);
     });
   });
 

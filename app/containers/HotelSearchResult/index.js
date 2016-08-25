@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
-import { submitSearch } from './actions';
+import { searchHotels } from './actions';
 import { getHotelSearchPath } from 'utils/paths';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -12,7 +12,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
     const search = { checkIn, checkOut, guestsCount, locationCode, roomsCount };
     this.filterPath = `${getHotelSearchPath(search)}/overlay/filters`;
-    props.search(search);
+    props.searchHotels(search);
   }
 
   render() {
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  search: search => dispatch(submitSearch(search)),
+  searchHotels: search => dispatch(searchHotels(search)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult);

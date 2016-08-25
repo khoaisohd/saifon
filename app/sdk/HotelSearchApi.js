@@ -7,7 +7,7 @@ class HotelSearchApi {
     this.headers = headers;
   }
 
-  submitSearch(request) {
+  searchHotels(request) {
     const api = new Api(`${this.host}/${hotelSearchPath}`, this.headers);
     return api.post(request);
   }

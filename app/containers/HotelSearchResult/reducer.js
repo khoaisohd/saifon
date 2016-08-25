@@ -1,14 +1,13 @@
 import { fromJS } from 'immutable';
 import {
   SORT_HOTELS,
-  ADD_FILTERS_STAR_TYPE,
-  REMOVE_FILTERS_STAR_TYPE,
+  FILTER_BY_STAR,
   DISPLAY_HOTELS,
 } from './constants';
 
 const initialState = fromJS({
   filters: {
-    starTypes: {},
+    stars: {},
   },
   sort: {
     column: 'PRICE',
@@ -19,12 +18,9 @@ const initialState = fromJS({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_FILTERS_STAR_TYPE:
+    case FILTER_BY_STAR:
       return state
-        .setIn(['filters', 'starTypes', action.starType], true);
-    case REMOVE_FILTERS_STAR_TYPE:
-      return state
-        .setIn(['filters', 'starTypes', action.starType], false);
+        .setIn(['filters', 'stars', action.star], action.selected);
     case SORT_HOTELS:
       return state
         .set('sort', action.sort);
