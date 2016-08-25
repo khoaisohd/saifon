@@ -2,6 +2,8 @@ import superagent from 'superagent';
 import merge from 'lodash/merge';
 import get from 'lodash/get';
 
+/* eslint-disable */
+
 const headers = {
   'Accept': 'application/json',
   'Accept-Language': 'en',
@@ -10,20 +12,21 @@ const headers = {
   'Cache-Control': 'no-cache,no-store,must-revalidate,max-age=-1',
   'Expires': '-1',
 };
+/* eslint-enable */
 
 export default class Api {
   constructor(url, newHeaders) {
-    this._url = url;
-    this._headers = merge(headers, newHeaders);
+    this.url = url;
+    this.headers = merge(headers, newHeaders);
   }
 
   post(request = {}) {
     return new Promise((resolve, reject) => {
-      superagent.post(this._url)
-      .set(this._headers)
+      superagent.post(this.url)
+      .set(this.headers)
       .send(request)
       .end((error, responseJS) => {
-        const response = this._parseResponseJS(responseJS);
+        const response = this.parseResponseJS(responseJS);
         return error ? reject(response) : resolve(response);
       });
     });
@@ -31,24 +34,24 @@ export default class Api {
 
   get(query = {}) {
     return new Promise((resolve, reject) => {
-      superagent.get(this._url)
-      .set(this._headers)
+      superagent.get(this.url)
+      .set(this.headers)
       .query(query)
       .end((error, responseJS) => {
-        const response = this._parseResponseJS(responseJS);
+        const response = this.parseResponseJS(responseJS);
         return error ? reject(response) : resolve(response);
       });
     });
   }
 
-  _parseResponseJS(responseJS) {
+  parseResponseJS(responseJS) {
     if (!responseJS) {
       return {
         headers: {
           status_code: statusCode,
           message: 'Internal Server Error',
         },
-      }
+      };
     }
 
     const contentType = get(responseJS.headers, 'content-type', '');

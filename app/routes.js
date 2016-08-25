@@ -81,7 +81,7 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
-    //Hotel Search Result
+    // Hotel Search Result
     {
       path: '/hotels/:locationId/:checkIn/:checkOut/:guestsCount/:roomsCount',
       name: 'hotel-search-result',

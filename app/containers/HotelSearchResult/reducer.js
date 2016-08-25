@@ -12,7 +12,7 @@ const initialState = fromJS({
   },
   sort: {
     column: 'PRICE',
-    order: 'ASC'
+    order: 'ASC',
   },
   hotels: [],
 });
@@ -32,4 +32,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

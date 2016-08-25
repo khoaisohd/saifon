@@ -7,26 +7,20 @@ import {
 import HotelSearchApi from 'sdk/HotelSearchApi';
 import { fromJS } from 'immutable';
 
-export const storeSort = sort => {
-  return {
-    type: STORE_SORT,
-    sort,
-  };
-};
+export const storeSort = sort => ({
+  type: STORE_SORT,
+  sort,
+});
 
-export const addFilterStarType = starType => {
-  return {
-    type: ADD_FILTER_STAR_TYPE,
-    starType,
-  };
-};
+export const addFilterStarType = starType => ({
+  type: ADD_FILTER_STAR_TYPE,
+  starType,
+});
 
-export const removeFilterStarType = starType => {
-  return {
-    type: REMOVE_FILTER_STAR_TYPE,
-    starType,
-  };
-};
+export const removeFilterStarType = starType => ({
+  type: REMOVE_FILTER_STAR_TYPE,
+  starType,
+});
 
 export const submitSearch = search => dispatch => {
   const api = new HotelSearchApi();

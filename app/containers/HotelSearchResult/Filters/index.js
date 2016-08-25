@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addFilterStarType, removeFilterStarType } from '../actions';
-import { fromJS } from 'immutable';
 import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
-class Filters extends React.Component {
+class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { filter, addFilterStarType, removeFilterStarType } = this.props;
     return (

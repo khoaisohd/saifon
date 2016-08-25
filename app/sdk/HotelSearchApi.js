@@ -3,12 +3,12 @@ const hotelSearchPath = 'api/hotel/search';
 
 class HotelSearchApi {
   constructor(host = '', headers = {}) {
-    this._host = host;
-    this._headers = headers;
+    this.host = host;
+    this.headers = headers;
   }
 
   submitSearch(request) {
-    const api = new Api(`${this._host}/${hotelSearchPath}`, this._headers);
+    const api = new Api(`${this.host}/${hotelSearchPath}`, this.headers);
     return api.post(request);
   }
 }
