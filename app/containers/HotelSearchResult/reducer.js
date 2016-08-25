@@ -20,9 +20,11 @@ const initialState = fromJS({
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_FILTERS_STAR_TYPE:
-      return state.setIn(['filters', 'starTypes', action.starType], true);
+      return state
+        .setIn(['filters', 'starTypes', action.starType], true);
     case REMOVE_FILTERS_STAR_TYPE:
-      return state.setIn(['filters', 'starTypes', action.starType], false);
+      return state
+        .setIn(['filters', 'starTypes', action.starType], false);
     case STORE_SORT:
       return state
         .set('sort', action.sort);
