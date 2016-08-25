@@ -22,11 +22,12 @@ export const removeFilterStarType = starType => ({
   starType,
 });
 
+export const storeHotels = hotels => ({
+  type: STORE_HOTELS,
+  hotels,
+});
+
 export const submitSearch = search => dispatch => {
   const api = new HotelSearchApi();
-
-  api.submitSearch({ search }).then(response => dispatch({
-    hotels: fromJS(response.hotels),
-    type: STORE_HOTELS,
-  }));
+  api.submitSearch({ search }).then(response => dispatch(storeHotels(fromJS(response.hotels))));
 };
