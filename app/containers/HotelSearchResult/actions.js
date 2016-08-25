@@ -1,14 +1,14 @@
 import {
-  STORE_HOTELS,
-  STORE_SORT,
+  DISPLAY_HOTELS,
+  SORT_HOTELS,
   ADD_FILTERS_STAR_TYPE,
   REMOVE_FILTERS_STAR_TYPE,
 } from './constants';
 import HotelSearchApi from 'sdk/HotelSearchApi';
 import { fromJS } from 'immutable';
 
-export const storeSort = sort => ({
-  type: STORE_SORT,
+export const sortHotels = sort => ({
+  type: SORT_HOTELS,
   sort,
 });
 
@@ -22,12 +22,12 @@ export const removeFilterStarType = starType => ({
   starType,
 });
 
-export const storeHotels = hotels => ({
-  type: STORE_HOTELS,
+export const displayHotels = hotels => ({
+  type: DISPLAY_HOTELS,
   hotels,
 });
 
 export const submitSearch = search => dispatch => {
   const api = new HotelSearchApi();
-  api.submitSearch({ search }).then(response => dispatch(storeHotels(fromJS(response.hotels))));
+  api.submitSearch({ search }).then(response => dispatch(displayHotels(fromJS(response.hotels))));
 };

@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 import {
   addFilterStarType,
   removeFilterStarType,
-  storeHotels,
+  displayHotels,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -29,11 +29,11 @@ describe('HotelSearchResult/reducer', () => {
     });
   });
 
-  describe('storeHotels', () => {
-    it('stores hotels', () => {
+  describe('displayHotels', () => {
+    it('displays hotels', () => {
       const addedHotels = fromJS([{ id: 'x' }, { id: 'y' }]);
-      newState = reducer(state, storeHotels(addedHotels));
-      expect(newState.getIn(['hotels']).toJS()).to.deep.equal(addedHotels.toJS());
+      newState = reducer(state, displayHotels(addedHotels));
+      expect(newState.getIn(['displayedHotels']).toJS()).to.deep.equal(addedHotels.toJS());
     });
   });
 });

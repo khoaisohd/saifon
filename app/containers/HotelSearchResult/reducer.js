@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable';
 import {
-  STORE_SORT,
+  SORT_HOTELS,
   ADD_FILTERS_STAR_TYPE,
   REMOVE_FILTERS_STAR_TYPE,
-  STORE_HOTELS,
+  DISPLAY_HOTELS,
 } from './constants';
 
 const initialState = fromJS({
@@ -14,7 +14,7 @@ const initialState = fromJS({
     column: 'PRICE',
     order: 'ASC',
   },
-  hotels: [],
+  displayedHotels: [],
 });
 
 export default (state = initialState, action) => {
@@ -25,12 +25,12 @@ export default (state = initialState, action) => {
     case REMOVE_FILTERS_STAR_TYPE:
       return state
         .setIn(['filters', 'starTypes', action.starType], false);
-    case STORE_SORT:
+    case SORT_HOTELS:
       return state
         .set('sort', action.sort);
-    case STORE_HOTELS:
+    case DISPLAY_HOTELS:
       return state
-        .set('hotels', action.hotels);
+        .set('displayedHotels', action.hotels);
     default:
       return state;
   }

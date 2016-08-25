@@ -16,7 +16,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   }
 
   render() {
-    const { hotels } = this.props;
+    const { displayedHotels } = this.props;
 
     return (
       <div>
@@ -31,7 +31,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <Link to={this.filterPath}>Filter</Link>
           </div>
           <div>
-            {hotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}
+            {displayedHotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 }
 
 const mapStateToProps = state => ({
-  hotels: state.getIn(['HotelSearchResult', 'hotels']),
+  displayedHotels: state.getIn(['HotelSearchResult', 'displayedHotels']),
   sort: state.getIn(['HotelSearchResult', 'sort']),
 });
 
