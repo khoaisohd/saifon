@@ -12,8 +12,8 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={() => addFilterStarType('FIRST_STAR')}>Add</button>
-          <button onClick={() => removeFilterStarType('FIRST_STAR')}>Remove</button>
+          <button onClick={() => addFilterStarType('ONE_STAR')}>Add</button>
+          <button onClick={() => removeFilterStarType('ONE_STAR')}>Remove</button>
           <div>
             Filter: { JSON.stringify(filters.toJS()) }
           </div>
