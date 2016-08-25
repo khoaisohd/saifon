@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
-import { getHotelSearchPath } from 'utils/paths';
+import { getHotelSearchPath } from 'routes';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
