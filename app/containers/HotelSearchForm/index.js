@@ -7,11 +7,12 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
+import { getHotelSearchPath } from 'utils/paths';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
-    const searchResultUrl = `/hotels/${location.get('code')}/${checkIn}/${checkOut}/${guestsCount}/${roomsCount}/`;
+    const searchResultUrl = getHotelSearchPath({ locationCode: location.get('code'), checkIn, checkOut, roomsCount, guestsCount });
 
     return (
       <div>

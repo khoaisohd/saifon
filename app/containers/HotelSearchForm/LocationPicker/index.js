@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
-import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class LocationPicker extends React.Component {
@@ -12,7 +11,7 @@ class LocationPicker extends React.Component {
       code: 'SG',
       name: 'Singapore',
     }));
-    browserHistory.goBack();
+    this.context.router.goBack();
   }
 
   render() {
@@ -28,6 +27,10 @@ class LocationPicker extends React.Component {
     );
   }
 }
+
+LocationPicker.contextTypes = {
+  router: React.PropTypes.object
+};
 
 const mapDispatchToProps = dispatch => ({
   submitLocation: location => dispatch(submitLocation(location)),

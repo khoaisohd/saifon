@@ -4,16 +4,20 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import { submitSearch } from './actions';
+import { getHotelSearchPath } from 'utils/paths';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
-    const { checkIn, checkOut, guestsCount, locationId, roomsCount } = props.routeParams;
-    props.search({ checkIn, checkOut, guestsCount, locationId, roomsCount });
+    const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
+    const search = { checkIn, checkOut, guestsCount, locationCode, roomsCount };
+    this.filterPath = `${getHotelSearchPath(search)}/overlay/filters`;
+    props.search(search);
   }
 
   render() {
-    const { hotels, location } = this.props;
+    const { hotels } = this.props;
+
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -24,7 +28,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <button>Sort</button>
           </div>
           <div>
-            <Link to={`${location.pathname}/overlay/filters`}>Filter</Link>
+            <Link to={this.filterPath}>Filter</Link>
           </div>
           <div>
             {hotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}

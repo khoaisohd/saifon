@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addFilterStarType, removeFilterStarType } from '../actions';
-import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { filter, addFilterStarType, removeFilterStarType } = this.props;
+    const { filters, addFilterStarType, removeFilterStarType } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -16,14 +15,18 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           <button onClick={() => addFilterStarType('FIRST_STAR')}>Add</button>
           <button onClick={() => removeFilterStarType('FIRST_STAR')}>Remove</button>
           <div>
-            Filter: { JSON.stringify(filter.toJS()) }
+            Filter: { JSON.stringify(filters.toJS()) }
           </div>
-          <button onClick={() => browserHistory.goBack()}>Done</button>
+          <button onClick={this.context.router.goBack}>Done</button>
         </div>
       </div>
     );
   }
 }
+
+Filters.contextTypes = {
+  router: React.PropTypes.object
+};
 
 const mapDispatchToProps = dispatch => ({
   addFilterStarType: starType => dispatch(addFilterStarType(starType)),
@@ -31,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  filter: state.getIn(['HotelSearchResult', 'filter']),
+  filters: state.getIn(['HotelSearchResult', 'filters']),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
