@@ -10,9 +10,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   constructor(props) {
     super(props);
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
-    const search = { checkIn, checkOut, guestsCount, locationCode, roomsCount };
-    this.filterPath = `${pathToHotelSearch(search)}/overlay/filters`;
-    props.searchHotels(search);
+    props.searchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
   }
 
   render() {
@@ -28,7 +26,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <button>Sort</button>
           </div>
           <div>
-            <Link to={this.filterPath}>Filter</Link>
+            <Link to={`${pathToHotelSearch(this.props.routeParams)}/overlay/filters`}>Filter</Link>
           </div>
           <div>
             {displayedHotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}
