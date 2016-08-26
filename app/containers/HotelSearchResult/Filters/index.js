@@ -25,7 +25,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
 }
 
 Filters.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object,
 };
 
 const mapDispatchToProps = dispatch => ({

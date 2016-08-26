@@ -23,7 +23,7 @@ class DatePicker extends React.Component {
 }
 
 DatePicker.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object,
 };
 
 const mapDispatchToProps = dispatch => ({

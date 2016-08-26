@@ -29,7 +29,7 @@ class LocationPicker extends React.Component {
 }
 
 LocationPicker.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object,
 };
 
 const mapDispatchToProps = dispatch => ({

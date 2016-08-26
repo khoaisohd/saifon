@@ -25,7 +25,7 @@ class TravellersPicker extends React.Component {
 }
 
 TravellersPicker.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object,
 };
 
 const mapDispatchToProps = dispatch => ({

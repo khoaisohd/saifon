@@ -30,6 +30,6 @@ function hotelSearchResultReducer(state = initialState, action) {
     default:
       return state;
   }
-};
+}
 
 export default hotelSearchResultReducer;

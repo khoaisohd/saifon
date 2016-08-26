@@ -16,7 +16,7 @@ describe('HotelSearchForm/reducer', () => {
   });
 
   describe('submitLocation', () => {
-    it('changes location', () => {
+    it('updates location', () => {
       newState = reducer(state, submitLocation(fromJS({
         code: 'locationCode',
         name: 'locationName',
@@ -27,7 +27,7 @@ describe('HotelSearchForm/reducer', () => {
   });
 
   describe('submitTiming', () => {
-    it('changes checkIn and checkOut', () => {
+    it('updates checkIn and checkOut', () => {
       newState = reducer(state, submitTiming('checkIn', 'checkOut'));
       expect(newState.get('checkIn')).to.equal('checkIn');
       expect(newState.get('checkOut')).to.equal('checkOut');
@@ -35,7 +35,7 @@ describe('HotelSearchForm/reducer', () => {
   });
 
   describe('submitTravellers', () => {
-    it('changes roomsCount and guestsCount', () => {
+    it('updates roomsCount and guestsCount', () => {
       newState = reducer(state, submitTravellers('roomsCount', 'guestsCount'));
       expect(newState.get('roomsCount')).to.equal('roomsCount');
       expect(newState.get('guestsCount')).to.equal('guestsCount');
