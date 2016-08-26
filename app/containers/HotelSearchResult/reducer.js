@@ -16,7 +16,7 @@ const initialState = fromJS({
   displayedHotels: [],
 });
 
-export default (state = initialState, action) => {
+function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
     case FILTER_BY_STAR:
       return state
@@ -31,3 +31,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default hotelSearchResultReducer;
