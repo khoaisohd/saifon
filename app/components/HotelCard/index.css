@@ -36,11 +36,7 @@
   color: #FCA328;
 }
 
-.icon-star::before {
-  content: '\e802';
-}
-
-.empty-star {
+.emptyStar {
   color: #D8D8D8;
 }
 

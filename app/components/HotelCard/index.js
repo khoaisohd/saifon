@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Price from '../Price';
 import hotelCardstyles from './index.css';
-import '../../styles/wego-icons.css';
+import wegoIcons from '../../styles/wego-icons.css';
+
+let styles = Object.assign({}, hotelCardstyles, wegoIcons);
 
 class HotelCard extends Component {
 
@@ -10,8 +12,8 @@ class HotelCard extends Component {
     const emptyStars = new Array(5 - starCount).fill(0);
     return (
       <div>
-        { goldStars.map((star, index) => (<i key={index} className="icon-star" />)) }
-        { emptyStars.map((star, index) => (<i key={index} className="icon-star empty-star" />)) }
+        { goldStars.map((star, index) => (<i key={index} className={styles.iconStar} />)) }
+        { emptyStars.map((star, index) => (<i key={index} className={`${styles.iconStar} ${styles.emptyStar}`} />)) }
       </div>
     );
   }
@@ -21,35 +23,35 @@ class HotelCard extends Component {
 
     let ratingScoreClass;
     if (hotel.score < 75 && hotel.score > 70) {
-      ratingScoreClass = hotelCardstyles.neutral;
+      ratingScoreClass = styles.neutral;
     } else if (hotel.score <= 70) {
-      ratingScoreClass = hotelCardstyles.negative;
+      ratingScoreClass = styles.negative;
     }
     const reviewCount = hotel.reviewCount.toLocaleString();
     return (
-      <div className={hotelCardstyles.hotelCard}>
+      <div className={styles.hotelCard}>
         <div>
-          <img className={hotelCardstyles.image} src={hotel.imageUrl} role="presentation" />
+          <img className={styles.image} src={hotel.imageUrl} role="presentation" />
         </div>
-        <div className={hotelCardstyles.summary}>
-          <div className={hotelCardstyles.name}>{hotel.name}</div>
-          <div className={hotelCardstyles.address}>{hotel.address}</div>
-          <div className={hotelCardstyles.rating}>
-            <span className={hotelCardstyles.ratingStars}>
+        <div className={styles.summary}>
+          <div className={styles.name}>{hotel.name}</div>
+          <div className={styles.address}>{hotel.address}</div>
+          <div className={styles.rating}>
+            <span className={styles.ratingStars}>
               {this.renderStars(hotel.star)}
             </span>
           </div>
-          <div className={hotelCardstyles.reviewRate}>
-            <div className={`${hotelCardstyles.review} ${ratingScoreClass}`}>
-              <span className={`${hotelCardstyles.score} ${ratingScoreClass}`}>{hotel.score}</span>
-              <div className={hotelCardstyles.subreview}>
-                <span className={`${hotelCardstyles.sentiment} ${ratingScoreClass}`}>{hotel.reviewSentiment}</span>
-                <span className={hotelCardstyles.reviewCount}>
+          <div className={styles.reviewRate}>
+            <div className={`${styles.review} ${ratingScoreClass}`}>
+              <span className={`${styles.score} ${ratingScoreClass}`}>{hotel.score}</span>
+              <div className={styles.subreview}>
+                <span className={`${styles.sentiment} ${ratingScoreClass}`}>{hotel.reviewSentiment}</span>
+                <span className={styles.reviewCount}>
                   {reviewCount} reviews
                 </span>
               </div>
             </div>
-            <div className={hotelCardstyles.rate}>
+            <div className={styles.rate}>
               <Price amount={hotel.price.amount} currencyCode={hotel.price.currencyCode} />
             </div>
           </div>
