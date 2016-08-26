@@ -3,7 +3,7 @@ import Price from '../Price';
 import hotelCardstyles from './index.css';
 import wegoIcons from '../../styles/wego-icons.css';
 
-let styles = Object.assign({}, hotelCardstyles, wegoIcons);
+const styles = Object.assign({}, hotelCardstyles, wegoIcons);
 
 class HotelCard extends Component {
 
