@@ -1,4 +1,4 @@
-.hotel-card {
+.hotelCard {
   display: flex;
   flex-direction: row;
   padding-bottom: 0.5rem;
@@ -8,7 +8,7 @@
   border-color: #DDD;
 }
 
-.hotel-card-summary {
+.summary {
   padding-left: 10px;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@
   font-size: 0.65rem;
 }
 
-.rating-stars {
+.ratingStars {
   font-size: 0.7rem;
   color: #FCA328;
 }
@@ -48,20 +48,20 @@
   flex-grow: 1;
 }
 
-.review_rate {
+.reviewRate {
   position: relative;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
 }
 
-.review_rate::before,
-.review_rate::after {
+.reviewRate::before,
+.reviewRate::after {
   content: ' ';
   display: table;
 }
 
-.review_rate::after {
+.reviewRate::after {
   clear: both;
 }
 
@@ -123,7 +123,7 @@
   margin-left: 30px;
 }
 
-.review-count {
+.reviewCount {
   font-size: 0.65rem;
   padding-top: 0.2rem;
   display: inherit;

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Price from '../Price';
-import './index.css';
+import hotelCardstyles from './index.css';
 import '../../styles/wego-icons.css';
 
 class HotelCard extends Component {
@@ -21,35 +21,35 @@ class HotelCard extends Component {
 
     let ratingScoreClass;
     if (hotel.score < 75 && hotel.score > 70) {
-      ratingScoreClass = 'neutral';
+      ratingScoreClass = hotelCardstyles.neutral;
     } else if (hotel.score <= 70) {
-      ratingScoreClass = 'negative';
+      ratingScoreClass = hotelCardstyles.negative;
     }
     const reviewCount = hotel.reviewCount.toLocaleString();
     return (
-      <div className="hotel-card">
-        <div className="hotel-card-image">
-          <img className="image" src={hotel.imageUrl} role="presentation" />
+      <div className={hotelCardstyles.hotelCard}>
+        <div>
+          <img className={hotelCardstyles.image} src={hotel.imageUrl} role="presentation" />
         </div>
-        <div className="hotel-card-summary">
-          <div className="name">{hotel.name}</div>
-          <div className="address">{hotel.address}</div>
-          <div className="rating">
-            <span className="rating-stars">
+        <div className={hotelCardstyles.summary}>
+          <div className={hotelCardstyles.name}>{hotel.name}</div>
+          <div className={hotelCardstyles.address}>{hotel.address}</div>
+          <div className={hotelCardstyles.rating}>
+            <span className={hotelCardstyles.ratingStars}>
               {this.renderStars(hotel.star)}
             </span>
           </div>
-          <div className="review_rate">
-            <div className={`review ${ratingScoreClass}`}>
-              <span className={`score ${ratingScoreClass}`}>{hotel.score}</span>
-              <div className="subreview">
-                <span className={`sentiment ${ratingScoreClass}`}>{hotel.reviewSentiment}</span>
-                <span className="review-count">
+          <div className={hotelCardstyles.reviewRate}>
+            <div className={`${hotelCardstyles.review} ${ratingScoreClass}`}>
+              <span className={`${hotelCardstyles.score} ${ratingScoreClass}`}>{hotel.score}</span>
+              <div className={hotelCardstyles.subreview}>
+                <span className={`${hotelCardstyles.sentiment} ${ratingScoreClass}`}>{hotel.reviewSentiment}</span>
+                <span className={hotelCardstyles.reviewCount}>
                   {reviewCount} reviews
                 </span>
               </div>
             </div>
-            <div className="rate">
+            <div className={hotelCardstyles.rate}>
               <Price amount={hotel.price.amount} currencyCode={hotel.price.currencyCode} />
             </div>
           </div>
