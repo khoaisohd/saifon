@@ -12,7 +12,7 @@ import { pathToHotelSearch } from 'utils/routes-util';
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
-    const searchResultUrl = pathToHotelSearch({ locationCode: location.get('code'), checkIn, checkOut, roomsCount, guestsCount });
+    const searchResultUrl = pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') });
 
     return (
       <div>
