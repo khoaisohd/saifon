@@ -12,7 +12,6 @@ import { pathToHotelSearch } from 'utils/routes-util';
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
-    const searchResultUrl = pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') });
 
     return (
       <div>
@@ -32,7 +31,7 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
             <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
             <div>{roomsCount} - {guestsCount}</div>
           </div>
-          <Link to={searchResultUrl}>Searches</Link>
+          <Link to={pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') })}>Searches</Link>
         </div>
       </div>
     );
