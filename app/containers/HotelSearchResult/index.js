@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
-import { getHotelSearchPath } from 'routes';
+import { pathToHotelSearch } from 'utils/routes-util';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
     const search = { checkIn, checkOut, guestsCount, locationCode, roomsCount };
-    this.filterPath = `${getHotelSearchPath(search)}/overlay/filters`;
+    this.filterPath = `${pathToHotelSearch(search)}/overlay/filters`;
     props.searchHotels(search);
   }
 

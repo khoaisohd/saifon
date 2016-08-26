@@ -6,7 +6,6 @@ const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
 // Redirect if having url of overlay page.
 const checkOverlayRedirect = (req, res, process) => {
-  console.log(123);
   if (req.url.match(/\/overlay\/.*$/i)) {
     res.redirect(req.url.replace(/\/overlay\/.*$/i, ''));
   } else {
@@ -40,10 +39,8 @@ const addDevMiddlewares = (app, webpackConfig) => {
       res.sendFile(path.join(process.cwd(), pkg.dllPlugin.path, filename));
     });
   }
-  console.log('TOMDEBUG');
 
   app.get('*', (req, res) => checkOverlayRedirect(req, res, () => {
-    console.log('TOMDEBUG');
     fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
       if (err) {
         res.sendStatus(404);
