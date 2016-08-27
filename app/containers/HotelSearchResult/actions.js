@@ -1,7 +1,7 @@
 import {
   DISPLAY_HOTELS,
   SORT_HOTELS,
-  FILTER_BY_STAR,
+  TOGGLE_STAR_RATING_FILTER,
 } from './constants';
 import HotelSearchApi from 'sdk/HotelSearchApi';
 import { fromJS } from 'immutable';
@@ -11,10 +11,9 @@ export const sortHotels = sort => ({
   sort,
 });
 
-export const filterByStar = (star, selected) => ({
-  type: FILTER_BY_STAR,
-  star,
-  selected,
+export const toggleStarRatingFilter = (starRating) => ({
+  type: TOGGLE_STAR_RATING_FILTER,
+  starRating,
 });
 
 export const displayHotels = hotels => ({
