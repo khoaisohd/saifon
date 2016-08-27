@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
+import HotelCard from 'components/HotelCard';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -15,7 +16,6 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
   render() {
     const { displayedHotels } = this.props;
-
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -29,7 +29,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <Link to={`${pathToHotelSearch(this.props.routeParams)}/overlay/filters`}>Filter</Link>
           </div>
           <div>
-            {displayedHotels.map(hotel => <li key={hotel.get('id')}>{hotel.get('name')}</li>)}
+            {displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />)}
           </div>
         </div>
       </div>
