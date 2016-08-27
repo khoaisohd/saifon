@@ -3,15 +3,15 @@ import 'containers/HotelSearchForm/DatePicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
+import { pathToHotelSearch } from 'utils/routes-util';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { location, checkIn, checkOut, roomsCount, guestsCount } = this.props;
-    const searchResultUrl = `/hotels/${location.get('code')}/${checkIn}/${checkOut}/${guestsCount}/${roomsCount}/`;
 
     return (
       <div>
@@ -31,12 +31,20 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
             <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
             <div>{roomsCount} - {guestsCount}</div>
           </div>
-          <Link to={searchResultUrl}>Searches</Link>
+          <Link to={pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') })}>Searches</Link>
         </div>
       </div>
     );
   }
 }
+
+HotelSearchForm.propTypes = {
+  location: PropTypes.object,
+  checkIn: PropTypes.string,
+  checkOut: PropTypes.string,
+  roomsCount: PropTypes.number,
+  guestsCount: PropTypes.number,
+};
 
 const mapStateToProps = state => ({
   location: state.getIn(['HotelSearchForm', 'location']),

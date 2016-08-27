@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { submitTravellers } from '../actions';
-import { browserHistory } from 'react-router';
 import appStyles from 'containers/App/styles.css';
 
 class TravellersPicker extends React.Component {
   submit() {
     const { submitTravellers } = this.props;
     submitTravellers(2, 3);
-    browserHistory.goBack();
+    this.context.router.goBack();
   }
 
   render() {
@@ -24,6 +23,14 @@ class TravellersPicker extends React.Component {
     );
   }
 }
+
+TravellersPicker.propTypes = {
+  submitTravellers: PropTypes.func.isRequired,
+};
+
+TravellersPicker.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 const mapDispatchToProps = dispatch => ({
   submitTravellers: (roomsCount, guestsCount) => dispatch(submitTravellers(roomsCount, guestsCount)),
