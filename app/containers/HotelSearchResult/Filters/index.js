@@ -1,19 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { filterByStar } from '../actions';
+import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { filters, filterByStar } = this.props;
+    const { filters, toggleStarRatingFilter } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={() => filterByStar('ONE_STAR', true)}>Add</button>
-          <button onClick={() => filterByStar('ONE_STAR', false)}>Remove</button>
+          <button onClick={() => toggleStarRatingFilter('ONE_STAR')}>Toggle</button>
           <div>
             Filter: { JSON.stringify(filters.toJS()) }
           </div>
@@ -29,7 +28,7 @@ Filters.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  filterByStar: (star, selected) => dispatch(filterByStar(star, selected)),
+  toggleStarRatingFilter: (star) => dispatch(toggleStarRatingFilter(star)),
 });
 
 const mapStateToProps = state => ({
