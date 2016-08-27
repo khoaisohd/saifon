@@ -3,9 +3,11 @@ import React, { Component, PropTypes } from 'react';
 import accounting from 'accounting';
 import currencies from './currencies';
 
+import styles from './index.css';
+
 const process = (amount, symbol, symbolFirst, thousand) => {
-  const valueFormat = '<strong class="price__amount">%v</strong>';
-  const symbolFormat = '<span class="price__code">%s</span>';
+  const valueFormat = `<strong class=${styles.amount}>%v</strong>`;
+  const symbolFormat = `<span class=${styles.code}>%s</span>`;
 
   const format = symbolFirst ?
     (symbolFormat + valueFormat) :
@@ -40,7 +42,7 @@ class Price extends Component {
 
     if (lowRate) { value = supify(value, thousand); }
 
-    return <span className="price" dangerouslySetInnerHTML={display(value)} />;
+    return <span className={`${styles.price}`} dangerouslySetInnerHTML={display(value)} />;
   }
 
 }

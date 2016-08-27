@@ -65,5 +65,4 @@ HotelCard.propTypes = {
   hotel: PropTypes.object.isRequired,
 };
 
-
 export default HotelCard;
