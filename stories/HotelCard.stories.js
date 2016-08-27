@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
 import HotelCard from '../app/components/HotelCard';
+import { fromJS } from 'immutable';
 
-const fiveStarHotel = {
+const fiveStarHotel = fromJS({
   address: '44B LY THUONG KIET St',
   cheapesRate: {
     price: {
@@ -19,9 +20,9 @@ const fiveStarHotel = {
   reviewDescription: 'Very Good',
   reviewScore: '80',
   star: 4.5,
-};
+});
 
-const threeStarHotel = {
+const threeStarHotel = fromJS({
   address: '48 Tran Nhan Tong street n',
   cheapesRate: {
     price: {
@@ -38,9 +39,9 @@ const threeStarHotel = {
   reviewDescription: 'Poor',
   reviewScore: '71',
   star: 3,
-};
+});
 
-const fourStarHotel = {
+const fourStarHotel = fromJS({
   address: '48 Tran Nhan Tong street n',
   cheapesRate: {
     price: {
@@ -57,10 +58,10 @@ const fourStarHotel = {
   reviewDescription: 'Very Good',
   reviewScore: '85',
   star: 4,
-};
+});
 
 
-const twoStarHotel = {
+const twoStarHotel = fromJS({
   address: '1 Cam Chi St (Hang Bong) Hoan Kiem District, Hanoi',
   cheapesRate: {
     price: {
@@ -77,7 +78,7 @@ const twoStarHotel = {
   reviewDescription: 'Poor',
   reviewScore: '63',
   star: 2,
-};
+});
 
 storiesOf('HotelCard', module)
   .add('Excellent', () => (

@@ -1,49 +1,418 @@
 {
-  "hotels": [
-    {
-      "id": 1,
-      "name": "Carlton City Hotel",
-      "address": "Chinatown",
-      "cityName": "Singapore",
-      "score": 85,
-      "star": 4,
-      "price": {
-        "amount": 188,
-        "currencyCode": "SGD"
-      },
-      "reviewCount": 6462,
-      "reviewSentiment": "Very Good",
-      "imageUrl": "https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1432226452/hotels/794499/12367362.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Fort Canning Lodge",
-      "address": "Orchard Road",
-      "cityName": "Singapore",
-      "score": 73,
-      "star": 3,
-      "price": {
-        "amount": 117,
-        "currencyCode": "SGD"
-      },
-      "reviewCount": 1714,
-      "reviewSentiment": "Fair",
-      "imageUrl": "https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1412097168/hotels/258148/15165150.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Harbour Ville Hotel",
-      "address": "Chinatown",
-      "cityName": "Singapore",
-      "score": 61,
-      "star": 2,
-      "price": {
-        "amount": 91,
-        "currencyCode": "SGD"
-      },
-      "reviewCount": 1866,
-      "reviewSentiment": "Fair",
-      "imageUrl": "https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1428063136/hotels/258299/1377232.jpg"
-    }
-  ]
+    "hotels": [
+        {
+            "address": "44B LY THUONG KIET St",
+            "cheapesRate": {
+                "price": {
+                    "amount": 633,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Consulates/Government",
+            "id": "111799",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1395103767/hotels/111799/15711099.jpg",
+            "name": "Melia Hanoi",
+            "reviewCount": "309",
+            "reviewDescription": "Very Good",
+            "reviewScore": "80",
+            "star": 5.0
+        },
+        {
+            "address": "24 Hang Ga, Hoan Kiem, Hanoi",
+            "cheapesRate": {
+                "price": {
+                    "amount": 405,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111801",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1431302421/hotels/111801/5447918.jpg",
+            "name": "Rising Dragon Grand Hotel",
+            "reviewCount": "649",
+            "reviewDescription": "Very Good",
+            "reviewScore": "82",
+            "star": 3.0
+        },
+        {
+            "address": "1B Cua Dong Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 160,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111805",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026892/hotels/111805/15704439.jpg",
+            "name": "Hanoi Serenity Hotel",
+            "reviewCount": "227",
+            "reviewDescription": "Good",
+            "reviewScore": "76",
+            "star": 2.0
+        },
+        {
+            "address": "62 Hang Bac Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 497,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111810",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026893/hotels/111810/8858144.jpg",
+            "name": "Paradise Boutique Hotel",
+            "reviewCount": "535",
+            "reviewDescription": "Excellent",
+            "reviewScore": "86",
+            "star": 3.0
+        },
+        {
+            "address": "31 Hang Manh",
+            "cheapesRate": {
+                "price": {
+                    "amount": 531,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111819",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1396708688/hotels/111819/15735910.jpg",
+            "name": "Golden Land Hotel",
+            "reviewCount": "109",
+            "reviewDescription": "Good",
+            "reviewScore": "75",
+            "star": 3.0
+        },
+        {
+            "address": "1 Hang Hom Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 293,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111822",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1395103245/hotels/111822/10056174.jpg",
+            "name": "Symphony Hotel Hanoi",
+            "reviewCount": "595",
+            "reviewDescription": "Excellent",
+            "reviewScore": "92",
+            "star": 3.0
+        },
+        {
+            "address": "23 Au Trieu",
+            "cheapesRate": {
+                "price": {
+                    "amount": 681,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Ha Noi Cathedral",
+            "id": "111823",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1431304522/hotels/111823/10871114.jpg",
+            "name": "Hidden Charm Hotel",
+            "reviewCount": "335",
+            "reviewDescription": "Excellent",
+            "reviewScore": "87",
+            "star": 3.0
+        },
+        {
+            "address": "35 37 Hang Trong Hoan Kiem",
+            "cheapesRate": {
+                "price": {
+                    "amount": 840,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Hoan Kiem Lake",
+            "id": "111835",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1431301149/hotels/111835/2287211.jpg",
+            "name": "Maison DHanoi Hanova Hotel",
+            "reviewCount": "181",
+            "reviewDescription": "Good",
+            "reviewScore": "79",
+            "star": 3.5
+        },
+        {
+            "address": "11 Ma May Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 538,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111836",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1431303504/hotels/111836/2274915.jpg",
+            "name": "Medallion Hanoi Hotel",
+            "reviewCount": "112",
+            "reviewDescription": "Good",
+            "reviewScore": "80",
+            "star": 3.5
+        },
+        {
+            "address": "28 Ngo Huyen Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 637,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Ha Noi Cathedral",
+            "id": "111838",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026893/hotels/111838/7004166.jpg",
+            "name": "Paramount Hotel Hanoi",
+            "reviewCount": "437",
+            "reviewDescription": "Excellent",
+            "reviewScore": "89",
+            "star": 3.0
+        },
+        {
+            "address": "5B Tam Thuong",
+            "cheapesRate": {
+                "price": {
+                    "amount": 957,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111845",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1468409889/hotels/111845/1741983.jpg",
+            "name": "North Hotel N.2",
+            "reviewCount": "370",
+            "reviewDescription": "Excellent",
+            "reviewScore": "89",
+            "star": 1.0
+        },
+        {
+            "address": "106 Ma May street n      ",
+            "cheapesRate": {
+                "price": {
+                    "amount": 303,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111847",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1396708718/hotels/111847/15723109.jpg",
+            "name": "Golden Wings Hotel",
+            "reviewCount": "470",
+            "reviewDescription": "Very Good",
+            "reviewScore": "84",
+            "star": 2.0
+        },
+        {
+            "address": "1 Le Thanh Tong St Hoan Kiem Dist",
+            "cheapesRate": {
+                "price": {
+                    "amount": 151,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Consulates/Government",
+            "id": "111853",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1458101733/hotels/111853/38519367.jpg",
+            "name": "Hilton Hanoi Opera",
+            "reviewCount": "1059",
+            "reviewDescription": "Very Good",
+            "reviewScore": "83",
+            "star": 5.0
+        },
+        {
+            "address": "83A Ly Thuong Kiet Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 364,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Consulates/Government",
+            "id": "111855",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1395104014/hotels/724882/13420125.jpg",
+            "name": "Movenpick Hotel Hanoi",
+            "reviewCount": "511",
+            "reviewDescription": "Very Good",
+            "reviewScore": "84",
+            "star": 5.0
+        },
+        {
+            "address": "40 Cat Linh Str",
+            "cheapesRate": {
+                "price": {
+                    "amount": 333,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Dong Da District - Temple of Literature",
+            "id": "111858",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1395103557/hotels/111858/15734731.jpg",
+            "name": "Pullman Hanoi",
+            "reviewCount": "578",
+            "reviewDescription": "Very Good",
+            "reviewScore": "80",
+            "star": 5.0
+        },
+        {
+            "address": "15 Hang Can Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 630,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111883",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026894/hotels/111883/15706791.jpg",
+            "name": "Golden Sun Moment Hotel",
+            "reviewCount": "235",
+            "reviewDescription": "Excellent",
+            "reviewScore": "95",
+            "star": 3.0
+        },
+        {
+            "address": "1 Thanh Nien Road",
+            "cheapesRate": {
+                "price": {
+                    "amount": 560,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Tay Ho District - West Lake / Nghi Tam",
+            "id": "111895",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1396665127/hotels/111895/11587927.jpg",
+            "name": "Sofitel Plaza Hanoi",
+            "reviewCount": "1105",
+            "reviewDescription": "Very Good",
+            "reviewScore": "85",
+            "star": 5.0
+        },
+        {
+            "address": "19 Pham Dinh Ho Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 700,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Pho Hue / Hom Market - Thong Nhat Park",
+            "id": "111896",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397182209/hotels/111896/15710322.jpg",
+            "name": "Sunway Hotel Hanoi",
+            "reviewCount": "136",
+            "reviewDescription": "Very Good",
+            "reviewScore": "83",
+            "star": 4.0
+        },
+        {
+            "address": "57 Lo su, Hoan Kiem Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 525,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Hoan Kiem Lake",
+            "id": "111900",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026894/hotels/111900/15724486.jpg",
+            "name": "Jasmine Garden Hotel",
+            "reviewCount": "546",
+            "reviewDescription": "Excellent",
+            "reviewScore": "92",
+            "star": 3.0
+        },
+        {
+            "address": "15 Hang Hanh Street, Hoan Kiem District       ",
+            "cheapesRate": {
+                "price": {
+                    "amount": 690,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Hoan Kiem Lake",
+            "id": "111902",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1432368677/hotels/111902/30681373.jpg",
+            "name": "Golden Lake View Hotel",
+            "reviewCount": "583",
+            "reviewDescription": "Excellent",
+            "reviewScore": "91",
+            "star": 3.5
+        },
+        {
+            "address": "No 1 Yen Thai, Hang Manh Street, Hoan Kiem District n      ",
+            "cheapesRate": {
+                "price": {
+                    "amount": 449,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111905",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026894/hotels/111905/1742167.jpg",
+            "name": "Little Hanoi Dx Hotel",
+            "reviewCount": "139",
+            "reviewDescription": "Very Good",
+            "reviewScore": "84",
+            "star": 2.5
+        },
+        {
+            "address": "95B Hang Ga Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 730,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Old Quarter",
+            "id": "111906",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1397026894/hotels/111906/7679466.jpg",
+            "name": "Hanoi City Hostel",
+            "reviewCount": "179",
+            "reviewDescription": "Excellent",
+            "reviewScore": "94",
+            "star": 2.0
+        },
+        {
+            "address": "No 4-6 Ba Trieu Street",
+            "cheapesRate": {
+                "price": {
+                    "amount": 545,
+                    "currencyCode": "SGD"
+                }
+            },
+            "cityName": "Hanoi",
+            "districtName": "Hoan Kiem District - Consulates/Government",
+            "id": "111908",
+            "imageUrl": "http://res.cloudinary.com/wego/image/upload/v1395103203/hotels/111908/15720550.jpg",
+            "name": "Zephyr Hotel",
+            "reviewCount": "122",
+            "reviewDescription": "Very Good",
+            "reviewScore": "80",
+            "star": 3.5
+        }
+    ]
 }
