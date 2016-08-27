@@ -3,6 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
+import { HOTEL_SEARCH_PATH_PATTERN } from 'utils/routes-util';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -34,7 +35,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
-    // Hotel Search Form START
+    // Hotel Search Form
     {
       path: '/hotels',
       name: 'hotel-search-form',
@@ -81,7 +82,35 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
-    // Hotel Search Form END
+    // Hotel Search Result
+    {
+      path: HOTEL_SEARCH_PATH_PATTERN,
+      name: 'hotel-search-result',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/HotelSearchResult/reducer'),
+          System.import('containers/HotelSearchResult'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('HotelSearchResult', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
+      name: 'hotel-search-result-filters',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchResult/Filters')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
     {
       path: '*',
       name: 'notfound',
