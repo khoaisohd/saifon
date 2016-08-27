@@ -105,7 +105,7 @@
 .icon-clock:before { content: '\e827'; } /* '' */
 .icon-play:before { content: '\e828'; } /* '' */
 .icon-pause:before { content: '\e829'; } /* '' */
-.icon-mobile-1:before { content: '\e82a'; } /* '' */
+.iconMobile1:before { content: '\e82a'; } /* '' */
 .icon-flight:before { content: '\e82b'; } /* '' */
 .icon-key:before { content: '\e82c'; } /* '' */
 .icon-vimeo:before { content: '\e82d'; } /* '' */
