@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { submitTiming } from '../actions';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
@@ -21,6 +21,10 @@ class DatePicker extends React.Component {
     );
   }
 }
+
+DatePicker.propTypes = {
+  submitTiming: PropTypes.func.isRequired,
+};
 
 DatePicker.contextTypes = {
   router: React.PropTypes.object,

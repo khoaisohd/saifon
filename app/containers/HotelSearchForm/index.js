@@ -3,7 +3,7 @@ import 'containers/HotelSearchForm/DatePicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
@@ -37,6 +37,14 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
     );
   }
 }
+
+HotelSearchForm.propTypes = {
+  location: PropTypes.object,
+  checkIn: PropTypes.string,
+  checkOut: PropTypes.string,
+  roomsCount: PropTypes.number,
+  guestsCount: PropTypes.number,
+};
 
 const mapStateToProps = state => ({
   location: state.getIn(['HotelSearchForm', 'location']),

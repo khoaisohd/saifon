@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
@@ -27,6 +27,10 @@ class LocationPicker extends React.Component {
     );
   }
 }
+
+LocationPicker.propTypes = {
+  submitLocation: PropTypes.func.isRequired,
+};
 
 LocationPicker.contextTypes = {
   router: React.PropTypes.object,

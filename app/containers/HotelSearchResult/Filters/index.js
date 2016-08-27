@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
@@ -22,6 +22,11 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
     );
   }
 }
+
+Filters.propTypes = {
+  filters: PropTypes.object.isRequired,
+  toggleStarRatingFilter: PropTypes.func.isRequired,
+};
 
 Filters.contextTypes = {
   router: React.PropTypes.object,

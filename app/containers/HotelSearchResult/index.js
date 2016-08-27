@@ -1,5 +1,5 @@
 import 'containers/HotelSearchResult/Filters'; // Preload form assets
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
@@ -36,6 +36,12 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     );
   }
 }
+
+HotelSearchResult.propTypes = {
+  displayedHotels: PropTypes.object.isRequired,
+  sort: PropTypes.object.isRequired,
+  searchHotels: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   displayedHotels: state.getIn(['HotelSearchResult', 'displayedHotels']),
