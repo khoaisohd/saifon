@@ -25,6 +25,6 @@ storiesOf('Rate', module)
   ))
   .add('showing description', () => (
     <div>
-      <Rate rate={rate} showDescription={true} />
+      <Rate rate={rate} showDescription />
     </div>
   ));
