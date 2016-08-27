@@ -3,63 +3,80 @@ import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
 import HotelCard from '../app/components/HotelCard';
 
 const fiveStarHotel = {
-  name: 'Shangri-La Hotel, Singapore',
-  address: 'Orchard Road',
-  cityName: 'Singapore',
-  score: 83,
-  star: 5,
-  price: {
-    amount: 432,
-    currencyCode: 'SGD',
+  address: '44B LY THUONG KIET St',
+  cheapesRate: {
+    price: {
+      amount: 574,
+      currencyCode: 'SGD',
+    },
   },
-  reviewCount: 2203,
-  reviewSentiment: 'Excellent',
-  imageUrl: 'https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1412096119/hotels/258013/12441666.jpg',
-};
-
-const fourStarHotel = {
-  name: 'Carlton City Hotel',
-  address: 'Chinatown',
-  cityName: 'Singapore',
-  score: 85,
-  star: 4,
-  price: {
-    amount: 188,
-    currencyCode: 'SGD',
-  },
-  reviewCount: 6462,
-  reviewSentiment: 'Very Good',
-  imageUrl: 'https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1432226452/hotels/794499/12367362.jpg',
+  cityName: 'Hanoi',
+  districtName: 'Hoan Kiem District - Consulates/Government',
+  id: '111799',
+  imageUrl: 'http://res.cloudinary.com/wego/image/upload/v1395103767/hotels/111799/15711099.jpg',
+  name: 'Melia Hanoi',
+  reviewCount: '1000',
+  reviewDescription: 'Very Good',
+  reviewScore: '80',
+  star: 4.5,
 };
 
 const threeStarHotel = {
-  name: 'Fort Canning Lodge',
-  address: 'Orchard Road',
-  cityName: 'Singapore',
-  score: 73,
-  star: 3,
-  price: {
-    amount: 117,
-    currencyCode: 'SGD',
+  address: '48 Tran Nhan Tong street n',
+  cheapesRate: {
+    price: {
+      amount: 906,
+      currencyCode: 'SGD',
+    },
   },
-  reviewCount: 1714,
-  reviewSentiment: 'Fair',
-  imageUrl: 'https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1412097168/hotels/258148/15165150.jpg',
+  cityName: 'Hanoi',
+  districtName: 'Pho Hue / Hom Market - Thong Nhat Park',
+  id: '111797',
+  imageUrl: 'http://res.cloudinary.com/wego/image/upload/v1395103123/hotels/111797/15713422.jpg',
+  name: 'Ocean Hotel I',
+  reviewCount: '5',
+  reviewDescription: 'Poor',
+  reviewScore: '71',
+  star: 3,
 };
 
-const twoStarHotel = {
-  name: 'Harbour Ville Hotel',
-  address: 'Chinatown',
-  cityName: 'Singapore',
-  score: 61,
-  star: 2,
-  price: {
-    amount: 91,
-    currencyCode: 'SGD',
+const fourStarHotel = {
+  address: '48 Tran Nhan Tong street n',
+  cheapesRate: {
+    price: {
+      amount: 906,
+      currencyCode: 'SGD',
+    },
   },
-  reviewCount: 1866,
-  reviewSentiment: 'Fair',
-  imageUrl: 'https://res.cloudinary.com/wego/w_180,h_180,c_fill,f_auto,fl_lossy,q_80/v1428063136/hotels/258299/1377232.jpg',
+  cityName: 'Hanoi',
+  districtName: 'Pho Hue / Hom Market - Thong Nhat Park',
+  id: '111797',
+  imageUrl: 'http://res.cloudinary.com/wego/image/upload/v1395103123/hotels/111797/15713422.jpg',
+  name: 'Ocean Hotel I',
+  reviewCount: '500',
+  reviewDescription: 'Very Good',
+  reviewScore: '85',
+  star: 4,
+};
+
+
+const twoStarHotel = {
+  address: '1 Cam Chi St (Hang Bong) Hoan Kiem District, Hanoi',
+  cheapesRate: {
+    price: {
+      amount: 800,
+      currencyCode: 'SGD',
+    },
+  },
+  cityName: 'Hanoi',
+  districtName: 'Ba Dinh',
+  id: '111798',
+  imageUrl: 'http://res.cloudinary.com/wego/image/upload/v1397026892/hotels/111798/7678197.jpg',
+  name: 'Hanoi Street Hotel',
+  reviewCount: '35',
+  reviewDescription: 'Poor',
+  reviewScore: '63',
+  star: 2,
 };
 
 storiesOf('HotelCard', module)
