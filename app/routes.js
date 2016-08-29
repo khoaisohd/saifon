@@ -97,7 +97,7 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('HotelSearchResult', reducer.default);
-          injectSagas(sagas.default);
+          injectSagas('HotelSearchResult', sagas.default);
           renderRoute(component);
         });
 
