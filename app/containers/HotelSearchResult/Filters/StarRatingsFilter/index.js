@@ -14,7 +14,7 @@ const CheckboxFilter = (props) => (
 );
 
 CheckboxFilter.propTypes = {
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
 };
 
 const StarRatingsFilter = (props) => {
