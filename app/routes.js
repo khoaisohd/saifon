@@ -101,15 +101,17 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },
-    {
-      path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
-      name: 'hotel-search-result-filters',
-      getComponent(nextState, cb) {
-        System.import('containers/HotelSearchResult/Filters')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
+      childRoutes: [
+        {
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/filters`,
+          name: 'hotel-search-result-filters',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchResult/Filters')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+      ],
     },
     {
       path: '*',
