@@ -21,7 +21,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
         <div className={appStyles.toolbar}>
           Result
         </div>
-        <div className={appStyles.containerBody}>
+        <div>
           <div>
             <button>Sort</button>
           </div>
