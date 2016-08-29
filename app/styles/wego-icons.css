@@ -1,4 +1,4 @@
-/*eslint-disable */
+/* stylelint-disable */
 
 @font-face {
   font-family: 'wego-icons';
@@ -11,8 +11,6 @@
   font-style: normal;
 }
 
-/*eslint-enable */
-
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -23,8 +21,6 @@
   }
 }
 */
-
-/*eslint-disable */
 
  [class^="icon"]::before, [class*=" icon"]::before {
   font-family: "wego-icons";
@@ -138,4 +134,4 @@
 .icon-global:before { content: '\e848'; } /* '' */
 .icon-business:before { content: '\e849'; } /* '' */
 
-/*eslint-enable */
+/* stylelint-enable */

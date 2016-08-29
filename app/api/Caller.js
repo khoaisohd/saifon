@@ -1,29 +1,10 @@
 import superagent from 'superagent';
-import merge from 'lodash/merge';
 import get from 'lodash/get';
 
-/* eslint-disable */
-
-const headers = {
-  'Accept': 'application/json',
-  'Accept-Language': 'en',
-  'Content-Type': 'application/json',
-  'X-Wego-Version': '1',
-  'Cache-Control': 'no-cache,no-store,must-revalidate,max-age=-1',
-  'Expires': '-1',
-};
-/* eslint-enable */
-
-export default class Api {
-  constructor(url, newHeaders) {
-    this.url = url;
-    this.headers = merge(headers, newHeaders);
-  }
-
-  post(request = {}) {
+class ApiCaller {
+  post(url, request = {}) {
     return new Promise((resolve, reject) => {
-      superagent.post(this.url)
-      .set(this.headers)
+      superagent.post(url)
       .send(request)
       .end((error, responseJS) => {
         const response = this.parseResponseJS(responseJS);
@@ -32,10 +13,9 @@ export default class Api {
     });
   }
 
-  get(query = {}) {
+  get(url, query = {}) {
     return new Promise((resolve, reject) => {
-      superagent.get(this.url)
-      .set(this.headers)
+      superagent.get(url)
       .query(query)
       .end((error, responseJS) => {
         const response = this.parseResponseJS(responseJS);
@@ -72,3 +52,5 @@ export default class Api {
     return response;
   }
 }
+
+export default ApiCaller;

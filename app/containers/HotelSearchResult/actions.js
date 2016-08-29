@@ -2,9 +2,8 @@ import {
   DISPLAY_HOTELS,
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
+  SEARCH_HOTELS,
 } from './constants';
-import HotelSearchApi from 'sdk/HotelSearchApi';
-import { fromJS } from 'immutable';
 
 export const sortHotels = sort => ({
   type: SORT_HOTELS,
@@ -21,7 +20,7 @@ export const displayHotels = hotels => ({
   hotels,
 });
 
-export const searchHotels = search => dispatch => {
-  const api = new HotelSearchApi();
-  api.searchHotels({ search }).then(response => dispatch(displayHotels(fromJS(response.hotels))));
-};
+export const searchHotels = search => ({
+  type: SEARCH_HOTELS,
+  search,
+});

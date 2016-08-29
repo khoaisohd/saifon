@@ -89,13 +89,15 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/HotelSearchResult/reducer'),
+          System.import('containers/HotelSearchResult/sagas'),
           System.import('containers/HotelSearchResult'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, component]) => {
+        importModules.then(([reducer, sagas, component]) => {
           injectReducer('HotelSearchResult', reducer.default);
+          injectSagas('HotelSearchResult', sagas.default);
           renderRoute(component);
         });
 
