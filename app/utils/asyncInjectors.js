@@ -42,7 +42,13 @@ export function injectAsyncReducer(store, isValid) {
  * Inject an asynchronously loaded saga
  */
 export function injectAsyncSagas(store, isValid) {
-  return function injectSagas(sagas) {
+  const sagasMap = {};
+  return function injectSagas(name, sagas) {
+    if (sagasMap[name]) {
+      return;
+    }
+    sagasMap[name] = sagas;
+
     if (!isValid) checkStore(store);
 
     invariant(

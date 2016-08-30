@@ -1,6 +1,8 @@
 .hotelCard {
   display: flex;
   flex-direction: row;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   border-width: 0 0 1px;
@@ -12,7 +14,7 @@
   padding-left: 10px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 120px);
 }
 
 .image {

@@ -7,6 +7,7 @@ import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import Modal from 'react-modal';
+import { getDisplayedHotels, getSort } from './selectors';
 
 const Index = (props) => {
   const { displayedHotels } = props;
@@ -74,8 +75,8 @@ HotelSearchResult.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  displayedHotels: state.getIn(['HotelSearchResult', 'displayedHotels']),
-  sort: state.getIn(['HotelSearchResult', 'sort']),
+  displayedHotels: getDisplayedHotels(state),
+  sort: getSort(state),
 });
 
 const mapDispatchToProps = dispatch => ({
