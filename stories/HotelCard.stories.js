@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 
 const fiveStarHotel = fromJS({
   address: '44B LY THUONG KIET St',
-  cheapesRate: {
+  cheapestRate: {
     price: {
       amount: 574,
       currencyCode: 'SGD',
@@ -24,7 +24,7 @@ const fiveStarHotel = fromJS({
 
 const threeStarHotel = fromJS({
   address: '48 Tran Nhan Tong street n',
-  cheapesRate: {
+  cheapestRate: {
     price: {
       amount: 906,
       currencyCode: 'SGD',
@@ -43,7 +43,7 @@ const threeStarHotel = fromJS({
 
 const fourStarHotel = fromJS({
   address: '48 Tran Nhan Tong street n',
-  cheapesRate: {
+  cheapestRate: {
     price: {
       amount: 906,
       currencyCode: 'SGD',
@@ -63,7 +63,7 @@ const fourStarHotel = fromJS({
 
 const twoStarHotel = fromJS({
   address: '1 Cam Chi St (Hang Bong) Hoan Kiem District, Hanoi',
-  cheapesRate: {
+  cheapestRate: {
     price: {
       amount: 800,
       currencyCode: 'SGD',

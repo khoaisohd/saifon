@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
+import StarRatingsFilter from '../../../components/StarRatingsFilter';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -12,10 +13,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={() => toggleStarRatingFilter('ONE_STAR')}>Toggle</button>
-          <div>
-            Filter: { JSON.stringify(filters.toJS()) }
-          </div>
+          <StarRatingsFilter starRatings={filters.get('starRatings')} toggleStarRatingFilter={toggleStarRatingFilter.bind(this)} />
           <button onClick={this.context.router.goBack}>Done</button>
         </div>
       </div>
