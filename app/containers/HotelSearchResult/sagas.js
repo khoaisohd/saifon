@@ -4,7 +4,7 @@ import { fromJS } from 'immutable';
 import { SEARCH_HOTELS } from './constants';
 import { displayHotels } from './actions';
 import api from 'api';
-import { getStore } from './Store';
+import { getStore } from './store';
 import { getFilters, getSort, getOffset, getLimit } from './selectors';
 
 export function* updateDisplayedHotels(hotels) {

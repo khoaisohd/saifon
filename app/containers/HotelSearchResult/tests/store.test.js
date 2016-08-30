@@ -1,9 +1,9 @@
-import Store from '../Store';
+import HotelSearchResultStore from '../store';
 
 describe('HotelSearchResult/store', () => {
   let store;
   beforeEach(() => {
-    store = new Store();
+    store = new HotelSearchResultStore();
   });
 
   describe('#getDisplayedHotels', () => {
