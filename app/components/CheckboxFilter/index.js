@@ -8,14 +8,14 @@ class CheckboxFilter extends Component {
     this.state = { checked: props.checked };
   }
 
-  handleOnClick() {
+  handleClick() {
     this.setState({ checked: !this.state.checked });
     this.props.onClick();
   }
 
   render() {
     return (
-      <div className={styles.checkboxes} onClick={this.handleOnClick.bind(this)} >
+      <div className={styles.checkboxes} onClick={this.handleClick.bind(this)} >
         <span className={styles.label}>{this.props.children}</span>
         <span>
           <input
