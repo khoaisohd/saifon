@@ -1,8 +1,7 @@
-import { handleHotelSearchRequest } from '../sagas.js';
+import { handleHotelSearchRequest, updateDisplayedHotels } from '../sagas.js';
 import api from 'api';
-import { call, put } from 'redux-saga/effects';
-import { searchHotels, displayHotels } from '../actions';
-import { fromJS } from 'immutable';
+import { call } from 'redux-saga/effects';
+import { searchHotels } from '../actions';
 
 describe('HotelSearchResult/sagas', () => {
   describe('#handleHotelSearchRequest', () => {
@@ -22,7 +21,7 @@ describe('HotelSearchResult/sagas', () => {
       generator.next();
       const hotels = [{ id: 1 }];
       const descriptor = generator.next({ hotels }).value;
-      expect(descriptor).to.deep.equal(put(displayHotels(fromJS(hotels))));
+      expect(descriptor).to.deep.equal(call(updateDisplayedHotels, hotels));
     });
 
     it('continues polling if not completed', () => {
