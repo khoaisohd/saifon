@@ -1,7 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import StarRating from '../StarRating';
 import CheckboxFilter from '../CheckboxFilter';
-import styles from './index.css';
 
 const StarRatingsFilter = (props) => {
   const { starRatings, toggleStarRatingFilter } = props;

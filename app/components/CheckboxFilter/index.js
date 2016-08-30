@@ -8,25 +8,26 @@ class CheckboxFilter extends Component {
     this.state = { checked: props.checked };
   }
 
-  _handleOnClick(e) {
+  handleOnClick() {
     this.setState({ checked: !this.state.checked });
     this.props.onClick();
   }
 
   render() {
     return (
-      <div className={styles.checkboxes} onClick={this._handleOnClick.bind(this)}>
+      <div className={styles.checkboxes} onClick={this.handleOnClick.bind(this)} >
         <span className={styles.label}>{this.props.children}</span>
         <span>
           <input
             className={styles.checkbox}
             type="checkbox"
-            checked={this.state.checked} />
+            checked={this.state.checked}
+          />
         </span>
       </div>
     );
   }
-};
+}
 
 CheckboxFilter.propTypes = {
   checked: PropTypes.bool,

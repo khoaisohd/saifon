@@ -37,7 +37,7 @@ const HotelCard = (props) => {
             </div>
           </div>
           <div className={styles.rate}>
-            <Price amount={hotel.getIn(['cheapesRate', 'price', 'amount'])} currencyCode={hotel.getIn(['cheapesRate', 'price', 'currencyCode'])} />
+            <Price amount={hotel.getIn(['cheapestRate', 'price', 'amount'])} currencyCode={hotel.getIn(['cheapestRate', 'price', 'currencyCode'])} />
           </div>
         </div>
       </div>
