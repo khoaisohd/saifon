@@ -6,6 +6,7 @@ import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
+import { getDisplayedHotels, getSort } from './selectors';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -44,8 +45,8 @@ HotelSearchResult.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  displayedHotels: state.getIn(['HotelSearchResult', 'displayedHotels']),
-  sort: state.getIn(['HotelSearchResult', 'sort']),
+  displayedHotels: getDisplayedHotels(state),
+  sort: getSort(state),
 });
 
 const mapDispatchToProps = dispatch => ({

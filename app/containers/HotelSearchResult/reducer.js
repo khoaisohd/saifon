@@ -14,6 +14,8 @@ const initialState = fromJS({
     order: 'ASC',
   },
   displayedHotels: [],
+  offset: 0,
+  limit: 20,
 });
 
 function hotelSearchResultReducer(state = initialState, action) {
