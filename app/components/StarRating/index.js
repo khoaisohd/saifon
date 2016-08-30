@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from './index.css';
 
 const StarRating = (props) => {
-  const rounderOffStarCount = Math.round(props.count);
+  const rounderOffStarCount = Math.round(props.value);
   const goldStars = new Array(rounderOffStarCount).fill(0);
   const emptyStars = new Array(5 - rounderOffStarCount).fill(0);
   return (
@@ -14,7 +14,7 @@ const StarRating = (props) => {
 };
 
 StarRating.propTypes = {
-  count: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 export default StarRating;

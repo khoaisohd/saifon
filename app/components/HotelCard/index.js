@@ -23,7 +23,7 @@ const HotelCard = (props) => {
         <div className={styles.address}>{hotel.get('districtName')}</div>
         <div className={styles.rating}>
           <span className={styles.ratingStars}>
-            <StarRating count={hotel.get('star')} />
+            <StarRating value={hotel.get('star')} />
           </span>
         </div>
         <div className={styles.reviewRate}>

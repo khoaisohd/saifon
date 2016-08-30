@@ -8,20 +8,20 @@ const StarRatingsFilter = (props) => {
     <div>
       <div>
         <CheckboxFilter checked={starRatings.get('FIVE_STAR')} onClick={() => toggleStarRatingFilter('FIVE_STAR')} >
-          <StarRating count={5} />
+          <StarRating value={5} />
         </CheckboxFilter>
       </div>
 
       <CheckboxFilter checked={starRatings.get('FOUR_STAR')} onClick={() => toggleStarRatingFilter('FOUR_STAR')}>
-        <StarRating count={4} />
+        <StarRating value={4} />
       </CheckboxFilter>
 
       <CheckboxFilter checked={starRatings.get('THREE_STAR')} onClick={() => toggleStarRatingFilter('THREE_STAR')}>
-        <StarRating count={3} />
+        <StarRating value={3} />
       </CheckboxFilter>
 
       <CheckboxFilter checked={starRatings.get('TWO_STAR')} onClick={() => toggleStarRatingFilter('TWO_STAR')}>
-        <StarRating count={2} />
+        <StarRating value={2} />
       </CheckboxFilter>
     </div>
   );
