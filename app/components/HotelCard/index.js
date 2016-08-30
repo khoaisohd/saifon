@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react';
 import Price from '../Price';
-import hotelCardstyles from './index.css';
-import wegoIcons from '../../styles/wego-icons.css';
 import StarRating from '../StarRating';
-
-const styles = Object.assign({}, hotelCardstyles, wegoIcons);
+import styles from './index.css';
 
 const HotelCard = (props) => {
   const { hotel } = props;

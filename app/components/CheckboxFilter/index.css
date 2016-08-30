@@ -1,7 +1,12 @@
 .checkboxes {
   display: flex;
   flex-direction: row;
-  margin: 20px 20px 20px 10px;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+
+.checkboxes:focus {
+  background-color: #d7d8db;
 }
 
 .label {

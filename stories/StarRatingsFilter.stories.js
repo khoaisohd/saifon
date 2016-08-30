@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
-import StarRatingsFilter from '../../app/containers/HotelSearchResult/Filters/StarRatingsFilter';
+import StarRatingsFilter from '../app/components/StarRatingsFilter';
 import { fromJS } from 'immutable';
 
 const starRatings = fromJS({

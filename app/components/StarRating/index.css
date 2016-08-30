@@ -4,6 +4,12 @@
   color: #FCA328;
 }
 
+.goldStar {
+  color: #FCA328;
+  composes: iconStar from '../../styles/wego-icons.css';
+}
+
 .emptyStar {
   color: #D8D8D8;
+  composes: iconStar from '../../styles/wego-icons.css';
 }

@@ -1,0 +1,19 @@
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+
+.checkboxes:focus {
+  background-color: #d7d8db;
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.checkbox,
+input[type=checkbox] {
+  transform: scale(1.8);
+}
