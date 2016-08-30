@@ -13,12 +13,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <button onClick={() => toggleStarRatingFilter('ONE_STAR')}>Toggle</button>
-
           <StarRatingsFilter starRatings={filters.get('starRatings')} toggleStarRatingFilter={toggleStarRatingFilter.bind(this)} />
-          <div>
-            Filter: { JSON.stringify(filters.toJS()) }
-          </div>
           <button onClick={this.context.router.goBack}>Done</button>
         </div>
       </div>
