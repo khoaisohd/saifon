@@ -6,7 +6,6 @@
 
 .container {
   display: block;
-  background: white;
 }
 
 .toolbar {
@@ -19,6 +18,11 @@
   font-size: 20px;
   display: -webkit-flex;
   -webkit-align-items: center;
+}
+
+.noScroll {
+  position: fixed;
+  overflow: hidden;
 }
 
 .containerBody {
