@@ -5,13 +5,13 @@ let lastComponent = null;
 let firstLoad = true;
 
 function Overlay(props) {
-  const { component } = props;
-  const renderComponent = component || lastComponent;
+  const { children } = props;
+  const renderComponent = children || lastComponent;
   const loadState = firstLoad ? styles.firstLoad : styles.afterFirstLoad;
-  const displayState = component ? styles.isShown : '';
+  const displayState = children ? styles.isShown : '';
 
   firstLoad = false;
-  lastComponent = component;
+  lastComponent = children;
 
   return (
     <div className={`${styles.overlayContainer} ${displayState} ${loadState}`}>

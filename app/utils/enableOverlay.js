@@ -8,7 +8,9 @@ function enableOverlay(Component) {
     render: function() {
       return (
         <div>
-          <Overlay component={this.props.children}/>
+          <Overlay>
+            {this.props.children}
+          </Overlay>
           <Component {...this.props} />
         </div>
       );
