@@ -7,7 +7,7 @@ let firstLoad = true;
 function Overlay(props) {
   const { component } = props;
   const renderComponent = component || lastComponent;
-  const loadState = firstLoad ? styles.firstLoad : styles.notFirstLoad;
+  const loadState = firstLoad ? styles.firstLoad : styles.afterFirstLoad;
   const displayState = component ? styles.isShown : '';
 
   firstLoad = false;

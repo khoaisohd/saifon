@@ -20,6 +20,6 @@
   transition: transform 0ms ease;
 }
 
-.notFirstLoad {
+.afterFirstLoad {
   transition: transform 300ms ease;
 }
