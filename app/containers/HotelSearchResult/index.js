@@ -6,63 +6,34 @@ import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
-import Modal from 'react-modal';
 import { getDisplayedHotels, getSort } from './selectors';
-
-const Index = (props) => {
-  const { displayedHotels } = props;
-  return (
-    <div>
-      <div className={appStyles.toolbar} >
-        Result
-      </div>
-      <div className={appStyles.containerBody} >
-        <div>
-          <button>Sort</button>
-        </div>
-        <div>
-          <Link to={`${pathToHotelSearch(props.routeParams)}/filters`}>Filter</Link>
-        </div>
-        <div>
-          {displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />)}
-        </div>
-      </div>
-    </div>
-  );
-};
+import enableOverlay from 'utils/enableOverlay';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
   constructor(props) {
     super(props);
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
     props.searchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
-    this.state = { modalIsOpen: false };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.children) {
-      this.setState({ modalIsOpen: true });
-    } else {
-      this.setState({ modalIsOpen: false });
-    }
-  }
-
-  closeModal() {
-    this.setState({ modalIsOpen: false });
   }
 
   render() {
+    const { displayedHotels, routeParams } = this.props;
     return (
       <div>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal.bind(this)}
-        >
-          {this.props.children}
-        </Modal>
-
-        <Index {...this.props} />
+        <div className={appStyles.toolbar} >
+          Result
+        </div>
+        <div className={appStyles.containerBody} >
+          <div>
+            <button>Sort</button>
+          </div>
+          <div>
+            <Link to={`${pathToHotelSearch(routeParams)}/filters`}>Filter</Link>
+          </div>
+          <div>
+            {displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />)}
+          </div>
+        </div>
       </div>
     );
   }
@@ -83,4 +54,4 @@ const mapDispatchToProps = dispatch => ({
   searchHotels: search => dispatch(searchHotels(search)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult);
+export default enableOverlay(connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult));
