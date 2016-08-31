@@ -8,6 +8,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import { pathToHotelSearch } from 'utils/routes-util';
+import enableOverlay from 'utils/enableOverlay';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -54,4 +55,4 @@ const mapStateToProps = state => ({
   guestsCount: state.getIn(['HotelSearchForm', 'guestsCount']),
 });
 
-export default connect(mapStateToProps, null)(HotelSearchForm);
+export default enableOverlay(connect(mapStateToProps, null)(HotelSearchForm));

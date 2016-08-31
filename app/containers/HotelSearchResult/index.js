@@ -28,7 +28,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             <button>Sort</button>
           </div>
           <div>
-            <Link to={`${pathToHotelSearch(routeParams)}/filters`}>Filter</Link>
+            <Link to={`${pathToHotelSearch(routeParams)}/overlay/filters`}>Filter</Link>
           </div>
           <div>
             {displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />)}

@@ -35,7 +35,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
-    // Hotel Search Form
     {
       path: '/hotels',
       name: 'hotel-search-form',
@@ -54,35 +53,36 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+      childRoutes: [
+        {
+          path: '/hotels/overlay/date-picker',
+          name: 'hotel-search-form-date-picker',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchForm/DatePicker')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+        {
+          path: '/hotels/overlay/location-picker',
+          name: 'hotel-search-form-location-picker',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchForm/LocationPicker')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+        {
+          path: '/hotels/overlay/travellers-picker',
+          name: 'hotel-search-form-travellers-picker',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchForm/TravellersPicker')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+      ],
     },
-    {
-      path: '/hotels/overlay/date-picker',
-      name: 'hotel-search-form-date-picker',
-      getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/DatePicker')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    },
-    {
-      path: '/hotels/overlay/location-picker',
-      name: 'hotel-search-form-location-picker',
-      getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/LocationPicker')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    },
-    {
-      path: '/hotels/overlay/travellers-picker',
-      name: 'hotel-search-form-travellers-picker',
-      getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/TravellersPicker')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    },
-    // Hotel Search Result
     {
       path: HOTEL_SEARCH_PATH_PATTERN,
       name: 'hotel-search-result',
@@ -105,7 +105,7 @@ export default function createRoutes(store) {
       },
       childRoutes: [
         {
-          path: `${HOTEL_SEARCH_PATH_PATTERN}/filters`,
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
           name: 'hotel-search-result-filters',
           getComponent(nextState, cb) {
             System.import('containers/HotelSearchResult/Filters')
