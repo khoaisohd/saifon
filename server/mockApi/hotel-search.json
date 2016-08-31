@@ -3,7 +3,7 @@
     "hotels": [
         {
             "address": "44B LY THUONG KIET St",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 633,
                     "currencyCode": "SGD"
@@ -21,7 +21,7 @@
         },
         {
             "address": "24 Hang Ga, Hoan Kiem, Hanoi",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 405,
                     "currencyCode": "SGD"
@@ -39,7 +39,7 @@
         },
         {
             "address": "1B Cua Dong Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 160,
                     "currencyCode": "SGD"
@@ -57,7 +57,7 @@
         },
         {
             "address": "62 Hang Bac Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 497,
                     "currencyCode": "SGD"
@@ -75,7 +75,7 @@
         },
         {
             "address": "31 Hang Manh",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 531,
                     "currencyCode": "SGD"
@@ -93,7 +93,7 @@
         },
         {
             "address": "1 Hang Hom Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 293,
                     "currencyCode": "SGD"
@@ -111,7 +111,7 @@
         },
         {
             "address": "23 Au Trieu",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 681,
                     "currencyCode": "SGD"
@@ -129,7 +129,7 @@
         },
         {
             "address": "35 37 Hang Trong Hoan Kiem",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 840,
                     "currencyCode": "SGD"
@@ -147,7 +147,7 @@
         },
         {
             "address": "11 Ma May Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 538,
                     "currencyCode": "SGD"
@@ -165,7 +165,7 @@
         },
         {
             "address": "28 Ngo Huyen Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 637,
                     "currencyCode": "SGD"
@@ -183,7 +183,7 @@
         },
         {
             "address": "5B Tam Thuong",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 957,
                     "currencyCode": "SGD"
@@ -201,7 +201,7 @@
         },
         {
             "address": "106 Ma May street n      ",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 303,
                     "currencyCode": "SGD"
@@ -219,7 +219,7 @@
         },
         {
             "address": "1 Le Thanh Tong St Hoan Kiem Dist",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 151,
                     "currencyCode": "SGD"
@@ -237,7 +237,7 @@
         },
         {
             "address": "83A Ly Thuong Kiet Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 364,
                     "currencyCode": "SGD"
@@ -255,7 +255,7 @@
         },
         {
             "address": "40 Cat Linh Str",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 333,
                     "currencyCode": "SGD"
@@ -273,7 +273,7 @@
         },
         {
             "address": "15 Hang Can Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 630,
                     "currencyCode": "SGD"
@@ -291,7 +291,7 @@
         },
         {
             "address": "1 Thanh Nien Road",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 560,
                     "currencyCode": "SGD"
@@ -309,7 +309,7 @@
         },
         {
             "address": "19 Pham Dinh Ho Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 700,
                     "currencyCode": "SGD"
@@ -327,7 +327,7 @@
         },
         {
             "address": "57 Lo su, Hoan Kiem Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 525,
                     "currencyCode": "SGD"
@@ -345,7 +345,7 @@
         },
         {
             "address": "15 Hang Hanh Street, Hoan Kiem District       ",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 690,
                     "currencyCode": "SGD"
@@ -363,7 +363,7 @@
         },
         {
             "address": "No 1 Yen Thai, Hang Manh Street, Hoan Kiem District n      ",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 449,
                     "currencyCode": "SGD"
@@ -381,7 +381,7 @@
         },
         {
             "address": "95B Hang Ga Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 730,
                     "currencyCode": "SGD"
@@ -399,7 +399,7 @@
         },
         {
             "address": "No 4-6 Ba Trieu Street",
-            "cheapesRate": {
+            "cheapestRate": {
                 "price": {
                     "amount": 545,
                     "currencyCode": "SGD"
