@@ -20,7 +20,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     const { displayedHotels, routeParams } = this.props;
     return (
       <div>
-        <div className={appStyles.toolbar} >
+        <div className={appStyles.toolbar}>
           Result
         </div>
         <div>
