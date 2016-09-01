@@ -29,7 +29,6 @@ class LocationPicker extends React.Component {
   }
 
   render() {
-    const { locations } = this.state;
     return (
       <div>
         <div className={appStyles.toolbar}>
@@ -37,7 +36,7 @@ class LocationPicker extends React.Component {
           <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
         <div>
-          {locations.map(location =>
+          {this.state.locations.map(location =>
             (<div className={styles.location} key={location.code} onClick={() => this.handleSelectLocation(location)}>
               <span className={styles.locationCode}>{location.code}</span>
               <strong className={styles.locationName}>{location.name}</strong>
