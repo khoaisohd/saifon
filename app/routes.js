@@ -53,35 +53,33 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-      childRoutes: [
-        {
-          path: '/hotels/overlay/date-picker',
-          name: 'hotel-search-form-date-picker',
-          getComponent(nextState, cb) {
-            System.import('containers/HotelSearchForm/DatePicker')
-              .then(loadModule(cb))
-              .catch(errorLoading);
-          },
-        },
-        {
-          path: '/hotels/overlay/location-picker',
-          name: 'hotel-search-form-location-picker',
-          getComponent(nextState, cb) {
-            System.import('containers/HotelSearchForm/LocationPicker')
-              .then(loadModule(cb))
-              .catch(errorLoading);
-          },
-        },
-        {
-          path: '/hotels/overlay/travellers-picker',
-          name: 'hotel-search-form-travellers-picker',
-          getComponent(nextState, cb) {
-            System.import('containers/HotelSearchForm/TravellersPicker')
-              .then(loadModule(cb))
-              .catch(errorLoading);
-          },
-        },
-      ],
+    },
+    {
+      path: '/hotels/overlay/date-picker',
+      name: 'hotel-search-form-date-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/DatePicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
+      path: '/hotels/overlay/location-picker',
+      name: 'hotel-search-form-location-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/LocationPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
+      path: '/hotels/overlay/travellers-picker',
+      name: 'hotel-search-form-travellers-picker',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/TravellersPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
     },
     {
       path: HOTEL_SEARCH_PATH_PATTERN,
