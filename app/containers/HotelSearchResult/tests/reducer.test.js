@@ -5,6 +5,7 @@ import {
   displayHotels,
   sortHotels,
   searchHotels,
+  filterHotels,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -71,6 +72,14 @@ describe('HotelSearchResult/reducer', () => {
     it('resets state into initial state', () => {
       newState = reducer(state, searchHotels());
       expect(newState.toJS()).to.deep.equal(state.toJS());
+    });
+  });
+
+  describe('#filterHotels', () => {
+    it('sets loading to true', () => {
+      newState = reducer(state, displayHotels([]));
+      newState = reducer(newState, filterHotels());
+      expect(newState.get('loading')).to.equal(true);
     });
   });
 });

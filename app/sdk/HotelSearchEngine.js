@@ -25,7 +25,7 @@ class HotelSearchEngine {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.hotels.slice(offset, limit));
-      }, 0);
+      }, 100);
     });
   }
 }
