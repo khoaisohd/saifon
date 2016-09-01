@@ -22,7 +22,11 @@ class HotelSearchEngine {
   }
 
   getDisplayedHotels(filters, sort, offset, limit) {
-    return this.hotels.slice(offset, limit);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.hotels.slice(offset, limit));
+      }, 100);
+    });
   }
 }
 
