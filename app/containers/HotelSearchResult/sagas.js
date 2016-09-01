@@ -1,5 +1,5 @@
-import { call, put, select } from 'redux-saga/effects';
-import { takeLatest } from 'redux-saga';
+import { call, put, select, take } from 'redux-saga/effects';
+import { takeLatest, delay } from 'redux-saga';
 import { fromJS } from 'immutable';
 import { SEARCH_HOTELS, FILTER_HOTELS } from './constants';
 import { displayHotels } from './actions';
@@ -33,7 +33,10 @@ export function* watchHotelSearchRequest() {
 }
 
 export function* watchFilterHotel() {
-  yield takeLatest(FILTER_HOTELS, updateDisplayedHotels);
+  while (yield take(FILTER_HOTELS)) {
+    yield call(delay, 100);
+    yield call(updateDisplayedHotels);
+  }
 }
 
 export default [
