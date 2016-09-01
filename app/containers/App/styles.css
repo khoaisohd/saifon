@@ -20,11 +20,6 @@
   -webkit-align-items: center;
 }
 
-.noScroll {
-  position: fixed;
-  overflow: hidden;
-}
-
 .containerBody {
   padding: 10px;
 }

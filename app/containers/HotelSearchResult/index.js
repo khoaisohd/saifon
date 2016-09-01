@@ -7,7 +7,7 @@ import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import { getDisplayedHotels, getSort } from './selectors';
-import enableOverlay from 'utils/enableOverlay';
+import enableModal from 'utils/enableModal';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -54,4 +54,4 @@ const mapDispatchToProps = dispatch => ({
   searchHotels: search => dispatch(searchHotels(search)),
 });
 
-export default enableOverlay(connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult));
+export default enableModal(connect(mapStateToProps, mapDispatchToProps)(HotelSearchResult));
