@@ -6,7 +6,7 @@ import appStyles from 'containers/App/styles.css';
 import { searchHotels } from './actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
-import { getDisplayedHotels, getSort, getLoading } from './selectors';
+import { getDisplayedHotels, getSort, isLoading } from './selectors';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -15,8 +15,8 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   }
 
   render() {
-    const { displayedHotels, loading } = this.props;
-    const result = loading
+    const { displayedHotels, isLoading } = this.props;
+    const result = isLoading
       ? (<div>Loading...</div>)
       : displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />);
 
@@ -45,13 +45,13 @@ HotelSearchResult.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   searchHotels: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   displayedHotels: getDisplayedHotels(state),
   sort: getSort(state),
-  loading: getLoading(state),
+  isLoading: isLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

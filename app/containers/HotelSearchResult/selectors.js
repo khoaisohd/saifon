@@ -8,4 +8,4 @@ export const getOffset = state => state.getIn(['HotelSearchResult', 'offset']);
 
 export const getLimit = state => state.getIn(['HotelSearchResult', 'limit']);
 
-export const getLoading = state => state.getIn(['HotelSearchResult', 'loading']);
+export const isLoading = state => state.getIn(['HotelSearchResult', 'loading']);
