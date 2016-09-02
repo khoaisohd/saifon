@@ -1,14 +1,15 @@
 .input {
   width: 100%;
-  margin: 0px 40px 0px 0px;
+  margin: 0 40px 0 0;
   border-bottom: 1px solid;
   font-weight: 100;
+  -webkit-border-radius: 0;
 }
 
 .locationCode {
   background-color: #878787;
   border-radius: 0.2rem;
-  color: #fff;
+  color: #FFF;
   font-size: 0.675rem;
   margin-right: 0.875rem;
   text-align: center;
@@ -16,7 +17,7 @@
   line-height: 1.9;
 }
 
-.locationName{
+.locationName {
   font-weight: normal;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -27,7 +28,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: 'Roboto', 'Noto', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   font-weight: 400;
@@ -36,6 +36,8 @@
 }
 
 .backButton {
+  padding-left: 5px;
+  padding-right: 10px;
   font-size: 36px;
   composes: iconAngleLeft from 'styles/wego-icons.css';
 }
