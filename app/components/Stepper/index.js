@@ -3,10 +3,12 @@ import styles from './styles.css';
 
 const Stepper = props => {
   const { onIncrease, onDecrease, increaseEnabled, decreaseEnabled } = props;
+  const decreaseButtonClass = `${decreaseEnabled ? styles.activeButton : styles.disableButton} ${styles.leftButton}`;
+  const increaseButtonClass = increaseEnabled ? styles.activeButton : styles.disableButton;
   return (
-    <div>
-      <button className={decreaseEnabled ? styles.enabledButton : styles.disableButton} onClick={onDecrease}>-</button>
-      <button className={increaseEnabled ? styles.enabledButton : styles.disableButton} onClick={onIncrease}>+</button>
+    <div className={styles.container}>
+      <button className={decreaseButtonClass} onClick={decreaseEnabled ? onDecrease : () => {}}>-</button>
+      <button className={increaseButtonClass} onClick={increaseEnabled ? onIncrease : () => {}}>+</button>
     </div>
   );
 };

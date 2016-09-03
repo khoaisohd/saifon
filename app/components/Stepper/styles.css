@@ -1,11 +1,21 @@
-.button {
+.container {
+}
 
+.button {
+  height: 49px;
+  width: 49px;
 }
 
 .disableButton {
-  compose: button;
+  composes: button;
+  background-color: #F0F0F0;
 }
 
-.enableButton {
-  compose: button;
+.activeButton {
+  composes: button;
+  background-color: #fafafa;
+}
+
+.leftButton {
+  border-right: 1px solid #d9d9d9;
 }

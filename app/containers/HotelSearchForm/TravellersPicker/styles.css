@@ -1,0 +1,21 @@
+.stepper {
+  position: absolute;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.row {
+  display: flex;
+  height: 80px;
+  position: relative;
+  padding-left: 15px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.iconDownDir {
+  composes: iconDownDir from 'styles/wego-icons.css';
+  position: absolute;
+  top: 30px;
+  left: 85px;
+}
