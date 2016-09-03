@@ -31,8 +31,8 @@ class LocationPicker extends React.Component {
   render() {
     return (
       <div>
-        <div className={appStyles.toolbar}>
-          <i className={styles.backButton} onClick={this.context.router.goBack} />
+        <div className={styles.toolbar}>
+          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
           <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
         <div>

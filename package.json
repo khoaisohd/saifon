@@ -187,6 +187,7 @@
     ]
   },
   "dependencies": {
+    "react-date-range": "^0.2.4",
     "accounting": "^0.4.1",
     "babel-polyfill": "6.13.0",
     "body-parser": "^1.15.2",

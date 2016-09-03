@@ -1,6 +1,10 @@
+.toolbar {
+  composes: toolbar from 'containers/App/styles.css';
+}
+
 .input {
   width: 100%;
-  margin: 0 40px 0 0;
+  margin: 0 50px 0 0;
   border-bottom: 1px solid;
   font-weight: 100;
   -webkit-border-radius: 0;
@@ -33,11 +37,4 @@
   font-weight: 400;
   line-height: 24px;
   padding: 10px;
-}
-
-.backButton {
-  padding-left: 5px;
-  padding-right: 10px;
-  font-size: 36px;
-  composes: iconAngleLeft from 'styles/wego-icons.css';
 }
