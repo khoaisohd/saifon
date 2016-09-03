@@ -41,7 +41,7 @@ function hotelSearchFormReducer(state = initialState, action) {
     case UPDATE_GUESTS_COUNT:
       return state
         .set('guestsCount', action.guestsCount)
-        .set('roomsCount', Math.min(action.guestsCount, state.get('roomsCount')));
+        .set('roomsCount', Math.min(state.get('roomsCount'), action.guestsCount));
     default:
       return state;
   }
