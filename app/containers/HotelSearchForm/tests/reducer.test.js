@@ -4,6 +4,8 @@ import {
   submitLocation,
   submitTiming,
   submitTravellers,
+  updateRoomsCount,
+  updateGuestsCount,
 } from '../actions';
 import { fromJS } from 'immutable';
 
@@ -39,6 +41,44 @@ describe('HotelSearchForm/reducer', () => {
       newState = reducer(state, submitTravellers('roomsCount', 'guestsCount'));
       expect(newState.get('roomsCount')).to.equal('roomsCount');
       expect(newState.get('guestsCount')).to.equal('guestsCount');
+    });
+  });
+
+  describe('updateRoomsCount', () => {
+    it('updates roomsCount', () => {
+      newState = reducer(state, updateRoomsCount(2));
+      expect(newState.get('roomsCount')).to.equal(2);
+    });
+
+    it('updates guestsCount when guestsCount is smaller than roomsCount', () => {
+      state = fromJS({
+        guestsCount: 2,
+      });
+      newState = reducer(state, updateRoomsCount(3));
+      expect(newState.get('guestsCount')).to.equal(3);
+    });
+
+    it('updates guestsCount when guestsCount is larger than 4 times of roomsCount', () => {
+      state = fromJS({
+        guestsCount: 5,
+      });
+      newState = reducer(state, updateRoomsCount(1));
+      expect(newState.get('guestsCount')).to.equal(4);
+    });
+  });
+
+  describe('updateGuestsCount', () => {
+    it('updates guestsCount', () => {
+      newState = reducer(state, updateGuestsCount(2));
+      expect(newState.get('guestsCount')).to.equal(2);
+    });
+
+    it('updates roomsCount when rooms count is greater than guestsCount', () => {
+      state = fromJS({
+        roomsCount: 2,
+      });
+      newState = reducer(state, updateGuestsCount(1));
+      expect(newState.get('roomsCount')).to.equal(1);
     });
   });
 });
