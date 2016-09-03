@@ -1,0 +1,21 @@
+.container {
+}
+
+.button {
+  height: 49px;
+  width: 49px;
+}
+
+.disableButton {
+  composes: button;
+  background-color: #F0F0F0;
+}
+
+.activeButton {
+  composes: button;
+  background-color: #fafafa;
+}
+
+.leftButton {
+  border-right: 1px solid #d9d9d9;
+}
