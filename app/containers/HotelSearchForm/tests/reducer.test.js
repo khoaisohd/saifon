@@ -3,7 +3,6 @@ import reducer from '../reducer';
 import {
   submitLocation,
   submitTiming,
-  submitTravellers,
   updateRoomsCount,
   updateGuestsCount,
 } from '../actions';
@@ -33,14 +32,6 @@ describe('HotelSearchForm/reducer', () => {
       newState = reducer(state, submitTiming('checkIn', 'checkOut'));
       expect(newState.get('checkIn')).to.equal('checkIn');
       expect(newState.get('checkOut')).to.equal('checkOut');
-    });
-  });
-
-  describe('submitTravellers', () => {
-    it('updates roomsCount and guestsCount', () => {
-      newState = reducer(state, submitTravellers('roomsCount', 'guestsCount'));
-      expect(newState.get('roomsCount')).to.equal('roomsCount');
-      expect(newState.get('guestsCount')).to.equal('guestsCount');
     });
   });
 

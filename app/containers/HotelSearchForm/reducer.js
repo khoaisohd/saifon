@@ -1,7 +1,6 @@
 import {
   SUBMIT_LOCATION,
   SUBMIT_TIMING,
-  SUBMIT_TRAVELLERS,
   UPDATE_ROOMS_COUNT,
   UPDATE_GUESTS_COUNT,
 } from './constants';
@@ -12,8 +11,8 @@ const initialState = fromJS({
   location: {},
   checkIn: null,
   checkOut: null,
-  roomsCount: null,
-  guestsCount: null,
+  roomsCount: 1,
+  guestsCount: 2,
 });
 
 const correctGuestsCount = (guestsCount, roomsCount) => {
@@ -35,10 +34,6 @@ function hotelSearchFormReducer(state = initialState, action) {
       return state
         .set('checkIn', action.checkIn)
         .set('checkOut', action.checkOut);
-    case SUBMIT_TRAVELLERS:
-      return state
-        .set('roomsCount', action.roomsCount)
-        .set('guestsCount', action.guestsCount);
     case UPDATE_ROOMS_COUNT:
       return state
         .set('roomsCount', action.roomsCount)

@@ -142,7 +142,8 @@
       "require-yield": 0,
       "react/jsx-no-bind": "off",
       "no-shadow": "off",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "radix": "off"
     },
     "settings": {
       "import/resolver": {
