@@ -3,25 +3,45 @@ import { connect } from 'react-redux';
 import { submitLocation } from '../actions';
 import { fromJS } from 'immutable';
 import appStyles from 'containers/App/styles.css';
+import styles from './styles.css';
+import Api from 'sdk/Api';
 
 class LocationPicker extends React.Component {
-  submit() {
-    const { submitLocation } = this.props;
-    submitLocation(fromJS({
-      code: 'SG',
-      name: 'Singapore',
-    }));
+  constructor(props) {
+    super(props);
+    this.state = {
+      keyword: '',
+      locations: [],
+    };
+  }
+
+  handleInputChange(e) {
+    const keyword = e.target.value;
+    this.setState({ keyword });
+    Api.searchHotelLocation(keyword).then(response => {
+      this.setState({ locations: response.locations });
+    });
+  }
+
+  handleSelectLocation(location) {
+    this.props.submitLocation(fromJS(location));
     this.context.router.goBack();
   }
 
   render() {
     return (
       <div>
-        <div className={appStyles.toolbar}>
-          Select location
+        <div className={styles.toolbar}>
+          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
+          <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
-        <div className={appStyles.containerBody}>
-          <button onClick={this.submit.bind(this)}>Submit</button>
+        <div>
+          {this.state.locations.map(location =>
+            (<div className={styles.location} key={location.code} onClick={() => this.handleSelectLocation(location)}>
+              <span className={styles.locationCode}>{location.code}</span>
+              <strong className={styles.locationName}>{location.name}</strong>
+            </div>)
+          )}
         </div>
       </div>
     );

@@ -1,0 +1,132 @@
+{
+  "locations":[
+    {
+      "name":"Singapore",
+      "code":"SIN"
+    },
+    {
+      "name":"Sioux Falls",
+      "code":"FSD"
+    },
+    {
+      "name":"Siem Reap",
+      "code":"REP"
+    },
+    {
+      "name":"Simferopol",
+      "code":"SIP"
+    },
+    {
+      "name":"Freetown",
+      "code":"FNA"
+    },
+    {
+      "name":"Sibiu",
+      "code":"SBZ"
+    },
+    {
+      "name":"Sal",
+      "code":"SID"
+    },
+    {
+      "name":"Sialkot",
+      "code":"SKT"
+    },
+    {
+      "name":"Sioux City",
+      "code":"SUX"
+    },
+    {
+      "name":"Sivas",
+      "code":"VAS"
+    },
+    {
+      "name":"Simao",
+      "code":"SYM"
+    },
+    {
+      "name":"Sinop",
+      "code":"NOP"
+    },
+    {
+      "name":"Sitka",
+      "code":"SIT"
+    },
+    {
+      "name":"Sibu",
+      "code":"SBW"
+    },
+    {
+      "name":"Sinop",
+      "code":"OPS"
+    },
+    {
+      "name":"Sioux Lookout",
+      "code":"YXL"
+    },
+    {
+      "name":"Silchar",
+      "code":"IXS"
+    },
+    {
+      "name":"Sidney",
+      "code":"SDY"
+    },
+    {
+      "name":"Sittwe",
+      "code":"AKY"
+    },
+    {
+      "name":"Abu Simbel",
+      "code":"ABS"
+    },
+    {
+      "name":"Simara",
+      "code":"SIF"
+    },
+    {
+      "name":"Sisimiut",
+      "code":"JHS"
+    },
+    {
+      "name":"Sigiriya",
+      "code":"GIU"
+    },
+    {
+      "name":"Siborong-Borong",
+      "code":"DTB"
+    },
+    {
+      "name":"Fort Simpson",
+      "code":"YFS"
+    },
+    {
+      "name":"Sintang",
+      "code":"SQG"
+    },
+    {
+      "name":"Nakhon Si Thammarat",
+      "code":"NST"
+    },
+    {
+      "name":"Silver City",
+      "code":"SVC"
+    },
+    {
+      "name":"Sirri Island",
+      "code":"SXI"
+    },
+    {
+      "name":"Sion",
+      "code":"SIR"
+    },
+    {
+      "name":"Sir Bani Yas Island",
+      "code":"XSB"
+    },
+    {
+      "name":"Kathu",
+      "code":"SIS"
+    }
+  ]
+}

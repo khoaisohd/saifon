@@ -4,6 +4,8 @@ import {
   toggleStarRatingFilter,
   displayHotels,
   sortHotels,
+  searchHotels,
+  filterHotels,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -19,6 +21,12 @@ describe('HotelSearchResult/reducer', () => {
       it('sorts by lowest price', () => {
         expect(state.getIn(['sort', 'column'])).to.equal('PRICE');
         expect(state.getIn(['sort', 'order'])).to.equal('ASC');
+      });
+    });
+
+    describe('loading', () => {
+      it('is true', () => {
+        expect(state.get('loading')).to.equal(true);
       });
     });
   });
@@ -42,6 +50,11 @@ describe('HotelSearchResult/reducer', () => {
       newState = reducer(state, displayHotels(addedHotels));
       expect(newState.getIn(['displayedHotels']).toJS()).to.deep.equal(addedHotels.toJS());
     });
+
+    it('sets loading to false', () => {
+      newState = reducer(state, displayHotels([]));
+      expect(newState.get('loading')).to.equal(false);
+    });
   });
 
   describe('#sortHotels', () => {
@@ -52,6 +65,21 @@ describe('HotelSearchResult/reducer', () => {
       })));
       expect(newState.getIn(['sort', 'column'])).to.equal('STAR');
       expect(newState.getIn(['sort', 'order'])).to.equal('DESC');
+    });
+  });
+
+  describe('#searchHotels', () => {
+    it('resets state into initial state', () => {
+      newState = reducer(state, searchHotels());
+      expect(newState.toJS()).to.deep.equal(state.toJS());
+    });
+  });
+
+  describe('#filterHotels', () => {
+    it('sets loading to true', () => {
+      newState = reducer(state, displayHotels([]));
+      newState = reducer(newState, filterHotels());
+      expect(newState.get('loading')).to.equal(true);
     });
   });
 });

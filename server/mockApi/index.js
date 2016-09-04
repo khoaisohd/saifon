@@ -1,7 +1,16 @@
 const hotelSearch = require('./hotel-search.json');
+const hotelLocation1 = require('./hotel-location-1.json');
+const hotelLocation2 = require('./hotel-location-2.json');
+const hotelLocation3 = require('./hotel-location-3.json');
+const hotelLocations = [hotelLocation1, hotelLocation2, hotelLocation3];
 
 const mockApi = app => {
   app.post('/api/hotel/search', (req, res) => res.json(hotelSearch));
+
+  app.post('/api/hotel/location/search', (req, res) => {
+    const num = parseInt((req.body.keyword.length - 1) / 2, 10);
+    res.json(hotelLocations[Math.min(num, 2)]);
+  });
 };
 
 module.exports = mockApi;

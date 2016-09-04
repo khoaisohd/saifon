@@ -1,16 +1,14 @@
-import { call, put, select } from 'redux-saga/effects';
-import { takeLatest } from 'redux-saga';
+import { call, put, select, take } from 'redux-saga/effects';
+import { takeLatest, delay } from 'redux-saga';
 import { fromJS } from 'immutable';
-import { SEARCH_HOTELS } from './constants';
+import { SEARCH_HOTELS, FILTER_HOTELS } from './constants';
 import { displayHotels } from './actions';
-import api from 'api';
-import { getStore } from './store';
+import { getHotelSearchEngine } from 'sdk/HotelSearchEngine';
 import { getFilters, getSort, getOffset, getLimit } from './selectors';
 
-export function* updateDisplayedHotels(hotels) {
-  const store = getStore();
-  store.updateHotels(hotels);
-  const displayedHotels = store.getDisplayedHotels(
+export function* updateDisplayedHotels() {
+  const engine = getHotelSearchEngine();
+  const displayedHotels = yield call(engine.getDisplayedHotels.bind(engine),
     yield select(getFilters),
     yield select(getSort),
     yield select(getOffset),
@@ -21,9 +19,11 @@ export function* updateDisplayedHotels(hotels) {
 
 export function* handleHotelSearchRequest({ search }) {
   let completed = false;
+  const engine = getHotelSearchEngine();
+  engine.setSearch(search);
   while (!completed) {
-    const response = yield call(api.searchHotels, search);
-    yield call(updateDisplayedHotels, response.hotels);
+    const response = yield call(engine.poll.bind(engine));
+    yield call(updateDisplayedHotels);
     completed = response.completed;
   }
 }
@@ -32,6 +32,14 @@ export function* watchHotelSearchRequest() {
   yield takeLatest(SEARCH_HOTELS, handleHotelSearchRequest);
 }
 
+export function* watchFilterHotel() {
+  while (yield take(FILTER_HOTELS)) {
+    yield call(delay, 100);
+    yield call(updateDisplayedHotels);
+  }
+}
+
 export default [
   watchHotelSearchRequest,
+  watchFilterHotel,
 ];
