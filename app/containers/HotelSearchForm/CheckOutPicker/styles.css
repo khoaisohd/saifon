@@ -1,0 +1,14 @@
+.toolbar {
+  composes: toolbar from 'containers/App/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+.cancelIcon {
+  composes: icon-cancel from 'styles/wego-icons.css';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  padding: 10px;
+}
