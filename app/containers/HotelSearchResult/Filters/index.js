@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { toggleStarRatingFilter, filterHotels } from '../actions';
+import { filterHotels, filterByStarRatings } from '../actions';
 import appStyles from 'containers/App/styles.css';
 import StarRatingsFilter from '../../../components/StarRatingsFilter';
 
@@ -11,14 +11,14 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    const { filters, toggleStarRatingFilter } = this.props;
+    const { filters, filterByStarRatings } = this.props;
     return (
       <div>
         <div className={appStyles.toolbar}>
           FILTERS
         </div>
         <div className={appStyles.containerBody}>
-          <StarRatingsFilter starRatings={filters.get('starRatings')} toggleStarRatingFilter={toggleStarRatingFilter.bind(this)} />
+          <StarRatingsFilter starRatings={filters.get('starRatings')} filterByStarRatings={filterByStarRatings.bind(this)} />
           <button onClick={this.handleApplyClick.bind(this)}>Apply</button>
         </div>
       </div>
@@ -28,7 +28,6 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
 
 Filters.propTypes = {
   filters: PropTypes.object.isRequired,
-  toggleStarRatingFilter: PropTypes.func.isRequired,
 };
 
 Filters.contextTypes = {
@@ -36,7 +35,7 @@ Filters.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleStarRatingFilter: (star) => dispatch(toggleStarRatingFilter(star)),
+  filterByStarRatings: (starRatings) => dispatch(filterByStarRatings(starRatings)),
   filterHotels: () => dispatch(filterHotels()),
 });
 

@@ -26,7 +26,7 @@ describe('HotelSearchEngine', () => {
           const allFiveStarHotels = hotels.every(hotel =>
             Math.round(hotel.star) === 5
           );
-          expect(allFiveStarHotels).to.be.true();
+          expect(allFiveStarHotels).to.be.true; // eslint-disable-line
         });
       });
     });

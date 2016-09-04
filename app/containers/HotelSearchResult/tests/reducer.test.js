@@ -1,7 +1,7 @@
 import reducer from '../reducer';
 import { fromJS } from 'immutable';
 import {
-  toggleStarRatingFilter,
+  filterByStarRatings,
   displayHotels,
   sortHotels,
   searchHotels,
@@ -32,15 +32,16 @@ describe('HotelSearchResult/reducer', () => {
   });
 
   describe('#toggleStarRatingFilter', () => {
-    it('updates star rating filter to true when current star rating is false', () => {
-      newState = reducer(state, toggleStarRatingFilter('ST'));
-      expect(newState.getIn(['filters', 'starRatings', 'ST'])).to.equal(true);
+    it('updates star rating filters when filterByStarRatings is dispatched', () => {
+      const starRatings = fromJS([5]);
+      newState = reducer(state, filterByStarRatings(starRatings));
+      expect(newState.getIn(['filters', 'starRatings'])).to.equal(starRatings);
     });
 
-    it('updates star rating filter to false when current star rating is true', () => {
-      newState = reducer(state, toggleStarRatingFilter('ST'));
-      newState = reducer(newState, toggleStarRatingFilter('ST'));
-      expect(newState.getIn(['filters', 'starRatings', 'ST'])).to.equal(false);
+    it('clears star ratings filter when sent with empty list', () => {
+      const starRatings = fromJS([]);
+      newState = reducer(state, filterByStarRatings(starRatings));
+      expect(newState.getIn(['filters', 'starRatings'])).to.equal(starRatings);
     });
   });
 
