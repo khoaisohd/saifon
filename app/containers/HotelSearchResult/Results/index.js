@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
-import { searchHotels } from '../actions';
+import { fetchHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import { getDisplayedHotels, getSort, isLoading } from '../selectors';
@@ -11,7 +11,7 @@ import { getDisplayedHotels, getSort, isLoading } from '../selectors';
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = this.props.searchParams;
-    this.props.searchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
+    this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
   }
 
   render() {
@@ -44,7 +44,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
 Results.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
-  searchHotels: PropTypes.func.isRequired,
+  fetchHotels: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 
@@ -55,7 +55,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  searchHotels: search => dispatch(searchHotels(search)),
+  fetchHotels: search => dispatch(fetchHotels(search)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

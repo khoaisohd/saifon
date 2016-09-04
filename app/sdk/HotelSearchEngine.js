@@ -21,7 +21,7 @@ class HotelSearchEngine {
     });
   }
 
-  getDisplayedHotels(filters, sort, offset, limit) {
+  findHotels(filters, sort, offset, limit) {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.hotels.slice(offset, limit));

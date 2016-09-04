@@ -1,45 +1,46 @@
-import { call, put, select, take } from 'redux-saga/effects';
-import { takeLatest, delay } from 'redux-saga';
+import { call, put, select, take, actionChannel } from 'redux-saga/effects';
+import { takeLatest, delay, buffers } from 'redux-saga';
 import { fromJS } from 'immutable';
-import { SEARCH_HOTELS, FILTER_HOTELS } from './constants';
-import { displayHotels } from './actions';
+import { FETCH_HOTELS, FIND_HOTELS } from './constants';
+import { displayHotels, findHotels } from './actions';
 import { getHotelSearchEngine } from 'sdk/HotelSearchEngine';
 import { getFilters, getSort, getOffset, getLimit } from './selectors';
 
-export function* updateDisplayedHotels() {
+export function* handleFindHotelsRequest() {
   const engine = getHotelSearchEngine();
-  const displayedHotels = yield call(engine.getDisplayedHotels.bind(engine),
+  const hotels = yield call(engine.findHotels.bind(engine),
     yield select(getFilters),
     yield select(getSort),
     yield select(getOffset),
     yield select(getLimit)
   );
-  yield put(displayHotels(fromJS(displayedHotels)));
+  yield put(displayHotels(fromJS(hotels)));
 }
 
-export function* handleHotelSearchRequest({ search }) {
+export function* handleFetchHotelsRequest({ search }) {
   let completed = false;
   const engine = getHotelSearchEngine();
   engine.setSearch(search);
   while (!completed) {
     const response = yield call(engine.poll.bind(engine));
-    yield call(updateDisplayedHotels);
+    yield put(findHotels());
     completed = response.completed;
   }
 }
 
-export function* watchHotelSearchRequest() {
-  yield takeLatest(SEARCH_HOTELS, handleHotelSearchRequest);
-}
-
-export function* watchFilterHotel() {
-  while (yield take(FILTER_HOTELS)) {
+export function* watchFindHotelsRequest() {
+  const requestChan = yield actionChannel(FIND_HOTELS, buffers.sliding(1));
+  while (yield take(requestChan)) {
     yield call(delay, 100);
-    yield call(updateDisplayedHotels);
+    yield call(handleFindHotelsRequest);
   }
 }
 
+export function* watchFetchHotelsRequest() {
+  yield takeLatest(FETCH_HOTELS, handleFetchHotelsRequest);
+}
+
 export default [
-  watchHotelSearchRequest,
-  watchFilterHotel,
+  watchFetchHotelsRequest,
+  watchFindHotelsRequest,
 ];

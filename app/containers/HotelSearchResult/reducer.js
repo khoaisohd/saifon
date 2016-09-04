@@ -3,8 +3,8 @@ import {
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
   DISPLAY_HOTELS,
-  SEARCH_HOTELS,
-  FILTER_HOTELS,
+  FETCH_HOTELS,
+  FIND_HOTELS,
 } from './constants';
 
 const initialState = fromJS({
@@ -33,9 +33,9 @@ function hotelSearchResultReducer(state = initialState, action) {
       return state
         .set('displayedHotels', action.hotels)
         .set('loading', false);
-    case SEARCH_HOTELS:
+    case FETCH_HOTELS:
       return initialState;
-    case FILTER_HOTELS:
+    case FIND_HOTELS:
       return state.set('loading', true);
     default:
       return state;
