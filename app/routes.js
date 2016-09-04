@@ -56,10 +56,19 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/hotels/overlay/date-picker',
-      name: 'hotel-search-form-date-picker',
+      path: '/hotels/overlay/check-in',
+      name: 'hotel-search-form-check-in',
       getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/DatePicker')
+        System.import('containers/HotelSearchForm/CheckInPicker')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
+      path: '/hotels/overlay/check-out',
+      name: 'hotel-search-form-check-out',
+      getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/CheckOutPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

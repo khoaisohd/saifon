@@ -1,4 +1,0 @@
-.toolbar {
-  composes: toolbar from 'containers/App/styles.css';
-  text-transform: uppercase;
-}
