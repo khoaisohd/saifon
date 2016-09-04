@@ -35,7 +35,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     },
-    // Hotel Search Form
     {
       path: '/hotels',
       name: 'hotel-search-form',
@@ -91,7 +90,6 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
-    // Hotel Search Result
     {
       path: HOTEL_SEARCH_PATH_PATTERN,
       name: 'hotel-search-result',
@@ -112,15 +110,17 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },
-    {
-      path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
-      name: 'hotel-search-result-filters',
-      getComponent(nextState, cb) {
-        System.import('containers/HotelSearchResult/Filters')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
+      childRoutes: [
+        {
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
+          name: 'hotel-search-result-filters',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchResult/Filters')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+      ],
     },
     {
       path: '*',
