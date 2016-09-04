@@ -1,7 +1,7 @@
 import reducer from '../reducer';
 
 import {
-  submitLocation,
+  updateLocation,
   updateCheckIn,
   updateCheckOut,
   updateRoomsCount,
@@ -17,9 +17,9 @@ describe('HotelSearchForm/reducer', () => {
     state = reducer(undefined, {});
   });
 
-  describe('submitLocation', () => {
+  describe('updateLocation', () => {
     it('updates location', () => {
-      newState = reducer(state, submitLocation(fromJS({
+      newState = reducer(state, updateLocation(fromJS({
         code: 'locationCode',
         name: 'locationName',
       })));

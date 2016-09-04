@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { submitLocation } from '../actions';
+import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
 import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
@@ -24,7 +24,7 @@ class LocationPicker extends React.Component {
   }
 
   handleSelectLocation(location) {
-    this.props.submitLocation(fromJS(location));
+    this.props.updateLocation(fromJS(location));
     this.context.router.goBack();
   }
 
@@ -49,7 +49,7 @@ class LocationPicker extends React.Component {
 }
 
 LocationPicker.propTypes = {
-  submitLocation: PropTypes.func.isRequired,
+  updateLocation: PropTypes.func.isRequired,
 };
 
 LocationPicker.contextTypes = {
@@ -57,7 +57,7 @@ LocationPicker.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  submitLocation: location => dispatch(submitLocation(location)),
+  updateLocation: location => dispatch(updateLocation(location)),
 });
 
 export default connect(null, mapDispatchToProps)(LocationPicker);

@@ -2,7 +2,7 @@ import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
 
 import {
-  SUBMIT_LOCATION,
+  UPDATE_LOCATION,
   UPDATE_ROOMS_COUNT,
   UPDATE_GUESTS_COUNT,
   UPDATE_CHECK_IN,
@@ -41,7 +41,7 @@ const laterDate = (date1, date2) => {
 
 function hotelSearchFormReducer(state = initialState(), action) {
   switch (action.type) {
-    case SUBMIT_LOCATION:
+    case UPDATE_LOCATION:
       return state
         .set('location', action.location);
     case UPDATE_CHECK_IN:
