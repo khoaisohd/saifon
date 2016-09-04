@@ -31,18 +31,18 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
           <Link className={styles.link} to="/hotels/overlay/travellers-picker">
             {roomsCount} room{roomsCount > 1 ? 's' : ''} - {guestsCount} guest{guestsCount > 1 ? 's' : ''}
           </Link>
-          <button
+          <Link
             className={styles.searchButton}
-            onClick={() => this.context.router.push(pathToHotelSearch({
+            to={pathToHotelSearch({
               checkIn,
               checkOut,
               roomsCount,
               guestsCount,
               locationCode: location.get('code'),
-            }))}
+            })}
           >
             Search
-          </button>
+          </Link>
         </div>
       </div>
     );

@@ -18,10 +18,13 @@
 }
 
 .searchButton {
+  display: block;
   width: 100%;
   margin-top: 10px;
   background-color: #FF9800;
   padding: 10px;
   font-size: 20px;
   color: white;
+  text-decoration: none;
+  text-align: center;
 }
