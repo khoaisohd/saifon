@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { toggleStarRatingFilter, filterHotels } from '../actions';
+import { toggleStarRatingFilter, findHotels } from '../actions';
 import appStyles from 'containers/App/styles.css';
 import StarRatingsFilter from '../../../components/StarRatingsFilter';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
-    this.props.filterHotels();
+    this.props.findHotels();
     this.context.router.goBack();
   }
 
@@ -37,7 +37,7 @@ Filters.contextTypes = {
 
 const mapDispatchToProps = dispatch => ({
   toggleStarRatingFilter: (star) => dispatch(toggleStarRatingFilter(star)),
-  filterHotels: () => dispatch(filterHotels()),
+  findHotels: () => dispatch(findHotels()),
 });
 
 const mapStateToProps = state => ({

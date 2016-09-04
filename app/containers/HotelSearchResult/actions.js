@@ -2,8 +2,8 @@ import {
   DISPLAY_HOTELS,
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
-  SEARCH_HOTELS,
-  FILTER_HOTELS,
+  FETCH_HOTELS,
+  FIND_HOTELS,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -21,11 +21,11 @@ export const displayHotels = hotels => ({
   hotels,
 });
 
-export const searchHotels = search => ({
-  type: SEARCH_HOTELS,
+export const fetchHotels = search => ({
+  type: FETCH_HOTELS,
   search,
 });
 
-export const filterHotels = () => ({
-  type: FILTER_HOTELS,
+export const findHotels = () => ({
+  type: FIND_HOTELS,
 });
