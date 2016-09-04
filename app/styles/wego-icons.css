@@ -77,7 +77,7 @@
 .icon-gear:before { content: '\e80f'; } /* '' */
 .icon-calendar:before { content: '\e810'; } /* '' */
 .icon-calendar-empty:before { content: '\e811'; } /* '' */
-.iconDownDir:before { content: '\e812'; } /* '' */
+.icon-down-dir:before { content: '\e812'; } /* '' */
 .icon-down-open:before { content: '\e813'; } /* '' */
 .icon-up-open:before { content: '\e814'; } /* '' */
 .icon-angle-left:before { content: '\e815'; } /* '' */
