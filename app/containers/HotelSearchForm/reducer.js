@@ -1,18 +1,26 @@
+import moment from 'moment';
+import { DATE_FORMAT, getLaterDate } from 'utils/dates';
+
 import {
-  SUBMIT_LOCATION,
-  SUBMIT_TIMING,
+  UPDATE_LOCATION,
   UPDATE_ROOMS_COUNT,
   UPDATE_GUESTS_COUNT,
+  UPDATE_CHECK_IN,
+  UPDATE_CHECK_OUT,
 } from './constants';
 
 import { fromJS } from 'immutable';
 
-const initialState = fromJS({
-  location: {},
-  checkIn: null,
-  checkOut: null,
+const initialState = () => fromJS({
+  location: {
+    code: 'SG',
+    name: 'Singapore',
+  },
+  checkIn: moment().format(DATE_FORMAT),
+  checkOut: moment().day(3).format(DATE_FORMAT),
   roomsCount: 1,
   guestsCount: 2,
+  checkOutSelected: false,
 });
 
 const correctGuestsCount = (guestsCount, roomsCount) => {
@@ -25,15 +33,19 @@ const correctGuestsCount = (guestsCount, roomsCount) => {
   return guestsCount;
 };
 
-function hotelSearchFormReducer(state = initialState, action) {
+function hotelSearchFormReducer(state = initialState(), action) {
   switch (action.type) {
-    case SUBMIT_LOCATION:
+    case UPDATE_LOCATION:
       return state
         .set('location', action.location);
-    case SUBMIT_TIMING:
+    case UPDATE_CHECK_IN:
       return state
         .set('checkIn', action.checkIn)
-        .set('checkOut', action.checkOut);
+        .set('checkOut', getLaterDate(state.get('checkOut'), action.checkIn));
+    case UPDATE_CHECK_OUT:
+      return state
+        .set('checkOut', action.checkOut)
+        .set('checkOutSelected', true);
     case UPDATE_ROOMS_COUNT:
       return state
         .set('roomsCount', action.roomsCount)

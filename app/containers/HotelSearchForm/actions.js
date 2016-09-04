@@ -1,18 +1,23 @@
 import {
-  SUBMIT_LOCATION,
-  SUBMIT_TIMING,
+  UPDATE_LOCATION,
   UPDATE_ROOMS_COUNT,
   UPDATE_GUESTS_COUNT,
+  UPDATE_CHECK_IN,
+  UPDATE_CHECK_OUT,
 } from './constants';
 
-export const submitLocation = location => ({
-  type: SUBMIT_LOCATION,
+export const updateLocation = location => ({
+  type: UPDATE_LOCATION,
   location,
 });
 
-export const submitTiming = (checkIn, checkOut) => ({
-  type: SUBMIT_TIMING,
+export const updateCheckIn = checkIn => ({
+  type: UPDATE_CHECK_IN,
   checkIn,
+});
+
+export const updateCheckOut = checkOut => ({
+  type: UPDATE_CHECK_OUT,
   checkOut,
 });
 

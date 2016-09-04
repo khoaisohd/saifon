@@ -1,8 +1,9 @@
 import reducer from '../reducer';
 
 import {
-  submitLocation,
-  submitTiming,
+  updateLocation,
+  updateCheckIn,
+  updateCheckOut,
   updateRoomsCount,
   updateGuestsCount,
 } from '../actions';
@@ -16,9 +17,9 @@ describe('HotelSearchForm/reducer', () => {
     state = reducer(undefined, {});
   });
 
-  describe('submitLocation', () => {
+  describe('updateLocation', () => {
     it('updates location', () => {
-      newState = reducer(state, submitLocation(fromJS({
+      newState = reducer(state, updateLocation(fromJS({
         code: 'locationCode',
         name: 'locationName',
       })));
@@ -27,11 +28,27 @@ describe('HotelSearchForm/reducer', () => {
     });
   });
 
-  describe('submitTiming', () => {
-    it('updates checkIn and checkOut', () => {
-      newState = reducer(state, submitTiming('checkIn', 'checkOut'));
-      expect(newState.get('checkIn')).to.equal('checkIn');
-      expect(newState.get('checkOut')).to.equal('checkOut');
+  describe('updateCheckIn', () => {
+    it('updates check in', () => {
+      newState = reducer(state, updateCheckIn('10-20-2010'));
+      expect(newState.get('checkIn')).to.equal('10-20-2010');
+    });
+
+    it('updates check out if check in is later than check out', () => {
+      newState = reducer(fromJS({ checkOut: '20-10-2010' }), updateCheckIn('24-10-2010'));
+      expect(newState.get('checkOut')).to.equal('24-10-2010');
+    });
+  });
+
+  describe('updateCheckOut', () => {
+    it('updates check out', () => {
+      newState = reducer(state, updateCheckOut('09-12-2011'));
+      expect(newState.get('checkOut')).to.equal('09-12-2011');
+    });
+
+    it('updates checkOutSelected to true', () => {
+      newState = reducer(state, updateCheckOut('09-12-2011'));
+      expect(newState.get('checkOutSelected')).to.equal(true);
     });
   });
 

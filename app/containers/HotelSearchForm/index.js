@@ -1,5 +1,6 @@
 // Preload form assets
-import 'containers/HotelSearchForm/DatePicker';
+import 'containers/HotelSearchForm/CheckInPicker';
+import 'containers/HotelSearchForm/CheckOutPicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
 
@@ -23,16 +24,19 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
         </div>
         <div className={appStyles.containerBody}>
           <div>
-            <Link to="/hotels/overlay/location-picker">Location</Link>
-            <div>{location.get('name')} - {location.get('code')}</div>
+            <Link to="/hotels/overlay/location-picker">{location.get('name')} - {location.get('code')}</Link>
           </div>
           <div>
-            <Link to="/hotels/overlay/date-picker">Check in && Check out</Link>
-            <div>{checkIn} -> {checkOut}</div>
+            <div>
+              <Link to="/hotels/overlay/check-in">{checkIn}</Link>
+              ->
+              <Link to="/hotels/overlay/check-out">{checkOut}</Link>
+            </div>
           </div>
           <div>
-            <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
-            <div>{roomsCount} - {guestsCount}</div>
+            <Link to="/hotels/overlay/travellers-picker">
+              {roomsCount} room{roomsCount > 1 ? 's' : ''} - {guestsCount} guest{guestsCount > 1 ? 's' : ''}
+            </Link>
           </div>
           <Link to={pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') })}>Searches</Link>
         </div>
@@ -42,11 +46,11 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
 }
 
 HotelSearchForm.propTypes = {
-  location: PropTypes.object,
-  checkIn: PropTypes.string,
-  checkOut: PropTypes.string,
-  roomsCount: PropTypes.number,
-  guestsCount: PropTypes.number,
+  location: PropTypes.object.isRequired,
+  checkIn: PropTypes.string.isRequired,
+  checkOut: PropTypes.string.isRequired,
+  roomsCount: PropTypes.number.isRequired,
+  guestsCount: PropTypes.number.isRequired,
 };
 
 HotelSearchForm.contextTypes = {
