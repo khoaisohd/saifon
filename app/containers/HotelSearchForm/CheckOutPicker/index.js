@@ -5,6 +5,7 @@ import { getCheckIn, getCheckOut } from '../selectors';
 import { updateCheckOut } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
 import datePickerTheme from '../datePickerTheme';
+import styles from './styles.css';
 
 class CheckOutPicker extends React.Component {
   handleChange(checkOut) {
@@ -15,12 +16,18 @@ class CheckOutPicker extends React.Component {
   render() {
     const { checkIn, checkOut } = this.props;
     return (
-      <Calendar
-        onChange={this.handleChange.bind(this)}
-        date={checkOut}
-        minDate={checkIn}
-        theme={datePickerTheme}
-      />
+      <div>
+        <div className={styles.toolbar}>
+          Check out
+          <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+        </div>
+        <Calendar
+          onChange={this.handleChange.bind(this)}
+          date={checkOut}
+          minDate={checkIn}
+          theme={datePickerTheme}
+        />
+      </div>
     );
   }
 }

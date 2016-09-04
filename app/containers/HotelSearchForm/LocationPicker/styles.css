@@ -1,13 +1,27 @@
 .toolbar {
   composes: toolbar from 'containers/App/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+.inputContainer {
+  padding: 10px;
+  background-color: #7CB342;
+}
+
+.cancelIcon {
+  composes: icon-cancel from 'styles/wego-icons.css';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  padding: 10px;
 }
 
 .input {
+  background: white;
+  padding: 5px;
   width: 100%;
-  margin: 0 50px 0 0;
-  border-bottom: 1px solid;
-  font-weight: 100;
-  -webkit-border-radius: 0;
 }
 
 .locationCode {

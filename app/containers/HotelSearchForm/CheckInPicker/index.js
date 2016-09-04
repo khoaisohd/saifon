@@ -5,6 +5,7 @@ import { getCheckIn, isCheckOutSelected } from '../selectors';
 import datePickerTheme from '../datePickerTheme';
 import { updateCheckIn } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
+import styles from './styles.css';
 
 class CheckInPicker extends React.Component {
   handleChange(checkIn) {
@@ -19,11 +20,18 @@ class CheckInPicker extends React.Component {
 
   render() {
     return (
-      <Calendar
-        onChange={this.handleChange.bind(this)}
-        date={this.props.checkIn}
-        theme={datePickerTheme}
-      />
+      <div>
+        <div className={styles.toolbar}>
+          Check in
+          <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+        </div>
+        <Calendar
+          onChange={this.handleChange.bind(this)}
+          date={this.props.checkIn}
+          theme={datePickerTheme}
+        />
+      </div>
+
     );
   }
 }

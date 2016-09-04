@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
-import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
 import Api from 'sdk/Api';
 
@@ -32,7 +31,12 @@ class LocationPicker extends React.Component {
     return (
       <div>
         <div className={styles.toolbar}>
-          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
+          <div>
+            Where
+            <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+          </div>
+        </div>
+        <div className={styles.inputContainer}>
           <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
         <div>
