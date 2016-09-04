@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateRoomsCount, updateGuestsCount } from '../actions';
-import appStyles from 'containers/App/styles.css';
 import { getRoomsCount, getGuestsCount } from '../selectors';
 import Stepper from 'components/Stepper';
 import styles from './styles.css';
@@ -34,8 +33,9 @@ class TravellersPicker extends React.Component {
     const { updateRoomsCount, roomsCount, guestsCount, updateGuestsCount } = this.props;
     return (
       <div>
-        <div className={appStyles.toolbar}>
-          Select travel options
+        <div className={styles.toolbar}>
+          Search options
+          <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div>
           <div className={styles.row}>
