@@ -28,7 +28,7 @@
 }
 
 .dropDownIcon {
-  composes: iconDownDir from 'styles/wego-icons.css';
+  composes: icon-down-dir from 'styles/wego-icons.css';
   position: absolute;
   top: 30px;
   left: 85px;
