@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { DATE_FORMAT } from 'utils/dates';
+import { DATE_FORMAT, getLaterDate } from 'utils/dates';
 
 import {
   UPDATE_LOCATION,
@@ -33,12 +33,6 @@ const correctGuestsCount = (guestsCount, roomsCount) => {
   return guestsCount;
 };
 
-const laterDate = (date1, date2) => {
-  const m1 = moment(date1, DATE_FORMAT);
-  const m2 = moment(date2, DATE_FORMAT);
-  return m1.isAfter(m2) ? date1 : date2;
-};
-
 function hotelSearchFormReducer(state = initialState(), action) {
   switch (action.type) {
     case UPDATE_LOCATION:
@@ -47,7 +41,7 @@ function hotelSearchFormReducer(state = initialState(), action) {
     case UPDATE_CHECK_IN:
       return state
         .set('checkIn', action.checkIn)
-        .set('checkOut', laterDate(state.get('checkOut'), action.checkIn));
+        .set('checkOut', getLaterDate(state.get('checkOut'), action.checkIn));
     case UPDATE_CHECK_OUT:
       return state
         .set('checkOut', action.checkOut)

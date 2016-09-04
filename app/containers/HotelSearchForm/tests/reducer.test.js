@@ -33,6 +33,11 @@ describe('HotelSearchForm/reducer', () => {
       newState = reducer(state, updateCheckIn('10-20-2010'));
       expect(newState.get('checkIn')).to.equal('10-20-2010');
     });
+
+    it('updates check out if check in is later than check out', () => {
+      newState = reducer(fromJS({ checkOut: '20-10-2010' }), updateCheckIn('24-10-2010'));
+      expect(newState.get('checkOut')).to.equal('24-10-2010');
+    });
   });
 
   describe('updateCheckOut', () => {
