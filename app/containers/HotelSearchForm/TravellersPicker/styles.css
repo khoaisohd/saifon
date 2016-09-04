@@ -27,9 +27,19 @@
   border-bottom: 1px solid #E6E6E6;
 }
 
-.iconDownDir {
+.dropDownIcon {
   composes: iconDownDir from 'styles/wego-icons.css';
   position: absolute;
   top: 30px;
   left: 85px;
+}
+
+.roomDropDownIcon {
+  composes: dropDownIcon;
+  left: 85px;
+}
+
+.guestDropDownIcon {
+  composes: dropDownIcon;
+  left: 95px;
 }
