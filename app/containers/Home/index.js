@@ -1,17 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
-import appStyles from 'containers/App/styles.css';
+import styles from './styles.css';
 
 class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <div className={appStyles.toolbar}>
-          Wego
-        </div>
-        <div className={appStyles.containerBody}>
-          <Link to="/hotels">Hotels</Link>
-        </div>
+      <div className={styles.container}>
+        <Link className={styles.hotelsButton} to="/hotels">
+          <i className={styles.hotelIcon} />
+          Hotels
+        </Link>
       </div>
     );
   }
