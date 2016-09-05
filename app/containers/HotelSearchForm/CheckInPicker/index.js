@@ -29,7 +29,6 @@ class CheckInPicker extends React.Component {
           date={this.props.checkIn}
         />
       </div>
-
     );
   }
 }
