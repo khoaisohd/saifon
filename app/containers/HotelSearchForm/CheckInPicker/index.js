@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Calendar } from 'react-date-range';
+import { Calendar } from 'components/LegacyDatePicker';
 import { getCheckIn, isCheckOutSelected } from '../selectors';
 import datePickerTheme from '../datePickerTheme';
 import { updateCheckIn } from '../actions';
