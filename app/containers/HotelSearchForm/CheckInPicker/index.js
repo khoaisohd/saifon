@@ -5,6 +5,7 @@ import { getCheckIn, isCheckOutSelected } from '../selectors';
 import { updateCheckIn } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
 import styles from './styles.css';
+import appStyles from 'containers/App/styles.css';
 
 class CheckInPicker extends React.Component {
   handleChange(checkIn) {
@@ -22,7 +23,7 @@ class CheckInPicker extends React.Component {
       <div>
         <div className={styles.toolbar}>
           Check in
-          <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <Calendar
           onChange={this.handleChange.bind(this)}
