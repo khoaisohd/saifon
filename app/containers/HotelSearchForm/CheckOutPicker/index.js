@@ -4,7 +4,6 @@ import { Calendar } from 'components/LegacyDatePicker';
 import { getCheckIn, getCheckOut } from '../selectors';
 import { updateCheckOut } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
-import datePickerTheme from '../datePickerTheme';
 import styles from './styles.css';
 
 class CheckOutPicker extends React.Component {
@@ -25,7 +24,6 @@ class CheckOutPicker extends React.Component {
           onChange={this.handleChange.bind(this)}
           date={checkOut}
           minDate={checkIn}
-          theme={datePickerTheme}
         />
       </div>
     );

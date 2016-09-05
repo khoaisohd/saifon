@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Calendar } from 'components/LegacyDatePicker';
 import { getCheckIn, isCheckOutSelected } from '../selectors';
-import datePickerTheme from '../datePickerTheme';
 import { updateCheckIn } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
 import styles from './styles.css';
@@ -28,7 +27,6 @@ class CheckInPicker extends React.Component {
         <Calendar
           onChange={this.handleChange.bind(this)}
           date={this.props.checkIn}
-          theme={datePickerTheme}
         />
       </div>
 

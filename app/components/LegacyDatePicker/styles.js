@@ -30,14 +30,14 @@ const defaultTheme = {
   },
 
   Calendar        : {
-    width         : 280,
-    padding       : 10,
-    background    : '#ffffff',
+    background: 'transparent',
+    color: '#95a5a6',
+    width: '100%',
+    padding: '0',
     borderRadius  : '2px',
     display       : 'inline-block',
     boxSizing     : 'border-box',
     letterSpacing : 0,
-    color         : '#000000',
   },
 
   Day : {
@@ -47,7 +47,10 @@ const defaultTheme = {
     textAlign     : 'center',
     fontSize      : 12,
     cursor        : 'pointer',
-    transition    : 'transform .1s ease',
+    width: '14.28%',
+    height: '37.1429px',
+    lineHeight: '37.1429px',
+    transition: 'transform .1s ease, box-shadow .1s ease, background .1s ease',
   },
 
   DayPassive : {
@@ -69,7 +72,7 @@ const defaultTheme = {
   },
 
   DaySelected : {
-    background    : '#e74c3c',
+    background: '#7CB342',
     color         : '#ffffff',
   },
 
@@ -80,30 +83,38 @@ const defaultTheme = {
   },
 
   DayInRange : {
-    background    : '#34495e',
-    color         : '#95a5a6',
+    background: '#cce9a7',
+    color: '#fff',
   },
 
   Weekday : {
+    height: '20px',
+    lineHeight: '20px',
+    width: '14.28%',
+    color: '#626262',
+    fontSize: '0.75rem',
+    fontWeight: 'bold',
     boxSizing     : 'border-box',
     display       : 'inline-block',
     letterSpacing : 'initial',
     textAlign     : 'center',
-    fontSize      : 12,
-    fontWeight    : '600',
     marginBottom  : 1
   },
 
   MonthAndYear : {
+    color: '#616161',
+    fontWeight: 'bold',
+    fontSize: '15px',
+    textTransform: 'uppercase',
     textAlign     : 'center',
     boxSizing     : 'border-box',
-    fontSize      : 12,
     padding       : '10px 0',
     height        : 38,
     lineHeight    : '18px'
   },
 
   MonthButton : {
+    background: 'none',
     display       : 'block',
     boxSizing     : 'border-box',
     height        : 18,
@@ -111,7 +122,6 @@ const defaultTheme = {
     padding       : 0,
     margin        : '0 10px',
     border        : 'none',
-    background    : '#bdc3c7',
     boxShadow     : 'none',
     outline       : 'none',
     borderRadius  : '50%',
