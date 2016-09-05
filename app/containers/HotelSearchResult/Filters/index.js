@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
 import StarRatingsFilter from '../../../components/StarRatingsFilter';
+import styles from './styles.css';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
@@ -13,8 +14,9 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
     const { filters, toggleStarRatingFilter } = this.props;
     return (
       <div>
-        <div className={appStyles.toolbar}>
-          FILTERS
+        <div className={styles.toolbar}>
+          filters
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div className={appStyles.containerBody}>
           <StarRatingsFilter starRatings={filters.get('starRatings')} toggleStarRatingFilter={toggleStarRatingFilter.bind(this)} />

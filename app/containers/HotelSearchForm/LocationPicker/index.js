@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
 import styles from './styles.css';
+import appStyles from 'containers/App/styles.css';
 import Api from 'sdk/Api';
 
 class LocationPicker extends React.Component {
@@ -33,7 +34,7 @@ class LocationPicker extends React.Component {
         <div className={styles.toolbar}>
           <div>
             Where
-            <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+            <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
           </div>
         </div>
         <div className={styles.inputContainer}>

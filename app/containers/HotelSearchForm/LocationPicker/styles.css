@@ -9,15 +9,6 @@
   background-color: #7CB342;
 }
 
-.cancelIcon {
-  composes: icon-cancel from 'styles/wego-icons.css';
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 24px;
-  padding: 10px;
-}
-
 .input {
   background: white;
   padding: 5px;

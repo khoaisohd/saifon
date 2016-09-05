@@ -4,6 +4,7 @@ import { updateRoomsCount, updateGuestsCount } from '../actions';
 import { getRoomsCount, getGuestsCount } from '../selectors';
 import Stepper from 'components/Stepper';
 import styles from './styles.css';
+import appStyles from 'containers/App/styles.css';
 
 class TravellersPicker extends React.Component {
   getRoomsCountOptions() {
@@ -35,7 +36,7 @@ class TravellersPicker extends React.Component {
       <div>
         <div className={styles.toolbar}>
           Search options
-          <i className={styles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div>
           <div className={styles.row}>
