@@ -177,6 +177,7 @@
       "compression",
       "cross-env",
       "express",
+      "body-parser",
       "ip",
       "minimist",
       "sanitize.css"
