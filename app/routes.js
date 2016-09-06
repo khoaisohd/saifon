@@ -120,6 +120,15 @@ export default function createRoutes(store) {
               .catch(errorLoading);
           },
         },
+        {
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/hotels/:hotelId`,
+          name: 'hotel-search-result-hotel-details',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchResult/HotelDetails')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
       ],
     },
     {

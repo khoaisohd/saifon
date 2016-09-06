@@ -1,0 +1,42 @@
+{
+  "hotel": {
+    "address": "1 Eng Hoon Street",
+    "rates": [
+      {
+        "price": {
+          "amount": 733,
+          "currencyCode": "SGD"
+        },
+        "provider": {
+          "code": "booking.com",
+          "imageUrl": "https://res.cloudinary.com/wego/c_fit,w_80,h_24,f_auto,fl_lossy,q_80/v20160827/providers/rectangular_logos/booking.com.png",
+          "name": "booking.com"
+        }
+      },
+      {
+        "price": {
+          "amount": 733,
+          "currencyCode": "SGD"
+        },
+        "provider": {
+          "code": "amoma.com",
+          "imageUrl": "https://res.cloudinary.com/wego/c_fit,w_80,h_24,f_auto,fl_lossy,q_80/v20160827/providers/rectangular_logos/booking.com.png",
+          "name": "amoma.com"
+        }
+      }
+    ],
+    "cityName": "Singapore",
+    "districtName": "Chinatown",
+    "id": "257939",
+    "imageUrl": "https://www.kayak.sg/rimg/himg/8e/d4/88/ice-73748-photo.aspx_did=2692_brochureid=73748_publicid=17363820_instanceid=4-image.jpg?width=414&height=621",
+    "name": "Hotel 81 Osaka",
+    "reviewCount": "559",
+    "reviewDescription": "Fair",
+    "reviewScore": "68",
+    "star": 2.0,
+    "checkIn": "15-9-2016",
+    "checkOut": "18-9-2016",
+    "nights": 3,
+    "description": "Ibis Novena is located at the corner of Irrawaddy & Balestier road. It is near Novena train station, Zhongshan Park, Mount Elizabeth Novena & Tan Tock Seng Hospital. The first International 3-star hotel in Novena, a short walk to several Shopping Malls &2 train stops to Orchard road. It features 241 stylish designed rooms ideal for single, double or triple occupants, free WiFi internet access, restaurant & bar and free parking. Provides Free shuttle to Novena train station & Orchard upon request."
+  }
+}

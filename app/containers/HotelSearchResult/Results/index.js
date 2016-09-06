@@ -17,12 +17,24 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
   }
 
+  renderLoading() {
+    return (<div>Loading...</div>);
+  }
+
+  renderListings() {
+    const { displayedHotels, searchParams } = this.props;
+    return displayedHotels.map(hotel =>
+      <HotelCard
+        key={hotel.get('id')}
+        hotel={hotel}
+        onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
+      />
+    );
+  }
+
   render() {
-    const { displayedHotels, searchParams, isLoading } = this.props;
+    const { searchParams, isLoading } = this.props;
     const { locationCode, checkIn, checkOut } = searchParams;
-    const result = isLoading
-      ? (<div>Loading...</div>)
-      : displayedHotels.map(hotel => <HotelCard key={hotel.get('id')} hotel={hotel} />);
 
     return (
       <div>
@@ -46,7 +58,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
           </Link>
         </div>
         <div>
-          {result}
+          {isLoading ? this.renderLoading() : this.renderListings()}
         </div>
       </div>
     );
