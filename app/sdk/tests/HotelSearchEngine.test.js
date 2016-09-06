@@ -10,9 +10,9 @@ describe('HotelSearchEngine', () => {
     engine.setHotels(hotelsData);
   });
 
-  describe('#getDisplayedHotels', () => {
+  describe('#findHotels', () => {
     it('returns 20 hotels by default', () => {
-      const displayHotelsPromise = engine.getDisplayedHotels();
+      const displayHotelsPromise = engine.findHotels();
       return displayHotelsPromise.then((hotels) => {
         expect(hotels.length).to.be.eql(20);
       });
@@ -20,8 +20,8 @@ describe('HotelSearchEngine', () => {
 
     describe('filters', () => {
       it('filter by stars', () => {
-        const filters = fromJS({ starRatings: [5] });
-        const displayHotelsPromise = engine.getDisplayedHotels(filters, null);
+        const filters = fromJS({ starRatings: { 5: { selected: true } } });
+        const displayHotelsPromise = engine.findHotels(filters, null);
         return displayHotelsPromise.then((hotels) => {
           const allFiveStarHotels = hotels.every(hotel =>
             Math.round(hotel.star) === 5

@@ -1,5 +1,5 @@
 import Api from './Api';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 class HotelSearchEngine {
   constructor() {
@@ -22,6 +22,12 @@ class HotelSearchEngine {
     });
   }
 
+  findHotels(filters = new Map(), sort, offset = 0, limit = 20) {
+    return Promise.resolve(this.hotels)
+      .then((hotels) => this.filter(hotels, filters))
+      .then((hotels) => hotels.slice(offset, limit));
+  }
+
   filter(hotels, filters) {
     const starRatings = filters.get('starRatings');
     return hotels.filter((hotel) =>
@@ -32,12 +38,6 @@ class HotelSearchEngine {
   hasTheStarsAligned(hotel, starRatings = new List()) {
     const rating = Math.floor(hotel.star);
     return starRatings.isEmpty() || starRatings.getIn([rating.toString(), 'selected']);
-  }
-
-  findHotels(filters, sort, offset, limit) {
-    return Promise.resolve(this.hotels)
-      .then((hotels) => this.filter(hotels, filters))
-      .then((hotels) => hotels.slice(offset, limit));
   }
 }
 

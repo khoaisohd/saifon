@@ -1,11 +1,10 @@
 import reducer from '../reducer';
 import { fromJS } from 'immutable';
 import {
-  filterByStarRatings,
-  displayHotels,
+  findHotels,
   sortHotels,
-  searchHotels,
-  filterHotels,
+  fetchHotels,
+  toggleStarRatingFilter,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -32,28 +31,21 @@ describe('HotelSearchResult/reducer', () => {
   });
 
   describe('#toggleStarRatingFilter', () => {
-    it('updates star rating filters when filterByStarRatings is dispatched', () => {
-      const starRatings = fromJS([5]);
-      newState = reducer(state, filterByStarRatings(starRatings));
-      expect(newState.getIn(['filters', 'starRatings'])).to.equal(starRatings);
-    });
-
-    it('clears star ratings filter when sent with empty list', () => {
-      const starRatings = fromJS([]);
-      newState = reducer(state, filterByStarRatings(starRatings));
-      expect(newState.getIn(['filters', 'starRatings'])).to.equal(starRatings);
+    it('updates star rating filter', () => {
+      newState = reducer(state, toggleStarRatingFilter('5'));
+      expect(newState.getIn(['filters', 'starRatings', '5', 'selected'])).to.equal(false);
     });
   });
 
   describe('#displayHotels', () => {
     it('updates displayed hotels', () => {
       const addedHotels = fromJS([{ id: 'x' }, { id: 'y' }]);
-      newState = reducer(state, displayHotels(addedHotels));
+      newState = reducer(state, findHotels(addedHotels));
       expect(newState.getIn(['displayedHotels']).toJS()).to.deep.equal(addedHotels.toJS());
     });
 
     it('sets loading to false', () => {
-      newState = reducer(state, displayHotels([]));
+      newState = reducer(state, findHotels([]));
       expect(newState.get('loading')).to.equal(false);
     });
   });
@@ -71,16 +63,8 @@ describe('HotelSearchResult/reducer', () => {
 
   describe('#searchHotels', () => {
     it('resets state into initial state', () => {
-      newState = reducer(state, searchHotels());
+      newState = reducer(state, fetchHotels());
       expect(newState.toJS()).to.deep.equal(state.toJS());
-    });
-  });
-
-  describe('#filterHotels', () => {
-    it('sets loading to true', () => {
-      newState = reducer(state, displayHotels([]));
-      newState = reducer(newState, filterHotels());
-      expect(newState.get('loading')).to.equal(true);
     });
   });
 });
