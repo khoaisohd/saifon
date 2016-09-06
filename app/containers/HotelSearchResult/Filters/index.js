@@ -19,7 +19,10 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div className={appStyles.containerBody}>
-          <StarRatingsFilter starRatings={filters.get('starRatings')} toggleStarRatingFilter={toggleStarRatingFilter.bind(this)} />
+          <StarRatingsFilter
+            starRatings={filters.get('starRatings')}
+            toggleStarRatingFilter={toggleStarRatingFilter.bind(this)}
+          />
           <button onClick={this.handleApplyClick.bind(this)}>Apply</button>
         </div>
       </div>
@@ -29,7 +32,6 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
 
 Filters.propTypes = {
   filters: PropTypes.object.isRequired,
-  toggleStarRatingFilter: PropTypes.func.isRequired,
 };
 
 Filters.contextTypes = {
@@ -37,7 +39,7 @@ Filters.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleStarRatingFilter: (star) => dispatch(toggleStarRatingFilter(star)),
+  toggleStarRatingFilter: (starRating) => dispatch(toggleStarRatingFilter(starRating)),
 });
 
 const mapStateToProps = state => ({

@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-.dropDownIcon{
+.dropDownIcon {
   composes: icon-down-dir from 'styles/wego-icons.css';
   margin-left: 5px;
 }

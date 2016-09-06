@@ -9,7 +9,12 @@ import {
 
 const initialState = fromJS({
   filters: {
-    starRatings: {},
+    starRatings: {
+      5: { selected: true },
+      4: { selected: true },
+      3: { selected: true },
+      2: { selected: true },
+    },
   },
   sort: {
     column: 'PRICE',
@@ -25,7 +30,8 @@ function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_STAR_RATING_FILTER:
       return state
-        .setIn(['filters', 'starRatings', action.starRating], !state.getIn(['filters', 'starRatings', action.starRating]));
+        .setIn(['filters', 'starRatings', action.starRating, 'selected'],
+          !state.getIn(['filters', 'starRatings', action.starRating, 'selected']));
     case SORT_HOTELS:
       return state
         .set('sort', action.sort);
