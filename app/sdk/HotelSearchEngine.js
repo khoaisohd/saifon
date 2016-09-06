@@ -42,20 +42,7 @@ class HotelSearchEngine {
   }
 
   sortBy(sortData) {
-    let getSortValue;
-    switch (sortData.get('property')) {
-      case 'PRICE':
-        getSortValue = this.getCheapestAmount;
-        break;
-      case 'REVIEW_SCORE':
-        getSortValue = this.getReviewScore;
-        break;
-      case 'STAR_RATING':
-        getSortValue = this.getStarRating;
-        break;
-      default:
-        break;
-    }
+    const getSortValue = this.propertyGetter(sortData.get('property'));
     return (hotelA, hotelB) => {
       const valA = getSortValue(hotelA);
       const valB = getSortValue(hotelB);
@@ -64,6 +51,19 @@ class HotelSearchEngine {
       if (valB === null || valB === undefined) return -1;
       return (valA > valB) === (sortData.get('order') === 'ASC') ? 1 : -1;
     };
+  }
+
+  propertyGetter(property) {
+    switch (property) {
+      case 'PRICE':
+        return this.getCheapestAmount;
+      case 'REVIEW_SCORE':
+        return this.getReviewScore;
+      case 'STAR_RATING':
+        return this.getStarRating;
+      default:
+        return this.getCheapestAmount;
+    }
   }
 
   getCheapestAmount(hotel) {
