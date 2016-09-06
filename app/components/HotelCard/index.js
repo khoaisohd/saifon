@@ -4,7 +4,7 @@ import StarRating from '../StarRating';
 import styles from './index.css';
 
 const HotelCard = (props) => {
-  const { hotel } = props;
+  const { hotel, onClick } = props;
 
   let ratingScoreClass;
   if (hotel.get('reviewScore') < 75 && hotel.get('reviewScore') > 70) {
@@ -14,7 +14,7 @@ const HotelCard = (props) => {
   }
   const reviewCount = parseInt(hotel.get('reviewCount'), 10).toLocaleString();
   return (
-    <div className={styles.hotelCard}>
+    <div className={styles.hotelCard} onClick={onClick}>
       <div>
         <img className={styles.image} src={hotel.get('imageUrl')} role="presentation" />
       </div>
@@ -47,6 +47,7 @@ const HotelCard = (props) => {
 
 HotelCard.propTypes = {
   hotel: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default HotelCard;
