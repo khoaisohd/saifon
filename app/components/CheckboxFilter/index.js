@@ -3,13 +3,7 @@ import styles from './index.css';
 
 class CheckboxFilter extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { checked: props.checked };
-  }
-
   handleClick() {
-    this.setState({ checked: !this.state.checked });
     this.props.onClick();
   }
 
@@ -21,7 +15,7 @@ class CheckboxFilter extends Component {
           <input
             className={styles.checkbox}
             type="checkbox"
-            checked={this.state.checked}
+            checked={this.props.checked}
           />
         </span>
       </div>
