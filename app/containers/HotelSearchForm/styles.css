@@ -1,4 +1,30 @@
+.container {
+  padding: 0 20px 20px;
+}
+
 .toolbar {
   composes: toolbar from 'containers/App/styles.css';
   text-transform: uppercase;
+}
+
+.link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  border-bottom: 1px solid #C2C2C6;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.searchButton {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  background-color: #FF9800;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
 }

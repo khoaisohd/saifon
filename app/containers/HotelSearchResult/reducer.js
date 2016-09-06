@@ -1,15 +1,20 @@
 import { fromJS } from 'immutable';
 import {
   SORT_HOTELS,
-  FILTER_BY_STAR_RATINGS,
+  TOGGLE_STAR_RATING_FILTER,
   DISPLAY_HOTELS,
-  SEARCH_HOTELS,
-  FILTER_HOTELS,
+  FETCH_HOTELS,
+  FIND_HOTELS,
 } from './constants';
 
 const initialState = fromJS({
   filters: {
-    starRatings: [],
+    starRatings: {
+      5: { selected: true },
+      4: { selected: true },
+      3: { selected: true },
+      2: { selected: true },
+    },
   },
   sort: {
     column: 'PRICE',
@@ -23,9 +28,10 @@ const initialState = fromJS({
 
 function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
-    case FILTER_BY_STAR_RATINGS:
+    case TOGGLE_STAR_RATING_FILTER:
       return state
-        .setIn(['filters', 'starRatings'], action.starRatings);
+        .setIn(['filters', 'starRatings', action.starRating, 'selected'],
+          !state.getIn(['filters', 'starRatings', action.starRating, 'selected']));
     case SORT_HOTELS:
       return state
         .set('sort', action.sort);
@@ -33,9 +39,9 @@ function hotelSearchResultReducer(state = initialState, action) {
       return state
         .set('displayedHotels', action.hotels)
         .set('loading', false);
-    case SEARCH_HOTELS:
+    case FETCH_HOTELS:
       return initialState;
-    case FILTER_HOTELS:
+    case FIND_HOTELS:
       return state.set('loading', true);
     default:
       return state;

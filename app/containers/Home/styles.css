@@ -1,0 +1,31 @@
+.container {
+  background-image: url('http://res.cloudinary.com/wego/image/upload/c_fill,g_center,h_1280,w_720,q_60/v1468307149/wego-polymer/main_background.jpg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+}
+
+.hotelsButton {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin: 0 10px;
+  font-size: 14px;
+  background: url('https://beta.wegostaging.com/images/rounded_btn_bg.png') no-repeat center;
+  background-size: cover;
+  color: #FFF;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 30vh;
+  text-transform: uppercase;
+}
+
+.hotelIcon {
+  display: block;
+  font-size: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  composes: icon-commerical-building from 'styles/wego-icons.css';
+}

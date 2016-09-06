@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { submitLocation } from '../actions';
+import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
-import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
+import appStyles from 'containers/App/styles.css';
 import Api from 'sdk/Api';
 
 class LocationPicker extends React.Component {
@@ -24,7 +24,7 @@ class LocationPicker extends React.Component {
   }
 
   handleSelectLocation(location) {
-    this.props.submitLocation(fromJS(location));
+    this.props.updateLocation(fromJS(location));
     this.context.router.goBack();
   }
 
@@ -32,7 +32,12 @@ class LocationPicker extends React.Component {
     return (
       <div>
         <div className={styles.toolbar}>
-          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
+          <div>
+            Where
+            <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          </div>
+        </div>
+        <div className={styles.inputContainer}>
           <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
         <div>
@@ -49,7 +54,7 @@ class LocationPicker extends React.Component {
 }
 
 LocationPicker.propTypes = {
-  submitLocation: PropTypes.func.isRequired,
+  updateLocation: PropTypes.func.isRequired,
 };
 
 LocationPicker.contextTypes = {
@@ -57,7 +62,7 @@ LocationPicker.contextTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  submitLocation: location => dispatch(submitLocation(location)),
+  updateLocation: location => dispatch(updateLocation(location)),
 });
 
 export default connect(null, mapDispatchToProps)(LocationPicker);

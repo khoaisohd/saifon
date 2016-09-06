@@ -1,5 +1,6 @@
 // Preload form assets
-import 'containers/HotelSearchForm/DatePicker';
+import 'containers/HotelSearchForm/CheckInPicker';
+import 'containers/HotelSearchForm/CheckOutPicker';
 import 'containers/HotelSearchForm/LocationPicker';
 import 'containers/HotelSearchForm/TravellersPicker';
 
@@ -10,6 +11,8 @@ import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
 import { pathToHotelSearch } from 'utils/routes-util';
 import { getCheckIn, getCheckOut, getLocation, getRoomsCount, getGuestsCount } from './selectors';
+import moment from 'moment';
+import { DATE_FORMAT } from 'utils/dates';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -21,20 +24,25 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
           <i className={appStyles.backButton} onClick={this.context.router.goBack} />
           Hotel Search
         </div>
-        <div className={appStyles.containerBody}>
-          <div>
-            <Link to="/hotels/overlay/location-picker">Location</Link>
-            <div>{location.get('name')} - {location.get('code')}</div>
-          </div>
-          <div>
-            <Link to="/hotels/overlay/date-picker">Check in && Check out</Link>
-            <div>{checkIn} -> {checkOut}</div>
-          </div>
-          <div>
-            <Link to="/hotels/overlay/travellers-picker">Travellers Options</Link>
-            <div>{roomsCount} - {guestsCount}</div>
-          </div>
-          <Link to={pathToHotelSearch({ checkIn, checkOut, roomsCount, guestsCount, locationCode: location.get('code') })}>Searches</Link>
+        <div className={styles.container}>
+          <Link className={styles.link} to="/hotels/overlay/location-picker">{location.get('name')}</Link>
+          <Link className={styles.link} to="/hotels/overlay/check-in">From: {moment(checkIn, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/overlay/check-out">To: {moment(checkOut, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/overlay/travellers-picker">
+            {roomsCount} room{roomsCount > 1 ? 's' : ''} - {guestsCount} guest{guestsCount > 1 ? 's' : ''}
+          </Link>
+          <Link
+            className={styles.searchButton}
+            to={pathToHotelSearch({
+              checkIn,
+              checkOut,
+              roomsCount,
+              guestsCount,
+              locationCode: location.get('code'),
+            })}
+          >
+            Search
+          </Link>
         </div>
       </div>
     );
@@ -42,11 +50,11 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
 }
 
 HotelSearchForm.propTypes = {
-  location: PropTypes.object,
-  checkIn: PropTypes.string,
-  checkOut: PropTypes.string,
-  roomsCount: PropTypes.number,
-  guestsCount: PropTypes.number,
+  location: PropTypes.object.isRequired,
+  checkIn: PropTypes.string.isRequired,
+  checkOut: PropTypes.string.isRequired,
+  roomsCount: PropTypes.number.isRequired,
+  guestsCount: PropTypes.number.isRequired,
 };
 
 HotelSearchForm.contextTypes = {

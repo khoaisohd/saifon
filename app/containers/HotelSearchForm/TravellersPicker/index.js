@@ -1,23 +1,85 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { submitTravellers } from '../actions';
+import { updateRoomsCount, updateGuestsCount } from '../actions';
+import { getRoomsCount, getGuestsCount } from '../selectors';
+import Stepper from 'components/Stepper';
+import styles from './styles.css';
 import appStyles from 'containers/App/styles.css';
 
 class TravellersPicker extends React.Component {
-  submit() {
-    const { submitTravellers } = this.props;
-    submitTravellers(2, 3);
-    this.context.router.goBack();
+  getRoomsCountOptions() {
+    const options = [];
+    for (let i = 1; i <= 8; i++) {
+      options.push({
+        value: i,
+        text: `${i} room${i > 1 ? 's' : ''}`,
+      });
+    }
+    return options;
+  }
+
+  getGuestsCountOptions() {
+    const { roomsCount } = this.props;
+    const options = [];
+    for (let i = roomsCount; i <= 4 * roomsCount; i++) {
+      options.push({
+        value: i,
+        text: `${i} guest${i > 1 ? 's' : ''}`,
+      });
+    }
+    return options;
   }
 
   render() {
+    const { updateRoomsCount, roomsCount, guestsCount, updateGuestsCount } = this.props;
     return (
       <div>
-        <div className={appStyles.toolbar}>
-          Select travel options
+        <div className={styles.toolbar}>
+          Search options
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
-        <div className={appStyles.containerBody}>
-          <button onClick={this.submit.bind(this)}>Submit</button>
+        <div>
+          <div className={styles.row}>
+            <select value={roomsCount} onChange={e => updateRoomsCount(parseInt(e.target.value))}>
+            {
+              this.getRoomsCountOptions().map(option =>
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              )
+            }
+            </select>
+            <i className={styles.roomDropDownIcon}></i>
+            <div className={styles.stepper}>
+              <Stepper
+                onIncrease={() => updateRoomsCount(roomsCount + 1)}
+                onDecrease={() => updateRoomsCount(roomsCount - 1)}
+                increaseEnabled={roomsCount < 8}
+                decreaseEnabled={roomsCount > 1}
+              />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <select value={guestsCount} onChange={e => updateGuestsCount(parseInt(e.target.value))}>
+              {
+                this.getGuestsCountOptions().map(option =>
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                )
+              }
+            </select>
+            <i className={styles.guestDropDownIcon}></i>
+            <div className={styles.stepper}>
+              <Stepper
+                className={styles.stepper}
+                onIncrease={() => updateGuestsCount(guestsCount + 1)}
+                onDecrease={() => updateGuestsCount(guestsCount - 1)}
+                increaseEnabled={guestsCount < 4 * roomsCount}
+                decreaseEnabled={guestsCount > roomsCount}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -25,15 +87,24 @@ class TravellersPicker extends React.Component {
 }
 
 TravellersPicker.propTypes = {
-  submitTravellers: PropTypes.func.isRequired,
+  updateRoomsCount: PropTypes.func.isRequired,
+  roomsCount: PropTypes.number.isRequired,
+  updateGuestsCount: PropTypes.func.isRequired,
+  guestsCount: PropTypes.number.isRequired,
 };
 
 TravellersPicker.contextTypes = {
   router: React.PropTypes.object,
 };
 
-const mapDispatchToProps = dispatch => ({
-  submitTravellers: (roomsCount, guestsCount) => dispatch(submitTravellers(roomsCount, guestsCount)),
+const mapStateToProps = state => ({
+  roomsCount: getRoomsCount(state),
+  guestsCount: getGuestsCount(state),
 });
 
-export default connect(null, mapDispatchToProps)(TravellersPicker);
+const mapDispatchToProps = dispatch => ({
+  updateRoomsCount: roomsCount => dispatch(updateRoomsCount(roomsCount)),
+  updateGuestsCount: guestsCount => dispatch(updateGuestsCount(guestsCount)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TravellersPicker);

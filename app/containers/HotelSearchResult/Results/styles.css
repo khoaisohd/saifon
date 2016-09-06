@@ -1,0 +1,42 @@
+.locationCode {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.checkInCheckOut {
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.buttonRow {
+  display: flex;
+  position: relative;
+}
+
+.button {
+  color: white;
+  background-color: #7CB342;
+  width: 50%;
+  padding: 10px;
+}
+
+.sortButton {
+  composes: button;
+}
+
+.filterButton {
+  composes: button;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dropDownIcon {
+  composes: icon-down-dir from 'styles/wego-icons.css';
+  margin-left: 5px;
+}
+
+.filterIcon {
+  composes: icon-filter from 'styles/wego-icons.css';
+  margin-left: 5px;
+}

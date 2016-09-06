@@ -1,0 +1,6 @@
+.toolbar {
+  composes: toolbar from 'containers/App/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
