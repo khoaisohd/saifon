@@ -30,6 +30,8 @@ export default function createRoutes(store) {
 
         importModules.then(([component]) => {
           renderRoute(component);
+          System.import('containers/HotelSearchForm/reducer');
+          System.import('containers/HotelSearchForm');
         });
 
         importModules.catch(errorLoading);
@@ -49,6 +51,9 @@ export default function createRoutes(store) {
         importModules.then(([reducer, component]) => {
           injectReducer('HotelSearchForm', reducer.default);
           renderRoute(component);
+          System.import('containers/HotelSearchResult/reducer');
+          System.import('containers/HotelSearchResult/sagas');
+          System.import('containers/HotelSearchResult');
         });
 
         importModules.catch(errorLoading);
