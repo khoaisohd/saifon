@@ -5,6 +5,7 @@ import {
   DISPLAY_HOTELS,
   FETCH_HOTELS,
   FIND_HOTELS,
+  LOAD_MORE,
 } from './constants';
 
 const initialState = fromJS({
@@ -43,6 +44,8 @@ function hotelSearchResultReducer(state = initialState, action) {
       return initialState;
     case FIND_HOTELS:
       return state.set('loading', true);
+    case LOAD_MORE:
+      return state.set('limit', state.get('limit') + 20);
     default:
       return state;
   }

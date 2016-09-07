@@ -1,10 +1,11 @@
 import reducer from '../reducer';
 import { fromJS } from 'immutable';
 import {
-  findHotels,
   sortHotels,
   fetchHotels,
   toggleStarRatingFilter,
+  loadMore,
+  displayHotels,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -40,12 +41,12 @@ describe('HotelSearchResult/reducer', () => {
   describe('#displayHotels', () => {
     it('updates displayed hotels', () => {
       const addedHotels = fromJS([{ id: 'x' }, { id: 'y' }]);
-      newState = reducer(state, findHotels(addedHotels));
-      expect(newState.getIn(['displayedHotels']).toJS()).to.deep.equal(addedHotels.toJS());
+      newState = reducer(state, displayHotels(addedHotels));
+      expect(newState.get('displayedHotels').toJS()).to.deep.equal(addedHotels.toJS());
     });
 
     it('sets loading to false', () => {
-      newState = reducer(state, findHotels([]));
+      newState = reducer(state, displayHotels([]));
       expect(newState.get('loading')).to.equal(false);
     });
   });
@@ -65,6 +66,13 @@ describe('HotelSearchResult/reducer', () => {
     it('resets state into initial state', () => {
       newState = reducer(state, fetchHotels());
       expect(newState.toJS()).to.deep.equal(state.toJS());
+    });
+  });
+
+  describe('#loadMore', () => {
+    it('increases limit', () => {
+      state = reducer(fromJS({ limit: 10 }), loadMore());
+      expect(state.get('limit')).to.equal(30);
     });
   });
 });

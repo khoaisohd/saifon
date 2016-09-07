@@ -4,6 +4,7 @@ import {
   TOGGLE_STAR_RATING_FILTER,
   FETCH_HOTELS,
   FIND_HOTELS,
+  LOAD_MORE,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -28,4 +29,8 @@ export const fetchHotels = search => ({
 
 export const findHotels = () => ({
   type: FIND_HOTELS,
+});
+
+export const loadMore = () => ({
+  type: LOAD_MORE,
 });
