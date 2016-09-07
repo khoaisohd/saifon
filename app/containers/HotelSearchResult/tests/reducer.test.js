@@ -36,6 +36,11 @@ describe('HotelSearchResult/reducer', () => {
       newState = reducer(state, toggleStarRatingFilter('5'));
       expect(newState.getIn(['filters', 'starRatings', '5', 'selected'])).to.equal(false);
     });
+
+    it('resets limit to 20', () => {
+      state = reducer(fromJS({ limit: 50 }), toggleStarRatingFilter('5'));
+      expect(state.get('limit')).to.equal(20);
+    });
   });
 
   describe('#displayHotels', () => {
@@ -59,6 +64,11 @@ describe('HotelSearchResult/reducer', () => {
       })));
       expect(newState.getIn(['sort', 'column'])).to.equal('STAR');
       expect(newState.getIn(['sort', 'order'])).to.equal('DESC');
+    });
+
+    it('resets limit to 20', () => {
+      state = reducer(fromJS({ limit: 50 }), toggleStarRatingFilter('5'));
+      expect(state.get('limit')).to.equal(20);
     });
   });
 
