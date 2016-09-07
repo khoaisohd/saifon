@@ -22,6 +22,8 @@ export default function createRoutes(store) {
       path: '/',
       name: 'home',
       getComponent(nextState, cb) {
+        System.import('containers/HotelSearchForm/reducer');
+        System.import('containers/HotelSearchForm');
         const importModules = Promise.all([
           System.import('containers/Home'),
         ]);
@@ -39,6 +41,10 @@ export default function createRoutes(store) {
       path: '/hotels',
       name: 'hotel-search-form',
       getComponent(nextState, cb) {
+        System.import('containers/HotelSearchResult/reducer');
+        System.import('containers/HotelSearchResult/sagas');
+        System.import('containers/HotelSearchResult');
+
         const importModules = Promise.all([
           System.import('containers/HotelSearchForm/reducer'),
           System.import('containers/HotelSearchForm'),
