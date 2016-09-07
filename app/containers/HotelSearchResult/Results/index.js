@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
-import { fetchHotels } from '../actions';
+import { fetchHotels, loadMore } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import { getDisplayedHotels, getSort, isLoading } from '../selectors';
@@ -17,23 +17,8 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
   }
 
-  renderLoading() {
-    return (<div>Loading...</div>);
-  }
-
-  renderListings() {
-    const { displayedHotels, searchParams } = this.props;
-    return displayedHotels.map(hotel =>
-      <HotelCard
-        key={hotel.get('id')}
-        hotel={hotel}
-        onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
-      />
-    );
-  }
-
   render() {
-    const { searchParams, isLoading } = this.props;
+    const { searchParams, isLoading, loadMore, displayedHotels } = this.props;
     const { locationCode, checkIn, checkOut } = searchParams;
 
     return (
@@ -57,9 +42,16 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             <i className={styles.filterIcon}></i>
           </Link>
         </div>
-        <div>
-          {isLoading ? this.renderLoading() : this.renderListings()}
-        </div>
+        <div>{
+          displayedHotels.map(hotel =>
+            <HotelCard
+              key={hotel.get('id')}
+              hotel={hotel}
+              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
+            />
+          )
+        }</div>
+        <button disabled={isLoading} className={styles.loadMoreButton} onClick={() => loadMore()}>{isLoading ? 'Loading...' : 'Load More'}</button>
       </div>
     );
   }
@@ -84,6 +76,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchHotels: search => dispatch(fetchHotels(search)),
+  loadMore: () => dispatch(loadMore()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

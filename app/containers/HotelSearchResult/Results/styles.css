@@ -40,3 +40,14 @@
   composes: icon-filter from 'styles/wego-icons.css';
   margin-left: 5px;
 }
+
+.loadMoreButton {
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  text-align: center;
+  width: 100%;
+  background: #FF9800;
+  color: white;
+  font-size: 20px;
+}
