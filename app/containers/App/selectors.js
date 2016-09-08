@@ -1,5 +1,5 @@
 // selectLocationState expects a plain JS object for the routing state
-const selectLocationState = () => {
+export const selectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
 
@@ -15,6 +15,4 @@ const selectLocationState = () => {
   };
 };
 
-export {
-  selectLocationState,
-};
+export const getLocale = state => state.getIn(['global', 'locale']);
