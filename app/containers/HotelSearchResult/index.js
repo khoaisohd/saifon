@@ -1,4 +1,7 @@
-import 'containers/HotelSearchResult/Filters'; // Preload form assets
+// Preload form assets
+import 'containers/HotelSearchResult/Filters';
+import 'containers/HotelSearchResult/HotelDetails';
+
 import React, { Component } from 'react';
 import Results from './Results';
 import Modal from 'react-modal';
