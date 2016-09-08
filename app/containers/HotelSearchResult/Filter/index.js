@@ -21,7 +21,7 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
         </div>
         <div className={appStyles.containerBody}>
           <StarRatingsFilter
-            starRatings={filter.get('starRatings')}
+            stars={filter.get('stars')}
             toggleStarRatingFilter={toggleStarRatingFilter.bind(this)}
           />
           <button onClick={this.handleApplyClick.bind(this)}>Apply</button>

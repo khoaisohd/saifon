@@ -3,24 +3,24 @@ import StarRating from '../StarRating';
 import CheckboxFilter from '../CheckboxFilter';
 
 const StarRatingsFilter = (props) => {
-  const { starRatings, toggleStarRatingFilter } = props;
+  const { stars, toggleStarRatingFilter } = props;
   return (
     <div>
       <div>
-        <CheckboxFilter checked={starRatings.getIn(['5', 'selected'])} onClick={() => toggleStarRatingFilter('5')} >
+        <CheckboxFilter checked={stars.getIn(['5', 'selected'])} onClick={() => toggleStarRatingFilter('5')} >
           <StarRating value={5} />
         </CheckboxFilter>
       </div>
 
-      <CheckboxFilter checked={starRatings.getIn(['4', 'selected'])} onClick={() => toggleStarRatingFilter('4')}>
+      <CheckboxFilter checked={stars.getIn(['4', 'selected'])} onClick={() => toggleStarRatingFilter('4')}>
         <StarRating value={4} />
       </CheckboxFilter>
 
-      <CheckboxFilter checked={starRatings.getIn(['3', 'selected'])} onClick={() => toggleStarRatingFilter('3')}>
+      <CheckboxFilter checked={stars.getIn(['3', 'selected'])} onClick={() => toggleStarRatingFilter('3')}>
         <StarRating value={3} />
       </CheckboxFilter>
 
-      <CheckboxFilter checked={starRatings.getIn(['2', 'selected'])} onClick={() => toggleStarRatingFilter('2')}>
+      <CheckboxFilter checked={stars.getIn(['2', 'selected'])} onClick={() => toggleStarRatingFilter('2')}>
         <StarRating value={2} />
       </CheckboxFilter>
     </div>
@@ -28,7 +28,7 @@ const StarRatingsFilter = (props) => {
 };
 
 StarRatingsFilter.propTypes = {
-  starRatings: PropTypes.object.isRequired,
+  stars: PropTypes.object.isRequired,
   toggleStarRatingFilter: PropTypes.func.isRequired,
 };
 

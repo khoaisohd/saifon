@@ -6,7 +6,7 @@ describe('filterHotels', () => {
     it('returns true for hotel that has matched star', () => {
       const hotel = { star: 2 };
       const filter = fromJS({
-        starRatings: {
+        stars: {
           2: {
             selected: true,
           },
@@ -18,7 +18,7 @@ describe('filterHotels', () => {
     it('returns false for hotel that does not have matched star', () => {
       const hotel = { star: 2 };
       const filter = fromJS({
-        starRatings: {
+        stars: {
           2: {
             selected: false,
           },
