@@ -3,8 +3,17 @@ export const filterByStarRating = (hotel, filter) => {
   return stars.isEmpty() || stars.getIn([Math.floor(hotel.star).toString(), 'selected']);
 };
 
+export const filterByMinPrice = (hotel, filter) => {
+  const minPrice = filter.getIn(['minPrice', 'value']);
+  const hotelPrice = hotel.cheapestRate.price.amount;
+  return hotelPrice > minPrice;
+};
+
 const filterHotels = (hotels, filter) => {  // eslint-disable-line arrow-body-style
-  return hotels.filter(hotel => filterByStarRating(hotel, filter));
+  return hotels.filter(hotel =>
+    filterByStarRating(hotel, filter) &&
+    filterByMinPrice(hotel, filter)
+  );
 };
 
 export default filterHotels;

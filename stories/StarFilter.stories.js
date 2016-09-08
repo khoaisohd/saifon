@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
-import StarRatingsFilter from '../app/components/StarRatingsFilter';
+import StarFilter from 'components/StarFilter';
 import { fromJS } from 'immutable';
 
 const starRatings = fromJS({
@@ -10,14 +10,14 @@ const starRatings = fromJS({
   FIVE_STAR: true,
 });
 
-storiesOf('StarRatingsFilter', module)
+storiesOf('StarFilter', module)
   .add('empty checkboxes', () => (
     <div>
-      <StarRatingsFilter starRatings={fromJS({})} />
+      <StarFilter starRatings={fromJS({})} />
     </div>
   ))
   .add('preselected checkboxes', () => (
     <div>
-      <StarRatingsFilter starRatings={starRatings} />
+      <StarFilter starRatings={starRatings} />
     </div>
   ));
