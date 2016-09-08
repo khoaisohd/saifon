@@ -1,4 +1,3 @@
-import 'containers/HotelSearchResult/Filters'; // Preload form assets
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -37,7 +36,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             Sort
             <i className={styles.dropDownIcon}></i>
           </button>
-          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/overlay/filters`}>
+          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/overlay/filter`}>
             Filter
             <i className={styles.filterIcon}></i>
           </Link>
