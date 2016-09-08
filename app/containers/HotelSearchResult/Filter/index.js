@@ -6,7 +6,7 @@ import StarRatingsFilter from '../../../components/StarRatingsFilter';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 
-class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Filter extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
     this.context.router.goBack();
   }
@@ -31,11 +31,11 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
   }
 }
 
-Filters.propTypes = {
+Filter.propTypes = {
   filter: PropTypes.object.isRequired,
 };
 
-Filters.contextTypes = {
+Filter.contextTypes = {
   router: React.PropTypes.object,
 };
 
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
   filter: getFilter(state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

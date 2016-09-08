@@ -88,7 +88,7 @@ describe('HotelSearchResult/reducer', () => {
   });
 
   describe('#updateFilter', () => {
-    it('deeply updates filters', () => {
+    it('deeply updates filter', () => {
       const filter = fromJS({
         minPrice: {
           threshold: 1000,

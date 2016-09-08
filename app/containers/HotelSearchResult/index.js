@@ -1,5 +1,5 @@
 // Preload form assets
-import 'containers/HotelSearchResult/Filters';
+import 'containers/HotelSearchResult/Filter';
 import 'containers/HotelSearchResult/HotelDetails';
 
 import React, { Component } from 'react';

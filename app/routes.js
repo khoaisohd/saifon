@@ -117,10 +117,10 @@ export default function createRoutes(store) {
       },
       childRoutes: [
         {
-          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
-          name: 'hotel-search-result-filters',
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filter`,
+          name: 'hotel-search-result-filter',
           getComponent(nextState, cb) {
-            System.import('containers/HotelSearchResult/Filters')
+            System.import('containers/HotelSearchResult/Filter')
               .then(loadModule(cb))
               .catch(errorLoading);
           },
