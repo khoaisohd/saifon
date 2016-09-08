@@ -1,5 +1,5 @@
 import Api from './Api';
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 
 class HotelSearchEngine {
   constructor() {
@@ -24,19 +24,15 @@ class HotelSearchEngine {
 
   findHotels(filters = new Map(), sort, offset = 0, limit = 20) {
     return Promise.resolve(this.hotels)
-      .then((hotels) => this.filter(hotels, filters))
-      .then((hotels) => hotels.slice(offset, limit));
+      .then(hotels => hotels.filter(hotel =>
+        this.matchStarRatingFilter(hotel, filters)
+      ))
+      .then(hotels => hotels.slice(offset, limit));
   }
 
-  filter(hotels, filters) {
-    const starRatings = filters.get('starRatings');
-    return hotels.filter((hotel) =>
-      this.hasTheStarsAligned(hotel, starRatings)
-    );
-  }
-
-  hasTheStarsAligned(hotel, starRatings = new List()) {
+  matchStarRatingFilter(hotel, filters) {
     const rating = Math.floor(hotel.star);
+    const starRatings = filters.get('starRatings');
     return starRatings.isEmpty() || starRatings.getIn([rating.toString(), 'selected']);
   }
 }

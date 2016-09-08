@@ -12,7 +12,8 @@ describe('HotelSearchEngine', () => {
 
   describe('#findHotels', () => {
     it('returns 20 hotels by default', () => {
-      const displayHotelsPromise = engine.findHotels();
+      const filters = fromJS({ starRatings: {} });
+      const displayHotelsPromise = engine.findHotels(filters);
       return displayHotelsPromise.then((hotels) => {
         expect(hotels.length).to.be.eql(20);
       });
