@@ -36,7 +36,7 @@ export const loadMore = () => ({
   type: LOAD_MORE,
 });
 
-export const updateFilters = filters => ({
+export const updateFilters = filter => ({
   type: UPDATE_FILTERS,
-  filters,
+  filter,
 });

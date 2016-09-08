@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import {
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
@@ -9,7 +9,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  filters: {
+  filter: {
     starRatings: {
       5: { selected: true },
       4: { selected: true },
@@ -31,8 +31,8 @@ function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_STAR_RATING_FILTER:
       return state
-        .setIn(['filters', 'starRatings', action.starRating, 'selected'],
-          !state.getIn(['filters', 'starRatings', action.starRating, 'selected']))
+        .setIn(['filter', 'starRatings', action.starRating, 'selected'],
+          !state.getIn(['filter', 'starRatings', action.starRating, 'selected']))
         .set('limit', 20);
     case SORT_HOTELS:
       return state
@@ -50,7 +50,7 @@ function hotelSearchResultReducer(state = initialState, action) {
         .set('loading', true);
     case UPDATE_FILTERS:
       return state
-        .mergeDeep(fromJS({ filters: action.filters }));
+        .mergeDeep(new Map({ filter: action.filter }));
     default:
       return state;
   }

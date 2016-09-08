@@ -4,6 +4,7 @@ import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
 import StarRatingsFilter from '../../../components/StarRatingsFilter';
 import styles from './styles.css';
+import { getFilters } from '../selectors';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
@@ -43,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  filters: state.getIn(['HotelSearchResult', 'filters']),
+  filters: getFilters(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

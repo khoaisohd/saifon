@@ -35,7 +35,7 @@ describe('HotelSearchResult/reducer', () => {
   describe('#toggleStarRatingFilter', () => {
     it('updates star rating filter', () => {
       newState = reducer(state, toggleStarRatingFilter('5'));
-      expect(newState.getIn(['filters', 'starRatings', '5', 'selected'])).to.equal(false);
+      expect(newState.getIn(['filter', 'starRatings', '5', 'selected'])).to.equal(false);
     });
 
     it('resets limit to 20', () => {
@@ -89,23 +89,23 @@ describe('HotelSearchResult/reducer', () => {
 
   describe('#updateFilters', () => {
     it('deeply updates filters', () => {
-      const filters = fromJS({
+      const filter = fromJS({
         minPrice: {
           threshold: 1000,
         },
       });
 
       const state = fromJS({
-        filters: {
+        filter: {
           minPrice: {
             value: 1500,
           },
         },
       });
-      newState = reducer(state, updateFilters(filters));
+      newState = reducer(state, updateFilters(filter));
 
-      expect(newState.getIn(['filters', 'minPrice', 'threshold'])).to.equal(1000);
-      expect(newState.getIn(['filters', 'minPrice', 'value'])).to.equal(1500);
+      expect(newState.getIn(['filter', 'minPrice', 'threshold'])).to.equal(1000);
+      expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(1500);
     });
   });
 });
