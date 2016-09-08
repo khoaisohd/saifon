@@ -6,7 +6,7 @@ import {
   toggleStarRatingFilter,
   loadMore,
   displayHotels,
-  updateFilters,
+  updateFilter,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -87,7 +87,7 @@ describe('HotelSearchResult/reducer', () => {
     });
   });
 
-  describe('#updateFilters', () => {
+  describe('#updateFilter', () => {
     it('deeply updates filters', () => {
       const filter = fromJS({
         minPrice: {
@@ -102,7 +102,7 @@ describe('HotelSearchResult/reducer', () => {
           },
         },
       });
-      newState = reducer(state, updateFilters(filter));
+      newState = reducer(state, updateFilter(filter));
 
       expect(newState.getIn(['filter', 'minPrice', 'threshold'])).to.equal(1000);
       expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(1500);
