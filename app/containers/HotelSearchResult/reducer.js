@@ -5,6 +5,7 @@ import {
   DISPLAY_HOTELS,
   FETCH_HOTELS,
   LOAD_MORE,
+  UPDATE_FILTERS,
 } from './constants';
 
 const initialState = fromJS({
@@ -47,6 +48,9 @@ function hotelSearchResultReducer(state = initialState, action) {
       return state
         .set('limit', state.get('limit') + 20)
         .set('loading', true);
+    case UPDATE_FILTERS:
+      return state
+        .mergeDeep(fromJS({ filters: action.filters }));
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import {
   toggleStarRatingFilter,
   loadMore,
   displayHotels,
+  updateFilters,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -83,6 +84,28 @@ describe('HotelSearchResult/reducer', () => {
     it('increases limit', () => {
       state = reducer(fromJS({ limit: 10 }), loadMore());
       expect(state.get('limit')).to.equal(30);
+    });
+  });
+
+  describe('#updateFilters', () => {
+    it('deeply updates filters', () => {
+      const filters = fromJS({
+        minPrice: {
+          threshold: 1000,
+        },
+      });
+
+      const state = fromJS({
+        filters: {
+          minPrice: {
+            value: 1500,
+          },
+        },
+      });
+      newState = reducer(state, updateFilters(filters));
+
+      expect(newState.getIn(['filters', 'minPrice', 'threshold'])).to.equal(1000);
+      expect(newState.getIn(['filters', 'minPrice', 'value'])).to.equal(1500);
     });
   });
 });

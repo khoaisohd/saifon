@@ -1,5 +1,13 @@
 {
     "completed": true,
+    "filters": {
+      "minPrice": {
+        "threshold": 100
+      },
+      "maxPrice": {
+        "threshold": 999
+      }
+    },
     "hotels": [
         {
             "address": "1 Eng Hoon Street",
