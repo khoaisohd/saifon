@@ -1,4 +1,4 @@
-import ApiCaller from './ApiCaller';
+import ApiCaller from './Caller';
 
 const apiCaller = new ApiCaller();
 
