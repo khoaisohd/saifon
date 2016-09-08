@@ -1,5 +1,5 @@
-import Api from './Api';
-import { Map } from 'immutable';
+import Api from 'sdk/Api';
+import filterHotels from './filterHotels';
 
 class HotelSearchEngine {
   constructor() {
@@ -22,18 +22,10 @@ class HotelSearchEngine {
     });
   }
 
-  findHotels(filters = new Map(), sort, offset = 0, limit = 20) {
+  findHotels(filters, sort, offset, limit) {
     return Promise.resolve(this.hotels)
-      .then(hotels => hotels.filter(hotel =>
-        this.matchStarRatingFilter(hotel, filters)
-      ))
+      .then(hotels => filterHotels(hotels, filters))
       .then(hotels => hotels.slice(offset, limit));
-  }
-
-  matchStarRatingFilter(hotel, filters) {
-    const rating = Math.floor(hotel.star);
-    const starRatings = filters.get('starRatings');
-    return starRatings.isEmpty() || starRatings.getIn([rating.toString(), 'selected']);
   }
 }
 
