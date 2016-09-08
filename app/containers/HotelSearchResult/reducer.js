@@ -17,6 +17,12 @@ const initialState = fromJS({
       2: { selected: true },
       1: { selected: true },
     },
+    minPrice: {
+      value: 0,
+    },
+    maxPrice: {
+      value: 10000,
+    },
   },
   sort: {
     column: 'PRICE',
