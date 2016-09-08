@@ -22,9 +22,9 @@ class HotelSearchEngine {
     });
   }
 
-  findHotels(filters, sort, offset, limit) {
+  findHotels(filter, sort, offset, limit) {
     return Promise.resolve(this.hotels)
-      .then(hotels => filterHotels(hotels, filters))
+      .then(hotels => filterHotels(hotels, filter))
       .then(hotels => hotels.slice(offset, limit));
   }
 }
