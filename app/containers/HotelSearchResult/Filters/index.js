@@ -4,7 +4,7 @@ import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
 import StarRatingsFilter from '../../../components/StarRatingsFilter';
 import styles from './styles.css';
-import { getFilters } from '../selectors';
+import { getFilter } from '../selectors';
 
 class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
@@ -12,7 +12,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    const { filters, toggleStarRatingFilter } = this.props;
+    const { filter, toggleStarRatingFilter } = this.props;
     return (
       <div>
         <div className={styles.toolbar}>
@@ -21,7 +21,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
         </div>
         <div className={appStyles.containerBody}>
           <StarRatingsFilter
-            starRatings={filters.get('starRatings')}
+            starRatings={filter.get('starRatings')}
             toggleStarRatingFilter={toggleStarRatingFilter.bind(this)}
           />
           <button onClick={this.handleApplyClick.bind(this)}>Apply</button>
@@ -32,7 +32,7 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
 }
 
 Filters.propTypes = {
-  filters: PropTypes.object.isRequired,
+  filter: PropTypes.object.isRequired,
 };
 
 Filters.contextTypes = {
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  filters: getFilters(state),
+  filter: getFilter(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);

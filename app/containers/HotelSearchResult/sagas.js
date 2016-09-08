@@ -4,12 +4,12 @@ import { fromJS } from 'immutable';
 import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, LOAD_MORE } from './constants';
 import { displayHotels, findHotels } from './actions';
 import { getHotelSearchEngine } from 'sdk/HotelSearchEngine';
-import { getFilters, getSort, getOffset, getLimit } from './selectors';
+import { getFilter, getSort, getOffset, getLimit } from './selectors';
 
 export function* handleFindHotelsRequest() {
   const engine = getHotelSearchEngine();
   const hotels = yield call(engine.findHotels.bind(engine),
-    yield select(getFilters),
+    yield select(getFilter),
     yield select(getSort),
     yield select(getOffset),
     yield select(getLimit)
