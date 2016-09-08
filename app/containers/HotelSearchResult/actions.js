@@ -5,7 +5,7 @@ import {
   FETCH_HOTELS,
   FIND_HOTELS,
   LOAD_MORE,
-  UPDATE_FILTERS,
+  UPDATE_FILTER,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -37,6 +37,6 @@ export const loadMore = () => ({
 });
 
 export const updateFilters = filter => ({
-  type: UPDATE_FILTERS,
+  type: UPDATE_FILTER,
   filter,
 });

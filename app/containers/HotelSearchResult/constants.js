@@ -4,4 +4,4 @@ export const TOGGLE_STAR_RATING_FILTER = 'HotelSearchResult/TOGGLE_STAR_RATING_F
 export const FETCH_HOTELS = 'HotelSearchResult/FETCH_HOTELS';
 export const FIND_HOTELS = 'HotelSearchResult/FIND_HOTELS';
 export const LOAD_MORE = 'HotelSearchResult/LOAD_MORE';
-export const UPDATE_FILTERS = 'HotelSearchResult/UPDATE_FILTERS';
+export const UPDATE_FILTER = 'HotelSearchResult/UPDATE_FILTER';
