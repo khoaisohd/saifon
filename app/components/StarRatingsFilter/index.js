@@ -4,25 +4,18 @@ import CheckboxFilter from '../CheckboxFilter';
 
 const StarRatingsFilter = (props) => {
   const { stars, toggleStarRatingFilter } = props;
+  const values = ['5', '4', '3', '2', '1'];
   return (
     <div>
-      <div>
-        <CheckboxFilter checked={stars.getIn(['5', 'selected'])} onClick={() => toggleStarRatingFilter('5')} >
-          <StarRating value={5} />
-        </CheckboxFilter>
-      </div>
-
-      <CheckboxFilter checked={stars.getIn(['4', 'selected'])} onClick={() => toggleStarRatingFilter('4')}>
-        <StarRating value={4} />
-      </CheckboxFilter>
-
-      <CheckboxFilter checked={stars.getIn(['3', 'selected'])} onClick={() => toggleStarRatingFilter('3')}>
-        <StarRating value={3} />
-      </CheckboxFilter>
-
-      <CheckboxFilter checked={stars.getIn(['2', 'selected'])} onClick={() => toggleStarRatingFilter('2')}>
-        <StarRating value={2} />
-      </CheckboxFilter>
+      {
+        values.map(id =>
+          <div>
+            <CheckboxFilter checked={stars.getIn([id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} >
+              <StarRating value={id} />
+            </CheckboxFilter>
+          </div>
+        )
+      }
     </div>
   );
 };
