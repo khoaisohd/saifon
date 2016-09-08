@@ -15,6 +15,7 @@ const initialState = fromJS({
       4: { selected: true },
       3: { selected: true },
       2: { selected: true },
+      1: { selected: true },
     },
   },
   sort: {

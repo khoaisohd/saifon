@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
-import StarRatingsFilter from '../../../components/StarRatingsFilter';
+import StarFilter from 'components/StarFilter';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 
@@ -20,7 +20,7 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
           <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div className={appStyles.containerBody}>
-          <StarRatingsFilter
+          <StarFilter
             stars={filter.get('stars')}
             toggleStarRatingFilter={toggleStarRatingFilter.bind(this)}
           />

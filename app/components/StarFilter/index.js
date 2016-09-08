@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import StarRating from '../StarRating';
 import CheckboxFilter from '../CheckboxFilter';
 
-const StarRatingsFilter = (props) => {
+const StarFilter = (props) => {
   const { stars, toggleStarRatingFilter } = props;
   const values = ['5', '4', '3', '2', '1'];
   return (
@@ -20,9 +20,9 @@ const StarRatingsFilter = (props) => {
   );
 };
 
-StarRatingsFilter.propTypes = {
+StarFilter.propTypes = {
   stars: PropTypes.object.isRequired,
   toggleStarRatingFilter: PropTypes.func.isRequired,
 };
 
-export default StarRatingsFilter;
+export default StarFilter;
