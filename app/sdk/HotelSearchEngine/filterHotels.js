@@ -9,10 +9,17 @@ export const filterByMinPrice = (hotel, filter) => {
   return hotelPrice > minPrice;
 };
 
+export const filterByMaxPrice = (hotel, filter) => {
+  const maxPrice = filter.getIn(['maxPrice', 'value']);
+  const hotelPrice = hotel.cheapestRate.price.amount;
+  return hotelPrice < maxPrice;
+};
+
 const filterHotels = (hotels, filter) => {  // eslint-disable-line arrow-body-style
   return hotels.filter(hotel =>
     filterByStarRating(hotel, filter) &&
-    filterByMinPrice(hotel, filter)
+    filterByMinPrice(hotel, filter) &&
+    filterByMaxPrice(hotel, filter)
   );
 };
 
