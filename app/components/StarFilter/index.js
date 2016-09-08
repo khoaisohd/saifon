@@ -9,9 +9,9 @@ const StarFilter = (props) => {
     <div>
       {
         values.map(id =>
-          <div>
+          <div key={id}>
             <CheckboxFilter checked={stars.getIn([id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} >
-              <StarRating value={id} />
+              <StarRating value={parseInt(id)} />
             </CheckboxFilter>
           </div>
         )
