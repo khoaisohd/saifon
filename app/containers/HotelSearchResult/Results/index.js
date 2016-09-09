@@ -16,6 +16,10 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
   }
 
+  selectSort(e) {
+    console.log('sort', e.target.value);
+  }
+
   render() {
     const { searchParams, isLoading, loadMore, displayedHotels } = this.props;
     const { locationCode, checkIn, checkOut } = searchParams;
@@ -32,10 +36,23 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
           </div>
         </div>
         <div className={styles.buttonRow}>
-          <button className={styles.sortButton}>
-            Sort
-            <i className={styles.dropDownIcon}></i>
-          </button>
+          <div className={styles.sortButton}>
+            <span className={styles.sortLabel}>
+              Sort
+              <i className={styles.dropDownIcon}></i>
+            </span>
+            <span>
+              <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
+                <option value={'PRICE:DESC'}>Lowest Price</option>
+                <option value={'PRICE:ASC'}>Highest Price</option>
+                <option value={'REVIEWS:DESC'}>Best reviews</option>
+                <option value={'POPULAR:DESC'}>Popular</option>
+                <option value={'STAR:ASC'}>Stars 1 - 5</option>
+                <option value={'STAR:DESC'}>Stars 5 - 1</option>
+              </select>
+            </span>
+
+          </div>
           <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/overlay/filter`}>
             Filter
             <i className={styles.filterIcon}></i>

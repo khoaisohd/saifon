@@ -19,7 +19,7 @@ const initialState = fromJS({
     },
   },
   sort: {
-    column: 'PRICE',
+    property: 'PRICE',
     order: 'ASC',
   },
   displayedHotels: [],
