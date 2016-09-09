@@ -3,12 +3,13 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
-import { fetchHotels, loadMore } from '../actions';
+import { fetchHotels, loadMore, sortHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import { getDisplayedHotels, getSort, isLoading } from '../selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
+import { fromJS } from 'immutable';
 
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -17,7 +18,8 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   selectSort(e) {
-    console.log('sort', e.target.value);
+    const sortBy = e.target.value.split(':');
+    this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
 
   render() {
@@ -43,8 +45,8 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             </span>
             <span>
               <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
-                <option value={'PRICE:DESC'}>Lowest Price</option>
-                <option value={'PRICE:ASC'}>Highest Price</option>
+                <option value={'PRICE:ASC'}>Lowest Price</option>
+                <option value={'PRICE:DESC'}>Highest Price</option>
                 <option value={'REVIEWS:DESC'}>Best reviews</option>
                 <option value={'POPULAR:DESC'}>Popular</option>
                 <option value={'STAR:ASC'}>Stars 1 - 5</option>
@@ -93,6 +95,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchHotels: search => dispatch(fetchHotels(search)),
   loadMore: () => dispatch(loadMore()),
+  sortHotels: sortData => dispatch(sortHotels(sortData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

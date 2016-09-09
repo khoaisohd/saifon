@@ -9,9 +9,9 @@ const propertyGetter = (property) => {
   switch (property) {
     case 'PRICE':
       return getCheapestAmount;
-    case 'REVIEW_SCORE':
+    case 'REVIEWS':
       return getReviewScore;
-    case 'STAR_RATING':
+    case 'STAR':
       return getStarRating;
     default:
       return getCheapestAmount;
