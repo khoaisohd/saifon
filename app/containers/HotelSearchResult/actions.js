@@ -6,6 +6,7 @@ import {
   FIND_HOTELS,
   LOAD_MORE,
   UPDATE_FILTER,
+  FILTER_BY_PRICE,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -39,4 +40,10 @@ export const loadMore = () => ({
 export const updateFilter = filter => ({
   type: UPDATE_FILTER,
   filter,
+});
+
+export const filterByPrice = (minPrice, maxPrice) => ({
+  type: FILTER_BY_PRICE,
+  minPrice,
+  maxPrice,
 });

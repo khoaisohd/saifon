@@ -7,6 +7,7 @@ import {
   loadMore,
   displayHotels,
   updateFilter,
+  filterByPrice,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -106,6 +107,14 @@ describe('HotelSearchResult/reducer', () => {
 
       expect(newState.getIn(['filter', 'minPrice', 'threshold'])).to.equal(1000);
       expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(1500);
+    });
+  });
+
+  describe('#filterByPrice', () => {
+    it('updates min price value and max price value', () => {
+      newState = reducer(state, filterByPrice(100, 1000));
+      expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(100);
+      expect(newState.getIn(['filter', 'maxPrice', 'value'])).to.equal(1000);
     });
   });
 });

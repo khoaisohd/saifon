@@ -1,4 +1,4 @@
-import { filterByStarRating } from '../filterHotels';
+import { filterByStarRating, filterByMinPrice, filterByMaxPrice } from '../filterHotels';
 import { fromJS } from 'immutable';
 
 describe('filterHotels', () => {
@@ -25,6 +25,74 @@ describe('filterHotels', () => {
         },
       });
       expect(filterByStarRating(hotel, filter)).to.equal(false);
+    });
+  });
+
+  describe('#filterByMinPrice', () => {
+    it('returns true for hotel that is more expensive than the filter value', () => {
+      const hotel = {
+        cheapestRate: {
+          price: {
+            amount: 100,
+          },
+        },
+      };
+      const filter = fromJS({
+        minPrice: {
+          value: 70,
+        },
+      });
+      expect(filterByMinPrice(hotel, filter)).to.equal(true);
+    });
+
+    it('returns false for hotel that is cheaper than the filter value', () => {
+      const hotel = {
+        cheapestRate: {
+          price: {
+            amount: 100,
+          },
+        },
+      };
+      const filter = fromJS({
+        minPrice: {
+          value: 120,
+        },
+      });
+      expect(filterByMinPrice(hotel, filter)).to.equal(false);
+    });
+  });
+
+  describe('#filterByMaxPrice', () => {
+    it('returns false for hotel that is more expensive than the filter value', () => {
+      const hotel = {
+        cheapestRate: {
+          price: {
+            amount: 100,
+          },
+        },
+      };
+      const filter = fromJS({
+        maxPrice: {
+          value: 70,
+        },
+      });
+      expect(filterByMaxPrice(hotel, filter)).to.equal(false);
+    });
+
+    it('returns true for hotel that is cheaper than the filter value', () => {
+      const hotel = {
+        cheapestRate: {
+          price: {
+            amount: 100,
+          },
+        },
+      };
+      const filter = fromJS({
+        maxPrice: {
+          value: 120,
+        },
+      });
+      expect(filterByMaxPrice(hotel, filter)).to.equal(true);
     });
   });
 });
