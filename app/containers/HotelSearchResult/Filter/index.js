@@ -2,16 +2,17 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter } from '../actions';
 import appStyles from 'containers/App/styles.css';
-import StarRatingsFilter from '../../../components/StarRatingsFilter';
+import StarFilter from 'components/StarFilter';
 import styles from './styles.css';
+import { getFilter } from '../selectors';
 
-class Filters extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Filter extends React.Component { // eslint-disable-line react/prefer-stateless-function
   handleApplyClick() {
     this.context.router.goBack();
   }
 
   render() {
-    const { filters, toggleStarRatingFilter } = this.props;
+    const { filter, toggleStarRatingFilter } = this.props;
     return (
       <div>
         <div className={styles.toolbar}>
@@ -19,8 +20,8 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
           <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
         <div className={appStyles.containerBody}>
-          <StarRatingsFilter
-            starRatings={filters.get('starRatings')}
+          <StarFilter
+            stars={filter.get('stars')}
             toggleStarRatingFilter={toggleStarRatingFilter.bind(this)}
           />
           <button onClick={this.handleApplyClick.bind(this)}>Apply</button>
@@ -30,11 +31,11 @@ class Filters extends React.Component { // eslint-disable-line react/prefer-stat
   }
 }
 
-Filters.propTypes = {
-  filters: PropTypes.object.isRequired,
+Filter.propTypes = {
+  filter: PropTypes.object.isRequired,
 };
 
-Filters.contextTypes = {
+Filter.contextTypes = {
   router: React.PropTypes.object,
 };
 
@@ -43,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  filters: state.getIn(['HotelSearchResult', 'filters']),
+  filter: getFilter(state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

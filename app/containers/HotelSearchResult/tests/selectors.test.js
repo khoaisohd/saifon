@@ -1,6 +1,6 @@
 import {
   getDisplayedHotels,
-  getFilters,
+  getFilter,
   getSort,
   getOffset,
   getLimit,
@@ -21,13 +21,13 @@ describe('HotelSearchResult/selectors', () => {
     });
   });
 
-  describe('#getFilters', () => {
-    it('gets filters', () => {
-      const filters = { xxx: 'xxx' };
+  describe('#getFilter', () => {
+    it('gets filter', () => {
+      const filter = { xxx: 'xxx' };
       const state = fromJS({
-        HotelSearchResult: { filters },
+        HotelSearchResult: { filter },
       });
-      expect(getFilters(state).toJS()).to.deep.equal(filters);
+      expect(getFilter(state).toJS()).to.deep.equal(filter);
     });
   });
 

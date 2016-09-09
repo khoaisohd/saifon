@@ -30,6 +30,8 @@ export default function createRoutes(store) {
 
         importModules.then(([component]) => {
           renderRoute(component);
+          System.import('containers/HotelSearchForm/reducer');
+          System.import('containers/HotelSearchForm');
         });
 
         importModules.catch(errorLoading);
@@ -49,6 +51,9 @@ export default function createRoutes(store) {
         importModules.then(([reducer, component]) => {
           injectReducer('HotelSearchForm', reducer.default);
           renderRoute(component);
+          System.import('containers/HotelSearchResult/reducer');
+          System.import('containers/HotelSearchResult/sagas');
+          System.import('containers/HotelSearchResult');
         });
 
         importModules.catch(errorLoading);
@@ -112,10 +117,19 @@ export default function createRoutes(store) {
       },
       childRoutes: [
         {
-          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filters`,
-          name: 'hotel-search-result-filters',
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filter`,
+          name: 'hotel-search-result-filter',
           getComponent(nextState, cb) {
-            System.import('containers/HotelSearchResult/Filters')
+            System.import('containers/HotelSearchResult/Filter')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+        {
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/hotels/:hotelId`,
+          name: 'hotel-search-result-hotel-details',
+          getComponent(nextState, cb) {
+            System.import('containers/HotelSearchResult/HotelDetails')
               .then(loadModule(cb))
               .catch(errorLoading);
           },
