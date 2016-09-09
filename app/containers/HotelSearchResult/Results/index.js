@@ -3,17 +3,23 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
-import { fetchHotels, loadMore } from '../actions';
+import { fetchHotels, loadMore, sortHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
 import { getDisplayedHotels, getSort, isLoading } from '../selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
+import { fromJS } from 'immutable';
 
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = this.props.searchParams;
     this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
+  }
+
+  selectSort(e) {
+    const sortBy = e.target.value.split(':');
+    this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
 
   render() {
@@ -32,10 +38,23 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
           </div>
         </div>
         <div className={styles.buttonRow}>
-          <button className={styles.sortButton}>
-            Sort
-            <i className={styles.dropDownIcon}></i>
-          </button>
+          <div className={styles.sortButton}>
+            <span className={styles.sortLabel}>
+              Sort
+              <i className={styles.dropDownIcon}></i>
+            </span>
+            <span>
+              <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
+                <option value={'PRICE:ASC'}>Lowest Price</option>
+                <option value={'PRICE:DESC'}>Highest Price</option>
+                <option value={'REVIEWS:DESC'}>Best reviews</option>
+                <option value={'POPULAR:DESC'}>Popular</option>
+                <option value={'STAR:ASC'}>Stars 1 - 5</option>
+                <option value={'STAR:DESC'}>Stars 5 - 1</option>
+              </select>
+            </span>
+
+          </div>
           <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/overlay/filter`}>
             Filter
             <i className={styles.filterIcon}></i>
@@ -76,6 +95,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchHotels: search => dispatch(fetchHotels(search)),
   loadMore: () => dispatch(loadMore()),
+  sortHotels: sortData => dispatch(sortHotels(sortData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);
