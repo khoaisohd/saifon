@@ -5,7 +5,7 @@
         "threshold": 100
       },
       "maxPrice": {
-        "threshold": 999
+        "threshold": 1000
       }
     },
     "hotels": [

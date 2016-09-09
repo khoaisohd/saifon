@@ -6,6 +6,7 @@ import {
   FETCH_HOTELS,
   LOAD_MORE,
   UPDATE_FILTER,
+  FILTER_BY_PRICE,
 } from './constants';
 
 const initialState = fromJS({
@@ -58,6 +59,10 @@ function hotelSearchResultReducer(state = initialState, action) {
     case UPDATE_FILTER:
       return state
         .mergeDeep(new Map({ filter: action.filter }));
+    case FILTER_BY_PRICE:
+      return state
+        .setIn(['filter', 'minPrice', 'value'], action.minPrice)
+        .setIn(['filter', 'maxPrice', 'value'], action.maxPrice);
     default:
       return state;
   }
