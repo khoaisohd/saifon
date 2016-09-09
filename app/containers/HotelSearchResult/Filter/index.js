@@ -33,10 +33,15 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
           filters
           <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
         </div>
-        <div className={appStyles.containerBody}>
-          Price
-          <div className={styles.inputRange}>
-            <span>{this.state.minPriceValue}</span> -> <span>{this.state.maxPriceValue}</span>
+        <div>
+          <div className={styles.filterSubTitle}>
+            Price
+          </div>
+          <div className={styles.priceFilter}>
+            <div className={styles.priceLabels}>
+              <span className={styles.minPriceLabel}>S$ {this.state.minPriceValue}</span>
+              <span className={styles.maxPriceLabel}>S$ {this.state.maxPriceValue}</span>
+            </div>
             <ReactSlider
               withBars value={[this.state.minPriceValue, this.state.maxPriceValue]}
               step={5}
@@ -47,8 +52,10 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
             />
           </div>
 
-          Star
-          <div>
+          <div className={styles.filterSubTitle}>
+            Star
+          </div>
+          <div className={styles.starFilter}>
             {
               STARS.map(id =>
                 <div key={id}>
