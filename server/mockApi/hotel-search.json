@@ -2,7 +2,7 @@
     "completed": true,
     "filter": {
         "maxPrice": {
-            "threshold": 999
+            "threshold": 1000
         },
         "minPrice": {
             "threshold": 100

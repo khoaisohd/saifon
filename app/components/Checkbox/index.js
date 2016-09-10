@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './index.css';
 
-class CheckboxFilter extends Component {
+class Checkbox extends Component {
 
   handleClick() {
     this.props.onClick();
@@ -23,9 +23,9 @@ class CheckboxFilter extends Component {
   }
 }
 
-CheckboxFilter.propTypes = {
+Checkbox.propTypes = {
   checked: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
-export default CheckboxFilter;
+export default Checkbox;
