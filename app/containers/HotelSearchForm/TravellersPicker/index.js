@@ -49,7 +49,6 @@ class TravellersPicker extends React.Component {
               )
             }
             </select>
-            <i className={styles.roomDropDownIcon}></i>
             <div className={styles.stepper}>
               <Stepper
                 onIncrease={() => updateRoomsCount(roomsCount + 1)}
@@ -69,7 +68,6 @@ class TravellersPicker extends React.Component {
                 )
               }
             </select>
-            <i className={styles.guestDropDownIcon}></i>
             <div className={styles.stepper}>
               <Stepper
                 className={styles.stepper}
