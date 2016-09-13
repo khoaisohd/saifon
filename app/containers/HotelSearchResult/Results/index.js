@@ -105,6 +105,8 @@ Results.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   fetchHotels: PropTypes.func.isRequired,
+  loadMore: PropTypes.func.isRequired,
+  sortHotels: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasNoResult: PropTypes.bool.isRequired,
   canLoadMore: PropTypes.bool.isRequired,
