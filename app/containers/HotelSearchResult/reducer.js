@@ -44,6 +44,8 @@ function hotelSearchResultReducer(state = initialState, action) {
         .set('limit', 20);
     case SORT_HOTELS:
       return state
+        .set('displayedHotels', fromJS([]))
+        .set('loading', true)
         .set('sort', action.sort)
         .set('limit', 20);
     case DISPLAY_HOTELS:
