@@ -2,7 +2,6 @@ import { fromJS, Map } from 'immutable';
 import {
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
-  DISPLAY_HOTELS,
   FETCH_HOTELS,
   LOAD_MORE,
   UPDATE_FILTER,
@@ -51,10 +50,6 @@ function hotelSearchResultReducer(state = initialState, action) {
         .set('loading', true)
         .set('sort', action.sort)
         .set('limit', 20);
-    case DISPLAY_HOTELS:
-      return state
-        .set('displayedHotels', action.hotels)
-        .set('loading', false);
     case FETCH_HOTELS:
       return initialState;
     case LOAD_MORE:

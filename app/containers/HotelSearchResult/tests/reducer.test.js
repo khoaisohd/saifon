@@ -5,7 +5,6 @@ import {
   fetchHotels,
   toggleStarRatingFilter,
   loadMore,
-  displayHotels,
   updateFilter,
   filterByPrice,
   displayResult,
@@ -43,19 +42,6 @@ describe('HotelSearchResult/reducer', () => {
     it('resets limit to 20', () => {
       state = reducer(fromJS({ limit: 50 }), toggleStarRatingFilter('5'));
       expect(state.get('limit')).to.equal(20);
-    });
-  });
-
-  describe('#displayHotels', () => {
-    it('updates displayed hotels', () => {
-      const addedHotels = fromJS([{ id: 'x' }, { id: 'y' }]);
-      newState = reducer(state, displayHotels(addedHotels));
-      expect(newState.get('displayedHotels').toJS()).to.deep.equal(addedHotels.toJS());
-    });
-
-    it('sets loading to false', () => {
-      newState = reducer(state, displayHotels([]));
-      expect(newState.get('loading')).to.equal(false);
     });
   });
 

@@ -1,5 +1,4 @@
 import {
-  DISPLAY_HOTELS,
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
   FETCH_HOTELS,
@@ -18,11 +17,6 @@ export const sortHotels = sort => ({
 export const toggleStarRatingFilter = (starRating) => ({
   type: TOGGLE_STAR_RATING_FILTER,
   starRating,
-});
-
-export const displayHotels = hotels => ({
-  type: DISPLAY_HOTELS,
-  hotels,
 });
 
 export const fetchHotels = search => ({
