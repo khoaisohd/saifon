@@ -17,7 +17,7 @@ const initialState = () => fromJS({
     name: 'Singapore',
   },
   checkIn: moment().format(DATE_FORMAT),
-  checkOut: moment().day(3).format(DATE_FORMAT),
+  checkOut: moment().add(3, 'day').format(DATE_FORMAT),
   roomsCount: 1,
   guestsCount: 2,
   checkOutSelected: false,
