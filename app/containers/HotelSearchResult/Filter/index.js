@@ -5,7 +5,6 @@ import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 import ReactSlider from 'react-slider';
-import Checkbox from 'components/Checkbox';
 import StarRating from 'components/StarRating';
 
 const STARS = ['5', '4', '3', '2', '1'];
@@ -58,11 +57,10 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
           <div className={styles.starFilter}>
             {
               STARS.map(id =>
-                <div key={id}>
-                  <Checkbox checked={filter.getIn(['stars', id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} >
-                    <StarRating value={parseInt(id)} />
-                  </Checkbox>
-                </div>
+                <label key={id} className={styles.checkboxContainer}>
+                  <input className={styles.checkboxInput} type="checkbox" checked={filter.getIn(['stars', id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} />
+                  <StarRating value={parseInt(id)} />
+                </label>
               )
             }
           </div>

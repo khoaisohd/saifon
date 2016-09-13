@@ -45,6 +45,19 @@
   color: #999;
 }
 
+.checkboxContainer {
+  display: flex;
+  position: relative;
+  padding: 10px;
+}
+
+.checkboxInput {
+  position: absolute;
+  transform: scale(1.8);
+  right: 15px;
+  top: 15px;
+}
+
 /* React input range */
 :global(.slider .horizontal-slider) {
   width: 100%;
