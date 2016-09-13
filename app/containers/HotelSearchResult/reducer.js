@@ -20,9 +20,11 @@ const initialState = fromJS({
     },
     minPrice: {
       value: 0,
+      threshold: 0,
     },
     maxPrice: {
       value: 10000,
+      threshold: 10000,
     },
   },
   sort: {
