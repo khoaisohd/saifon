@@ -7,6 +7,7 @@ import {
   LOAD_MORE,
   UPDATE_FILTER,
   FILTER_BY_PRICE,
+  DISPLAY_RESULT,
 } from './constants';
 
 const initialState = fromJS({
@@ -30,6 +31,8 @@ const initialState = fromJS({
     order: 'ASC',
   },
   displayedHotels: [],
+  hasNoResult: false,
+  canLoadMore: true,
   offset: 0,
   limit: 20,
   loading: true,
@@ -64,7 +67,14 @@ function hotelSearchResultReducer(state = initialState, action) {
     case FILTER_BY_PRICE:
       return state
         .setIn(['filter', 'minPrice', 'value'], action.minPrice)
-        .setIn(['filter', 'maxPrice', 'value'], action.maxPrice);
+        .setIn(['filter', 'maxPrice', 'value'], action.maxPrice)
+        .set('limit', 20);
+    case DISPLAY_RESULT:
+      return state
+        .set('displayedHotels', action.hotels)
+        .set('hasNoResult', action.hasNoResult)
+        .set('canLoadMore', action.canLoadMore)
+        .set('loading', false);
     default:
       return state;
   }

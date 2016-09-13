@@ -7,6 +7,7 @@ import {
   LOAD_MORE,
   UPDATE_FILTER,
   FILTER_BY_PRICE,
+  DISPLAY_RESULT,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -46,4 +47,11 @@ export const filterByPrice = (minPrice, maxPrice) => ({
   type: FILTER_BY_PRICE,
   minPrice,
   maxPrice,
+});
+
+export const displayResult = (hotels, hasNoResult, canLoadMore) => ({
+  type: DISPLAY_RESULT,
+  hotels,
+  hasNoResult,
+  canLoadMore,
 });

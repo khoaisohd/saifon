@@ -8,6 +8,7 @@ import {
   displayHotels,
   updateFilter,
   filterByPrice,
+  displayResult,
 } from '../actions';
 
 describe('HotelSearchResult/reducer', () => {
@@ -21,7 +22,7 @@ describe('HotelSearchResult/reducer', () => {
   describe('#initialState', () => {
     describe('sort', () => {
       it('sorts by lowest price', () => {
-        expect(state.getIn(['sort', 'column'])).to.equal('PRICE');
+        expect(state.getIn(['sort', 'property'])).to.equal('PRICE');
         expect(state.getIn(['sort', 'order'])).to.equal('ASC');
       });
     });
@@ -115,6 +116,20 @@ describe('HotelSearchResult/reducer', () => {
       newState = reducer(state, filterByPrice(100, 1000));
       expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(100);
       expect(newState.getIn(['filter', 'maxPrice', 'value'])).to.equal(1000);
+    });
+
+    it('resets limit to 20', () => {
+      state = reducer(fromJS({ limit: 50 }), filterByPrice(100, 1000));
+      expect(state.get('limit')).to.equal(20);
+    });
+  });
+
+  describe('#displayResult', () => {
+    it('updates result', () => {
+      newState = reducer(state, displayResult([{ id: 1 }], true, false));
+      expect(newState.get('displayedHotels')).to.deep.equal([{ id: 1 }]);
+      expect(newState.get('hasNoResult')).to.equal(true);
+      expect(newState.get('canLoadMore')).to.equal(false);
     });
   });
 });
