@@ -1,5 +1,4 @@
 import {
-  DISPLAY_HOTELS,
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
   FETCH_HOTELS,
@@ -7,6 +6,7 @@ import {
   LOAD_MORE,
   UPDATE_FILTER,
   FILTER_BY_PRICE,
+  DISPLAY_RESULT,
 } from './constants';
 
 export const sortHotels = sort => ({
@@ -17,11 +17,6 @@ export const sortHotels = sort => ({
 export const toggleStarRatingFilter = (starRating) => ({
   type: TOGGLE_STAR_RATING_FILTER,
   starRating,
-});
-
-export const displayHotels = hotels => ({
-  type: DISPLAY_HOTELS,
-  hotels,
 });
 
 export const fetchHotels = search => ({
@@ -46,4 +41,11 @@ export const filterByPrice = (minPrice, maxPrice) => ({
   type: FILTER_BY_PRICE,
   minPrice,
   maxPrice,
+});
+
+export const displayResult = (hotels, hasNoResult, canLoadMore) => ({
+  type: DISPLAY_RESULT,
+  hotels,
+  hasNoResult,
+  canLoadMore,
 });

@@ -2,19 +2,23 @@ import { call, put, select, take, actionChannel } from 'redux-saga/effects';
 import { takeLatest, delay, buffers } from 'redux-saga';
 import { fromJS } from 'immutable';
 import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, LOAD_MORE, FILTER_BY_PRICE } from './constants';
-import { displayHotels, findHotels, updateFilter } from './actions';
+import { findHotels, updateFilter, displayResult } from './actions';
 import { getHotelSearchEngine } from 'sdk/HotelSearchEngine';
 import { getFilter, getSort, getOffset, getLimit } from './selectors';
 
 export function* handleFindHotelsRequest() {
   const engine = getHotelSearchEngine();
-  const hotels = yield call(engine.findHotels.bind(engine),
-    yield select(getFilter),
-    yield select(getSort),
-    yield select(getOffset),
-    yield select(getLimit)
-  );
-  yield put(displayHotels(fromJS(hotels)));
+  const filter = yield select(getFilter);
+  const sort = yield select(getSort);
+  const offset = yield select(getOffset);
+  const limit = yield select(getLimit);
+
+  const hotels = yield call(engine.findHotels.bind(engine), filter, sort);
+  yield put(displayResult(
+    fromJS(hotels.slice(offset, limit)),
+    hotels.length === 0,
+    hotels.length > limit
+  ));
 }
 
 export function* handleFetchHotelsRequest({ search }) {

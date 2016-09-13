@@ -6,7 +6,7 @@ import styles from './styles.css';
 import { fetchHotels, loadMore, sortHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
 import HotelCard from 'components/HotelCard';
-import { getDisplayedHotels, getSort, isLoading } from '../selectors';
+import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from '../selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
 import { fromJS } from 'immutable';
@@ -22,12 +22,47 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
 
-  render() {
-    const { searchParams, isLoading, loadMore, displayedHotels } = this.props;
-    const { locationCode, checkIn, checkOut } = searchParams;
+  renderEmptyResult() {
+    return (
+      <div className={styles.noResultContainer}>
+        No results match filters
+      </div>
+    );
+  }
+
+  renderPresentResult() {
+    const { displayedHotels, canLoadMore, isLoading, loadMore, searchParams } = this.props;
+    let button;
+    if (isLoading) {
+      button = <button className={styles.footerButton} disabled> Loading... </button>;
+    } else if (canLoadMore) {
+      button = <button className={styles.footerButton} onClick={() => loadMore()}>Load More</button>;
+    } else {
+      button = '';
+    }
 
     return (
       <div>
+        <div>{
+          displayedHotels.map(hotel =>
+            <HotelCard
+              key={hotel.get('id')}
+              hotel={hotel}
+              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
+            />
+          )
+        }</div>
+        { button }
+      </div>
+    );
+  }
+
+  render() {
+    const { searchParams, hasNoResult } = this.props;
+    const { locationCode, checkIn, checkOut } = searchParams;
+
+    return (
+      <div className={styles.resultContainer}>
         <div className={appStyles.toolbar}>
           <i className={appStyles.backButton} onClick={this.context.router.goBack} />
           <div>
@@ -60,16 +95,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             <i className={styles.filterIcon}></i>
           </Link>
         </div>
-        <div>{
-          displayedHotels.map(hotel =>
-            <HotelCard
-              key={hotel.get('id')}
-              hotel={hotel}
-              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
-            />
-          )
-        }</div>
-        <button disabled={isLoading} className={styles.loadMoreButton} onClick={() => loadMore()}>{isLoading ? 'Loading...' : 'Load More'}</button>
+        { hasNoResult ? this.renderEmptyResult() : this.renderPresentResult() }
       </div>
     );
   }
@@ -79,7 +105,11 @@ Results.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   fetchHotels: PropTypes.func.isRequired,
+  loadMore: PropTypes.func.isRequired,
+  sortHotels: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  hasNoResult: PropTypes.bool.isRequired,
+  canLoadMore: PropTypes.bool.isRequired,
 };
 
 Results.contextTypes = {
@@ -90,6 +120,8 @@ const mapStateToProps = state => ({
   displayedHotels: getDisplayedHotels(state),
   sort: getSort(state),
   isLoading: isLoading(state),
+  hasNoResult: hasNoResult(state),
+  canLoadMore: canLoadMore(state),
 });
 
 const mapDispatchToProps = dispatch => ({

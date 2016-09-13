@@ -1,3 +1,7 @@
+.resultContainer {
+  margin-bottom: 50px;
+}
+
 .locationCode {
   font-weight: bold;
   font-size: 14px;
@@ -42,10 +46,9 @@
   margin-left: 5px;
 }
 
-.loadMoreButton {
+.footerButton {
   padding: 10px;
   margin-top: 15px;
-  margin-bottom: 50px;
   text-align: center;
   width: 100%;
   background: #FF9800;
@@ -67,4 +70,10 @@
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+.noResultContainer {
+  text-align: center;
+  margin-top: 20px;
+  color: #8b8b8e;
 }
