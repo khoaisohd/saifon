@@ -17,7 +17,7 @@
   - [Modal](advanced/modal.md)
   - [Anti Redux](advanced/anti-redux.md)
   - [Asynchronous](advanced/async.md)
-  - [Greenkeeper](advanced/greekeeper.md)
+  - [Greenkeeper](advanced/greenkeeper.md)
 
 ## Overview
 
