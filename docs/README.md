@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [General]
+- General
   - [App Structure](general/app-structure.md)
   - [Routing](general/routing.md)
   - [Application State Management](general/app-state.md)
@@ -10,7 +10,7 @@
   - [Development](general/development.md)
   - [Testing](general/testing.md)
   - [Deployment](general/deployment.md)
-- [Advanced]
+- Advanced
   - [Asset Management](advanced/asset-management.md)
   - [Webpack Bundling](advanced/webpack.md)
   - [CSS modules](advanced/css-modules.md)
