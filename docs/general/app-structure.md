@@ -9,18 +9,18 @@ Smart components are put under `app/containers`
 ## Business oriented over technical oriented structure
 Instead of having `reducers`, `constants`, `actions`, `sagas` as repos  
 ```
-    reducers  
-        HotelSearchFormReducer.js  
-        HotelSearchResultReducer.js  
-    constants  
-        HotelSearchFormConstants.js  
-        HotelSearchResultConstants.js  
-    actions  
-        HotelSearchFormActions.js  
-        HotelSearchResultActions.js  
-    sagas  
-        HotelSearchFormSagas.js  
-        HotelSearchResultSagas.js  
+|--reducers  
+ |--HotelSearchFormReducer.js  
+ |--HotelSearchResultReducer.js  
+|--constants  
+ |--HotelSearchFormConstants.js  
+ |--HotelSearchResultConstants.js  
+|--actions  
+ |--HotelSearchFormActions.js  
+ |--HotelSearchResultActions.js  
+|--sagas  
+ |--HotelSearchFormSagas.js  
+ |--HotelSearchResultSagas.js  
 ```  
 
 Each smart component has its own `reducer`, `constants`, `actions`  
