@@ -2,7 +2,7 @@
 ## Application code
 The `app/` directory contains entire application code, including CSS, Javascript, HTML and tests  
   
-## Flat component structure  
+## React component structure  
 Dummy components are put under `app/components`  
 Smart components are put under `app/containers`  
 ```
