@@ -18,7 +18,7 @@ containers
   HotelSearchResult
   NotFoundPage
 ```  
-Sub smart components are put under their parent smart components.
+Sub smart components are put under their parent smart components
 ```
 containers
   HotelSearchForm
