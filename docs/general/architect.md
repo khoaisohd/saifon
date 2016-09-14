@@ -28,7 +28,7 @@ containers
 ```
 
 ## Business oriented over technical oriented structure
-Instead of having `reducers`, `constants`, `actions`, `sagas` as repos  
+Instead of having `reducers`, `constants`, `actions`, `sagas` repos  
 ```
 reducers  
   HotelSearchFormReducer.js  
