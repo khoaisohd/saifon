@@ -36,7 +36,7 @@ sagas
   HotelSearchResultSagas.js  
 ```  
 
-Each smart component has its own `reducer`, `constants`, `actions` files  
+Each smart component has its own `reducer`, `constants`, `actions`, `sagas` files  
 ```
 HotelSearchForm  
   index.js  
