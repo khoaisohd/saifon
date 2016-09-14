@@ -18,6 +18,15 @@ containers
   HotelSearchResult
   NotFoundPage
 ```  
+Sub smart components are put under their parent smart components.
+```
+containers
+  HotelSearchForm
+    CheckInPicker
+    CheckOutPicker
+    LocationPicker
+    TravellersPicker
+```
 
 ## Business oriented over technical oriented structure
 Instead of having `reducers`, `constants`, `actions`, `sagas` as repos  
