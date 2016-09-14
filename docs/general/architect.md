@@ -1,4 +1,4 @@
-# App Structure
+# Architect
 ## Application code
 The `app/` directory contains entire application code, including CSS, Javascript, HTML and tests  
   
