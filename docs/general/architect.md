@@ -1,5 +1,5 @@
 # Architect
-The `app/` directory contains entire application code, including CSS, Javascript, HTML and tests  
+The `app/` directory contains entire application code including CSS, Javascript, HTML and tests  
   
 ## React component structure  
 Dummy components are put under `app/components`  
