@@ -18,6 +18,3 @@
   - [Anti Redux](advanced/anti-redux.md)
   - [Asynchronous](advanced/async.md)
   - [Greenkeeper](advanced/greenkeeper.md)
-
-## Overview
-We chose Express for our Web Server for our ReactJs Application.
