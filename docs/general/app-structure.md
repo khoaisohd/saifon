@@ -5,6 +5,19 @@ The `app/` directory contains entire application code, including CSS, Javascript
 ## Flatten Component Structure  
 Dummy components are put under `app/components`  
 Smart components are put under `app/containers`  
+```
+components  
+  HotelCard
+  DatePicker
+  StarRating
+  Stepper
+containers  
+  App
+  Home
+  HotelSearchForm
+  HotelSearchResult
+  NotFoundPage
+```  
 
 ## Business oriented over technical oriented structure
 Instead of having `reducers`, `constants`, `actions`, `sagas` as repos  
