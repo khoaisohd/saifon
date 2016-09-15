@@ -1,6 +1,6 @@
 # Asset Management
 
-Webpack is our savior
+Webpack is awesome
 
 ## Dynamic Routing - Lazy Loading
 
