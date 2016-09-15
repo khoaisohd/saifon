@@ -3,7 +3,7 @@
 
 `sdk/Api/index.js` is the place we declare our Api
     
-```
+```JS
 {
   searchHotels: search => apiCaller.post('/api/hotel/search', { search }),
 
