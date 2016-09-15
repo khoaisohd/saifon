@@ -3,14 +3,14 @@
 part of that state. `react-router-state` takes care of synchronizing the location of our application with the application state.
 
 ## Usage
-This is what a standard route looks like for a container:
+This is what a standard route looks like for a `HotelSearchForm` container:
 ```JS
 {
-  path: '/',
-  name: 'home',
+  path: '/hotels',
+  name: 'hotel-search-form',
   getComponent(nextState, cb) {
     const importModules = Promise.all([
-      System.import('containers/HomePage')
+      System.import('containers/HotelSearchForm')
     ]);
 
     const renderRoute = loadModule(cb);
@@ -25,6 +25,45 @@ This is what a standard route looks like for a container:
 ```
 
 ## Child routes
+We can add child routes if you need them, that is how we add `check-in-picker` child route for `hotel-search-form` route;
+```JS
+{
+  path: '/hotels',
+  name: 'hotel-search-form',
+  getComponent(nextState, cb) {
+    const importModules = Promise.all([
+      System.import('containers/HotelSearchForm')
+    ]);
+
+    const renderRoute = loadModule(cb);
+
+    importModules.then(([component]) => {
+      renderRoute(component);
+    });
+
+    importModules.catch(errorLoading);
+  },
+  childRoutes: [
+    {
+      path: '/hotels/check-in-picker',
+      name: 'hotel-search-form-check-in-picker',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/HotelSearchForm/CheckInPicker'),
+        ]);
+  
+        const renderRoute = loadModule(cb);
+  
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+  
+        importModules.catch(errorLoading);
+      },
+    },
+  ]
+}
+```
 
 
 ## Dynamic routes
