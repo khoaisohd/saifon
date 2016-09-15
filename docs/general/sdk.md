@@ -2,7 +2,7 @@
 SDK should be as simple as possible  
 
 ```
-The more computation backend does, the simpler SDK is
+The less computation, the simpler
 ```
 
 ## API
