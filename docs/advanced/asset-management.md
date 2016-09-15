@@ -47,17 +47,17 @@ Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchRes
 [
 ```
 
-## Asset grouping
+## Resource grouping
 Problem
 
 ``` 
 We have different dynamic routes for `hotel-search-form` and `hotel-search-form-check-in`
 
 Inside `hotel-search-form`, how do we navigate to `check-in` in without loading 
-`containers/HotelSearchForm/CheckInPicker` assets?
+`containers/HotelSearchForm/CheckInPicker` resource?
 ```
 
-Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` assets, 
+Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource, 
 if in `containers/HotelSearchForm/index.js` you include
 
 ```JS
@@ -73,7 +73,7 @@ Lol, we are going against `lazy loading`
   How do we make Lazy Loading hard working?
 ```
 
-With Webpack power, thing become simple, we just preload other page assets after rendering the current page
+With Webpack power, thing become simple, we just preload other pages resources after rendering the current page
 ```JS
 importModules.then(([component]) => {
   renderRoute(component);
