@@ -8,7 +8,7 @@ Freedom lies in being bold
 1. Integration
 
 ## Mock Api Server
-This is an example of creating mock API server
+This is mock API server sample
 ```JS
 const mockApi = app => {
   app.post('/api/hotel/search', (req, res) => res.json(hotelSearch));
