@@ -6,6 +6,16 @@ Visit [CSS Modules](https://github.com/css-modules/css-modules) for more informa
 
 Import and use CSS modules from a JS module
 
+```CSS
+.hotelIcon {
+  display: block;
+  font-size: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  composes: icon-commerical-building from 'styles/wego-icons.css';
+}
+```
+
 ```JS
 import styles from './styles.css';
 
@@ -13,8 +23,8 @@ import styles from './styles.css';
 
 render() {
   return (
-    <div className={styles.container}>
-      <Link className={styles.hotelsButton} to="/hotels">
+    <div>
+      <Link to="/hotels">
         <i className={styles.hotelIcon} />
         Hotels
       </Link>
