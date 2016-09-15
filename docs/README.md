@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - General
-  - [Architect](general/architect.md)
+  - [Code Structure](general/structure.md)
   - [Routing](general/routing.md)
   - [Application State Management](general/app-state.md)
   - [SDK](general/sdk.md)

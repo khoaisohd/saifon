@@ -1,8 +1,8 @@
-# Architect
+# Structure
 The `app/` directory contains entire application code including CSS, Javascript, HTML and tests  
   
-## React component structure  
-Dummy components are put under `app/components`  
+## Dum && Smart Components
+Dum components are put under `app/components`  
 Smart components are put under `app/containers`  
 ```
 components  
