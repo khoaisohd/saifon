@@ -18,7 +18,7 @@ internal
 server
 ```
   
-## Dum && Smart Components
+## React Components - Dum && Smart 
 Dum components are put under `app/components`  
 Smart components are put under `app/containers`  
 ```
@@ -44,7 +44,7 @@ containers
     TravellersPicker
 ```
 
-## Business oriented over technical oriented structure
+## Business oriented over Technical oriented Structure
 Instead of having `reducers`, `constants`, `actions`, `sagas` repos  
 ```
 reducers  
