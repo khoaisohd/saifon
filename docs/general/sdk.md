@@ -7,7 +7,7 @@ The less computation, the simpler
 
 ## API
 
-`sdk/Api/index.js` is the place we declare our API calls
+We declare our API calls in `sdk/Api/index.js`
     
 ```JS
 {
