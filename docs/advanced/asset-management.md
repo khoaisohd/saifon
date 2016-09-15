@@ -62,7 +62,7 @@ Don't worry, if in `containers/HotelSearchForm/index.js`  you include
 import 'containers/HotelSearchForm/CheckInPicker';
 ```
 
-Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource.
+Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource
 
 ## Preloaded resource
 From `hotel-search-form`, users likely navigate to `hotel-search-result`, should we apply `Asset grouping`  
