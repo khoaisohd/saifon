@@ -10,7 +10,7 @@ This is what a standard route looks like for a `HotelSearchForm` container:
   name: 'hotel-search-form',
   getComponent(nextState, cb) {
     const importModules = Promise.all([
-      System.import('containers/HotelSearchForm')
+      System.import('containers/HotelSearchForm'),
     ]);
 
     const renderRoute = loadModule(cb);
