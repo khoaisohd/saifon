@@ -1,5 +1,5 @@
 # Modal
-## Problem
+## Questions
 
 1. In search form, when user open `check-in`, should we display it inside modal?
 1. If we display inside modal, how to close it when user press `browser back button`?
