@@ -26,4 +26,4 @@ In [React Advanced Problem](https://facebook.github.io/react/docs/advanced-perfo
 Immutable-js to the rescue
 ```
 
-If there's a performance problem with ImmutableJs, I think there might be something wrong with the way you design your application state
+If there's a performance problem with ImmutableJs, I think there might be something wrong with the way you use it
