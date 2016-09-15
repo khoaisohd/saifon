@@ -1,5 +1,6 @@
 # Routing via `react-router`
-`react-router` is the standard routing solution for react application.
+`react-router` is the standard routing solution for react application.  
+Check [React router](https://github.com/ReactTraining/react-router) for more information
 
 ## Usage
 This is what a standard route looks like for a container
