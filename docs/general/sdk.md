@@ -20,7 +20,7 @@ We declare our API calls in `sdk/Api/index.js`
 ```    
 
 ## HotelSearchEngine
-Make a request to server then store returned hotels
+Makes a search request then store returned hotels
 ```JS
 poll() {
   return Api.searchHotels(this.search).then(response => {
