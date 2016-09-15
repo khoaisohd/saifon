@@ -72,7 +72,7 @@ Webpack provides `System.import` to load remote assets
 System.import('containers/Post/reducer')
 System.import('containers/Post')
 ```
-That's is how during routing we load and make use of `container, reducer, sagas` assets in `hotel-search-result` route
+In `hotel-search-result` route, that is how  we load and make use of `container, reducer, sagas` assets 
 ```JS
 {
   path: HOTEL_SEARCH_PATH_PATTERN,
