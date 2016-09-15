@@ -12,7 +12,6 @@
   - [Deployment](general/deployment.md)
 - Advanced
   - [Asset Management](advanced/asset-management.md)
-  - [Webpack Bundling](advanced/webpack.md)
   - [CSS modules](advanced/css-modules.md)
   - [Immutable](advanced/immutable.md)
   - [Modal](advanced/modal.md)
