@@ -53,9 +53,7 @@ Problem
 ``` 
 We have different dynamic routes for `hotel-search-form` and `hotel-search-form-check-in`
 
-We want to include `hotel-search-form-check-in` inside `hotel-search-form` 
-
-So that can rendering `check-in` without loading `containers/HotelSearchForm/CheckInPicker` assets
+Inside `hotel-search-form`, how do we navigate to `check-in` in without loading `containers/HotelSearchForm/CheckInPicker` assets?
 ```
 
 Webpack will include `containers/HotelSearchForm/CheckInPicker` 
