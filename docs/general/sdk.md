@@ -12,22 +12,10 @@ SDK should be as minimal as possible
 
   fetchHotelDetails: (search, hotelId) => apiCaller.get('/api/hotel/details', { search, hotelId }),
 }
-
 ```    
+
 ## HotelSearchEngine
-`Singleton` pattern
-```JS
-let instance = null;
-
-export const getHotelSearchEngine = () => {
-  if (instance === null) {
-    instance = new HotelSearchEngine();
-  }
-  return instance;
-};
-```
-
-Polling and storing hotels
+Make a request to server then store returned hotels.
 ```JS
 poll() {
   return Api.searchHotels(this.search).then(response => {
@@ -37,7 +25,7 @@ poll() {
 }
 ```
 
-Find hotels
+When having `hotels`, engine can do filtering and sorting
 ```JS
 findHotels(filters = new Map(), sort) {
   return Promise.resolve(this.hotels)
