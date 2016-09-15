@@ -3,7 +3,7 @@ Freedom lies in being bold
 
 ## Process
 1. API discussion and documentation
-1. Create a mock API server for front-end
+1. Create a mock API server for frontend
 1. Frontend and backend are developed in parallel according to API documentation
 1. Integration
 
