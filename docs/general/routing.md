@@ -97,4 +97,3 @@ In `hotel-search-result` route, that is how  we load and make use of `container,
 }
 ```
 
-## Clickable link
