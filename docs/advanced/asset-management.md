@@ -57,8 +57,8 @@ Inside `hotel-search-form`, how do we navigate to `check-in` in without loading
 `containers/HotelSearchForm/CheckInPicker` assets?
 ```
 
-Webpack will include `containers/HotelSearchForm/CheckInPicker` 
-assets into `hotel-search-form` assets , when you put inside `containers/HotelSearchForm` this script 
+Webpack will include `containers/HotelSearchForm/CheckInPicker` assets into `hotel-search-form` assets , 
+if in `containers/HotelSearchForm/index.js` you include
 
 ```JS
 import 'containers/HotelSearchForm/CheckInPicker';
