@@ -55,7 +55,7 @@ We have different dynamic routes for `hotel-search-form` and `hotel-search-form-
 
 We want to include `hotel-search-form-check-in` inside `hotel-search-form` 
 
-So that can rendering `check-in` without loading `  containers/HotelSearchForm/CheckInPicker`
+So that can rendering `check-in` without loading `containers/HotelSearchForm/CheckInPicker` assets
 ```
 
 ## Preloaded resource
