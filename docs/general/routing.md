@@ -3,7 +3,7 @@
 part of that state. `react-router-state` takes care of synchronizing the location of our application with the application state.
 
 ## Usage
-This is what a standard route looks like for a container:
+This is what a standard route looks like for a container
 ```JS
 {
   path: '/hotels',
