@@ -69,13 +69,13 @@ From `hotel-search-form`, users likely navigate to `hotel-search-result`, should
 And if from `hotel-search-form` user can go to `user preference`, should we `group resource` one more time  
 ...    
   
-Lol, we are going against `lazy loading`
+Oh, are we going against `lazy loading`?
 
 ```
   How do we make Lazy Loading hard working?
 ```
 
-With Webpack power, nothing is impossible, we just preload other pages resources after rendering the current page
+The solution is preloading other pages resources after rendering the current page
 ```JS
 importModules.then(([component]) => {
   renderRoute(component);
