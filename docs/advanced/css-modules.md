@@ -1,6 +1,6 @@
 # CSS modules
 
-Visit [CSS Modules](https://github.com/css-modules/css-modules) for more information
+Check out [CSS Modules](https://github.com/css-modules/css-modules) for more information
 
 ## Usage
 

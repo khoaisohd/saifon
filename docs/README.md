@@ -13,7 +13,7 @@
 - Advanced
   - [Asset Management](advanced/asset-management.md)
   - [CSS modules](advanced/css-modules.md)
-  - [Immutable](advanced/immutable.md)
+  - [ImmutableJS](advanced/immutable.md)
   - [Modal](advanced/modal.md)
   - [Anti Redux](advanced/anti-redux.md)
   - [Asynchronous](advanced/async.md)
