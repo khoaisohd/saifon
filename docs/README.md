@@ -5,7 +5,7 @@
 - General
   - [Architect](general/structure.md)
   - [Routing](general/routing.md)
-  - [Application State Management](general/app-state.md)
+  - [App State Management](general/app-state.md)
   - [SDK](general/sdk.md)
   - [Development](general/development.md)
   - [Testing](general/testing.md)
