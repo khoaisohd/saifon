@@ -58,8 +58,8 @@ We want to include `hotel-search-form-check-in` inside `hotel-search-form`
 So that can rendering `check-in` without loading `containers/HotelSearchForm/CheckInPicker` assets
 ```
 
-Put this under `containers/HotelSearchForm`, Webpack will include `containers/HotelSearchForm/CheckInPicker` 
-assets into ``hotel-search-form` assets 
+Webpack will include `containers/HotelSearchForm/CheckInPicker` 
+assets into `hotel-search-form` assets , when you put inside `containers/HotelSearchForm` this script 
 
 ```JS
 import 'containers/HotelSearchForm/CheckInPicker'
