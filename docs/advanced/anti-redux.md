@@ -1,10 +1,7 @@
-# Anti Redux
+# Keep Redux store as minimal as possible
 Too much of anything is bad
 
-# Keep Redux store as minimal as possible
-
-If component can manage it, let it do  
-  
+# If component can manage it, let it do
 Location Picker  
 
 ```JS
