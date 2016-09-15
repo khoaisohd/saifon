@@ -25,7 +25,7 @@ This is what a standard route looks like for a `HotelSearchForm` container:
 ```
 
 ## Child routes
-That is how we add `check-in-picker` child route winthin `hotel-search-form` route
+That is how we add `check-in-picker` child route within `hotel-search-form` route
 ```JS
 {
   path: '/hotels',
