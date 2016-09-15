@@ -2,7 +2,6 @@
 Goal
 ```
 Clean, clear and reliable code base
-
 Reduce development time
 ```
 
