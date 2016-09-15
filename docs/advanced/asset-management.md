@@ -6,7 +6,7 @@ Webpack is our savior
 
 With React Dynamic Router, Webpack compiles asset chucks for each page  
 
-Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchResult` with the following `routes`
+Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchResult` with the following `routes` config
 
 ```JS
 [
