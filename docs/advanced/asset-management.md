@@ -66,7 +66,7 @@ import 'containers/HotelSearchForm/CheckInPicker';
 
 ## Preloaded resource
 From `hotel-search-form`, user are likely go to `hotel-search-result`, should we apply `Asset grouping`  
-And if from `hotel-search-form` user can go to `user preference`, should we apply `Asset grouping` one more time ...
+And if from `hotel-search-form` user can go to `user preference`, should we apply `Asset grouping` one more time ...  
 Lol, we are going against `lazy loading`
 
 ```
