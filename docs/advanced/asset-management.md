@@ -1,6 +1,6 @@
 # Asset Management
 
-Webpack make your life easy
+Webpack is our savior
 
 ## Page resource control
 
