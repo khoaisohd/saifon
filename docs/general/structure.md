@@ -1,5 +1,22 @@
 # Structure
-The `app/` directory contains entire application code including CSS, Javascript, HTML and tests  
+The `app/` directory contains entire application code including CSS, Javascript, HTML and tests 
+```
+app
+  components
+  containers
+  sdk
+  utils
+  app.js
+  reducers.js
+  routes.js
+  store.js
+  index.html
+  
+build
+docs
+internal
+server
+```
   
 ## Dum && Smart Components
 Dum components are put under `app/components`  
