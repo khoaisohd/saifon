@@ -75,7 +75,7 @@ Lol, we are going against `lazy loading`
   How do we make Lazy Loading hard working?
 ```
 
-With Webpack power, thing become simple, we just preload other pages resources after rendering the current page
+With Webpack power, nothing is impossible, we just preload other pages resources after rendering the current page
 ```JS
 importModules.then(([component]) => {
   renderRoute(component);
