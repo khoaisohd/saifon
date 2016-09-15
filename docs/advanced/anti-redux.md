@@ -1,7 +1,8 @@
 # Keep Redux store as minimal as possible
 Too much of anything is bad
 
-# If component can manage it, let it do
+# If component can manage its state, let it do
+
 Location Picker  
 
 ```JS
