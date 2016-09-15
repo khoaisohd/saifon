@@ -56,7 +56,7 @@ We have `hotel-search-form` and `hotel-search-form-check-in` dynamic routes
 So, from `hotel-search-form`, how do we open `check-in` without loading `check-in-page` resource?
 ```
  
-The solution is in `containers/HotelSearchForm/index.js`  you include
+The solution is in `containers/HotelSearchForm/index.js`  we include
 
 ```JS
 import 'containers/HotelSearchForm/CheckInPicker';
