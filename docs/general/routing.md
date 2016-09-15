@@ -67,5 +67,11 @@ That is how we add `check-in-picker` child route within `hotel-search-form` rout
 
 
 ## Dynamic routes
+Webpack provides `System.import` to load remote assets
+```JS
+System.import('containers/Post/reducer')
+System.import('containers/Post')
+```
+
 
 ## Clickable link
