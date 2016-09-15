@@ -56,13 +56,14 @@ We have `hotel-search-form` and `hotel-search-form-check-in` dynamic routes
 So, from `hotel-search-form`, how do we open `check-in` without loading 
 `containers/HotelSearchForm/CheckInPicker` resource?
 ```
-
-Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource, 
-if in `containers/HotelSearchForm/index.js` you include
+ 
+Don't worry, if in `containers/HotelSearchForm/index.js`  you include
 
 ```JS
 import 'containers/HotelSearchForm/CheckInPicker';
 ```
+
+Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource.
 
 ## Preloaded resource
 From `hotel-search-form`, users likely navigate to `hotel-search-result`, should we apply `Asset grouping`  
