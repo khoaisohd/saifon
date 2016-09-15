@@ -1,4 +1,7 @@
 # Deployment
+
+Run the following script in the end of development process
+
 ```
 npm run start:production
 ```
