@@ -53,7 +53,7 @@ Problem
 ``` 
 We have `hotel-search-form` and `hotel-search-form-check-in` dynamic routes
 
-So, from `hotel-search-form`, how do we open `check-in` without loading `hotel-search-form-check-in` resource?
+So, from `hotel-search-form`, how do we open `check-in` without loading `check-in-page` resource?
 ```
  
 Don't worry, if in `containers/HotelSearchForm/index.js`  you include
