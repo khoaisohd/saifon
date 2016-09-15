@@ -16,6 +16,6 @@
   - [CSS modules](advanced/css-modules.md)
   - [ImmutableJS](advanced/immutable.md)
   - [Sub Page](advanced/sub-page.md)
-  - [Anti Redux](advanced/anti-redux.md)
+  - [Redux Warning](advanced/redux-warning.md)
   - [Asynchronous](advanced/async.md)
   - [Greenkeeper](advanced/greenkeeper.md)

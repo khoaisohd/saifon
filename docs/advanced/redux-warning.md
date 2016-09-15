@@ -1,9 +1,10 @@
-# Keep Redux store as minimal as possible
-Too much of anything is bad
+# Redux Warning
 
-# If component can manage its state, let it do
+## Too much of anything is bad
 
-Location Picker  
+Keep Redux store as minimal as possible, if component can manage its state, let it do  
+  
+Location Picker directly call API and store 
 
 ```JS
 handleInputChange(e) {
