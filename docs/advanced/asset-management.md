@@ -48,7 +48,7 @@ Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchRes
 ```
 
 ## Asset grouping
-Problem:
+Problem
 
 ``` 
 We have different dynamic routes for `hotel-search-form` and `hotel-search-form-check-in`
