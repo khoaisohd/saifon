@@ -2,7 +2,7 @@
 
 Webpack is our savior
 
-## Dynamic Routing + Webpack
+## Dynamic Routing - Lazy Loading
 
 Webpack compiles page asset chunks  
 
