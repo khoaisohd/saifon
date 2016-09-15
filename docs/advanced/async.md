@@ -44,9 +44,9 @@ Filter and sort few millions hotels on a slow phone
 
 findHotels can take few seconds
 
-User keep changing filter that spawn a lot of `findHotels` task 
+User keep changing filter that spawn a lot of `findHotels` tasks
  
-After user finish selecting filter, there're 10 pending findHotels task 
+=> After user finish selecting filter, there're 10 pending findHotels tasks
 ```
   
 Why do we need to run 10 `hotels` task that get the same `sort` and `filter` from store and return the same result  
