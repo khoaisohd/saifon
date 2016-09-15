@@ -65,8 +65,8 @@ import 'containers/HotelSearchForm/CheckInPicker';
 Webpack will bundle `containers/HotelSearchForm/CheckInPicker` into `hotel-search-form` resource
 
 ## Preloaded resource
-From `hotel-search-form`, users likely navigate to `hotel-search-result`, should we apply `Resource grouping`  
-And if from `hotel-search-form` user can go to `user preference`, should we `group resource` one more time  
+From `hotel-search-form`, users likely navigate to `hotel-search-result`, then we apply `resource grouping`  
+And if from `hotel-search-form` user can go to `user preference`, then we `group resource` one more time  
 ...    
   
 Oh, are we going against `lazy loading`?
