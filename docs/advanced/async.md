@@ -5,6 +5,8 @@ Check out the [Official documentation](http://yelouafi.github.io/redux-saga/inde
 
 ## Polling
 
+We use `while loop` to represent our logic, stop when server notify completed
+
 ```JS
 export function* handleFetchHotelsRequest({ search }) {
   let completed = false;
@@ -19,11 +21,35 @@ export function* handleFetchHotelsRequest({ search }) {
 ```
 
 ## Cancel current polling task
+
+`takeLatest` cancel the current `handleFetchHotelsRequest` task and start a new `handleFetchHotelsRequest` task.
+
 ```JS
 yield takeLatest(FETCH_HOTELS, handleFetchHotelsRequest);
 ```
 
-## FindHotels Task channel
+## findHotels task buffer
+
+`findHotels` task is trigger whenever user update filter, sort or server return new hotels ...
+
+```JS
+while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_PRICE])) {
+  yield put(findHotels());
+}
+```
+
+Let's talk about the worse scenario
+```
+we filter and sort few millions hotels on a slow phone
+findHotels can take few seconds
+User keep changing filter that spawn a lot of `findHotels` task  
+So, after user finish selecting filter, there're 10 pending findHotels task 
+```
+  
+Why do we need to run 10 `hotels` task that get the same `sort` and `filter` from store and return the same result  
+  
+We use `actionChannel` to solve our problem, we buffer `findHotels` tasks into an action channel which has maximum length of 1
+
 ```JS
 export function* watchFindHotelsRequest() {
   const requestChan = yield actionChannel(FIND_HOTELS, buffers.sliding(1));
