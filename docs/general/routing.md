@@ -1,6 +1,5 @@
-# Routing via `react-router` and `react-router-redux`
-`React Router` is the standard routing solution for react application. The thing is that with `redux` and `react-router-redux`, the URL is 
-part of that state. `react-router-state` takes care of synchronizing the location of our application with the application state.
+# Routing via `react-router`
+`react-router` is the standard routing solution for react application.
 
 ## Usage
 This is what a standard route looks like for a container
