@@ -6,7 +6,7 @@ Check out the [official documentation](https://facebook.github.io/immutable-js/)
 
 ## Make code base simple and reliable
 
-1. Less defensive programming
+1. Less defensive code
 1. Enable advanced memoization and change detection with simple logic
 
 ## Empower React-Redux
