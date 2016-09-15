@@ -4,9 +4,9 @@ Webpack is awesome
 
 ## Dynamic Routing - Lazy Loading
 
-Webpack compiles page asset chunks  
+Webpack compiles page asset chunks according to routing config  
 
-Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchResult` with the following `routes` config
+Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchResult`
 
 ```JS
 [
