@@ -1,6 +1,6 @@
 # ImmutableJS
 
-We use ImmutableJs for our application state data structure  
+We use ImmutableJs to represent our Redux state  
 
 Check out the [official documentation](https://facebook.github.io/immutable-js/) for more information
 
