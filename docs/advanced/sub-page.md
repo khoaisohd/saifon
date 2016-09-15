@@ -1,5 +1,5 @@
 # Sub page
-The huge difference between Desktop and Mobile is the screen
+The huge difference between Desktop and Mobile is the `screen`
 
 ## Questions
 
