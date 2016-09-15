@@ -62,7 +62,7 @@ Webpack will include `containers/HotelSearchForm/CheckInPicker`
 assets into `hotel-search-form` assets , when you put inside `containers/HotelSearchForm` this script 
 
 ```JS
-import 'containers/HotelSearchForm/CheckInPicker'
+import 'containers/HotelSearchForm/CheckInPicker';
 ```
 
 ## Preloaded resource
