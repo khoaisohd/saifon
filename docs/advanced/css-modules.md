@@ -4,7 +4,7 @@ Visit [CSS Modules](https://github.com/css-modules/css-modules) for more informa
 
 ## Usage
 
-You can import the CSS modules from a JS module
+Import and use CSS modules from a JS module
 
 ```JS
 import styles from './styles.css';
