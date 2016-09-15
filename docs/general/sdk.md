@@ -1,5 +1,10 @@
 # SDK
-SDK should be as minimal as possible
+SDK should be as simple as possible  
+
+```
+The more computation backend does, the simpler SDK is
+```
+
 ## API
 
 `sdk/Api/index.js` is the place we declare our API calls
