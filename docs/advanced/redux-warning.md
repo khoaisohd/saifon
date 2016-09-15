@@ -4,7 +4,7 @@
 
 Keep Redux store as minimal as possible, if component can manage its state, let it do  
   
-Location Picker directly call API and store 
+Location Picker example
 
 ```JS
 handleInputChange(e) {
@@ -16,7 +16,7 @@ handleInputChange(e) {
 }
 ```
 
-Hotel details page
+Hotel Details example
 
 ```JS
 constructor(props) {
