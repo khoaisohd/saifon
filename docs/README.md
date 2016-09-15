@@ -15,7 +15,7 @@
   - [Asset Management](advanced/asset-management.md)
   - [CSS modules](advanced/css-modules.md)
   - [ImmutableJS](advanced/immutable.md)
-  - [Modal](advanced/modal.md)
+  - [Sub Page](advanced/sub-page.md)
   - [Anti Redux](advanced/anti-redux.md)
   - [Asynchronous](advanced/async.md)
   - [Greenkeeper](advanced/greenkeeper.md)

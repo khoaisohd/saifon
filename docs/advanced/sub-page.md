@@ -1,4 +1,4 @@
-# Modal
+# Sub page
 ## Questions
 
 1. In search form, when user open `check-in`, should we display it inside modal?
