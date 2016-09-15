@@ -44,7 +44,7 @@ containers
     TravellersPicker
 ```
 
-## Business oriented over Technical oriented Structure
+## Business-oriented over technical-oriented Structure
 Instead of having `reducers`, `constants`, `actions`, `sagas` repos  
 ```
 reducers  
