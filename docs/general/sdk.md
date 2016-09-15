@@ -21,6 +21,7 @@ We declare our API calls in `sdk/Api/index.js`
 
 ## HotelSearchEngine
 Makes a search request then store returned hotels
+
 ```JS
 poll() {
   return Api.searchHotels(this.search).then(response => {
@@ -31,6 +32,7 @@ poll() {
 ```
 
 When having `hotels`, engine can do filtering and sorting
+
 ```JS
 findHotels(filters = new Map(), sort) {
   return Promise.resolve(this.hotels)

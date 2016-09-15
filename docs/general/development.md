@@ -1,5 +1,6 @@
 # Development
 Frontend shouldn't wait for Backend
+
 ```
 Freedom lies in being bold
 ```
@@ -12,6 +13,7 @@ Freedom lies in being bold
 
 ## Mock Api Server
 Sample
+
 ```JS
 const mockApi = app => {
   app.post('/api/hotel/search', (req, res) => res.json(hotelSearch));

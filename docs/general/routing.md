@@ -1,8 +1,11 @@
 # Routing via `react-router`
+
 Read through [React router documentation](https://github.com/ReactTraining/react-router/tree/master/docs) for more information
 
 ## Usage
+
 This is what a standard route looks like for a container
+
 ```JS
 {
   path: '/hotels',
@@ -24,7 +27,9 @@ This is what a standard route looks like for a container
 ```
 
 ## Child routes
+
 That is how we add `check-in-picker` child route within `hotel-search-form` route
+
 ```JS
 {
   path: '/hotels',
@@ -66,12 +71,16 @@ That is how we add `check-in-picker` child route within `hotel-search-form` rout
 
 
 ## Dynamic routes
+
 Webpack provides `System.import` to load remote assets
+
 ```JS
 System.import('containers/Post/reducer')
 System.import('containers/Post')
 ```
+
 In `hotel-search-result` route, that is how  we load and make use of `container, reducer, sagas` assets 
+
 ```JS
 {
   path: HOTEL_SEARCH_PATH_PATTERN,
@@ -95,4 +104,5 @@ In `hotel-search-result` route, that is how  we load and make use of `container,
   }
 }
 ```
+
 

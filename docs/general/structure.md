@@ -1,5 +1,7 @@
 # Architect
-The `app/` directory contains entire application code including CSS, Javascript, HTML and tests 
+
+The `app/` directory contains entire application code including CSS, Javascript, HTML and tests
+ 
 ```
 app
   components
@@ -19,8 +21,10 @@ server
 ```
   
 ## React Components - Dum && Smart 
+
 Dum components are put under `app/components`  
 Smart components are put under `app/containers`  
+
 ```
 components  
   HotelCard
@@ -34,7 +38,9 @@ containers
   HotelSearchResult
   NotFoundPage
 ```  
+
 Sub smart components are put under their parent smart components
+
 ```
 containers
   HotelSearchForm
@@ -45,7 +51,9 @@ containers
 ```
 
 ## Business-oriented over technical-oriented Structure
-Instead of having `reducers`, `constants`, `actions`, `sagas` repos  
+
+Instead of having `reducers`, `constants`, `actions`, `sagas` repos 
+ 
 ```
 reducers  
   HotelSearchFormReducer.js  
@@ -62,6 +70,7 @@ sagas
 ```  
 
 Each smart component has its own `reducer`, `constants`, `actions`, `sagas` files  
+
 ```
 HotelSearchForm  
   index.js  
