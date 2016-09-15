@@ -20,7 +20,8 @@ efficiently determine if our components need to rerender since we know if the
 1. Should we store this kind of data inside Redux state?  
 
 Answer those questions first before removing ImmutableJS  
-In [React Advanced Problem](https://facebook.github.io/react/docs/advanced-performance.html), they mention 
+  
+In [React Advanced Performance](https://facebook.github.io/react/docs/advanced-performance.html), they even mention 
 
 ```
 Immutable-js to the rescue
