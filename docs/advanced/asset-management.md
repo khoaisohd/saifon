@@ -51,9 +51,9 @@ Example: Webpack builds javascript chunks for `HotelSearchForm`, `HotelSearchRes
 Problem
 
 ``` 
-We have different dynamic routes for `hotel-search-form` and `hotel-search-form-check-in`
+We have `hotel-search-form` and `hotel-search-form-check-in` dynamic routes
 
-Inside `hotel-search-form`, how do we navigate to `check-in` in without loading 
+So, from `hotel-search-form`, how do we open `check-in` without loading 
 `containers/HotelSearchForm/CheckInPicker` resource?
 ```
 
