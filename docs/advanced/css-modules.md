@@ -23,9 +23,10 @@ render() {
 }
 ```
 
+## Clean, clear and readable CSS code
+
 CSS modules solve the problem of naming collision, encapsulation and better management of style composition  
   
-Now, css code is clean, clear and readable
 
 ```JSX
 <div>
