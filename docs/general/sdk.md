@@ -1,7 +1,7 @@
 # SDK
 ## API
 
-`sdk/Api/index.js` is the place we declare our Api
+`sdk/Api/index.js` is the place we declare our API calls
     
 ```JS
 {
