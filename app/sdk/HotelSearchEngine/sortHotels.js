@@ -26,7 +26,7 @@ const comparator = sort => {
     if (valA === valB) return 0;
     if (valA === null || valA === undefined) return 1;
     if (valB === null || valB === undefined) return -1;
-    return (valA > valB) === (sort.get('order') === 'ASC') ? 1 : -1;
+    return (valA > valB) === sort.get('order') === 'ASC' ? 1 : -1;
   };
 };
 
