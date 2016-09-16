@@ -21,7 +21,7 @@ export function* handleFetchHotelsRequest({ search }) {
 
 ## Cancel current polling task
 
-`takeLatest` cancel the current `handleFetchHotelsRequest` task and start a new `handleFetchHotelsRequest` task.
+We use `takeLatest` to cancel the current `handleFetchHotelsRequest` task and start a new `handleFetchHotelsRequest` task.
 
 ```JS
 yield takeLatest(FETCH_HOTELS, handleFetchHotelsRequest);
@@ -49,7 +49,7 @@ Changing filter frequently creates a lot of `findHotels` tasks
   
 Do we need to execute 10 `findHotels` tasks that get the same `sort` and `filter` and return the `same result`?
   
-Using `actionChannel`, we buffer `findHotels` tasks into an `action channel` that has maximum length of `1`
+We use `actionChannel` to buffer `findHotels` tasks into an `action channel` that has maximum length of `1`
 
 ```JS
 export function* watchFindHotelsRequest() {
