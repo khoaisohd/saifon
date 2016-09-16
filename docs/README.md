@@ -23,4 +23,4 @@
 
 The philosophy of ReactJS and its community is `simplicity`   
   
-And I believe, `simplicity` will help us to move fast and creat great products
+And I believe, `simplicity` will help us to creat great products
