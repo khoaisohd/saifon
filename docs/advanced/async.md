@@ -5,7 +5,7 @@ Check out the [Official documentation](http://yelouafi.github.io/redux-saga/inde
 
 ## Polling
 
-We use `while loop` to represent our logic, stop when server notify completed
+We use `while loop` to do polling, stop when server notify completed
 
 ```JS
 export function* handleFetchHotelsRequest({ search }) {
