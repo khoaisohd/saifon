@@ -30,7 +30,7 @@ yield takeLatest(FETCH_HOTELS, handleFetchHotelsRequest);
 
 ## findHotels task buffer
 
-`findHotels` task is trigger whenever user update filter, sort or server return new hotels ...
+`findHotels` is triggered whenever users update filter, sort or server returns new hotels ...
 
 ```JS
 while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_PRICE])) {
@@ -38,9 +38,10 @@ while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_
 }
 ```
 
-Let's talk about the worse scenario
+Worse scenario
+
 ```
-Filter and sort few millions hotels on a slow phone
+We have few millions hotels on a slow phone
 
 findHotels can take few seconds
 
