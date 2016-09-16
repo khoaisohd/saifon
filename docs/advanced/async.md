@@ -19,8 +19,6 @@ export function* handleFetchHotelsRequest({ search }) {
 }
 ```
 
-## Cancel current polling task
-
 We use `takeLatest` to cancel the current polling task and start a new polling
 
 ```JS
