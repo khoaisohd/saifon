@@ -47,9 +47,7 @@ Changing filter frequently creates a lot of `findHotels` tasks
   
 Do we need to execute 10 `findHotels` tasks that get the same `sort` and `filter` and return the `same result`?
   
-We use `actionChannel` to buffer `findHotels` tasks into an `action channel` that has maximum length of `1`  
-  
-That means we only execute the last `findHotels` tasks and drop the rest
+The solution is `actionChannel`  
 
 ```JS
 export function* watchFindHotelsRequest() {
@@ -60,3 +58,7 @@ export function* watchFindHotelsRequest() {
   }
 }
 ```
+
+We buffer `findHotels` tasks into an `action channel` that has maximum length of `1`  
+  
+That means we only execute the last `findHotels` tasks and drop the rest
