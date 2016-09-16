@@ -7,7 +7,7 @@ The huge difference between Desktop and Mobile is the `screen`
 1. If we display inside modal, how to close it when user press `browser back button`?
 
 ## Solutions - Sub page
-Instead of showing `check-in` directly, we create a sub page and a route for it.
+We create a sub page and a route for it, users can navigate between `hotel-search-form` and `check-in` page easily
 
 ```JS
 {
