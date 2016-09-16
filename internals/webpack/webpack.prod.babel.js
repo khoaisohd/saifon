@@ -12,9 +12,10 @@ const postcssReporter = require('postcss-reporter');
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
-  entry: [
-    path.join(process.cwd(), 'app/app.js'),
-  ],
+  entry: {
+    app: path.join(process.cwd(), 'app/app.js'),
+    vendor: ['babel-polyfill', 'react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'react-router-scroll'],
+  },
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -42,9 +43,6 @@ module.exports = require('./webpack.base.babel')({
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      children: true,
-      minChunks: 2,
-      async: true,
     }),
 
     // OccurrenceOrderPlugin is needed for long-term caching to work properly.
