@@ -1,11 +1,11 @@
 .toolbar {
-  composes: toolbar from 'components/App/styles.css';
+  composes: toolbar from 'components/shared/styles.css';
   padding-left: 20px;
   text-transform: uppercase;
 }
 
 .cancelIcon {
-  composes: icon-cancel from 'styles/wego-icons.css';
+  composes: icon-cancel from 'components/shared/icons.css';
   position: absolute;
   right: 0;
   top: 0;

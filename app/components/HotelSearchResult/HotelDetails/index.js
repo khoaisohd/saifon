@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles.css';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 import Api from 'sdk/Api';
 import StarRating from 'components/shared/StarRating';
 import moment from 'moment';

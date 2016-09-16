@@ -1,9 +1,9 @@
 .goldStar {
   color: #FCA328;
-  composes: iconStar from 'styles/wego-icons.css';
+  composes: iconStar from 'components/shared/icons.css';
 }
 
 .emptyStar {
   color: #D8D8D8;
-  composes: iconStar from 'styles/wego-icons.css';
+  composes: iconStar from 'components/shared/icons.css';
 }

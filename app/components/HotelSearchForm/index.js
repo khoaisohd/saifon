@@ -7,7 +7,7 @@ import 'components/HotelSearchForm/TravellersPicker';
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
 import { pathToHotelSearch } from 'utils/routes-util';
 import { getCheckIn, getCheckOut, getLocation, getRoomsCount, getGuestsCount } from './selectors';

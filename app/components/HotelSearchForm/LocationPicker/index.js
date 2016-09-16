@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
 import styles from './styles.css';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 import Api from 'sdk/Api';
 
 class LocationPicker extends React.Component {

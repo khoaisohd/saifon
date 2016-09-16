@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter, filterByPrice } from '../actions';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 import ReactSlider from 'react-slider';

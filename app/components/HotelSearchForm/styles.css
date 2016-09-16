@@ -3,7 +3,7 @@
 }
 
 .toolbar {
-  composes: toolbar from 'components/App/styles.css';
+  composes: toolbar from 'components/shared/styles.css';
   text-transform: uppercase;
 }
 

@@ -5,7 +5,7 @@ import { getCheckIn, getCheckOut } from '../selectors';
 import { updateCheckOut } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';
 import styles from './styles.css';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 
 class CheckOutPicker extends React.Component {
   handleChange(checkOut) {

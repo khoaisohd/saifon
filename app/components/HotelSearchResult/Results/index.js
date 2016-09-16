@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
 import { fetchHotels, loadMore, sortHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';

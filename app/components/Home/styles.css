@@ -27,5 +27,5 @@
   font-size: 50px;
   margin-left: 10px;
   margin-top: 10px;
-  composes: icon-commerical-building from 'styles/wego-icons.css';
+  composes: icon-commerical-building from 'components/shared/icons.css';
 }

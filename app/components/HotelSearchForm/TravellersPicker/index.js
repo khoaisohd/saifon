@@ -4,7 +4,7 @@ import { updateRoomsCount, updateGuestsCount } from '../actions';
 import { getRoomsCount, getGuestsCount } from '../selectors';
 import Stepper from 'components/shared/Stepper';
 import styles from './styles.css';
-import appStyles from 'components/App/styles.css';
+import appStyles from 'components/shared/styles.css';
 
 class TravellersPicker extends React.Component {
   getRoomsCountOptions() {

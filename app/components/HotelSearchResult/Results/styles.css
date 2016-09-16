@@ -37,12 +37,12 @@
 }
 
 .dropDownIcon {
-  composes: icon-down-dir from 'styles/wego-icons.css';
+  composes: icon-down-dir from 'components/shared/icons.css';
   margin-left: 5px;
 }
 
 .filterIcon {
-  composes: icon-filter from 'styles/wego-icons.css';
+  composes: icon-filter from 'components/shared/icons.css';
   margin-left: 5px;
 }
 
