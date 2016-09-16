@@ -19,7 +19,7 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import useScroll from 'react-router-scroll';
-import LanguageProvider from 'containers/LanguageProvider';
+import LanguageProvider from 'components/LanguageProvider';
 import configureStore from './store';
 
 // Import i18n messages
@@ -38,13 +38,13 @@ const store = configureStore(initialState, browserHistory);
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
 // must be provided for resolving how to retrieve the "route" in the state
-import { selectLocationState } from 'containers/App/selectors';
+import { selectLocationState } from 'components/App/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: selectLocationState(),
 });
 
 // Set up the router, wrapping all Routes in the App component
-import App from 'containers/App';
+import App from 'components/App';
 import createRoutes from './routes';
 const rootRoute = {
   component: App,

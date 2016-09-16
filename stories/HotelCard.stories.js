@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
-import HotelCard from '../app/components/HotelCard';
+import HotelCard from 'components/HotelSearchResult/HotelCard';
 import { fromJS } from 'immutable';
 
 const fiveStarHotel = fromJS({
