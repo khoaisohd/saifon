@@ -23,7 +23,7 @@ class HotelSearchEngine {
     });
   }
 
-  findHotels(filters = new Map(), sort) {
+  findHotels(filters, sort) {
     return Promise.resolve(this.hotels)
       .then((hotels) => filterHotels(hotels, filters))
       .then((filteredHotels) => sortHotels(filteredHotels, sort));
