@@ -20,8 +20,6 @@
   - [CSS modules](advanced/css-modules.md)
 
 ## Note
-The philosophy of ReactJS, flux architecture is simplicity   
+The philosophy of ReactJS, flux architecture and its community is simplicity   
   
-That philosophy influence the its community to create innovative technologies made developer life simple  
-  
-I believe that if we can make thing simple, have clean and clear code base we can move faster and creat a great product
+I believe that if we have simple, clean and clear code base we can move faster and creat a great product
