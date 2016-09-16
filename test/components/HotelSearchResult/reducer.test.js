@@ -1,4 +1,4 @@
-import reducer from '../reducer';
+import reducer from 'components/HotelSearchResult/reducer';
 import { fromJS } from 'immutable';
 import {
   sortHotels,
@@ -8,7 +8,7 @@ import {
   updateFilter,
   filterByPrice,
   displayResult,
-} from '../actions';
+} from 'components/HotelSearchResult/actions';
 
 describe('HotelSearchResult/reducer', () => {
   let state;

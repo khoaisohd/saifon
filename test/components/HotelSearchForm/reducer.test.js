@@ -1,4 +1,4 @@
-import reducer from '../reducer';
+import reducer from 'components/HotelSearchForm/reducer';
 
 import {
   updateLocation,
@@ -6,7 +6,7 @@ import {
   updateCheckOut,
   updateRoomsCount,
   updateGuestsCount,
-} from '../actions';
+} from 'components/HotelSearchForm/actions';
 import { fromJS } from 'immutable';
 
 describe('HotelSearchForm/reducer', () => {

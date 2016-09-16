@@ -1,4 +1,4 @@
-import { getLaterDate } from '../dates';
+import { getLaterDate } from 'utils/dates';
 
 describe('utils/dates', () => {
   describe('getLaterDate', () => {

@@ -1,4 +1,4 @@
-import { filterByStarRating, filterByMinPrice, filterByMaxPrice } from '../filterHotels';
+import { filterByStarRating, filterByMinPrice, filterByMaxPrice } from 'sdk/HotelSearchEngine/filterHotels';
 import { fromJS } from 'immutable';
 
 describe('filterHotels', () => {

@@ -4,7 +4,7 @@ import {
   getSort,
   getOffset,
   getLimit,
-} from '../selectors';
+} from 'components/HotelSearchResult/selectors';
 import { fromJS } from 'immutable';
 
 describe('HotelSearchResult/selectors', () => {
