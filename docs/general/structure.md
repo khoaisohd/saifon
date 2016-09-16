@@ -5,8 +5,8 @@ The `app/` directory contains entire application code including CSS, Javascript,
 ```
 app
   components
+  helpers
   sdk
-  utils
   app.js
   reducers.js
   routes.js
