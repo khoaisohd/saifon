@@ -13,8 +13,7 @@ export function* handleFetchHotelsRequest({ search }) {
   hotelSearchEngine.setSearch(search);
   while (!completed) {
     const response = yield call(engine.poll.bind(engine));
-    yield put(findHotels());
-    yield put(updateFilter(fromJS(response.filter)));
+    ...
     completed = response.completed;
   }
 }
