@@ -2,7 +2,7 @@
 // They are all wrapped in the App component, which should contain the navbar etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
-import 'containers/Home';
+import 'components/Home';
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 import { HOTEL_SEARCH_PATH_PATTERN } from 'utils/routes-util';
 
@@ -24,15 +24,15 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/Home'),
+          System.import('components/Home'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([component]) => {
           renderRoute(component);
-          System.import('containers/HotelSearchForm/reducer');
-          System.import('containers/HotelSearchForm');
+          System.import('components/HotelSearchForm/reducer');
+          System.import('components/HotelSearchForm');
         });
 
         importModules.catch(errorLoading);
@@ -43,8 +43,8 @@ export default function createRoutes(store) {
       name: 'hotel-search-form',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/HotelSearchForm/reducer'),
-          System.import('containers/HotelSearchForm'),
+          System.import('components/HotelSearchForm/reducer'),
+          System.import('components/HotelSearchForm'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -52,9 +52,9 @@ export default function createRoutes(store) {
         importModules.then(([reducer, component]) => {
           injectReducer('HotelSearchForm', reducer.default);
           renderRoute(component);
-          System.import('containers/HotelSearchResult/reducer');
-          System.import('containers/HotelSearchResult/sagas');
-          System.import('containers/HotelSearchResult');
+          System.import('components/HotelSearchResult/reducer');
+          System.import('components/HotelSearchResult/sagas');
+          System.import('components/HotelSearchResult');
         });
 
         importModules.catch(errorLoading);
@@ -64,7 +64,7 @@ export default function createRoutes(store) {
       path: '/hotels/modal/check-in',
       name: 'hotel-search-form-check-in',
       getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/CheckInPicker')
+        System.import('components/HotelSearchForm/CheckInPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -73,7 +73,7 @@ export default function createRoutes(store) {
       path: '/hotels/modal/check-out',
       name: 'hotel-search-form-check-out',
       getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/CheckOutPicker')
+        System.import('components/HotelSearchForm/CheckOutPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -82,7 +82,7 @@ export default function createRoutes(store) {
       path: '/hotels/modal/location-picker',
       name: 'hotel-search-form-location-picker',
       getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/LocationPicker')
+        System.import('components/HotelSearchForm/LocationPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -91,7 +91,7 @@ export default function createRoutes(store) {
       path: '/hotels/modal/travellers-picker',
       name: 'hotel-search-form-travellers-picker',
       getComponent(nextState, cb) {
-        System.import('containers/HotelSearchForm/TravellersPicker')
+        System.import('components/HotelSearchForm/TravellersPicker')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
@@ -101,9 +101,9 @@ export default function createRoutes(store) {
       name: 'hotel-search-result',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/HotelSearchResult/reducer'),
-          System.import('containers/HotelSearchResult/sagas'),
-          System.import('containers/HotelSearchResult'),
+          System.import('components/HotelSearchResult/reducer'),
+          System.import('components/HotelSearchResult/sagas'),
+          System.import('components/HotelSearchResult'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -121,7 +121,7 @@ export default function createRoutes(store) {
           path: `${HOTEL_SEARCH_PATH_PATTERN}/modal/filter`,
           name: 'hotel-search-result-filter',
           getComponent(nextState, cb) {
-            System.import('containers/HotelSearchResult/Filter')
+            System.import('components/HotelSearchResult/Filter')
               .then(loadModule(cb))
               .catch(errorLoading);
           },
@@ -130,7 +130,7 @@ export default function createRoutes(store) {
           path: `${HOTEL_SEARCH_PATH_PATTERN}/modal/hotels/:hotelId`,
           name: 'hotel-search-result-hotel-details',
           getComponent(nextState, cb) {
-            System.import('containers/HotelSearchResult/HotelDetails')
+            System.import('components/HotelSearchResult/HotelDetails')
               .then(loadModule(cb))
               .catch(errorLoading);
           },
@@ -141,7 +141,7 @@ export default function createRoutes(store) {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
-        System.import('containers/NotFoundPage')
+        System.import('components/NotFoundPage')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
