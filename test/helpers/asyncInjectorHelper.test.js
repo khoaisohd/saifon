@@ -12,7 +12,7 @@ import {
   injectAsyncReducer,
   injectAsyncSagas,
   getAsyncInjectors,
-} from 'helpers/asyncInjectors';
+} from 'helpers/asyncInjectorHelper';
 
 // Fixtures
 
@@ -35,7 +35,7 @@ const sagas = [
   testSaga,
 ];
 
-describe('asyncInjectors', () => {
+describe('asyncInjectorHelper', () => {
   let store;
 
   describe('getAsyncInjectors', () => {

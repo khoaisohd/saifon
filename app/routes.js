@@ -3,7 +3,7 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import 'components/Home';
-import { getAsyncInjectors } from 'helpers/asyncInjectors';
+import { getAsyncInjectors } from 'helpers/asyncInjectorHelper';
 import { HOTEL_SEARCH_PATH_PATTERN } from 'helpers/routeHelper';
 
 const errorLoading = (err) => {

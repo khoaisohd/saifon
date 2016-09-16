@@ -17,7 +17,7 @@ export function checkStore(store) {
   };
   invariant(
     conformsTo(store, shape),
-    '(app/helpers...) asyncInjectors: Expected a valid redux store'
+    '(app/helpers...) asyncInjectorHelper: Expected a valid redux store'
   );
 }
 
