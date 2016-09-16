@@ -9,10 +9,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
-import { pathToHotelSearch } from 'helpers/routes-util';
+import { pathToHotelSearch } from 'helpers/routeHelper';
 import { getCheckIn, getCheckOut, getLocation, getRoomsCount, getGuestsCount } from './selectors';
 import moment from 'moment';
-import { DATE_FORMAT } from 'helpers/dates';
+import { DATE_FORMAT } from 'helpers/dateHelper';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

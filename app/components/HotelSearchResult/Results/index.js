@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
 import { fetchHotels, loadMore, sortHotels } from '../actions';
-import { pathToHotelSearch } from 'helpers/routes-util';
+import { pathToHotelSearch } from 'helpers/routeHelper';
 import HotelCard from '../HotelCard';
 import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from '../selectors';
 import moment from 'moment';
-import { DATE_FORMAT } from 'helpers/dates';
+import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
 
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function

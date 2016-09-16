@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Calendar } from 'components/shared/LegacyDatePicker';
 import { getCheckIn, isCheckOutSelected } from '../selectors';
 import { updateCheckIn } from '../actions';
-import { DATE_FORMAT } from 'helpers/dates';
+import { DATE_FORMAT } from 'helpers/dateHelper';
 import styles from './styles.css';
 import appStyles from 'components/shared/styles.css';
 

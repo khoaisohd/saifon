@@ -4,7 +4,7 @@ import appStyles from 'components/shared/styles.css';
 import Api from 'sdk/Api';
 import StarRating from 'components/shared/StarRating';
 import moment from 'moment';
-import { DATE_FORMAT } from 'helpers/dates';
+import { DATE_FORMAT } from 'helpers/dateHelper';
 import currencies from 'components/shared/Price/currencies';
 
 class HotelDetails extends Component {

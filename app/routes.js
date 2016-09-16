@@ -4,7 +4,7 @@
 // about the code splitting business
 import 'components/Home';
 import { getAsyncInjectors } from 'helpers/asyncInjectors';
-import { HOTEL_SEARCH_PATH_PATTERN } from 'helpers/routes-util';
+import { HOTEL_SEARCH_PATH_PATTERN } from 'helpers/routeHelper';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
