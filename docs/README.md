@@ -22,4 +22,4 @@
 ## Note
 The philosophy of ReactJS, flux architecture and its community is simplicity   
   
-I believe that if we have simple, clean and clear code base we can move faster and creat a great product
+I believe that if we have simple, clean and clear code base we can move fast and creat a great product
