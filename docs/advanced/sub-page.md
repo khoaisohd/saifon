@@ -3,7 +3,7 @@ The huge difference between Desktop and Mobile is the `screen`
 
 ## Questions
 
-1. In `hotel-search-form`, when users open `check-in`, should we display it inside `modal`?
+1. In `hotel-search-form`, should we use `modal` to display `check-in`?
 1. If we display inside modal, how to close it when user press `browser back button`?
 
 ## Solutions - Sub page
