@@ -25,7 +25,7 @@ We use `takeLatest` to cancel the current polling task and start a new polling
 yield takeLatest(FETCH_HOTELS, handleFetchHotelsRequest);
 ```
 
-## findHotels task buffer
+## Buffering findHotels tasks
 
 `findHotels` is triggered whenever users update filter, sort or server returns new hotels ...
 
