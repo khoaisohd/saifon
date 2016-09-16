@@ -17,6 +17,7 @@ build
 docs
 internal
 server
+test
 ```
 
 ## Business-oriented over technical-oriented Structure
