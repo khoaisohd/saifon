@@ -1,9 +1,7 @@
 # Development
 Frontend shouldn't wait for Backend
 
-```
-Freedom lies in being bold
-```
+**Freedom lies in being bold**
 
 ## Process
 1. API discussion and documentation

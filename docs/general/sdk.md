@@ -1,9 +1,7 @@
 # SDK
 SDK should be as simple as possible  
 
-```
-The less computation, the simpler
-```
+**The less computation, the simpler, the better**
 
 ## API
 
@@ -20,7 +18,7 @@ We declare our API calls in `sdk/Api/index.js`
 ```    
 
 ## HotelSearchEngine
-Makes a search request then store returned hotels
+Makes a search request then stores returned hotels
 
 ```JS
 poll() {

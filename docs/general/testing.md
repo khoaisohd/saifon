@@ -1,11 +1,9 @@
 # Testing - Test Driven Development
 
-Goal
+Goals:
 
-```
-Clean, clear and reliable code base
-Reduce development time
-```
+- Clean, clear and reliable code base
+- Reduce development time
 
 TDD works for me and I hope it also works for you. 
-Refer [this](https://github.com/mxstbr/react-boilerplate/tree/master/docs/testing) if you are interested in
+Refer to [this](https://github.com/mxstbr/react-boilerplate/tree/master/docs/testing) if you are interested to know more.
