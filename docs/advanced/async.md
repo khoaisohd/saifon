@@ -47,7 +47,8 @@ After selecting filter, there're 10 pending findHotels tasks
 Do we need to execute 10 findHotels tasks that get the same sort and filter and return the same result?
 ```
   
-The solution is we only execute the last `findHotels` tasks and drop the rest by using `actionChannel`
+By using `actionChannel`, we buffer `findHotels` into a channel and keep its length <= 1  
+In the other words, we only execute the last `findHotels` tasks and drop the rest 
 
 ```JS
 export function* watchFindHotelsRequest() {
