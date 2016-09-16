@@ -3,8 +3,8 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import 'components/Home';
-import { getAsyncInjectors } from 'utils/asyncInjectors';
-import { HOTEL_SEARCH_PATH_PATTERN } from 'utils/routes-util';
+import { getAsyncInjectors } from 'helpers/asyncInjectors';
+import { HOTEL_SEARCH_PATH_PATTERN } from 'helpers/routes-util';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console

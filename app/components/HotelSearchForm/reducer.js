@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { DATE_FORMAT, getLaterDate } from 'utils/dates';
+import { DATE_FORMAT, getLaterDate } from 'helpers/dates';
 
 import {
   UPDATE_LOCATION,

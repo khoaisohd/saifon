@@ -1,6 +1,6 @@
-import { getLaterDate } from 'utils/dates';
+import { getLaterDate } from 'helpers/dates';
 
-describe('utils/dates', () => {
+describe('helpers/dates', () => {
   describe('getLaterDate', () => {
     it('returns the later date', () => {
       expect(getLaterDate('04-11-2006', '15-12-3006', 'DD-MM-YYYY')).to.equal('15-12-3006');

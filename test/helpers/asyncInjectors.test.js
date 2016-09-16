@@ -12,7 +12,7 @@ import {
   injectAsyncReducer,
   injectAsyncSagas,
   getAsyncInjectors,
-} from 'utils/asyncInjectors';
+} from 'helpers/asyncInjectors';
 
 // Fixtures
 

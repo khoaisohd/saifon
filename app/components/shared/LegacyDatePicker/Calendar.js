@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
-import parseInput from './utils/parseInput.js';
+import parseInput from './helpers/parseInput.js';
 import DayCell from './DayCell.js';
 import getTheme, { defaultClasses } from './styles.js';
 

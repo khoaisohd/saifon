@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
-import parseInput from './utils/parseInput.js';
+import parseInput from './helpers/parseInput.js';
 import Calendar from './Calendar.js';
 import PredefinedRanges from './PredefinedRanges.js';
 import getTheme, { defaultClasses } from './styles.js';
