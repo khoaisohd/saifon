@@ -1,4 +1,3 @@
-
 const getCheapestAmount = hotel => hotel.cheapestRate.price.amount;
 
 const getReviewScore = hotel => parseInt(hotel.reviewScore);
