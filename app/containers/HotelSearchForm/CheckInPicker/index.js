@@ -14,7 +14,7 @@ class CheckInPicker extends React.Component {
     if (isCheckOutSelected) {
       this.context.router.goBack();
     } else {
-      this.context.router.replace('/hotels/overlay/check-out');
+      this.context.router.replace('/hotels/modal/check-out');
     }
   }
 

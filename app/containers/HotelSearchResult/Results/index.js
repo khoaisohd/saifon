@@ -48,7 +48,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             <HotelCard
               key={hotel.get('id')}
               hotel={hotel}
-              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/overlay/hotels/${hotel.get('id')}`)}
+              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
             />
           )
         }</div>
@@ -90,7 +90,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             </span>
 
           </div>
-          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/overlay/filter`}>
+          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
             Filter
             <i className={styles.filterIcon}></i>
           </Link>

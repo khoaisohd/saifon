@@ -61,7 +61,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/hotels/overlay/check-in',
+      path: '/hotels/modal/check-in',
       name: 'hotel-search-form-check-in',
       getComponent(nextState, cb) {
         System.import('containers/HotelSearchForm/CheckInPicker')
@@ -70,7 +70,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/hotels/overlay/check-out',
+      path: '/hotels/modal/check-out',
       name: 'hotel-search-form-check-out',
       getComponent(nextState, cb) {
         System.import('containers/HotelSearchForm/CheckOutPicker')
@@ -79,7 +79,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/hotels/overlay/location-picker',
+      path: '/hotels/modal/location-picker',
       name: 'hotel-search-form-location-picker',
       getComponent(nextState, cb) {
         System.import('containers/HotelSearchForm/LocationPicker')
@@ -88,7 +88,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/hotels/overlay/travellers-picker',
+      path: '/hotels/modal/travellers-picker',
       name: 'hotel-search-form-travellers-picker',
       getComponent(nextState, cb) {
         System.import('containers/HotelSearchForm/TravellersPicker')
@@ -118,7 +118,7 @@ export default function createRoutes(store) {
       },
       childRoutes: [
         {
-          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/filter`,
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/modal/filter`,
           name: 'hotel-search-result-filter',
           getComponent(nextState, cb) {
             System.import('containers/HotelSearchResult/Filter')
@@ -127,7 +127,7 @@ export default function createRoutes(store) {
           },
         },
         {
-          path: `${HOTEL_SEARCH_PATH_PATTERN}/overlay/hotels/:hotelId`,
+          path: `${HOTEL_SEARCH_PATH_PATTERN}/modal/hotels/:hotelId`,
           name: 'hotel-search-result-hotel-details',
           getComponent(nextState, cb) {
             System.import('containers/HotelSearchResult/HotelDetails')

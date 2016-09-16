@@ -25,10 +25,10 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
           Hotel Search
         </div>
         <div className={styles.container}>
-          <Link className={styles.link} to="/hotels/overlay/location-picker">{location.get('name')}</Link>
-          <Link className={styles.link} to="/hotels/overlay/check-in">From: {moment(checkIn, DATE_FORMAT).format('MMM DD')}</Link>
-          <Link className={styles.link} to="/hotels/overlay/check-out">To: {moment(checkOut, DATE_FORMAT).format('MMM DD')}</Link>
-          <Link className={styles.link} to="/hotels/overlay/travellers-picker">
+          <Link className={styles.link} to="/hotels/modal/location-picker">{location.get('name')}</Link>
+          <Link className={styles.link} to="/hotels/modal/check-in">From: {moment(checkIn, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/modal/check-out">To: {moment(checkOut, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/modal/travellers-picker">
             {roomsCount} room{roomsCount > 1 ? 's' : ''} - {guestsCount} guest{guestsCount > 1 ? 's' : ''}
           </Link>
           <Link
