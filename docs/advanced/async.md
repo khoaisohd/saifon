@@ -48,7 +48,7 @@ Do we need to execute 10 findHotels tasks that get the same sort and filter and 
 ```
   
 By using `actionChannel`, we buffer `findHotels` into a channel and keep its length <= 1, in the other words, 
-we only execute the last `findHotels` tasks and drop the rest 
+we only execute the last `findHotels` task and drop the rest 
 
 ```JS
 export function* watchFindHotelsRequest() {
