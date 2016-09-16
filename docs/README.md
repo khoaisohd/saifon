@@ -21,6 +21,6 @@
 
 ## Note
 
-The selling point of ReactJS and its community is `simplicity`   
+The philosophy of ReactJS and its community is `simplicity`   
   
 We believe that with a simple clean and clear code base, we always can move fast and creat great products
