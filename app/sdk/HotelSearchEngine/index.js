@@ -30,14 +30,4 @@ class HotelSearchEngine {
   }
 }
 
-let instance = null;
-
-export const getHotelSearchEngine = () => {
-  if (instance === null) {
-    instance = new HotelSearchEngine();
-  }
-  return instance;
-};
-
-
 export default HotelSearchEngine;

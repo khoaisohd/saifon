@@ -3,17 +3,18 @@ import { takeLatest, delay, buffers } from 'redux-saga';
 import { fromJS } from 'immutable';
 import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, LOAD_MORE, FILTER_BY_PRICE } from './constants';
 import { findHotels, updateFilter, displayResult } from './actions';
-import { getHotelSearchEngine } from 'sdk/HotelSearchEngine';
+import HotelSearchEngine from 'sdk/HotelSearchEngine';
 import { getFilter, getSort, getOffset, getLimit } from './selectors';
 
+const hotelSearchEngine = new HotelSearchEngine();
+
 export function* handleFindHotelsRequest() {
-  const engine = getHotelSearchEngine();
   const filter = yield select(getFilter);
   const sort = yield select(getSort);
   const offset = yield select(getOffset);
   const limit = yield select(getLimit);
 
-  const hotels = yield call(engine.findHotels.bind(engine), filter, sort);
+  const hotels = yield call(hotelSearchEngine.findHotels.bind(hotelSearchEngine), filter, sort);
   yield put(displayResult(
     fromJS(hotels.slice(offset, limit)),
     hotels.length === 0,
@@ -23,10 +24,9 @@ export function* handleFindHotelsRequest() {
 
 export function* handleFetchHotelsRequest({ search }) {
   let completed = false;
-  const engine = getHotelSearchEngine();
-  engine.setSearch(search);
+  hotelSearchEngine.setSearch(search);
   while (!completed) {
-    const response = yield call(engine.poll.bind(engine));
+    const response = yield call(hotelSearchEngine.poll.bind(hotelSearchEngine));
     yield put(findHotels());
     yield put(updateFilter(fromJS(response.filter)));
     completed = response.completed;
