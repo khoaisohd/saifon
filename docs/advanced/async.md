@@ -43,14 +43,14 @@ Worse scenario
 ```
 We have few millions hotels on a slow phone
 
-findHotels can take few seconds
+findHotels takes few seconds to complete
 
 User keep changing filter that spawn a lot of `findHotels` tasks
  
 => After user finish selecting filter, there're 10 pending findHotels tasks
 ```
   
-Why do we need to run 10 `hotels` task that get the same `sort` and `filter` and return the same result  
+Do we need to run 10 `hotels` task that get the same `sort` and `filter` and return the `same result`?
   
 We use `actionChannel` to solve our problem, we buffer `findHotels` tasks into an action channel which has maximum length of 1
 
