@@ -23,4 +23,4 @@
 
 The selling point of ReactJS, flux architecture and its community is `simplicity`   
   
-I believe that with a simple, clean and clear code base, we can move fast and creat a great product
+I believe that with a simple clean and clear code base, we can move fast and creat a great product
