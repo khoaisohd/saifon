@@ -5,7 +5,7 @@ import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 import ReactSlider from 'react-slider';
-import StarRating from 'components/StarRating';
+import StarRating from 'containers/shared/StarRating';
 
 const STARS = ['5', '4', '3', '2', '1'];
 

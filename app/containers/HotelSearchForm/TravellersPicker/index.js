@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateRoomsCount, updateGuestsCount } from '../actions';
 import { getRoomsCount, getGuestsCount } from '../selectors';
-import Stepper from 'components/Stepper';
+import Stepper from 'containers/shared/Stepper';
 import styles from './styles.css';
 import appStyles from 'containers/App/styles.css';
 

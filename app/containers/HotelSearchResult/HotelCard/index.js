@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Price from '../Price';
-import StarRating from '../StarRating';
+import Price from 'containers/shared/Price';
+import StarRating from 'containers/shared/StarRating';
 import styles from './index.css';
 
 const HotelCard = (props) => {

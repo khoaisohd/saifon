@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Calendar } from 'components/LegacyDatePicker';
+import { Calendar } from 'containers/shared/LegacyDatePicker';
 import { getCheckIn, isCheckOutSelected } from '../selectors';
 import { updateCheckIn } from '../actions';
 import { DATE_FORMAT } from 'utils/dates';

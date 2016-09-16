@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import styles from './styles.css';
 import appStyles from 'containers/App/styles.css';
 import Api from 'sdk/Api';
-import StarRating from 'components/StarRating';
+import StarRating from 'containers/shared/StarRating';
 import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
-import currencies from 'components/Price/currencies';
+import currencies from 'containers/shared/Price/currencies';
 
 class HotelDetails extends Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import appStyles from 'containers/App/styles.css';
 import styles from './styles.css';
 import { fetchHotels, loadMore, sortHotels } from '../actions';
 import { pathToHotelSearch } from 'utils/routes-util';
-import HotelCard from 'components/HotelCard';
+import HotelCard from '../HotelCard';
 import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from '../selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'utils/dates';
