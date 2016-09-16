@@ -1,5 +1,5 @@
 /*eslint-disable */
-const Currencies = {
+export const CURRENCIES = {
   'AED': {
     'symbol': 'AED',
     'symbolFirst': true,
@@ -284,5 +284,3 @@ const Currencies = {
   },
 };
 /*eslint-enable */
-
-export default Currencies;

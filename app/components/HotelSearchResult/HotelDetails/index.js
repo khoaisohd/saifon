@@ -5,7 +5,7 @@ import Api from 'sdk/Api';
 import StarRating from 'components/shared/StarRating';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
-import currencies from 'components/shared/Price/currencies';
+import { CURRENCIES } from 'helpers/priceHelper';
 
 class HotelDetails extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class HotelDetails extends Component {
     return (
       <div key={rate.id} className={styles.rateContainer}>
         <div>{rate.provider.name}</div>
-        <div className={styles.ratePrice}>{currencies[rate.price.currencyCode].symbol}{rate.price.amount}</div>
+        <div className={styles.ratePrice}>{CURRENCIES[rate.price.currencyCode].symbol}{rate.price.amount}</div>
       </div>
     );
   }

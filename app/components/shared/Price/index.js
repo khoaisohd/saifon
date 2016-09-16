@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import accounting from 'accounting';
-import currencies from './currencies';
+import { CURRENCIES } from 'helpers/priceHelper';
 
 import styles from './index.css';
 
@@ -36,7 +36,7 @@ class Price extends Component {
       symbolFirst,
       thousand,
       lowRate,
-    } = currencies[currencyCode];
+    } = CURRENCIES[currencyCode];
 
     let value = process(amount, symbol, symbolFirst, thousand);
 
@@ -50,7 +50,7 @@ class Price extends Component {
 Price.propTypes = {
   amount: PropTypes.number.isRequired,
   currencyCode: props => {
-    if (!Object.prototype.hasOwnProperty.call(currencies, props.currencyCode)) {
+    if (!Object.prototype.hasOwnProperty.call(CURRENCIES, props.currencyCode)) {
       return new Error(`The currency code ${props.currencyCode} does not exist.`);
     }
   },
