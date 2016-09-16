@@ -5,7 +5,6 @@ The `app/` directory contains entire application code including CSS, Javascript,
 ```
 app
   components
-  containers
   sdk
   utils
   app.js
@@ -18,36 +17,6 @@ build
 docs
 internal
 server
-```
-  
-## React Components - Dumb && Smart 
-
-Dumb components are put under `app/components`  
-Smart components are put under `app/containers`  
-
-```
-components  
-  HotelCard
-  DatePicker
-  StarRating
-  Stepper
-containers  
-  App
-  Home
-  HotelSearchForm
-  HotelSearchResult
-  NotFoundPage
-```  
-
-Sub smart components are put under their parent smart components
-
-```
-containers
-  HotelSearchForm
-    CheckInPicker
-    CheckOutPicker
-    LocationPicker
-    TravellersPicker
 ```
 
 ## Business-oriented over technical-oriented Structure
