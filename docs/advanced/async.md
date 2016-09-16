@@ -41,7 +41,7 @@ while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_
 Worse scenario
 
 ```
-Find Hotels from few millions hotels on a slow phone can takes few seconds
+Finding Hotels from few millions hotels on a slow phone can takes few seconds
 
 Changing filter frequently creates a lot of `findHotels` tasks
  
