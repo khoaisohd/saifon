@@ -41,13 +41,11 @@ while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_
 Worse scenario
 
 ```
-We have few millions hotels on a slow phone
+findHotels from few millions hotels on a slow phone can takes few seconds
 
-findHotels takes few seconds to complete
-
-User keep changing filter that spawn a lot of `findHotels` tasks
+Filter keeps changing and creating new `findHotels` tasks
  
-=> After user finish selecting filter, there're 10 pending findHotels tasks
+=> After selecting filter, there're 10 pending findHotels tasks
 ```
   
 Do we need to run 10 `hotels` task that get the same `sort` and `filter` and return the `same result`?
