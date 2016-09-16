@@ -20,9 +20,9 @@ internal
 server
 ```
   
-## React Components - Dum && Smart 
+## React Components - Dumb && Smart 
 
-Dum components are put under `app/components`  
+Dumb components are put under `app/components`  
 Smart components are put under `app/containers`  
 
 ```
