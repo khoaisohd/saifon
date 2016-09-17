@@ -6,9 +6,7 @@
  * so that <Ink /> can focus on rendering them.
  */
 
-import { getBlotOuterOpacity } from './equations';
-
-let killStale = ({ mouseUp, duration }) => !mouseUp || (Date.now() - mouseUp) < duration
+let killStale = ({ created, duration }) => !created || (Date.now() - created) < duration
 
 export default function(publicize) {
   let blots    = []
@@ -33,16 +31,6 @@ export default function(publicize) {
       cancelAnimationFrame(_frame)
     },
 
-    getTotalOpacity(opacity) {
-      let answer = 0
-
-      for (var i = 0, l = blots.length; i < l; i++) {
-        answer += getBlotOuterOpacity(blots[i], opacity)
-      }
-
-      return answer
-    },
-
     update() {
       blots = blots.filter(killStale)
 
@@ -58,15 +46,6 @@ export default function(publicize) {
       blots.push(props)
       Store.play()
     },
-
-    release(time) {
-      for (let i = blots.length - 1; i >= 0; i--) {
-        if (!blots[i].mouseUp) {
-          return blots[i].mouseUp = time
-        }
-      }
-    }
-
   }
 
   return Store

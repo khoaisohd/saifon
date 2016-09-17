@@ -9,10 +9,9 @@
 import styles from './styles.css';
 import React, { Component, PropTypes } from 'react';
 import Store from './store';
-import { getBlotShiftX, getBlotShiftY, getBlotOpacity, getBlotScale }  from './equations';
+import { getBlotOpacity, getBlotScale }  from './equations';
 
-const TAU = Math.PI * 2;
-const MOUSE_LEFT = 0;
+const TWO_PI = Math.PI * 2;
 const OPACITY = 0.25;
 
 class Ink extends Component {
@@ -34,7 +33,6 @@ class Ink extends Component {
   handleClick(e) {
     this.setupCanvas();
     this.addBlot(e.clientX, e.clientY);
-    setTimeout(() => this._store.release(Date.now()), 1);
     setTimeout(this.props.onClick, this._onClickDuration);
   }
 
@@ -53,7 +51,7 @@ class Ink extends Component {
   tick() {
     let { height, width } = this.state;
 
-    const ctx = this.getContext();
+    const ctx = this.getCanvasContext();
 
     ctx.save()
 
@@ -67,13 +65,13 @@ class Ink extends Component {
   drawBlot(blot) {
     let { x, y, radius } = blot;
 
-    const ctx = this.getContext();
+    const ctx = this.getCanvasContext();
 
     ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
 
     ctx.beginPath();
 
-    ctx.arc(x, y, radius * getBlotScale(blot), 0, TAU);
+    ctx.arc(x, y, radius * getBlotScale(blot), 0, TWO_PI);
 
     ctx.closePath();
     ctx.fill()
@@ -87,8 +85,7 @@ class Ink extends Component {
 
     this._store.add({
       duration  : this.props.duration,
-      mouseDown : Date.now(),
-      mouseUp   : 0,
+      created : Date.now(),
       radius    : Math.max(height, width),
       x         : clientX - left,
       y         : clientY - top
@@ -106,7 +103,7 @@ class Ink extends Component {
     }
   }
 
-  getContext() {
+  getCanvasContext() {
     if (!this._canvasContext) {
       let el = this.refs.canvas
 
