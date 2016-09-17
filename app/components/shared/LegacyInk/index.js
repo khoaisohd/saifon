@@ -47,9 +47,23 @@ class Ink extends Component {
   }
 
   handleClick(e) {
-    this._onPress(e);
+    this.addBlot(e.clientX, e.clientY);
     setTimeout(() => this.state.store.release(Date.now()), 1);
     setTimeout(this.props.onClick, this.state.onClickDuration);
+  }
+
+  render() {
+    const { density, height, width } = this.state;
+
+    return (
+      <canvas
+        className={styles.ink}
+        ref="canvas"
+        height={ height * density }
+        width={ width * density }
+        onClick={this.handleClick.bind(this)}
+      />
+    )
   }
 
   tick() {
@@ -81,26 +95,22 @@ class Ink extends Component {
     ctx.fill()
   }
 
-  addBlot(timeStamp, clientX, clientY) {
-    let el = this.refs.canvas
+  addBlot(clientX, clientY) {
+    let el = this.refs.canvas;
+    let { top, bottom, left, right } = el.getBoundingClientRect();
+    const height = bottom - top;
+    const width = right - left;
 
-    // 0.13 support
-    if (el instanceof window.HTMLCanvasElement === false) {
-      el = el.getDOMNode()
-    }
-
-    let { top, bottom, left, right } = el.getBoundingClientRect()
-    let { color }                    = window.getComputedStyle(el)
-
-    let ctx     = this.state.ctx || el.getContext('2d');
-    let density = pixelRatio(ctx)
-    let height  = bottom - top
-    let width   = right - left
-
-    this.setState({ color, ctx, density, height, width }, () => {
+    this.setState({
+      color: window.getComputedStyle(el),
+      ctx: this.getContext(),
+      density: pixelRatio(this.getContext()),
+      height,
+      width,
+    }, () => {
       this.state.store.add({
         duration  : this.props.duration,
-        mouseDown : timeStamp,
+        mouseDown : Date.now(),
         mouseUp   : 0,
         radius    : Math.max(height, width),
         x         : clientX - left,
@@ -109,32 +119,18 @@ class Ink extends Component {
     })
   }
 
-  render() {
-    const { density, height, width } = this.state;
+  getContext() {
+    if (!this._canvasContext) {
+      let el = this.refs.canvas
 
-    return (
-      <canvas
-        className={styles.ink}
-        ref="canvas"
-        height={ height * density }
-        width={ width * density }
-        onClick={this.handleClick.bind(this)}
-      />
-    )
-  }
-
-  _onPress(e) {
-    let { button, ctrlKey, clientX, clientY, changedTouches } = e;
-    let timeStamp = Date.now()
-
-    if (changedTouches) {
-      for (var i = 0; i < changedTouches.length; i++) {
-        let { clientX, clientY } = changedTouches[i];
-        this.addBlot(timeStamp, clientX, clientY)
+      // 0.13 support
+      if (el instanceof window.HTMLCanvasElement === false) {
+        el = el.getDOMNode()
       }
-    } else if (button === MOUSE_LEFT && !ctrlKey) {
-      this.addBlot(timeStamp, clientX, clientY)
+
+      this._canvasContext = el.getContext('2d');
     }
+    return this._canvasContext;
   }
 }
 
