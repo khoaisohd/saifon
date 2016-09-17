@@ -17,10 +17,8 @@ export default function(publicize) {
 
   let Store = {
 
-    each(callback, scope) {
-      for (var i = 0, l = blots.length; i < l; i++) {
-        callback.call(scope, blots[i])
-      }
+    getBlots() {
+      return blots;
     },
 
     play() {

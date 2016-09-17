@@ -77,7 +77,7 @@ class Ink extends Component {
 
     ctx.fillStyle = color
 
-    store.each(this.drawBlot, this)
+    store.getBlots().forEach(blot => this.drawBlot(blot));
 
     ctx.restore()
   }
@@ -87,11 +87,11 @@ class Ink extends Component {
     let { x, y, radius } = blot;
 
     ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
-    ctx.beginPath()
+    ctx.beginPath();
 
-    ctx.arc(x, y, radius * getBlotScale(blot), 0, TAU)
+    ctx.arc(x, y, radius * getBlotScale(blot), 0, TAU);
 
-    ctx.closePath()
+    ctx.closePath();
     ctx.fill()
   }
 
