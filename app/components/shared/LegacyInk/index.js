@@ -47,6 +47,7 @@ class Ink extends Component {
   }
 
   handleClick(e) {
+    this.setupCanvas();
     this.addBlot(e.clientX, e.clientY);
     setTimeout(() => this.state.store.release(Date.now()), 1);
     setTimeout(this.props.onClick, this.state.onClickDuration);
@@ -67,7 +68,9 @@ class Ink extends Component {
   }
 
   tick() {
-    let { ctx, color, density, height, width, store } = this.state
+    let { density, height, width, store } = this.state;
+
+    const ctx = this.getContext();
 
     ctx.save()
 
@@ -75,7 +78,7 @@ class Ink extends Component {
 
     ctx.clearRect(0, 0, width, height)
 
-    ctx.fillStyle = color
+    ctx.fillStyle = this.getColor();
 
     store.getBlots().forEach(blot => this.drawBlot(blot));
 
@@ -83,10 +86,12 @@ class Ink extends Component {
   }
 
   drawBlot(blot) {
-    let { ctx } = this.state;
     let { x, y, radius } = blot;
 
+    const ctx = this.getContext();
+
     ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
+
     ctx.beginPath();
 
     ctx.arc(x, y, radius * getBlotScale(blot), 0, TAU);
@@ -101,22 +106,26 @@ class Ink extends Component {
     const height = bottom - top;
     const width = right - left;
 
-    this.setState({
-      color: window.getComputedStyle(el),
-      ctx: this.getContext(),
-      density: pixelRatio(this.getContext()),
-      height,
-      width,
-    }, () => {
-      this.state.store.add({
-        duration  : this.props.duration,
-        mouseDown : Date.now(),
-        mouseUp   : 0,
-        radius    : Math.max(height, width),
-        x         : clientX - left,
-        y         : clientY - top
-      })
-    })
+    this.state.store.add({
+      duration  : this.props.duration,
+      mouseDown : Date.now(),
+      mouseUp   : 0,
+      radius    : Math.max(height, width),
+      x         : clientX - left,
+      y         : clientY - top
+    });
+  }
+
+  setupCanvas() {
+    if (!this._setupCanvas) {
+      const { top, bottom, left, right } = this.refs.canvas.getBoundingClientRect();
+      this.setState({
+        density: this.getDensity(),
+        height: bottom - top,
+        width: right - left,
+      });
+      this._setupCanvas = true;
+    }
   }
 
   getContext() {
@@ -131,6 +140,20 @@ class Ink extends Component {
       this._canvasContext = el.getContext('2d');
     }
     return this._canvasContext;
+  }
+
+  getDensity() {
+    if (!this._density) {
+      this._density = pixelRatio(this.getContext());
+    }
+    return this._density;
+  }
+
+  getColor() {
+    if (!this._color) {
+      this._color = window.getComputedStyle(this.refs.canvas);
+    }
+    return this._color;
   }
 }
 
