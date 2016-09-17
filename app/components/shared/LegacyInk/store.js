@@ -6,7 +6,7 @@
  * so that <Ink /> can focus on rendering them.
  */
 
-import Equations from './equations';
+import { getBlotOuterOpacity } from './equations';
 
 let killStale = ({ mouseUp, duration }) => !mouseUp || (Date.now() - mouseUp) < duration
 
@@ -39,7 +39,7 @@ export default function(publicize) {
       let answer = 0
 
       for (var i = 0, l = _data.length; i < l; i++) {
-        answer += Equations.getBlotOuterOpacity(_data[i], opacity)
+        answer += getBlotOuterOpacity(_data[i], opacity)
       }
 
       return answer

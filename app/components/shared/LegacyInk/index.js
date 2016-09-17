@@ -6,15 +6,15 @@
  * events with a rippling pool.
  */
 
-const MOUSE_LEFT = 0;
-import pixelRatio from './util/pixelRatio';
+import pixelRatio from './pixelRatio';
 import styles from './styles.css';
 import React, { Component, PropTypes } from 'react';
-import Store from './util/store';
-let Types      = React.PropTypes
-let TAU        = Math.PI * 2
-import Equations  from './util/equations';
+import Store from './store';
+import { getBlotShiftX, getBlotShiftY, getBlotOpacity, getBlotScale }  from './equations';
 
+const TAU = Math.PI * 2;
+const MOUSE_LEFT = 0;
+const OPACITY = 0.25;
 
 class Ink extends Component {
 
@@ -25,7 +25,8 @@ class Ink extends Component {
       density     : 1,
       height      : 0,
       store       : Store(this.tick.bind(this)),
-      width       : 0
+      width       : 0,
+      onClickDuration: props.duration * 0.3,
     }
   }
 
@@ -41,10 +42,14 @@ class Ink extends Component {
     return false;
   }
 
+  componentWillUnmount() {
+    this.state.store.stop();
+  }
+
   handleClick(e) {
     this._onPress(e);
     setTimeout(() => this.state.store.release(Date.now()), 1);
-    setTimeout(this.props.onClick, 400);
+    setTimeout(this.props.onClick, this.state.onClickDuration);
   }
 
   tick() {
@@ -58,38 +63,22 @@ class Ink extends Component {
 
     ctx.fillStyle = color
 
-    if (this.props.background) {
-      ctx.globalAlpha = store.getTotalOpacity(this.props.opacity)
-      ctx.fillRect(0, 0, width, height)
-    }
-
     store.each(this.makeBlot, this)
 
     ctx.restore()
   }
 
   makeBlot(blot) {
-    let { ctx, height, width } = this.state
-    let { x, y, radius } = blot
+    let { ctx } = this.state;
+    let { x, y, radius } = blot;
 
-    ctx.globalAlpha = Equations.getBlotOpacity(blot, this.props.opacity)
+    ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
     ctx.beginPath()
 
-    if (this.props.recenter) {
-      let size = Math.max(height, width)
-
-      x += Equations.getBlotShiftX(blot, size, width)
-      y += Equations.getBlotShiftY(blot, size, height)
-    }
-
-    ctx.arc(x, y, radius * Equations.getBlotScale(blot), 0, TAU)
+    ctx.arc(x, y, radius * getBlotScale(blot), 0, TAU)
 
     ctx.closePath()
     ctx.fill()
-  }
-
-  componentWillUnmount() {
-    this.state.store.stop()
   }
 
   pushBlot(timeStamp, clientX, clientY) {
@@ -107,14 +96,13 @@ class Ink extends Component {
     let density = pixelRatio(ctx)
     let height  = bottom - top
     let width   = right - left
-    let radius  = Equations.getMaxRadius(height, width, this.props.radius)
 
     this.setState({ color, ctx, density, height, width }, () => {
       this.state.store.add({
         duration  : this.props.duration,
         mouseDown : timeStamp,
         mouseUp   : 0,
-        radius    : radius,
+        radius    : Math.max(height, width),
         x         : clientX - left,
         y         : clientY - top
       })
@@ -136,12 +124,12 @@ class Ink extends Component {
   }
 
   _onPress(e) {
-    let { button, ctrlKey, clientX, clientY, changedTouches } = e
+    let { button, ctrlKey, clientX, clientY, changedTouches } = e;
     let timeStamp = Date.now()
 
     if (changedTouches) {
       for (var i = 0; i < changedTouches.length; i++) {
-        let { clientX, clientY } = changedTouches[i]
+        let { clientX, clientY } = changedTouches[i];
         this.pushBlot(timeStamp, clientX, clientY)
       }
     } else if (button === MOUSE_LEFT && !ctrlKey) {
@@ -151,19 +139,12 @@ class Ink extends Component {
 }
 
 Ink.propTypes = {
-  background : Types.bool,
-  duration   : Types.number,
-  opacity    : Types.number,
-  radius     : Types.number,
-  recenter   : Types.bool,
+  onClick: PropTypes.func.isRequired,
+  duration: PropTypes.number,
 };
 
 Ink.defaultProps = {
-  background : true,
-  duration   : 1000,
-  opacity    : 0.25,
-  radius     : 150,
-  recenter   : true,
+  duration: 1000,
 };
 
 export default Ink;
