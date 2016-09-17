@@ -60,7 +60,7 @@ const Ink = React.createClass({
       }, 1);
       setTimeout(() => {
         this.props.onClick();
-      }, this.props.duration / 3);
+      }, 400);
     };
 
     return {

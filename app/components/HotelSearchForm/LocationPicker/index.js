@@ -5,6 +5,7 @@ import { fromJS } from 'immutable';
 import styles from './styles.css';
 import Api from 'sdk/Api';
 import ModalHeader from 'components/shared/ModalHeader';
+import Ink from 'components/shared/LegacyInk';
 
 class LocationPicker extends React.Component {
   constructor(props) {
@@ -37,7 +38,8 @@ class LocationPicker extends React.Component {
         </div>
         <div>
           {this.state.locations.map(location =>
-            (<div className={styles.location} key={location.code} onClick={() => this.handleSelectLocation(location)}>
+            (<div className={styles.location} key={location.code}>
+              <Ink onClick={() => this.handleSelectLocation(location)} />
               <span className={styles.locationCode}>{location.code}</span>
               <strong className={styles.locationName}>{location.name}</strong>
             </div>)
