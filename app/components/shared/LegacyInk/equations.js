@@ -9,26 +9,23 @@
 
 const easing = (t, b, c, d) => c*((t=t/d-1)*t*t*t*t + 1) + b;
 
-const  SQRT_2 = Math.sqrt(2);
+import { SQRT_2, DURATION } from './constants';
 
 const { cos, max, min } = Math;
 
-const getPress = blot =>  min(blot.duration, Date.now() - blot.created);
+const getPress = blot =>  min(DURATION, Date.now() - blot.created);
 
 const getRelease = blot => Date.now() - blot.created;
 
-function getRadius(blot) {
-  let { duration, radius } = blot;
-
-  let down       = easing(getPress(blot), 0, radius, duration) * 0.85;
-  let up         = easing(getRelease(blot), 0, radius, duration) * 0.15;
-  let undulation = radius * 0.02 * cos(Date.now() / duration);
+export const getRadius = blot => {
+  let { radius } = blot;
+  let down       = easing(getPress(blot), 0, radius, DURATION) * 0.85;
+  let up         = easing(getRelease(blot), 0, radius, DURATION) * 0.15;
+  let undulation = radius * 0.02 * cos(Date.now() / DURATION);
 
   return max(0, down + up + undulation)
 }
 
-export const getBlotOpacity = (blot, opacity) => easing(getRelease(blot), opacity, -opacity, blot.duration);
-
-export const getBlotScale = (blot) => getRadius(blot) / blot.radius;
+export const getBlotOpacity = (blot, opacity) => easing(getRelease(blot), opacity, -opacity, DURATION);
 
 /* eslint-enable */

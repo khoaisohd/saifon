@@ -5,13 +5,14 @@
  * Keeps track of changes to ripple epicenters
  * so that <Ink /> can focus on rendering them.
  */
+import { DURATION } from './constants';
 
-let killStale = ({ created, duration }) => !created || (Date.now() - created) < duration
+let killStale = ({ created }) => !created || (Date.now() - created) < DURATION;
 
 export default function(publicize) {
-  let blots    = []
-  let _playing = false
-  let _frame
+  let blots    = [];
+  let _playing = false;
+  let _frame;
 
   let Store = {
 

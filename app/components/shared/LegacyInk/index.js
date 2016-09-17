@@ -9,10 +9,9 @@
 import styles from './styles.css';
 import React, { Component, PropTypes } from 'react';
 import Store from './store';
-import { getBlotOpacity, getBlotScale }  from './equations';
+import { getBlotOpacity, getRadius }  from './equations';
 
-const TWO_PI = Math.PI * 2;
-const OPACITY = 0.25;
+import { TWO_PI, OPACITY, ON_CLICK_DURATION } from './constants';
 
 class Ink extends Component {
 
@@ -23,7 +22,6 @@ class Ink extends Component {
       width       : 0,
     };
     this._store = Store(this.tick.bind(this));
-    this._onClickDuration = props.duration * 0.3;
   }
 
   componentWillUnmount() {
@@ -33,7 +31,7 @@ class Ink extends Component {
   handleClick(e) {
     this.setupCanvas();
     this.addBlot(e.clientX, e.clientY);
-    setTimeout(this.props.onClick, this._onClickDuration);
+    setTimeout(this.props.onClick, ON_CLICK_DURATION);
   }
 
   render() {
@@ -71,7 +69,7 @@ class Ink extends Component {
 
     ctx.beginPath();
 
-    ctx.arc(x, y, radius * getBlotScale(blot), 0, TWO_PI);
+    ctx.arc(x, y, getRadius(blot), 0, TWO_PI);
 
     ctx.closePath();
     ctx.fill()
@@ -84,11 +82,10 @@ class Ink extends Component {
     const width = right - left;
 
     this._store.add({
-      duration  : this.props.duration,
-      created : Date.now(),
-      radius    : Math.max(height, width),
-      x         : clientX - left,
-      y         : clientY - top
+      created: Date.now(),
+      radius: Math.max(height, width),
+      x: clientX - left,
+      y: clientY - top
     });
   }
 
@@ -120,11 +117,6 @@ class Ink extends Component {
 
 Ink.propTypes = {
   onClick: PropTypes.func.isRequired,
-  duration: PropTypes.number,
-};
-
-Ink.defaultProps = {
-  duration: 1000,
 };
 
 export default Ink;
