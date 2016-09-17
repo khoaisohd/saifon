@@ -12,7 +12,7 @@ import { pathToHotelSearch } from 'helpers/routeHelper';
 import { getCheckIn, getCheckOut, getLocation, getRoomsCount, getGuestsCount } from './selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

@@ -9,7 +9,7 @@ import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {

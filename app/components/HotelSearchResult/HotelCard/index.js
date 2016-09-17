@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Price from 'components/shared/Price';
 import StarRating from 'components/shared/StarRating';
 import styles from './index.css';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 const HotelCard = (props) => {
   const { hotel, onClick } = props;

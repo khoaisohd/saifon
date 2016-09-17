@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
 import styles from './styles.css';
 import Api from 'sdk/Api';
 import ModalHeader from 'components/shared/ModalHeader';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 class LocationPicker extends React.Component {
   constructor(props) {

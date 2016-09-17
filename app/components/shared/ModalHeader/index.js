@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './styles.css';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 class ModalHeader extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
