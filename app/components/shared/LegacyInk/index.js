@@ -63,12 +63,12 @@ class Ink extends Component {
 
     ctx.fillStyle = color
 
-    store.each(this.makeBlot, this)
+    store.each(this.drawBlot, this)
 
     ctx.restore()
   }
 
-  makeBlot(blot) {
+  drawBlot(blot) {
     let { ctx } = this.state;
     let { x, y, radius } = blot;
 
@@ -81,7 +81,7 @@ class Ink extends Component {
     ctx.fill()
   }
 
-  pushBlot(timeStamp, clientX, clientY) {
+  addBlot(timeStamp, clientX, clientY) {
     let el = this.refs.canvas
 
     // 0.13 support
@@ -130,10 +130,10 @@ class Ink extends Component {
     if (changedTouches) {
       for (var i = 0; i < changedTouches.length; i++) {
         let { clientX, clientY } = changedTouches[i];
-        this.pushBlot(timeStamp, clientX, clientY)
+        this.addBlot(timeStamp, clientX, clientY)
       }
     } else if (button === MOUSE_LEFT && !ctrlKey) {
-      this.pushBlot(timeStamp, clientX, clientY)
+      this.addBlot(timeStamp, clientX, clientY)
     }
   }
 }
