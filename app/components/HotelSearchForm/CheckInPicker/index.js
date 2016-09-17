@@ -4,8 +4,7 @@ import { Calendar } from 'components/shared/LegacyDatePicker';
 import { getCheckIn, isCheckOutSelected } from '../selectors';
 import { updateCheckIn } from '../actions';
 import { DATE_FORMAT } from 'helpers/dateHelper';
-import styles from './styles.css';
-import appStyles from 'components/shared/styles.css';
+import ModalHeader from 'components/shared/ModalHeader';
 
 class CheckInPicker extends React.Component {
   handleChange(checkIn) {
@@ -21,10 +20,7 @@ class CheckInPicker extends React.Component {
   render() {
     return (
       <div>
-        <div className={styles.toolbar}>
-          Check in
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
-        </div>
+        <ModalHeader title="Check in" />
         <Calendar
           onChange={this.handleChange.bind(this)}
           date={this.props.checkIn}

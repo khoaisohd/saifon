@@ -1,0 +1,13 @@
+.toolbar {
+  composes: toolbar from 'components/shared/styles.css';
+  padding-left: 20px;
+}
+
+.cancelIcon {
+  composes: icon-cancel from 'components/shared/icons.css';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  padding: 10px;
+}

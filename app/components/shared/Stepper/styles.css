@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   height: 49px;
   width: 49px;
 }

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import styles from './styles.css';
+import Ink from 'components/shared/LegacyInk';
 
 const Stepper = props => {
   const { onIncrease, onDecrease, increaseEnabled, decreaseEnabled } = props;
@@ -7,8 +8,14 @@ const Stepper = props => {
   const increaseButtonClass = increaseEnabled ? styles.activeButton : styles.disableButton;
   return (
     <div className={styles.container}>
-      <button disabled={!decreaseEnabled} className={decreaseButtonClass} onClick={onDecrease}>-</button>
-      <button disabled={!increaseEnabled} className={increaseButtonClass} onClick={onIncrease}>+</button>
+      <button disabled={!decreaseEnabled} className={decreaseButtonClass}>
+        { decreaseEnabled ? <Ink onClick={onDecrease} /> : '' }
+        -
+      </button>
+      <button disabled={!increaseEnabled} className={increaseButtonClass}>
+        { increaseEnabled ? <Ink onClick={onIncrease} /> : ''}
+        +
+      </button>
     </div>
   );
 };
