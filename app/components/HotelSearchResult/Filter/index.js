@@ -5,7 +5,7 @@ import styles from './styles.css';
 import { getFilter } from '../selectors';
 import ReactSlider from 'react-slider';
 import StarRating from 'components/shared/StarRating';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 import ModalHeader from 'components/shared/ModalHeader';
 
 const STARS = ['5', '4', '3', '2', '1'];

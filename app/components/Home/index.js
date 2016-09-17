@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

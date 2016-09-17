@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import styles from './styles.css';
-import Ink from 'components/shared/LegacyInk';
+import Ink from 'components/shared/Ink';
 
 const Stepper = props => {
   const { onIncrease, onDecrease, increaseEnabled, decreaseEnabled } = props;
