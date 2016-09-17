@@ -1,11 +1,5 @@
 /* eslint-disable */
 
-/**
- * Ink
- * Fills a container with an SVG object that provides feedback on mouse/touch
- * events with a rippling pool.
- */
-
 import styles from './styles.css';
 import React, { Component, PropTypes } from 'react';
 import { getBlotOpacity, getRadius }  from './equations';
@@ -13,68 +7,37 @@ import { getBlotOpacity, getRadius }  from './equations';
 import { TWO_PI, OPACITY, ON_CLICK_DURATION, DURATION } from './constants';
 
 class Ink extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      height      : 0,
-      width       : 0,
+      height: 0,
+      width: 0,
     };
     this._frame = null;
     this._blots = [];
-    this._playing = false;
+    this._waving = false;
   }
 
   componentWillUnmount() {
-    this.stop();
+    this.stopWaving();
   }
 
   handleClick(e) {
     this.setupCanvas();
     this._blots.push(this.createBlot(e.clientX, e.clientY));
-    this.play();
+    this.starWaving();
     setTimeout(this.props.onClick, ON_CLICK_DURATION);
   }
 
-  render() {
-    return (
-      <canvas
-        className={styles.ink}
-        ref="canvas"
-        height={ this.state.height }
-        width={ this.state.width }
-        onClick={this.handleClick.bind(this)}
-      />
-    )
-  }
-
-  tick() {
-    let { height, width } = this.state;
-
-    const ctx = this.getCanvasContext();
-
-    ctx.save()
-
-    ctx.clearRect(0, 0, width, height)
-
-    this._blots.forEach(blot => this.drawBlot(blot));
-
-    ctx.restore()
-  }
-
-  drawBlot(blot) {
-    let { x, y, radius } = blot;
-
-    const ctx = this.getCanvasContext();
-
-    ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
-
-    ctx.beginPath();
-
-    ctx.arc(x, y, getRadius(blot), 0, TWO_PI);
-
-    ctx.closePath();
-    ctx.fill()
+  setupCanvas() {
+    if (!this._setupCanvas) {
+      const { top, bottom, left, right } = this.refs.canvas.getBoundingClientRect();
+      this.setState({
+        height: bottom - top,
+        width: right - left,
+      });
+      this._setupCanvas = true;
+    }
   }
 
   createBlot(clientX, clientY) {
@@ -91,15 +54,54 @@ class Ink extends Component {
     };
   }
 
-  setupCanvas() {
-    if (!this._setupCanvas) {
-      const { top, bottom, left, right } = this.refs.canvas.getBoundingClientRect();
-      this.setState({
-        height: bottom - top,
-        width: right - left,
-      });
-      this._setupCanvas = true;
+  starWaving() {
+    if (!this._waving) {
+      this._waving = true;
+      this.wave();
     }
+  }
+
+  stopWaving() {
+    if (this._waving) {
+      this._waving = false;
+      cancelAnimationFrame(this._frame);
+    }
+  }
+
+  wave() {
+    this._blots = this._blots.filter(blot => Date.now() - blot.created < DURATION);
+    if (this._blots.length) {
+      let { height, width } = this.state;
+
+      const ctx = this.getCanvasContext();
+
+      ctx.save();
+
+      ctx.clearRect(0, 0, width, height);
+
+      this._blots.forEach(blot => this.drawBlot(blot));
+
+      ctx.restore();
+
+      this._frame = requestAnimationFrame(this.wave.bind(this));
+    } else {
+      this.stopWaving();
+    }
+  }
+
+  drawBlot(blot) {
+    let { x, y } = blot;
+
+    const ctx = this.getCanvasContext();
+
+    ctx.globalAlpha = getBlotOpacity(blot, OPACITY);
+
+    ctx.beginPath();
+
+    ctx.arc(x, y, getRadius(blot), 0, TWO_PI);
+
+    ctx.closePath();
+    ctx.fill()
   }
 
   getCanvasContext() {
@@ -116,28 +118,16 @@ class Ink extends Component {
     return this._canvasContext;
   }
 
-  update() {
-    this._blots = this._blots.filter(blot => Date.now() - blot.created < DURATION);
-    if (this._blots.length) {
-      this._frame = requestAnimationFrame(this.update.bind(this));
-      this.tick();
-    } else {
-      this.stop()
-    }
-  }
-
-  stop() {
-    if (this._playing) {
-      this._playing = false;
-      cancelAnimationFrame(this._frame);
-    }
-  }
-
-  play() {
-    if (!this._playing) {
-      this._playing = true;
-      this.update()
-    }
+  render() {
+    return (
+      <canvas
+        className={styles.ink}
+        ref="canvas"
+        height={ this.state.height }
+        width={ this.state.width }
+        onClick={this.handleClick.bind(this)}
+      />
+    )
   }
 }
 
@@ -146,4 +136,5 @@ Ink.propTypes = {
 };
 
 export default Ink;
+
 /* eslint-enable */
