@@ -9,14 +9,26 @@
 const MOUSE_LEFT = 0;
 import pixelRatio from './util/pixelRatio';
 import styles from './styles.css';
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Store from './util/store';
 let Types      = React.PropTypes
 let TAU        = Math.PI * 2
 import Equations  from './util/equations';
 
 
-const Ink = React.createClass({
+class Ink extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      color       : 'transparent',
+      density     : 1,
+      height      : 0,
+      store       : Store(this.tick.bind(this)),
+      touchEvents : this.touchEvents(),
+      width       : 0
+    }
+  }
 
   shouldComponentUpdate(props, state) {
     for (let p in props) {
@@ -28,36 +40,7 @@ const Ink = React.createClass({
     }
 
     return false;
-  },
-
-  propTypes: {
-    background : Types.bool,
-    duration   : Types.number,
-    opacity    : Types.number,
-    radius     : Types.number,
-    recenter   : Types.bool,
-  },
-
-  getDefaultProps() {
-    return {
-      background : true,
-      duration   : 1000,
-      opacity    : 0.25,
-      radius     : 150,
-      recenter   : true,
-    }
-  },
-
-  getInitialState() {
-    return {
-      color       : 'transparent',
-      density     : 1,
-      height      : 0,
-      store       : Store(this.tick),
-      touchEvents : this.touchEvents(),
-      width       : 0
-    }
-  },
+  }
 
   touchEvents() {
     const onClick = e => {
@@ -73,7 +56,7 @@ const Ink = React.createClass({
     return {
       onClick  : onClick,
     };
-  },
+  }
 
   tick() {
     let { ctx, color, density, height, width, store } = this.state
@@ -94,7 +77,7 @@ const Ink = React.createClass({
     store.each(this.makeBlot, this)
 
     ctx.restore()
-  },
+  }
 
   makeBlot(blot) {
     let { ctx, height, width } = this.state
@@ -114,11 +97,11 @@ const Ink = React.createClass({
 
     ctx.closePath()
     ctx.fill()
-  },
+  }
 
   componentWillUnmount() {
     this.state.store.stop()
-  },
+  }
 
   pushBlot(timeStamp, clientX, clientY) {
     let el = this.refs.canvas
@@ -147,7 +130,7 @@ const Ink = React.createClass({
         y         : clientY - top
       })
     })
-  },
+  }
 
   render() {
     let { density, height, width, touchEvents } = this.state
@@ -157,10 +140,10 @@ const Ink = React.createClass({
               ref="canvas"
               height={ height * density }
               width={ width * density }
-              onDragOver={this._onRelease}
+              onDragOver={this._onRelease.bind(this)}
               { ...touchEvents } />
     )
-  },
+  }
 
   _onPress(e) {
     let { button, ctrlKey, clientX, clientY, changedTouches } = e
@@ -174,12 +157,28 @@ const Ink = React.createClass({
     } else if (button === MOUSE_LEFT && !ctrlKey) {
       this.pushBlot(timeStamp, clientX, clientY)
     }
-  },
+  }
 
   _onRelease() {
     this.state.store.release(Date.now())
   }
-})
+}
+
+Ink.propTypes = {
+  background : Types.bool,
+  duration   : Types.number,
+  opacity    : Types.number,
+  radius     : Types.number,
+  recenter   : Types.bool,
+};
+
+Ink.defaultProps = {
+  background : true,
+  duration   : 1000,
+  opacity    : 0.25,
+  radius     : 150,
+  recenter   : true,
+};
 
 export default Ink;
 /* eslint-enable */
