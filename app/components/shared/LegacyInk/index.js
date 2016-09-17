@@ -25,7 +25,6 @@ class Ink extends Component {
       density     : 1,
       height      : 0,
       store       : Store(this.tick.bind(this)),
-      touchEvents : this.touchEvents(),
       width       : 0
     }
   }
@@ -42,20 +41,10 @@ class Ink extends Component {
     return false;
   }
 
-  touchEvents() {
-    const onClick = e => {
-      this._onPress(e);
-      setTimeout(() => {
-        this._onRelease(e);
-      }, 1);
-      setTimeout(() => {
-        this.props.onClick();
-      }, 400);
-    };
-
-    return {
-      onClick  : onClick,
-    };
+  handleClick(e) {
+    this._onPress(e);
+    setTimeout(() => this.state.store.release(Date.now()), 1);
+    setTimeout(this.props.onClick, 400);
   }
 
   tick() {
@@ -133,15 +122,16 @@ class Ink extends Component {
   }
 
   render() {
-    let { density, height, width, touchEvents } = this.state
+    const { density, height, width } = this.state;
 
     return (
-      <canvas className={styles.ink}
-              ref="canvas"
-              height={ height * density }
-              width={ width * density }
-              onDragOver={this._onRelease.bind(this)}
-              { ...touchEvents } />
+      <canvas
+        className={styles.ink}
+        ref="canvas"
+        height={ height * density }
+        width={ width * density }
+        onClick={this.handleClick.bind(this)}
+      />
     )
   }
 
@@ -157,10 +147,6 @@ class Ink extends Component {
     } else if (button === MOUSE_LEFT && !ctrlKey) {
       this.pushBlot(timeStamp, clientX, clientY)
     }
-  }
-
-  _onRelease() {
-    this.state.store.release(Date.now())
   }
 }
 
