@@ -8,10 +8,9 @@
 
 import styles from './styles.css';
 import React, { Component, PropTypes } from 'react';
-import Store from './store';
 import { getBlotOpacity, getRadius }  from './equations';
 
-import { TWO_PI, OPACITY, ON_CLICK_DURATION } from './constants';
+import { TWO_PI, OPACITY, ON_CLICK_DURATION, DURATION } from './constants';
 
 class Ink extends Component {
 
@@ -21,16 +20,19 @@ class Ink extends Component {
       height      : 0,
       width       : 0,
     };
-    this._store = Store(this.tick.bind(this));
+    this._frame = null;
+    this._blots = [];
+    this._playing = false;
   }
 
   componentWillUnmount() {
-    this._store.stop();
+    this.stop();
   }
 
   handleClick(e) {
     this.setupCanvas();
-    this.addBlot(e.clientX, e.clientY);
+    this._blots.push(this.createBlot(e.clientX, e.clientY));
+    this.play();
     setTimeout(this.props.onClick, ON_CLICK_DURATION);
   }
 
@@ -55,7 +57,7 @@ class Ink extends Component {
 
     ctx.clearRect(0, 0, width, height)
 
-    this._store.getBlots().forEach(blot => this.drawBlot(blot));
+    this._blots.forEach(blot => this.drawBlot(blot));
 
     ctx.restore()
   }
@@ -75,18 +77,18 @@ class Ink extends Component {
     ctx.fill()
   }
 
-  addBlot(clientX, clientY) {
+  createBlot(clientX, clientY) {
     let el = this.refs.canvas;
     let { top, bottom, left, right } = el.getBoundingClientRect();
     const height = bottom - top;
     const width = right - left;
 
-    this._store.add({
+    return {
       created: Date.now(),
       radius: Math.max(height, width),
       x: clientX - left,
       y: clientY - top
-    });
+    };
   }
 
   setupCanvas() {
@@ -112,6 +114,30 @@ class Ink extends Component {
       this._canvasContext = el.getContext('2d');
     }
     return this._canvasContext;
+  }
+
+  update() {
+    this._blots = this._blots.filter(blot => Date.now() - blot.created < DURATION);
+    if (this._blots.length) {
+      this._frame = requestAnimationFrame(this.update.bind(this));
+      this.tick();
+    } else {
+      this.stop()
+    }
+  }
+
+  stop() {
+    if (this._playing) {
+      this._playing = false;
+      cancelAnimationFrame(this._frame);
+    }
+  }
+
+  play() {
+    if (!this._playing) {
+      this._playing = true;
+      this.update()
+    }
   }
 }
 
