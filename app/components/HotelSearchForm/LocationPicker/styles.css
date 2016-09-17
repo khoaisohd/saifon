@@ -1,9 +1,3 @@
-.toolbar {
-  composes: toolbar from 'components/shared/styles.css';
-  padding-left: 20px;
-  text-transform: uppercase;
-}
-
 .inputContainer {
   padding: 10px;
   background-color: #7CB342;

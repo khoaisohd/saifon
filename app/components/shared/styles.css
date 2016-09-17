@@ -17,6 +17,7 @@
   padding-right: 10px;
   font-size: 36px;
   composes: icon-angle-left from 'components/shared/icons.css';
+  position: relative;
 }
 
 .cancelIcon {

@@ -2,12 +2,6 @@
   background-color: #EBEBED;
 }
 
-.toolbar {
-  composes: toolbar from 'components/shared/styles.css';
-  padding-left: 20px;
-  text-transform: uppercase;
-}
-
 .hotelImage {
   width: 100%;
   height: 150px;
