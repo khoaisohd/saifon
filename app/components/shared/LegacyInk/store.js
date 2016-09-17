@@ -11,15 +11,15 @@ import { getBlotOuterOpacity } from './equations';
 let killStale = ({ mouseUp, duration }) => !mouseUp || (Date.now() - mouseUp) < duration
 
 export default function(publicize) {
-  let _data    = []
+  let blots    = []
   let _playing = false
   let _frame
 
   let Store = {
 
     each(callback, scope) {
-      for (var i = 0, l = _data.length; i < l; i++) {
-        callback.call(scope, _data[i])
+      for (var i = 0, l = blots.length; i < l; i++) {
+        callback.call(scope, blots[i])
       }
     },
 
@@ -38,17 +38,17 @@ export default function(publicize) {
     getTotalOpacity(opacity) {
       let answer = 0
 
-      for (var i = 0, l = _data.length; i < l; i++) {
-        answer += getBlotOuterOpacity(_data[i], opacity)
+      for (var i = 0, l = blots.length; i < l; i++) {
+        answer += getBlotOuterOpacity(blots[i], opacity)
       }
 
       return answer
     },
 
     update() {
-      _data = _data.filter(killStale)
+      blots = blots.filter(killStale)
 
-      if (_data.length) {
+      if (blots.length) {
         _frame = requestAnimationFrame(Store.update)
         publicize()
       } else {
@@ -57,14 +57,14 @@ export default function(publicize) {
     },
 
     add(props) {
-      _data.push(props)
+      blots.push(props)
       Store.play()
     },
 
     release(time) {
-      for (let i = _data.length - 1; i >= 0; i--) {
-        if (!_data[i].mouseUp) {
-          return _data[i].mouseUp = time
+      for (let i = blots.length - 1; i >= 0; i--) {
+        if (!blots[i].mouseUp) {
+          return blots[i].mouseUp = time
         }
       }
     }
