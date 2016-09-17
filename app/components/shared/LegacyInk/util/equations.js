@@ -1,6 +1,16 @@
 /* eslint-disable */
 
-import easing from './easing';
+/**
+ * @t is the current time (or position) of the tween. This can be seconds or frames, steps, seconds, ms, whatever – as long as the unit is the same as is used for the total time [3].
+ * @b is the beginning value of the property.
+ * @c is the change between the beginning and destination value of the property.
+ * @d is the total time of the tween.
+ */
+
+function easing (t, b, c, d) {
+  return c*((t=t/d-1)*t*t*t*t + 1) + b
+}
+
 let SQRT_2 = Math.sqrt(2)
 let { cos, max, min } = Math
 

@@ -6,20 +6,29 @@
  * events with a rippling pool.
  */
 
-import HAS_TOUCH  from './util/hasTouch';
-const MOUSE_LEFT = 0
+const MOUSE_LEFT = 0;
 import pixelRatio from './util/pixelRatio';
+import styles from './styles.css';
 import React from 'react';
-import STYLE from './style';
 import Store from './util/store';
 let Types      = React.PropTypes
 let TAU        = Math.PI * 2
 import Equations  from './util/equations';
-import Pure from './util/pure'
+
 
 const Ink = React.createClass({
 
-  shouldComponentUpdate: Pure,
+  shouldComponentUpdate(props, state) {
+    for (let p in props) {
+      if (this.props[p] !== props[p]) return true;
+    }
+
+    for (let s in state) {
+      if (this.state[s] !== state[s]) return true;
+    }
+
+    return false;
+  },
 
   propTypes: {
     background : Types.bool,
@@ -27,7 +36,6 @@ const Ink = React.createClass({
     opacity    : Types.number,
     radius     : Types.number,
     recenter   : Types.bool,
-    hasTouch   : Types.bool
   },
 
   getDefaultProps() {
@@ -37,7 +45,6 @@ const Ink = React.createClass({
       opacity    : 0.25,
       radius     : 150,
       recenter   : true,
-      hasTouch   : HAS_TOUCH
     }
   },
 
@@ -146,9 +153,8 @@ const Ink = React.createClass({
     let { density, height, width, touchEvents } = this.state
 
     return (
-      <canvas className="ink"
+      <canvas className={styles.ink}
               ref="canvas"
-              style={{ ...STYLE, ...this.props.style }}
               height={ height * density }
               width={ width * density }
               onDragOver={this._onRelease}
