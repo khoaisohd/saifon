@@ -28,6 +28,8 @@ class HotelSearchResult extends Component {
   constructor(props) {
     super(props);
     this.state = { isModalOpen: false };
+    const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = props.routeParams;
+    this.searchParams = { checkIn, checkOut, guestsCount, locationCode, roomsCount };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,7 +46,7 @@ class HotelSearchResult extends Component {
         <Modal isOpen={this.state.isModalOpen} style={customStyles}>
           {this.props.children}
         </Modal>
-        <Results searchParams={this.props.routeParams} />
+        <Results searchParams={this.searchParams} />
       </div>
     );
   }
