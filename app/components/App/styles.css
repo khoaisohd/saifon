@@ -7,7 +7,3 @@
 .container {
   display: block;
 }
-
-:global(body) {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}

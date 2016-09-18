@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import Price from 'components/shared/Price';
 import StarRating from 'components/shared/StarRating';
 import styles from './index.css';
-import Ink from 'components/shared/Ink';
 
 const HotelCard = (props) => {
   const { hotel, onClick } = props;
@@ -15,8 +14,7 @@ const HotelCard = (props) => {
   }
   const reviewCount = parseInt(hotel.get('reviewCount'), 10).toLocaleString();
   return (
-    <div className={styles.hotelCard}>
-      <Ink onClick={onClick} />
+    <div className={styles.hotelCard} onClick={onClick}>
       <div>
         <img className={styles.image} src={hotel.get('imageUrl')} role="presentation" />
       </div>

@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { updateLocation } from '../actions';
 import { fromJS } from 'immutable';
 import styles from './styles.css';
+import appStyles from 'components/shared/styles.css';
 import Api from 'sdk/Api';
-import ModalHeader from 'components/shared/ModalHeader';
-import Ink from 'components/shared/Ink';
 
 class LocationPicker extends React.Component {
   constructor(props) {
@@ -32,14 +31,18 @@ class LocationPicker extends React.Component {
   render() {
     return (
       <div>
-        <ModalHeader title="Where" />
+        <div className={styles.toolbar}>
+          <div>
+            Where
+            <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          </div>
+        </div>
         <div className={styles.inputContainer}>
           <input autoFocus className={styles.input} placeholder="Choose location" onChange={this.handleInputChange.bind(this)} />
         </div>
         <div>
           {this.state.locations.map(location =>
-            (<div className={styles.location} key={location.code}>
-              <Ink onClick={() => this.handleSelectLocation(location)} />
+            (<div className={styles.location} key={location.code} onClick={() => this.handleSelectLocation(location)}>
               <span className={styles.locationCode}>{location.code}</span>
               <strong className={styles.locationName}>{location.name}</strong>
             </div>)

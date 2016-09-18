@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { toggleStarRatingFilter, filterByPrice } from '../actions';
+import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
 import { getFilter } from '../selectors';
 import ReactSlider from 'react-slider';
 import StarRating from 'components/shared/StarRating';
-import Ink from 'components/shared/Ink';
-import ModalHeader from 'components/shared/ModalHeader';
 
 const STARS = ['5', '4', '3', '2', '1'];
 
@@ -29,7 +28,10 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
     const { filter, toggleStarRatingFilter, filterByPrice } = this.props;
     return (
       <div>
-        <ModalHeader title="Filters" />
+        <div className={styles.toolbar}>
+          filters
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+        </div>
         <div>
           <div className={styles.filterSubTitle}>
             Price
@@ -56,8 +58,7 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
             {
               STARS.map(id =>
                 <label key={id} className={styles.checkboxContainer}>
-                  <Ink onClick={() => toggleStarRatingFilter(id)} />
-                  <input className={styles.checkboxInput} type="checkbox" checked={filter.getIn(['stars', id, 'selected'])} />
+                  <input className={styles.checkboxInput} type="checkbox" checked={filter.getIn(['stars', id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} />
                   <StarRating value={parseInt(id)} />
                 </label>
               )

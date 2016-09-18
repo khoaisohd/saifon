@@ -1,0 +1,5 @@
+.toolbar {
+  composes: toolbar from 'components/shared/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
