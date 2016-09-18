@@ -104,5 +104,7 @@ if (!window.Intl) {
 // import { install } from 'offline-plugin/runtime';
 // install();
 
-injectTapEventPlugin();
+injectTapEventPlugin({
+  shouldRejectClick: (lastTouchEventTimestamp, clickEventTimestamp) => true, // eslint-disable-line no-unused-vars
+});
 
