@@ -64,7 +64,7 @@ class HotelDetails extends Component {
       <div>
         <div className={styles.toolbar}>
           Hotel Details
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
         </div>
         { this.state.isFetching ? this.renderLoading() : this.renderDetails() }
       </div>

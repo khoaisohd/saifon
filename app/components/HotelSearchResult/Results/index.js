@@ -36,7 +36,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     if (isLoading) {
       button = <button className={styles.footerButton} disabled> Loading... </button>;
     } else if (canLoadMore) {
-      button = <button className={styles.footerButton} onClick={() => loadMore()}>Load More</button>;
+      button = <button className={styles.footerButton} onTouchTap={() => loadMore()}>Load More</button>;
     } else {
       button = '';
     }
@@ -48,7 +48,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             <HotelCard
               key={hotel.get('id')}
               hotel={hotel}
-              onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+              onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
             />
           )
         }</div>
@@ -64,7 +64,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     return (
       <div className={styles.resultContainer}>
         <div className={appStyles.toolbar}>
-          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
+          <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
           <div>
             <div className={styles.locationCode}>{locationCode}</div>
             <div className={styles.checkInCheckOut}>

@@ -34,7 +34,7 @@ class LocationPicker extends React.Component {
         <div className={styles.toolbar}>
           <div>
             Where
-            <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+            <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
           </div>
         </div>
         <div className={styles.inputContainer}>
@@ -42,7 +42,7 @@ class LocationPicker extends React.Component {
         </div>
         <div>
           {this.state.locations.map(location =>
-            (<div className={styles.location} key={location.code} onClick={() => this.handleSelectLocation(location)}>
+            (<div className={styles.location} key={location.code} onTouchTap={() => this.handleSelectLocation(location)}>
               <span className={styles.locationCode}>{location.code}</span>
               <strong className={styles.locationName}>{location.name}</strong>
             </div>)

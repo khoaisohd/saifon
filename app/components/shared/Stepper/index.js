@@ -7,8 +7,8 @@ const Stepper = props => {
   const increaseButtonClass = increaseEnabled ? styles.activeButton : styles.disableButton;
   return (
     <div className={styles.container}>
-      <button disabled={!decreaseEnabled} className={decreaseButtonClass} onClick={onDecrease}>-</button>
-      <button disabled={!increaseEnabled} className={increaseButtonClass} onClick={onIncrease}>+</button>
+      <button disabled={!decreaseEnabled} className={decreaseButtonClass} onTouchStart={onDecrease}>-</button>
+      <button disabled={!increaseEnabled} className={increaseButtonClass} onTouchStart={onIncrease}>+</button>
     </div>
   );
 };

@@ -30,7 +30,7 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
       <div>
         <div className={styles.toolbar}>
           filters
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
         </div>
         <div>
           <div className={styles.filterSubTitle}>
@@ -57,10 +57,10 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
           <div className={styles.starFilter}>
             {
               STARS.map(id =>
-                <label key={id} className={styles.checkboxContainer}>
-                  <input className={styles.checkboxInput} type="checkbox" checked={filter.getIn(['stars', id, 'selected'])} onClick={() => toggleStarRatingFilter(id)} />
+                <div key={id} className={styles.checkboxContainer} onTouchTap={() => toggleStarRatingFilter(id)}>
+                  <input className={styles.checkboxInput} type="checkbox" checked={filter.getIn(['stars', id, 'selected'])} />
                   <StarRating value={parseInt(id)} />
-                </label>
+                </div>
               )
             }
           </div>
