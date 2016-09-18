@@ -45,7 +45,7 @@ class PredefinedRanges extends Component {
           key={'range-' + name}
           className={classes.predefinedRangesItem + (active ? ' active' : '')}
           style={ onlyClasses ? undefined : style }
-          onClick={this.handleSelect.bind(this, name)}
+          onTouchTap={this.handleSelect.bind(this, name)}
         >
           {name}
         </a>

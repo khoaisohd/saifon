@@ -102,7 +102,7 @@ class Calendar extends Component {
         <button
           style={onlyClasses ? undefined : { ...styles['MonthButton'], float : 'left' }}
           className={classes.prevButton}
-          onClick={this.changeMonth.bind(this, -1)}>
+          onTouchTap={this.changeMonth.bind(this, -1)}>
           <i style={onlyClasses ? undefined : { ...styles['MonthArrow'], ...styles['MonthArrowPrev'] }}></i>
         </button>
         <span>
@@ -113,7 +113,7 @@ class Calendar extends Component {
         <button
           style={onlyClasses ? undefined : { ...styles['MonthButton'], float : 'right' }}
           className={classes.nextButton}
-          onClick={this.changeMonth.bind(this, +1)}>
+          onTouchTap={this.changeMonth.bind(this, +1)}>
           <i style={onlyClasses ? undefined : { ...styles['MonthArrow'], ...styles['MonthArrowNext'] }}></i>
         </button>
       </div>
