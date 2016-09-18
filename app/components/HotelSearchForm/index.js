@@ -5,6 +5,7 @@ import 'components/HotelSearchForm/LocationPicker';
 import 'components/HotelSearchForm/TravellersPicker';
 
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
@@ -12,7 +13,6 @@ import { pathToHotelSearch } from 'helpers/routeHelper';
 import { getCheckIn, getCheckOut, getLocation, getRoomsCount, getGuestsCount } from './selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
-import Ink from 'components/shared/Ink';
 
 class HotelSearchForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -21,38 +21,28 @@ class HotelSearchForm extends React.Component { // eslint-disable-line react/pre
     return (
       <div>
         <div className={styles.toolbar}>
-          <i className={appStyles.backButton}><Ink onClick={this.context.router.goBack} /></i>
+          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
           Hotel Search
         </div>
         <div className={styles.container}>
-          <div className={styles.row}>
-            <Ink onClick={() => this.context.router.push('/hotels/modal/location-picker')} />
-            {location.get('name')}
-          </div>
-          <div className={styles.row}>
-            <Ink onClick={() => this.context.router.push('/hotels/modal/check-in')} />
-            From: {moment(checkIn, DATE_FORMAT).format('MMM DD')}
-          </div>
-          <div className={styles.row}>
-            <Ink onClick={() => this.context.router.push('/hotels/modal/check-out')} />
-            To: {moment(checkOut, DATE_FORMAT).format('MMM DD')}
-          </div>
-          <div className={styles.row}>
-            <Ink onClick={() => this.context.router.push('/hotels/modal/travellers-picker')} />
+          <Link className={styles.link} to="/hotels/modal/location-picker">{location.get('name')}</Link>
+          <Link className={styles.link} to="/hotels/modal/check-in">From: {moment(checkIn, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/modal/check-out">To: {moment(checkOut, DATE_FORMAT).format('MMM DD')}</Link>
+          <Link className={styles.link} to="/hotels/modal/travellers-picker">
             {roomsCount} room{roomsCount > 1 ? 's' : ''} - {guestsCount} guest{guestsCount > 1 ? 's' : ''}
-          </div>
-          <div className={styles.searchButton}>
-            <Ink
-              onClick={() => this.context.router.push(pathToHotelSearch({
-                checkIn,
-                checkOut,
-                roomsCount,
-                guestsCount,
-                locationCode: location.get('code'),
-              }))}
-            />
+          </Link>
+          <Link
+            className={styles.searchButton}
+            to={pathToHotelSearch({
+              checkIn,
+              checkOut,
+              roomsCount,
+              guestsCount,
+              locationCode: location.get('code'),
+            })}
+          >
             Search
-          </div>
+          </Link>
         </div>
       </div>
     );

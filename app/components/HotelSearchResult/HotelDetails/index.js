@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './styles.css';
+import appStyles from 'components/shared/styles.css';
 import Api from 'sdk/Api';
 import StarRating from 'components/shared/StarRating';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { CURRENCIES } from 'helpers/priceHelper';
-import ModalHeader from 'components/shared/ModalHeader';
 
 class HotelDetails extends Component {
   constructor(props) {
@@ -62,7 +62,10 @@ class HotelDetails extends Component {
   render() {
     return (
       <div>
-        <ModalHeader title="Hotel Details" />
+        <div className={styles.toolbar}>
+          Hotel Details
+          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+        </div>
         { this.state.isFetching ? this.renderLoading() : this.renderDetails() }
       </div>
     );

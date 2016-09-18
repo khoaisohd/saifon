@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
@@ -9,7 +10,6 @@ import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
-import Ink from 'components/shared/Ink';
 
 class Results extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -36,12 +36,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     if (isLoading) {
       button = <button className={styles.footerButton} disabled> Loading... </button>;
     } else if (canLoadMore) {
-      button = (
-        <button className={styles.footerButton}>
-          <Ink onClick={() => loadMore()} />
-          Load More
-        </button>
-      );
+      button = <button className={styles.footerButton} onClick={() => loadMore()}>Load More</button>;
     } else {
       button = '';
     }
@@ -69,9 +64,7 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
     return (
       <div className={styles.resultContainer}>
         <div className={appStyles.toolbar}>
-          <i className={appStyles.backButton}>
-            <Ink onClick={this.context.router.goBack} />
-          </i>
+          <i className={appStyles.backButton} onClick={this.context.router.goBack} />
           <div>
             <div className={styles.locationCode}>{locationCode}</div>
             <div className={styles.checkInCheckOut}>
@@ -97,11 +90,10 @@ class Results extends React.Component { // eslint-disable-line react/prefer-stat
             </span>
 
           </div>
-          <div className={styles.filterButton}>
-            <Ink onClick={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/filter`)} />
+          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
             Filter
             <i className={styles.filterIcon}></i>
-          </div>
+          </Link>
         </div>
         { hasNoResult ? this.renderEmptyResult() : this.renderPresentResult() }
       </div>

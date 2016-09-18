@@ -1,5 +1,4 @@
 .hotelCard {
-  position: relative;
   display: flex;
   flex-direction: row;
   padding-left: 0.5rem;
@@ -39,6 +38,7 @@
 }
 
 .reviewRate {
+  position: relative;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
@@ -68,8 +68,12 @@
   font-weight: 300;
   padding: 0.4rem;
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   font-size: 0.9rem;
+
+  .neutral {
+    background: #FEA400;
+  }
 }
 
 .score.neutral {

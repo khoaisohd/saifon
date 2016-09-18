@@ -34,7 +34,6 @@
   display: block;
   text-decoration: none;
   text-align: center;
-  position: relative;
 }
 
 .dropDownIcon {
@@ -48,7 +47,6 @@
 }
 
 .footerButton {
-  position: relative;
   padding: 10px;
   margin-top: 15px;
   text-align: center;

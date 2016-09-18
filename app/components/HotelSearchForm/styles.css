@@ -7,8 +7,8 @@
   text-transform: uppercase;
 }
 
-.row {
-  position: relative;
+.link {
+  display: block;
   color: black;
   text-decoration: none;
   font-size: 20px;
@@ -18,7 +18,7 @@
 }
 
 .searchButton {
-  position: relative;
+  display: block;
   width: 100%;
   margin-top: 10px;
   background-color: #FF9800;

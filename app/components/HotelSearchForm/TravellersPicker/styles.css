@@ -1,3 +1,9 @@
+.toolbar {
+  composes: toolbar from 'components/shared/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
 .cancelIcon {
   composes: icon-cancel from 'components/shared/icons.css';
   position: absolute;
