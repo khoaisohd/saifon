@@ -4,7 +4,7 @@ import { updateRoomsCount, updateGuestsCount } from '../actions';
 import { getRoomsCount, getGuestsCount } from '../selectors';
 import Stepper from 'components/shared/Stepper';
 import styles from './styles.css';
-import appStyles from 'components/shared/styles.css';
+import ModalHeader from 'components/shared/ModalHeader';
 
 class TravellersPicker extends React.Component {
   getRoomsCountOptions() {
@@ -34,10 +34,7 @@ class TravellersPicker extends React.Component {
     const { updateRoomsCount, roomsCount, guestsCount, updateGuestsCount } = this.props;
     return (
       <div>
-        <div className={styles.toolbar}>
-          Search options
-          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
-        </div>
+        <ModalHeader title="Search options" />
         <div>
           <div className={styles.row}>
             <select value={roomsCount} onChange={e => updateRoomsCount(parseInt(e.target.value))}>
