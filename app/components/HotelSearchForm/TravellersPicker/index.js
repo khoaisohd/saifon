@@ -36,7 +36,7 @@ class TravellersPicker extends React.Component {
       <div>
         <div className={styles.toolbar}>
           Search options
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
         </div>
         <div>
           <div className={styles.row}>

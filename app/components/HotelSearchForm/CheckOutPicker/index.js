@@ -19,7 +19,7 @@ class CheckOutPicker extends React.Component {
       <div>
         <div className={styles.toolbar}>
           Check out
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
         </div>
         <Calendar
           onChange={this.handleChange.bind(this)}

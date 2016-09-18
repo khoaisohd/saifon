@@ -30,7 +30,7 @@ class Filter extends React.Component { // eslint-disable-line react/prefer-state
       <div>
         <div className={styles.toolbar}>
           filters
-          <i className={appStyles.cancelIcon} onClick={this.context.router.goBack} />
+          <i className={appStyles.cancelIcon} onTouchTap={this.context.router.goBack} />
         </div>
         <div>
           <div className={styles.filterSubTitle}>

@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
 import styles from './styles.css';
 
 class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className={styles.container}>
-        <Link className={styles.hotelsButton} to="/hotels">
+        <div className={styles.hotelsButton} onTouchTap={() => this.context.router.push('/hotels')}>
           <i className={styles.hotelIcon} />
           Hotels
-        </Link>
+        </div>
       </div>
     );
   }
 }
+
+Home.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 export default Home;

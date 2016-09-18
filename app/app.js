@@ -21,6 +21,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import useScroll from 'react-router-scroll';
 import LanguageProvider from 'components/LanguageProvider';
 import configureStore from './store';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
@@ -102,3 +103,6 @@ if (!window.Intl) {
 // we do not want it installed
 // import { install } from 'offline-plugin/runtime';
 // install();
+
+injectTapEventPlugin();
+
