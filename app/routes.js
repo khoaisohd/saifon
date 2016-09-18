@@ -102,7 +102,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           System.import('components/HotelSearchResult/reducer'),
           System.import('components/HotelSearchResult/sagas'),
-          System.import('components/HotelSearchResult'),
+          System.import('components/HotelSearchResult/Base'),
         ]);
 
         const renderRoute = loadModule(cb);
