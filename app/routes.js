@@ -53,7 +53,7 @@ export default function createRoutes(store) {
           renderRoute(component);
           System.import('components/HotelSearchResult/reducer');
           System.import('components/HotelSearchResult/sagas');
-          System.import('components/HotelSearchResult');
+          System.import('components/HotelSearchResult/Base');
         });
 
         importModules.catch(errorLoading);
