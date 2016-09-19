@@ -1,7 +1,3 @@
-// Preload form assets
-import 'components/HotelSearchResult/Filter';
-import 'components/HotelSearchResult/HotelDetails';
-
 import React, { Component } from 'react';
 import Results from './index';
 import Modal from 'react-modal';
