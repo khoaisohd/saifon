@@ -1,9 +1,3 @@
-// Preload form assets
-import 'components/HotelSearchForm/CheckInPicker';
-import 'components/HotelSearchForm/CheckOutPicker';
-import 'components/HotelSearchForm/LocationPicker';
-import 'components/HotelSearchForm/TravellersPicker';
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';

@@ -51,6 +51,11 @@ export default function createRoutes(store) {
         importModules.then(([reducer, component]) => {
           injectReducer('HotelSearchForm', reducer.default);
           renderRoute(component);
+          System.import('components/HotelSearchForm/CheckInPicker');
+          System.import('components/HotelSearchForm/CheckOutPicker');
+          System.import('components/HotelSearchForm/LocationPicker');
+          System.import('components/HotelSearchForm/TravellersPicker');
+
           System.import('components/HotelSearchResult/reducer');
           System.import('components/HotelSearchResult/sagas');
           System.import('components/HotelSearchResult/Base');
@@ -111,6 +116,8 @@ export default function createRoutes(store) {
           injectReducer('HotelSearchResult', reducer.default);
           injectSagas('HotelSearchResult', sagas.default);
           renderRoute(component);
+          System.import('components/HotelSearchResult/Filter');
+          System.import('components/HotelSearchResult/HotelDetails');
         });
 
         importModules.catch(errorLoading);
