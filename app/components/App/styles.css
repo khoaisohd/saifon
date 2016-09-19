@@ -12,3 +12,142 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   min-height: 100vh;
 }
+
+/* Collection default theme */
+
+:global(.Collection) {
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Without this property, Chrome repaints the entire Collection any time a new row or column is added.
+     Firefox only repaints the new row or column (regardless of this property).
+     Safari and IE don't support the property at all. */
+  will-change: transform;
+}
+
+:global(.Collection__innerScrollContainer) {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+:global(.Collection__cell) {
+  position: absolute;
+}
+
+/* Grid default theme */
+
+:global(.Grid) {
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Without this property, Chrome repaints the entire Grid any time a new row or column is added.
+     Firefox only repaints the new row or column (regardless of this property).
+     Safari and IE don't support the property at all. */
+  will-change: transform;
+}
+
+:global(.Grid__innerScrollContainer) {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+:global(.Grid__cell) {
+  position: absolute;
+}
+
+/* FlexTable default theme */
+
+:global(.FlexTable__Grid) {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+:global(.FlexTable__headerRow) {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+:global(.FlexTable__row) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+:global(.FlexTable__headerTruncatedText) {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+:global(.FlexTable__headerColumn,
+.FlexTable__rowColumn) {
+  margin-right: 10px;
+  min-width: 0;
+}
+
+:global(.FlexTable__rowColumn) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.FlexTable__headerColumn:first-of-type,
+.FlexTable__rowColumn:first-of-type) {
+  margin-left: 10px;
+}
+
+:global(.FlexTable__sortableHeaderColumn) {
+  cursor: pointer;
+}
+
+:global(.FlexTable__sortableHeaderIconContainer) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+:global(.FlexTable__sortableHeaderIcon) {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 24px;
+  flex: 0 0 24px;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+/* VirtualScroll default theme */
+
+:global(.VirtualScroll) {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}

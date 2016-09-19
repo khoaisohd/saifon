@@ -10,6 +10,7 @@ import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
+import { VirtualScroll, AutoSizer } from 'react-virtualized';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -30,29 +31,40 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     );
   }
 
-  renderPresentResult() {
-    const { displayedHotels, canLoadMore, isLoading, loadMore, searchParams } = this.props;
-    let button;
-    if (isLoading) {
-      button = <button className={styles.footerButton} disabled> Loading... </button>;
-    } else if (canLoadMore) {
-      button = <button className={styles.footerButton} onTouchTap={() => loadMore()}>Load More</button>;
-    } else {
-      button = '';
+  renderHotelCard({ index }) {
+    const { displayedHotels, searchParams } = this.props;
+    if (index === 0 || index === displayedHotels.size + 1) {
+      return <div className={styles.emptyHotel} />;
     }
 
+    const hotel = displayedHotels.get(index - 1);
     return (
-      <div>
-        <div>{
-          displayedHotels.map(hotel =>
-            <HotelCard
-              key={hotel.get('id')}
-              hotel={hotel}
-              onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+      <HotelCard
+        key={hotel.get('id')}
+        hotel={hotel}
+        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+      />
+    );
+  }
+
+  renderPresentResult() {
+    return (
+
+      <div className={styles.list}>
+        <AutoSizer>
+          {({ height, width }) => (
+            <VirtualScroll
+              width={width}
+              height={height}
+              rowCount={this.props.displayedHotels.size + 2}
+              rowHeight={({ index }) => {
+                const isEmptyHotel = index === 0 || index === this.props.displayedHotels.size + 1;
+                return isEmptyHotel ? 100 : 140;
+              }}
+              rowRenderer={this.renderHotelCard.bind(this)}
             />
-          )
-        }</div>
-        { button }
+          )}
+        </AutoSizer>
       </div>
     );
   }
@@ -63,37 +75,39 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
     return (
       <div className={styles.resultContainer}>
-        <div className={appStyles.toolbar}>
-          <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
-          <div>
-            <div className={styles.locationCode}>{locationCode}</div>
-            <div className={styles.checkInCheckOut}>
-              {moment(checkIn, DATE_FORMAT).format('MMM DD')} - {moment(checkOut, DATE_FORMAT).format('MMM DD')}
+        <div className={styles.header}>
+          <div className={appStyles.toolbar}>
+            <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
+            <div>
+              <div className={styles.locationCode}>{locationCode}</div>
+              <div className={styles.checkInCheckOut}>
+                {moment(checkIn, DATE_FORMAT).format('MMM DD')} - {moment(checkOut, DATE_FORMAT).format('MMM DD')}
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.buttonRow}>
-          <div className={styles.sortButton}>
-            <span className={styles.sortLabel}>
-              Sort
-              <i className={styles.dropDownIcon}></i>
-            </span>
-            <span>
-              <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
-                <option value={'PRICE:ASC'}>Lowest Price</option>
-                <option value={'PRICE:DESC'}>Highest Price</option>
-                <option value={'REVIEWS:DESC'}>Best reviews</option>
-                <option value={'POPULAR:DESC'}>Popular</option>
-                <option value={'STAR:ASC'}>Stars 1 - 5</option>
-                <option value={'STAR:DESC'}>Stars 5 - 1</option>
-              </select>
-            </span>
+          <div className={styles.buttonRow}>
+            <div className={styles.sortButton}>
+              <span className={styles.sortLabel}>
+                Sort
+                <i className={styles.dropDownIcon}></i>
+              </span>
+              <span>
+                <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
+                  <option value={'PRICE:ASC'}>Lowest Price</option>
+                  <option value={'PRICE:DESC'}>Highest Price</option>
+                  <option value={'REVIEWS:DESC'}>Best reviews</option>
+                  <option value={'POPULAR:DESC'}>Popular</option>
+                  <option value={'STAR:ASC'}>Stars 1 - 5</option>
+                  <option value={'STAR:DESC'}>Stars 5 - 1</option>
+                </select>
+              </span>
 
+            </div>
+            <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
+              Filter
+              <i className={styles.filterIcon}></i>
+            </Link>
           </div>
-          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
-            Filter
-            <i className={styles.filterIcon}></i>
-          </Link>
         </div>
         { hasNoResult ? this.renderEmptyResult() : this.renderPresentResult() }
       </div>

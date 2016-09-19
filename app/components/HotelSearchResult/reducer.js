@@ -45,6 +45,7 @@ function hotelSearchResultReducer(state = initialState, action) {
       return state
         .setIn(['filter', 'stars', action.starRating, 'selected'],
           !state.getIn(['filter', 'stars', action.starRating, 'selected']))
+        .set('displayedHotels', fromJS([]))
         .set('limit', 20);
     case SORT_HOTELS:
       return state
