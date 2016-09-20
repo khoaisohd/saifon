@@ -3,13 +3,15 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
-import { fetchHotels, loadMore, sortHotels } from './actions';
+import { fetchHotels, sortHotels } from './actions';
 import { pathToHotelSearch } from 'helpers/routeHelper';
 import HotelCard from './HotelCard';
-import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from './selectors';
+import EmptyHotelCard from './EmptyHotelCard';
+import { getDisplayedHotels, getSort, isLoading, hasNoResult } from './selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
+import { VirtualScroll, AutoSizer } from 'react-virtualized';
 
 class HotelSearchResult extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -22,6 +24,15 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
 
+  renderLoading() {
+    const list = [1, 2, 3, 4, 5];
+    return (
+      <div>
+        {list.map(id => <EmptyHotelCard key={id} />)}
+      </div>
+    );
+  }
+
   renderEmptyResult() {
     return (
       <div className={styles.noResultContainer}>
@@ -30,72 +41,86 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     );
   }
 
-  renderPresentResult() {
-    const { displayedHotels, canLoadMore, isLoading, loadMore, searchParams } = this.props;
-    let button;
-    if (isLoading) {
-      button = <button className={styles.footerButton} disabled> Loading... </button>;
-    } else if (canLoadMore) {
-      button = <button className={styles.footerButton} onTouchTap={() => loadMore()}>Load More</button>;
-    } else {
-      button = '';
-    }
-
+  renderHotelCard({ index }) {
+    const { displayedHotels, searchParams } = this.props;
+    const hotel = displayedHotels.get(index);
     return (
-      <div>
-        <div>{
-          displayedHotels.map(hotel =>
-            <HotelCard
-              key={hotel.get('id')}
-              hotel={hotel}
-              onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+      <HotelCard
+        key={hotel.get('id')}
+        hotel={hotel}
+        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+      />
+    );
+  }
+
+  renderPresentResult() {
+    return (
+      <div className={styles.displayedHotels}>
+        <AutoSizer>
+          {({ height, width }) => (
+            <VirtualScroll
+              overscanRowCount={0}
+              width={width}
+              height={height}
+              rowCount={this.props.displayedHotels.size}
+              rowHeight={140}
+              rowRenderer={this.renderHotelCard.bind(this)}
             />
-          )
-        }</div>
-        { button }
+          )}
+        </AutoSizer>
       </div>
     );
   }
 
   render() {
-    const { searchParams, hasNoResult } = this.props;
+    const { searchParams, hasNoResult, isLoading } = this.props;
     const { locationCode, checkIn, checkOut } = searchParams;
+    let content;
+    if (isLoading) {
+      content = this.renderLoading();
+    } else if (hasNoResult) {
+      content = this.renderEmptyResult();
+    } else {
+      content = this.renderPresentResult();
+    }
 
     return (
       <div className={styles.resultContainer}>
-        <div className={appStyles.toolbar}>
-          <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
-          <div>
-            <div className={styles.locationCode}>{locationCode}</div>
-            <div className={styles.checkInCheckOut}>
-              {moment(checkIn, DATE_FORMAT).format('MMM DD')} - {moment(checkOut, DATE_FORMAT).format('MMM DD')}
+        <div>
+          <div className={appStyles.toolbar}>
+            <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
+            <div>
+              <div className={styles.locationCode}>{locationCode}</div>
+              <div className={styles.checkInCheckOut}>
+                {moment(checkIn, DATE_FORMAT).format('MMM DD')} - {moment(checkOut, DATE_FORMAT).format('MMM DD')}
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.buttonRow}>
-          <div className={styles.sortButton}>
-            <span className={styles.sortLabel}>
-              Sort
-              <i className={styles.dropDownIcon}></i>
-            </span>
-            <span>
-              <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
-                <option value={'PRICE:ASC'}>Lowest Price</option>
-                <option value={'PRICE:DESC'}>Highest Price</option>
-                <option value={'REVIEWS:DESC'}>Best reviews</option>
-                <option value={'POPULAR:DESC'}>Popular</option>
-                <option value={'STAR:ASC'}>Stars 1 - 5</option>
-                <option value={'STAR:DESC'}>Stars 5 - 1</option>
-              </select>
-            </span>
+          <div className={styles.buttonRow}>
+            <div className={styles.sortButton}>
+              <span className={styles.sortLabel}>
+                Sort
+                <i className={styles.dropDownIcon}></i>
+              </span>
+              <span>
+                <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
+                  <option value={'PRICE:ASC'}>Lowest Price</option>
+                  <option value={'PRICE:DESC'}>Highest Price</option>
+                  <option value={'REVIEWS:DESC'}>Best reviews</option>
+                  <option value={'POPULAR:DESC'}>Popular</option>
+                  <option value={'STAR:ASC'}>Stars 1 - 5</option>
+                  <option value={'STAR:DESC'}>Stars 5 - 1</option>
+                </select>
+              </span>
 
+            </div>
+            <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
+              Filter
+              <i className={styles.filterIcon}></i>
+            </Link>
           </div>
-          <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
-            Filter
-            <i className={styles.filterIcon}></i>
-          </Link>
         </div>
-        { hasNoResult ? this.renderEmptyResult() : this.renderPresentResult() }
+        {content}
       </div>
     );
   }
@@ -105,11 +130,9 @@ HotelSearchResult.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   fetchHotels: PropTypes.func.isRequired,
-  loadMore: PropTypes.func.isRequired,
   sortHotels: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasNoResult: PropTypes.bool.isRequired,
-  canLoadMore: PropTypes.bool.isRequired,
 };
 
 HotelSearchResult.contextTypes = {
@@ -117,16 +140,14 @@ HotelSearchResult.contextTypes = {
 };
 
 const mapStateToProps = state => ({
-  displayedHotels: getDisplayedHotels(state),
+  displayedHotels: getDisplayedHotels(),
   sort: getSort(state),
   isLoading: isLoading(state),
   hasNoResult: hasNoResult(state),
-  canLoadMore: canLoadMore(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchHotels: search => dispatch(fetchHotels(search)),
-  loadMore: () => dispatch(loadMore()),
   sortHotels: sortData => dispatch(sortHotels(sortData)),
 });
 
