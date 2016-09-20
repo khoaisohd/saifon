@@ -55,7 +55,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
   renderPresentResult() {
     return (
-      <div className={styles.list}>
+      <div className={styles.displayedHotels}>
         <AutoSizer>
           {({ height, width }) => (
             <VirtualScroll
