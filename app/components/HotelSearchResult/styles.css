@@ -74,13 +74,5 @@
 }
 
 .list {
-  height: 100vh;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
+  height: calc(100vh - 100px);
 }

@@ -33,11 +33,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
   renderHotelCard({ index }) {
     const { displayedHotels, searchParams } = this.props;
-    if (index === 0 || index === displayedHotels.size + 1) {
-      return <div className={styles.emptyHotel} />;
-    }
-
-    const hotel = displayedHotels.get(index - 1);
+    const hotel = displayedHotels.get(index);
     return (
       <HotelCard
         key={hotel.get('id')}
@@ -49,18 +45,15 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
   renderPresentResult() {
     return (
-
       <div className={styles.list}>
         <AutoSizer>
           {({ height, width }) => (
             <VirtualScroll
+              overscanRowCount={0}
               width={width}
               height={height}
-              rowCount={this.props.displayedHotels.size + 2}
-              rowHeight={({ index }) => {
-                const isEmptyHotel = index === 0 || index === this.props.displayedHotels.size + 1;
-                return isEmptyHotel ? 100 : 140;
-              }}
+              rowCount={this.props.displayedHotels.size}
+              rowHeight={140}
               rowRenderer={this.renderHotelCard.bind(this)}
             />
           )}
@@ -75,7 +68,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
     return (
       <div className={styles.resultContainer}>
-        <div className={styles.header}>
+        <div>
           <div className={appStyles.toolbar}>
             <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
             <div>

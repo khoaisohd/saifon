@@ -140,3 +140,8 @@
   text-align: right;
   color: #289E08;
 }
+
+.emptyHotel {
+  border: 1px solid #DDD;
+  height: 140px;
+}
