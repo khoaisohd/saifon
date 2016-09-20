@@ -4,21 +4,15 @@ import { fromJS } from 'immutable';
 import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, LOAD_MORE, FILTER_BY_PRICE } from './constants';
 import { findHotels, updateFilter, displayResult } from './actions';
 import HotelSearchEngine from 'sdk/HotelSearchEngine';
-import { getFilter, getSort, getLimit } from './selectors';
+import { getFilter, getSort } from './selectors';
 
 const hotelSearchEngine = new HotelSearchEngine();
 
 export function* handleFindHotelsRequest() {
   const filter = yield select(getFilter);
   const sort = yield select(getSort);
-  const limit = yield select(getLimit);
-
   const hotels = yield call(hotelSearchEngine.findHotels.bind(hotelSearchEngine), filter, sort);
-  yield put(displayResult(
-    fromJS(hotels),
-    hotels.length === 0,
-    hotels.length > limit
-  ));
+  yield put(displayResult(fromJS(hotels)));
 }
 
 export function* handleFetchHotelsRequest({ search }) {

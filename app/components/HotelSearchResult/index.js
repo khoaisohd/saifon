@@ -124,7 +124,7 @@ HotelSearchResult.contextTypes = {
 };
 
 const mapStateToProps = state => ({
-  displayedHotels: getDisplayedHotels(state),
+  displayedHotels: getDisplayedHotels(),
   sort: getSort(state),
   isLoading: isLoading(state),
   hasNoResult: hasNoResult(state),

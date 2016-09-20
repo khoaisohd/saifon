@@ -8,6 +8,7 @@ import {
   FILTER_BY_PRICE,
   DISPLAY_RESULT,
 } from './constants';
+import store from './store';
 
 const initialState = fromJS({
   filter: {
@@ -31,47 +32,42 @@ const initialState = fromJS({
     property: 'PRICE',
     order: 'ASC',
   },
-  displayedHotels: [],
   hasNoResult: false,
   canLoadMore: true,
   offset: 0,
-  limit: 20,
   loading: true,
 });
 
 function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_STAR_RATING_FILTER:
+      store.setDisplayedHotels(fromJS([]));
       return state
         .setIn(['filter', 'stars', action.starRating, 'selected'],
-          !state.getIn(['filter', 'stars', action.starRating, 'selected']))
-        .set('displayedHotels', fromJS([]))
-        .set('limit', 20);
+          !state.getIn(['filter', 'stars', action.starRating, 'selected']));
     case SORT_HOTELS:
+      store.setDisplayedHotels(fromJS([]));
       return state
-        .set('displayedHotels', fromJS([]))
         .set('loading', true)
-        .set('sort', action.sort)
-        .set('limit', 20);
+        .set('sort', action.sort);
     case FETCH_HOTELS:
+      store.setDisplayedHotels(fromJS([]));
       return initialState;
     case LOAD_MORE:
       return state
-        .set('limit', state.get('limit') + 20)
         .set('loading', true);
     case UPDATE_FILTER:
       return state
         .mergeDeep(new Map({ filter: action.filter }));
     case FILTER_BY_PRICE:
+      store.setDisplayedHotels(fromJS([]));
       return state
         .setIn(['filter', 'minPrice', 'value'], action.minPrice)
-        .setIn(['filter', 'maxPrice', 'value'], action.maxPrice)
-        .set('limit', 20);
+        .setIn(['filter', 'maxPrice', 'value'], action.maxPrice);
     case DISPLAY_RESULT:
+      store.setDisplayedHotels(action.hotels);
       return state
-        .set('displayedHotels', action.hotels)
-        .set('hasNoResult', action.hasNoResult)
-        .set('canLoadMore', action.canLoadMore)
+        .set('hasNoResult', action.hotels.isEmpty())
         .set('loading', false);
     default:
       return state;

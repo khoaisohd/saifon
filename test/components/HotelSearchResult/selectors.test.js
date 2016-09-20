@@ -3,8 +3,9 @@ import {
   getFilter,
   getSort,
   getOffset,
-  getLimit,
 } from 'components/HotelSearchResult/selectors';
+import store from 'components/HotelSearchResult/store';
+
 import { fromJS } from 'immutable';
 
 describe('HotelSearchResult/selectors', () => {
@@ -14,10 +15,8 @@ describe('HotelSearchResult/selectors', () => {
         { id: 1 },
         { id: 2 },
       ];
-      const state = fromJS({
-        HotelSearchResult: { displayedHotels: hotels },
-      });
-      expect(getDisplayedHotels(state).toJS()).to.deep.equal(hotels);
+      store.setDisplayedHotels(fromJS(hotels));
+      expect(getDisplayedHotels().toJS()).to.deep.equal(hotels);
     });
   });
 
@@ -47,15 +46,6 @@ describe('HotelSearchResult/selectors', () => {
         HotelSearchResult: { offset: 1 },
       });
       expect(getOffset(state)).to.deep.equal(1);
-    });
-  });
-
-  describe('#getLimit', () => {
-    it('gets limit', () => {
-      const state = fromJS({
-        HotelSearchResult: { limit: 20 },
-      });
-      expect(getLimit(state)).to.deep.equal(20);
     });
   });
 });

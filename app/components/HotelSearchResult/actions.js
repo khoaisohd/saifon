@@ -43,9 +43,7 @@ export const filterByPrice = (minPrice, maxPrice) => ({
   maxPrice,
 });
 
-export const displayResult = (hotels, hasNoResult, canLoadMore) => ({
+export const displayResult = hotels => ({
   type: DISPLAY_RESULT,
   hotels,
-  hasNoResult,
-  canLoadMore,
 });

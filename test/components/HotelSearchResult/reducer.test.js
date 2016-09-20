@@ -1,10 +1,10 @@
 import reducer from 'components/HotelSearchResult/reducer';
+import store from 'components/HotelSearchResult/store';
 import { fromJS } from 'immutable';
 import {
   sortHotels,
   fetchHotels,
   toggleStarRatingFilter,
-  loadMore,
   updateFilter,
   filterByPrice,
   displayResult,
@@ -38,11 +38,6 @@ describe('HotelSearchResult/reducer', () => {
       newState = reducer(state, toggleStarRatingFilter('5'));
       expect(newState.getIn(['filter', 'stars', '5', 'selected'])).to.equal(false);
     });
-
-    it('resets limit to 20', () => {
-      state = reducer(fromJS({ limit: 50 }), toggleStarRatingFilter('5'));
-      expect(state.get('limit')).to.equal(20);
-    });
   });
 
   describe('#sortHotels', () => {
@@ -54,24 +49,12 @@ describe('HotelSearchResult/reducer', () => {
       expect(newState.getIn(['sort', 'column'])).to.equal('STAR');
       expect(newState.getIn(['sort', 'order'])).to.equal('DESC');
     });
-
-    it('resets limit to 20', () => {
-      state = reducer(fromJS({ limit: 50 }), toggleStarRatingFilter('5'));
-      expect(state.get('limit')).to.equal(20);
-    });
   });
 
   describe('#searchHotels', () => {
     it('resets state into initial state', () => {
       newState = reducer(state, fetchHotels());
       expect(newState.toJS()).to.deep.equal(state.toJS());
-    });
-  });
-
-  describe('#loadMore', () => {
-    it('increases limit', () => {
-      state = reducer(fromJS({ limit: 10 }), loadMore());
-      expect(state.get('limit')).to.equal(30);
     });
   });
 
@@ -103,19 +86,14 @@ describe('HotelSearchResult/reducer', () => {
       expect(newState.getIn(['filter', 'minPrice', 'value'])).to.equal(100);
       expect(newState.getIn(['filter', 'maxPrice', 'value'])).to.equal(1000);
     });
-
-    it('resets limit to 20', () => {
-      state = reducer(fromJS({ limit: 50 }), filterByPrice(100, 1000));
-      expect(state.get('limit')).to.equal(20);
-    });
   });
 
   describe('#displayResult', () => {
     it('updates result', () => {
-      newState = reducer(state, displayResult([{ id: 1 }], true, false));
-      expect(newState.get('displayedHotels')).to.deep.equal([{ id: 1 }]);
-      expect(newState.get('hasNoResult')).to.equal(true);
-      expect(newState.get('canLoadMore')).to.equal(false);
+      const hotels = fromJS([{ id: 1 }]);
+      newState = reducer(state, displayResult(hotels));
+      expect(store.getDisplayedHotels()).to.deep.equal(hotels);
+      expect(newState.get('hasNoResult')).to.equal(false);
     });
   });
 });
