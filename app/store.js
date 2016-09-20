@@ -9,15 +9,6 @@ import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import createLogger from 'redux-logger';
 
-const stateTransformer = (state) => {
-  if (Iterable.isIterable(state)) return state.toJS();
-  return state;
-};
-
-const logger = createLogger({
-  stateTransformer,
-});
-
 const sagaMiddleware = createSagaMiddleware();
 const devtools = window.devToolsExtension || (() => noop => noop);
 
@@ -28,8 +19,14 @@ export default function configureStore(initialState = {}, history) {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
-    logger,
   ];
+
+  if (process.env.NODE_ENV === 'development') {
+    const stateTransformer = state => { // eslint-disable-line arrow-body-style
+      return Iterable.isIterable(state) ? state.toJS() : state;
+    };
+    middlewares.push(createLogger({ stateTransformer }));
+  }
 
   const enhancers = [
     applyMiddleware(...middlewares),

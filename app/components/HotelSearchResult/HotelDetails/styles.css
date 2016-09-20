@@ -1,0 +1,55 @@
+.container {
+  background-color: #EBEBED;
+}
+
+.toolbar {
+  composes: toolbar from 'components/shared/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+.hotelImage {
+  width: 100%;
+  height: 150px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hotelName {
+  padding: 10px;
+  border-bottom: 1px solid #D7D8DB;
+  background: white;
+}
+
+.rateContainer {
+  display: flex;
+  border-bottom: 1px solid #D7D8DB;
+  padding: 10px;
+}
+
+.hotelRates {
+  background: white;
+  border-top: 1px solid #D7D8DB;
+}
+
+.hotelDates {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.ratePrice {
+  right: 10px;
+  position: absolute;
+  font-weight: bold;
+}
+
+.descriptionContainer {
+  background: white;
+  margin-top: 40px;
+  padding: 10px;
+  font-size: 15px;
+}

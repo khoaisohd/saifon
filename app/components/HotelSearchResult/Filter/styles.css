@@ -1,0 +1,106 @@
+.toolbar {
+  composes: toolbar from 'components/shared/styles.css';
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+
+.priceFilter {
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.starFilter {
+  margin-top: 10px;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+
+.priceLabels {
+  display: flex;
+  position: relative;
+}
+
+.minPriceLabel {
+  display: block;
+  left: 0;
+}
+
+.maxPriceLabel {
+  display: block;
+  position: absolute;
+  right: 0;
+}
+
+.filterSubTitle {
+  background: #F8F8F8 none repeat scroll 0% 0%;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #DDD;
+  color: #999;
+}
+
+.checkboxContainer {
+  display: flex;
+  position: relative;
+  padding: 10px;
+}
+
+.checkboxInput {
+  position: absolute;
+  transform: scale(1.8);
+  right: 15px;
+  top: 15px;
+}
+
+/* React input range */
+:global(.slider .horizontal-slider) {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  border: 1px solid grey;
+}
+
+:global(.slider .vertical-slider) {
+  height: 380px;
+  width: 50px;
+  border: 1px solid grey;
+}
+
+:global(.slider .handle) {
+  font-size: 0.9em;
+  text-align: center;
+  background-color: white;
+  color: white;
+  cursor: pointer;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: 1px solid #DDD;
+}
+
+:global(.slider .handle.active) {
+  background-color: grey;
+}
+
+:global(.slider .bar) {
+  position: relative;
+  background: #DDD;
+  top: 22px;
+  height: 5px;
+}
+
+:global(.slider .bar.bar-1) {
+  background: #FF9800;
+}
+
+:global(.slider .bar.bar-2) {
+  background: grey;
+}

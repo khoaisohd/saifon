@@ -1,0 +1,47 @@
+.container {
+  height: 140px;
+  width: 100%;
+  border-bottom: 1px solid #DDD;
+  display: flex;
+}
+
+.leftContainer {
+  height: 100%;
+  width: 40%;
+  position: relative;
+}
+
+.hotelImage {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  right: 20px;
+  left: 20px;
+  background: #EEE;
+}
+
+.rightContainer {
+  height: 100%;
+  width: 60%;
+}
+
+.firstRow {
+  margin-top: 15px;
+  margin-right: 20px;
+  height: 30px;
+  background: #EEE;
+}
+
+.secondRow {
+  margin-top: 10px;
+  background: #EEE;
+  height: 30px;
+  margin-right: 80px;
+}
+
+.thirdRow {
+  margin-top: 10px;
+  background: #EEE;
+  height: 30px;
+  margin-right: 20px;
+}

@@ -1,0 +1,148 @@
+.hotelCard {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: #DDD;
+  height: 140px;
+}
+
+.summary {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 120px);
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.address {
+  color: #999;
+  font-size: 0.65rem;
+}
+
+.rating {
+  flex-grow: 1;
+}
+
+.reviewRate {
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewRate::before,
+.reviewRate::after {
+  content: ' ';
+  display: table;
+}
+
+.reviewRate::after {
+  clear: both;
+}
+
+.review {
+  line-height: 1.1;
+  bottom: 0.3rem;
+  left: 7.5rem;
+  flex: 1;
+}
+
+.score {
+  background-color: #289E08;
+  border-radius: 3px;
+  color: white;
+  font-weight: 300;
+  padding: 0.4rem;
+  position: absolute;
+  bottom: 0;
+  font-size: 0.9rem;
+
+  .neutral {
+    background: #FEA400;
+  }
+}
+
+.score.neutral {
+  background: #FEA400;
+}
+
+.score.negative {
+  background: #D0021B;
+}
+
+.score::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-right: 0.3rem solid #289E08;
+  border-top: 0.3rem solid #289E08;
+  border-left: 0.3rem solid transparent;
+  border-bottom: 0.3rem solid transparent;
+  position: absolute;
+  right: 0;
+  bottom: -0.3rem;
+}
+
+.score.neutral::after {
+  border-right: 0.3em solid #FEA400;
+  border-top: 0.3em solid #FEA400;
+}
+
+.score.negative::after {
+  border-right: 0.3em solid #D0021B;
+  border-top: 0.3em solid #D0021B;
+}
+
+.subreview {
+  margin-left: 30px;
+  padding: 10px 0 0 10px;
+}
+
+.reviewCount {
+  font-size: 0.65rem;
+  padding-top: 0.2rem;
+  display: inherit;
+  color: #999;
+}
+
+.sentiment {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.sentiment.neutral {
+  color: #FEA400;
+}
+
+.sentiment.negative {
+  color: #D0021B;
+}
+
+.rate {
+  align-self: flex-end;
+  right: 0;
+  bottom: 0.3rem;
+  text-align: right;
+  color: #289E08;
+}
+
+.emptyHotel {
+  border: 1px solid #DDD;
+  height: 140px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook'; // eslint-disable-line
-import StarRating from '../app/components/StarRating';
+import StarRating from 'components/shared/StarRating';
 
 storiesOf('StarRating', module)
   .add('5 star hotel', () => (

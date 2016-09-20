@@ -1,0 +1,106 @@
+.locationCode {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.checkInCheckOut {
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.buttonRow {
+  display: flex;
+  position: relative;
+}
+
+.button {
+  color: white;
+  background-color: #7CB342;
+  width: 50%;
+  padding: 10px;
+}
+
+.sortButton {
+  composes: button;
+  position: relative;
+}
+
+.filterButton {
+  composes: button;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dropDownIcon {
+  composes: icon-down-dir from 'components/shared/icons.css';
+  margin-left: 5px;
+}
+
+.filterIcon {
+  composes: icon-filter from 'components/shared/icons.css';
+  margin-left: 5px;
+}
+
+.footerButton {
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  background: #FF9800;
+  color: white;
+  font-size: 20px;
+}
+
+.sortLabel {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+}
+
+.sortSelect {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.noResultContainer {
+  text-align: center;
+  margin-top: 20px;
+  color: #8B8B8E;
+}
+
+.loadingScreen {
+  padding-top: 100px;
+}
+
+.displayedHotels {
+  height: 100vh;
+}
+
+.header {
+  background-color: #7CB342;
+  color: #FFF;
+  position: fixed;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  z-index: 2;
+  -webkit-transition: transform 0.2s linear;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hiddenHeader {
+  composes: header;
+  -webkit-transform: translateY(-100px);
+  transform: translateY(-100px);
+}

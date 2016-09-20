@@ -23,22 +23,11 @@ class HotelSearchEngine {
     });
   }
 
-  findHotels(filters = new Map(), sort, offset = 0, limit = 20) {
+  findHotels(filters, sort) {
     return Promise.resolve(this.hotels)
-      .then((hotels) => filterHotels(hotels, filters))
-      .then((filteredHotels) => sortHotels(filteredHotels, sort))
-      .then((sortedHotels) => sortedHotels.slice(offset, limit));
+      .then(hotels => filterHotels(hotels, filters))
+      .then(filteredHotels => sortHotels(filteredHotels, sort));
   }
 }
-
-let instance = null;
-
-export const getHotelSearchEngine = () => {
-  if (instance === null) {
-    instance = new HotelSearchEngine();
-  }
-  return instance;
-};
-
 
 export default HotelSearchEngine;

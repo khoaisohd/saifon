@@ -4,10 +4,10 @@ const path = require('path');
 const compression = require('compression');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
-// Redirect if having url of overlay page.
-const checkOverlayRedirect = (req, res, process) => {
-  if (req.url.match(/\/overlay\/.*$/i)) {
-    res.redirect(req.url.replace(/\/overlay\/.*$/i, ''));
+// Redirect if having url of modal page.
+const checkModalRedirect = (req, res, process) => {
+  if (req.url.match(/\/modal\/.*$/i)) {
+    res.redirect(req.url.replace(/\/modal\/.*$/i, ''));
   } else {
     process();
   }
@@ -40,7 +40,7 @@ const addDevMiddlewares = (app, webpackConfig) => {
     });
   }
 
-  app.get('*', (req, res) => checkOverlayRedirect(req, res, () => {
+  app.get('*', (req, res) => checkModalRedirect(req, res, () => {
     fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
       if (err) {
         res.sendStatus(404);
@@ -62,7 +62,7 @@ const addProdMiddlewares = (app, options) => {
   app.use(compression());
   app.use(publicPath, express.static(outputPath));
 
-  app.get('*', (req, res) => checkOverlayRedirect(req, res, () => res.sendFile(path.resolve(outputPath, 'index.html'))));
+  app.get('*', (req, res) => checkModalRedirect(req, res, () => res.sendFile(path.resolve(outputPath, 'index.html'))));
 };
 
 /**
