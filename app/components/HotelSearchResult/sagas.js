@@ -1,7 +1,7 @@
 import { call, put, select, take, actionChannel } from 'redux-saga/effects';
 import { takeLatest, delay, buffers } from 'redux-saga';
 import { fromJS } from 'immutable';
-import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, LOAD_MORE, FILTER_BY_PRICE } from './constants';
+import { FETCH_HOTELS, FIND_HOTELS, TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, FILTER_BY_PRICE } from './constants';
 import { findHotels, updateFilter, displayResult } from './actions';
 import HotelSearchEngine from 'sdk/HotelSearchEngine';
 import { getFilter, getSort } from './selectors';
@@ -39,7 +39,7 @@ export function* watchFetchHotelsRequest() {
 }
 
 export function* watchActionsThatTriggerFindHotels() {
-  while (yield take([TOGGLE_STAR_RATING_FILTER, LOAD_MORE, SORT_HOTELS, FILTER_BY_PRICE])) {
+  while (yield take([TOGGLE_STAR_RATING_FILTER, SORT_HOTELS, FILTER_BY_PRICE])) {
     yield put(findHotels());
   }
 }

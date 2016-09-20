@@ -3,10 +3,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
-import { fetchHotels, loadMore, sortHotels } from './actions';
+import { fetchHotels, sortHotels } from './actions';
 import { pathToHotelSearch } from 'helpers/routeHelper';
 import HotelCard from './HotelCard';
-import { getDisplayedHotels, getSort, isLoading, hasNoResult, canLoadMore } from './selectors';
+import { getDisplayedHotels, getSort, isLoading, hasNoResult } from './selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
 import { fromJS } from 'immutable';
@@ -112,11 +112,9 @@ HotelSearchResult.propTypes = {
   displayedHotels: PropTypes.object.isRequired,
   sort: PropTypes.object.isRequired,
   fetchHotels: PropTypes.func.isRequired,
-  loadMore: PropTypes.func.isRequired,
   sortHotels: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasNoResult: PropTypes.bool.isRequired,
-  canLoadMore: PropTypes.bool.isRequired,
 };
 
 HotelSearchResult.contextTypes = {
@@ -128,12 +126,10 @@ const mapStateToProps = state => ({
   sort: getSort(state),
   isLoading: isLoading(state),
   hasNoResult: hasNoResult(state),
-  canLoadMore: canLoadMore(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchHotels: search => dispatch(fetchHotels(search)),
-  loadMore: () => dispatch(loadMore()),
   sortHotels: sortData => dispatch(sortHotels(sortData)),
 });
 

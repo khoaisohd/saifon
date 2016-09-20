@@ -2,7 +2,6 @@ import {
   getDisplayedHotels,
   getFilter,
   getSort,
-  getOffset,
 } from 'components/HotelSearchResult/selectors';
 import store from 'components/HotelSearchResult/store';
 
@@ -37,15 +36,6 @@ describe('HotelSearchResult/selectors', () => {
         HotelSearchResult: { sort },
       });
       expect(getSort(state).toJS()).to.deep.equal(sort);
-    });
-  });
-
-  describe('#getOffset', () => {
-    it('gets offset', () => {
-      const state = fromJS({
-        HotelSearchResult: { offset: 1 },
-      });
-      expect(getOffset(state)).to.deep.equal(1);
     });
   });
 });

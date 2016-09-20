@@ -3,7 +3,6 @@ import {
   SORT_HOTELS,
   TOGGLE_STAR_RATING_FILTER,
   FETCH_HOTELS,
-  LOAD_MORE,
   UPDATE_FILTER,
   FILTER_BY_PRICE,
   DISPLAY_RESULT,
@@ -33,8 +32,6 @@ const initialState = fromJS({
     order: 'ASC',
   },
   hasNoResult: false,
-  canLoadMore: true,
-  offset: 0,
   loading: true,
 });
 
@@ -53,9 +50,6 @@ function hotelSearchResultReducer(state = initialState, action) {
     case FETCH_HOTELS:
       store.setDisplayedHotels(fromJS([]));
       return initialState;
-    case LOAD_MORE:
-      return state
-        .set('loading', true);
     case UPDATE_FILTER:
       return state
         .mergeDeep(new Map({ filter: action.filter }));

@@ -3,7 +3,6 @@ import {
   TOGGLE_STAR_RATING_FILTER,
   FETCH_HOTELS,
   FIND_HOTELS,
-  LOAD_MORE,
   UPDATE_FILTER,
   FILTER_BY_PRICE,
   DISPLAY_RESULT,
@@ -26,10 +25,6 @@ export const fetchHotels = search => ({
 
 export const findHotels = () => ({
   type: FIND_HOTELS,
-});
-
-export const loadMore = () => ({
-  type: LOAD_MORE,
 });
 
 export const updateFilter = filter => ({
