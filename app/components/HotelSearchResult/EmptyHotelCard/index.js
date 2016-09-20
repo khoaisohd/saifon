@@ -5,7 +5,7 @@ const EmptyHotelCard = () => { // eslint-disable-line arrow-body-style
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <div className={styles.leftContainerBox}></div>
+        <div className={styles.hotelImage}></div>
       </div>
       <div className={styles.rightContainer}>
         <div className={styles.firstRow}></div>
