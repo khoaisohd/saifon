@@ -17,6 +17,10 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   componentWillMount() {
     const { checkIn, checkOut, guestsCount, locationCode, roomsCount } = this.props.searchParams;
     this.props.fetchHotels({ checkIn, checkOut, guestsCount, locationCode, roomsCount });
+    this.state = {
+      scrollTop: 0,
+      showHeader: true,
+    };
   }
 
   selectSort(e) {
@@ -24,12 +28,33 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
 
-  renderLoading() {
-    const list = [1, 2, 3, 4, 5];
+  handleScroll(scrollTop) {
+    let showHeader;
+    if (scrollTop < 120) {
+      showHeader = true;
+    } else if (this.state.showHeader === false && this.state.scrollTop - scrollTop > 10) {
+      showHeader = true;
+    } else if (this.state.showHeader === true && scrollTop - this.state.scrollTop > 10) {
+      showHeader = false;
+    }
+    if (showHeader !== undefined && showHeader !== this.state.showHeader) {
+      this.setState({ showHeader });
+    }
+    this.state.scrollTop = scrollTop;
+  }
+
+  renderHotelCard({ index }) {
+    if (index === 0) {
+      return '';
+    }
+    const { displayedHotels, searchParams } = this.props;
+    const hotel = displayedHotels.get(index - 1);
     return (
-      <div>
-        {list.map(id => <EmptyHotelCard key={id} />)}
-      </div>
+      <HotelCard
+        key={hotel.get('id')}
+        hotel={hotel}
+        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+      />
     );
   }
 
@@ -41,15 +66,12 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     );
   }
 
-  renderHotelCard({ index }) {
-    const { displayedHotels, searchParams } = this.props;
-    const hotel = displayedHotels.get(index);
+  renderLoading() {
+    const list = [1, 2, 3, 4, 5];
     return (
-      <HotelCard
-        key={hotel.get('id')}
-        hotel={hotel}
-        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
-      />
+      <div className={styles.loadingScreen}>
+        {list.map(id => <EmptyHotelCard key={id} />)}
+      </div>
     );
   }
 
@@ -62,9 +84,10 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
               overscanRowCount={0}
               width={width}
               height={height}
-              rowCount={this.props.displayedHotels.size}
-              rowHeight={140}
+              rowCount={this.props.displayedHotels.size + 1}
+              rowHeight={({ index }) => index === 0 ? 100 : 140} // eslint-disable-line no-confusing-arrow
               rowRenderer={this.renderHotelCard.bind(this)}
+              onScroll={({ scrollTop }) => requestAnimationFrame(() => this.handleScroll(scrollTop))}
             />
           )}
         </AutoSizer>
@@ -86,7 +109,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
     return (
       <div className={styles.resultContainer}>
-        <div>
+        <div className={this.state.showHeader ? styles.header : styles.hiddenHeader}>
           <div className={appStyles.toolbar}>
             <i className={appStyles.backButton} onTouchTap={this.context.router.goBack} />
             <div>

@@ -73,6 +73,34 @@
   color: #8B8B8E;
 }
 
+.loadingScreen {
+  padding-top: 100px;
+}
+
 .displayedHotels {
-  height: calc(100vh - 100px);
+  height: 100vh;
+}
+
+.header {
+  background-color: #7CB342;
+  color: #FFF;
+  position: fixed;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  z-index: 2;
+  -webkit-transition: transform 0.2s linear;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  transition: -webkit-transform 0.2s linear;
+  transition: transform 0.2s linear;
+  transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hiddenHeader {
+  composes: header;
+  -webkit-transform: translateY(-100px);
+  transform: translateY(-100px);
 }
