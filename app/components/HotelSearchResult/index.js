@@ -6,6 +6,7 @@ import styles from './styles.css';
 import { fetchHotels, sortHotels } from './actions';
 import { pathToHotelSearch } from 'helpers/routeHelper';
 import HotelCard from './HotelCard';
+import EmptyHotelCard from './EmptyHotelCard';
 import { getDisplayedHotels, getSort, isLoading, hasNoResult } from './selectors';
 import moment from 'moment';
 import { DATE_FORMAT } from 'helpers/dateHelper';
@@ -21,6 +22,15 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   selectSort(e) {
     const sortBy = e.target.value.split(':');
     this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
+  }
+
+  renderLoading() {
+    const list = [1, 2, 3, 4, 5];
+    return (
+      <div>
+        {list.map(id => <EmptyHotelCard key={id} />)}
+      </div>
+    );
   }
 
   renderEmptyResult() {
@@ -63,8 +73,16 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
   }
 
   render() {
-    const { searchParams, hasNoResult } = this.props;
+    const { searchParams, hasNoResult, isLoading } = this.props;
     const { locationCode, checkIn, checkOut } = searchParams;
+    let content;
+    if (isLoading) {
+      content = this.renderLoading();
+    } else if (hasNoResult) {
+      content = this.renderEmptyResult();
+    } else {
+      content = this.renderPresentResult();
+    }
 
     return (
       <div className={styles.resultContainer}>
@@ -102,7 +120,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
             </Link>
           </div>
         </div>
-        { hasNoResult ? this.renderEmptyResult() : this.renderPresentResult() }
+        {content}
       </div>
     );
   }
