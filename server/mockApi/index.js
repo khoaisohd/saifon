@@ -6,7 +6,12 @@ const hotelLocations = [hotelLocation1, hotelLocation2, hotelLocation3];
 const hotelDetails = require('./hotel-details.json');
 
 const mockApi = app => {
-  app.post('/api/hotel/search', (req, res) => res.json(hotelSearch));
+  let count = 0;
+  app.post('/api/hotel/search', (req, res) => {
+    hotelSearch.completed = count === 9;
+    res.json(hotelSearch);
+    count = (count + 1) % 10;
+  });
 
   app.post('/api/hotel/location/search', (req, res) => {
     const num = parseInt((req.body.keyword.length - 1) / 2, 10);
