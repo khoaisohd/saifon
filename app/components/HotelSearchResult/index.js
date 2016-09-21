@@ -23,7 +23,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     };
   }
 
-  selectSort(e) {
+  handleSelectSort(e) {
     const sortBy = e.target.value.split(':');
     this.props.sortHotels(fromJS({ property: sortBy[0], order: sortBy[1] }));
   }
@@ -43,12 +43,9 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
     this.state.scrollTop = scrollTop;
   }
 
-  renderHotelCard({ index }) {
-    if (index === 0) {
-      return '';
-    }
+  renderHotelCard(index) {
     const { displayedHotels, searchParams } = this.props;
-    const hotel = displayedHotels.get(index - 1);
+    const hotel = displayedHotels.get(index);
     return (
       <HotelCard
         key={hotel.get('id')}
@@ -86,7 +83,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
               height={height}
               rowCount={this.props.displayedHotels.size + 1}
               rowHeight={({ index }) => index === 0 ? 100 : 140} // eslint-disable-line no-confusing-arrow
-              rowRenderer={this.renderHotelCard.bind(this)}
+              rowRenderer={({ index }) => index === 0 ? '' : this.renderHotelCard(index - 1)} // eslint-disable-line no-confusing-arrow
               onScroll={({ scrollTop }) => requestAnimationFrame(() => this.handleScroll(scrollTop))}
             />
           )}
@@ -126,7 +123,7 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
                 <i className={styles.dropDownIcon}></i>
               </span>
               <span>
-                <select className={styles.sortSelect} onChange={this.selectSort.bind(this)}>
+                <select className={styles.sortSelect} onChange={this.handleSelectSort.bind(this)}>
                   <option value={'PRICE:ASC'}>Lowest Price</option>
                   <option value={'PRICE:DESC'}>Highest Price</option>
                   <option value={'REVIEWS:DESC'}>Best reviews</option>
