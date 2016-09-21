@@ -6,7 +6,7 @@ const hotelLocations = [hotelLocation1, hotelLocation2, hotelLocation3];
 const hotelDetails = require('./hotel-details.json');
 
 const mockApi = app => {
-  let count = 0;
+  var count = 0; // eslint-disable-line no-var
   app.post('/api/hotel/search', (req, res) => {
     hotelSearch.completed = count === 9;
     res.json(hotelSearch);
