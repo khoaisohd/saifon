@@ -1,0 +1,8 @@
+
+.month {
+  display: table;
+}
+
+.week {
+  display: table-row;
+}
