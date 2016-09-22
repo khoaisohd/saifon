@@ -4,7 +4,7 @@ import CalendarDay from './index';
 
 storiesOf('CalendarDay', module)
   .add('normal day', () => (
-    <CalendarDay  />
+    <CalendarDay />
   ))
   .add('selected holiday', () => (
     <CalendarDay selected />

@@ -1,31 +1,31 @@
 .day {
-  border: 1px solid #e4e7e7;
+  border: 1px solid #E4E7E7;
   padding: 5px;
   display: table-cell;
   text-align: center;
-  background-color: #feffff;
+  background-color: #FEFFFF;
 }
 
 .holiday {
   composes: day;
-  color: #fe9400;
+  color: #FE9400;
 }
 
 .selected {
   composes: day;
-  background-color: #59a311;
-  color: #e9fae5;
+  background-color: #59A311;
+  color: #E9FAE5;
 }
 
 .highlited {
   composes: day;
-  background-color: #bee490;
-  color: #2a381e;
+  background-color: #BEE490;
+  color: #2A381E;
 }
 
 .weekend {
   composes: day;
-  background-color: #f9fafb;
+  background-color: #F9FAFB;
 }
 
 
