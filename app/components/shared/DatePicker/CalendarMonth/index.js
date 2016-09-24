@@ -33,6 +33,7 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
 
     return (
       <div className={styles.month}>
+        <caption className={styles.monthLabel}>{month.format('MMMM YYYY')}</caption>
         <WeekHeader startDay={month.clone().startOf('week')} />
         {weeks.map((week, i) =>
           <CalendarWeek week={week} key={i} onClick={onClick.bind(this)} />
