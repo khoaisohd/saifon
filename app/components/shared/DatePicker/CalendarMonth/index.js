@@ -4,21 +4,27 @@ import styles from './index.css';
 import getWeeks from '../getWeeks';
 import CalendarDay from '../CalendarDay';
 
-const CalendarWeek = (props) => (
-  <div className={styles.week}>
-    {props.week.map((day, i) =>
-      <CalendarDay key={i} day={day} />
-    )}
-  </div>
-);
+const CalendarWeek = (props) => {
+  const { day } = props;
+  return (
+    <div className={styles.week}>
+      {props.week.map((day, i) => {
+        const dayProps = {};
+        if (day.isSame(moment(), 'day')) dayProps.today = true;
+        return (<CalendarDay key={`${day.format('DD-YY')}-${i}`} day={day} {...dayProps} />);
+      })}
+    </div>
+  );
+};
 
 const WeekHeader = (props) => {
   const week = new Array(7).fill().map((val, i) => i);
   let currentDay = props.startDay;
+  const key = `${currentDay.week()}-${currentDay.format('YY')}`;
   return (
     <div className={styles.weekHeader}>
       {week.map((i) => {
-        const displayDay = (<div className={styles.dayHeader} key={i}>{currentDay.format('ddd')}</div>);
+        const displayDay = (<div className={styles.dayHeader} key={`${key}-${i}`}>{currentDay.format('ddd')}</div>);
         currentDay = currentDay.clone().add(1, 'day');
         return displayDay;
       })}
@@ -30,13 +36,13 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
   render() {
     const { month, onClick } = this.props;
     const weeks = getWeeks(month);
-
+    const key = `${month.format('DD')}-${month.format('YY')}`;
     return (
       <div className={styles.month}>
         <caption className={styles.monthLabel}>{month.format('MMMM YYYY')}</caption>
         <WeekHeader startDay={month.clone().startOf('week')} />
-        {weeks.map((week, i) =>
-          <CalendarWeek week={week} key={i} onClick={onClick.bind(this)} />
+        {weeks.map((week, index) =>
+          <CalendarWeek week={week} key={`${key}-${index}`} onClick={onClick.bind(this)} />
         )}
       </div>
     );

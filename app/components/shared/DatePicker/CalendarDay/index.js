@@ -13,6 +13,8 @@ const CalendarDay = (props) => {
     className = styles.holiday;
   } else if (props.weekend) {
     className = styles.weekend;
+  } else if (props.today) {
+    className = styles.today;
   } else {
     className = styles.day;
   }

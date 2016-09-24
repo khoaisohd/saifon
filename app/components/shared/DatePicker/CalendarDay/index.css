@@ -34,3 +34,8 @@
   composes: day;
   cursor: default;
 }
+
+.today {
+  composes: day;
+  font-weight: bold;
+}
