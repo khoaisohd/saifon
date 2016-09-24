@@ -5,20 +5,17 @@ import getWeeks from '../getWeeks';
 import CalendarDay from '../CalendarDay';
 
 const CalendarWeek = (props) => {
-  const { day, isPastWeek, currentMonth } = props;
+  const { day, identifiers, onDayClick, selected } = props;
   return (
     <div className={styles.week}>
-      {props.week.map((day, i) => {
-        const dayProps = {};
-        if (day.isSame(moment(), 'day')) {
-          dayProps.today = true;
-        } else if (isPastWeek || moment().isAfter(day)) {
-          dayProps.disabled = true;
-        } else if (day.month() !== currentMonth.month()) {
-          dayProps.concealed = true;
-        }
-        return (<CalendarDay key={`${day.format('DD-YY')}-${i}`} day={day} {...dayProps} />);
-      })}
+      {props.week.map((day, i) => (
+        <CalendarDay
+          key={`${day.format('DD-YY')}-${i}`} day={day}
+          identifiers={identifiers}
+          onDayClick={onDayClick}
+          isSelected={selected && selected.isSame(day, 'day')}
+        />
+      ))}
     </div>
   );
 };
@@ -40,25 +37,22 @@ const WeekHeader = (props) => {
 
 class CalendarMonth extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { month, onClick } = this.props;
+    const { month, onDayClick, identifiers, selected } = this.props;
     const weeks = getWeeks(month);
     const key = `${month.format('DD')}-${month.format('YY')}`;
     return (
       <div className={styles.month}>
         <caption className={styles.monthLabel}>{month.format('MMMM YYYY')}</caption>
         <WeekHeader startDay={month.clone().startOf('week')} />
-        {weeks.map((week, index) => {
-          const isPastWeek = moment().isAfter(week[0]);
-          return (
-            <CalendarWeek
-              week={week}
-              key={`${key}-${index}`}
-              onClick={onClick.bind(this)}
-              isPastWeek={isPastWeek}
-              currentMonth={month}
-            />
-            );
-        })}
+        {weeks.map((week, index) => (
+          <CalendarWeek
+            week={week}
+            key={`${key}-${index}`}
+            identifiers={identifiers}
+            onDayClick={onDayClick}
+            selected={selected}
+          />
+        ))}
       </div>
     );
   }

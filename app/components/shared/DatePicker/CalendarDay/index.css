@@ -10,7 +10,7 @@
 
 .holiday {
   composes: day;
-  color: #FE9400;
+  color: #FE9400 !important;
 }
 
 .selected {
