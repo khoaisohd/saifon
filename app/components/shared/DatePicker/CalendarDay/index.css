@@ -41,3 +41,9 @@
   composes: day;
   font-weight: bold;
 }
+
+.concealed {
+  composes: disabled;
+  background-color: #FFF;
+  color: #FFF;
+}

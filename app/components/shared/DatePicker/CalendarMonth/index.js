@@ -5,7 +5,7 @@ import getWeeks from '../getWeeks';
 import CalendarDay from '../CalendarDay';
 
 const CalendarWeek = (props) => {
-  const { day, isPastWeek } = props;
+  const { day, isPastWeek, currentMonth } = props;
   return (
     <div className={styles.week}>
       {props.week.map((day, i) => {
@@ -14,6 +14,8 @@ const CalendarWeek = (props) => {
           dayProps.today = true;
         } else if (isPastWeek || moment().isAfter(day)) {
           dayProps.disabled = true;
+        } else if (day.month() !== currentMonth.month()) {
+          dayProps.concealed = true;
         }
         return (<CalendarDay key={`${day.format('DD-YY')}-${i}`} day={day} {...dayProps} />);
       })}
@@ -47,7 +49,15 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
         <WeekHeader startDay={month.clone().startOf('week')} />
         {weeks.map((week, index) => {
           const isPastWeek = moment().isAfter(week[0]);
-          return (<CalendarWeek week={week} key={`${key}-${index}`} onClick={onClick.bind(this)} isPastWeek={isPastWeek} />);
+          return (
+            <CalendarWeek
+              week={week}
+              key={`${key}-${index}`}
+              onClick={onClick.bind(this)}
+              isPastWeek={isPastWeek}
+              currentMonth={month}
+            />
+            );
         })}
       </div>
     );
