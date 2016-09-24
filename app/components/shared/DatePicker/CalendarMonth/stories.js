@@ -4,5 +4,7 @@ import CalendarMonth from './index';
 
 storiesOf('CalendarMonth', module)
   .add('display one month', () => (
-    <CalendarMonth />
+    <div><br /><br /><br />
+      <CalendarMonth />
+    </div>
   ));

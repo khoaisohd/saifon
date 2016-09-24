@@ -12,15 +12,30 @@ const CalendarWeek = (props) => (
   </div>
 );
 
+const WeekHeader = (props) => {
+  const week = new Array(7).fill().map((val, i) => i);
+  let currentDay = props.startDay;
+  return (
+    <div className={styles.weekHeader}>
+      {week.map((i) => {
+        const displayDay = (<div className={styles.dayHeader} key={i}>{currentDay.format('ddd')}</div>);
+        currentDay = currentDay.clone().add(1, 'day');
+        return displayDay;
+      })}
+    </div>
+  );
+};
+
 class CalendarMonth extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { month } = this.props;
+    const { month, onClick } = this.props;
     const weeks = getWeeks(month);
 
     return (
       <div className={styles.month}>
+        <WeekHeader startDay={month.clone().startOf('week')} />
         {weeks.map((week, i) =>
-          <CalendarWeek week={week} key={i} />
+          <CalendarWeek week={week} key={i} onClick={onClick.bind(this)} />
         )}
       </div>
     );
@@ -29,10 +44,12 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
 
 CalendarMonth.propTypes = {
   month: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };
 
 CalendarMonth.defaultProps = {
   month: moment(),
+  onClick: () => {},
 };
 
 export default CalendarMonth;

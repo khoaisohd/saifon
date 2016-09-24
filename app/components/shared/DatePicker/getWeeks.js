@@ -2,7 +2,9 @@
 const getWeek = (day) => {
   const firstDay = day.clone().startOf('week');
   const week = new Array(7).fill().map((val, i) => i);
-  return week.map((day, index) => firstDay.clone().add(index, 'days'));
+  return week.map((day, index) =>
+    firstDay.clone().add(index, 'days')
+  );
 };
 
 const getWeeks = (month) => {

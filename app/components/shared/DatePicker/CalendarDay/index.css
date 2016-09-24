@@ -1,9 +1,11 @@
 .day {
   border: 1px solid #E4E7E7;
-  padding: 5px;
+  padding: 10px;
   display: table-cell;
   text-align: center;
   background-color: #FEFFFF;
+  user-select: none;
+  font-size: 1.1rem;
 }
 
 .holiday {
@@ -28,4 +30,7 @@
   background-color: #F9FAFB;
 }
 
-
+.disabled {
+  composes: day;
+  cursor: default;
+}

@@ -1,8 +1,22 @@
-
 .month {
   display: table;
+  width: 100%;
 }
 
 .week {
   display: table-row;
+}
+
+.weekHeader {
+  display: table-row;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dayHeader {
+  display: table-cell;
+  background-color: #FBFBFB;
+  border: 1px solid #F2F2F2;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
