@@ -15,6 +15,8 @@ const CalendarDay = (props) => {
     className = styles.weekend;
   } else if (props.today) {
     className = styles.today;
+  } else if (props.disabled) {
+    className = styles.disabled;
   } else {
     className = styles.day;
   }

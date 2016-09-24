@@ -5,12 +5,16 @@ import getWeeks from '../getWeeks';
 import CalendarDay from '../CalendarDay';
 
 const CalendarWeek = (props) => {
-  const { day } = props;
+  const { day, isPastWeek } = props;
   return (
     <div className={styles.week}>
       {props.week.map((day, i) => {
         const dayProps = {};
-        if (day.isSame(moment(), 'day')) dayProps.today = true;
+        if (day.isSame(moment(), 'day')) {
+          dayProps.today = true;
+        } else if (isPastWeek || moment().isAfter(day)) {
+          dayProps.disabled = true;
+        }
         return (<CalendarDay key={`${day.format('DD-YY')}-${i}`} day={day} {...dayProps} />);
       })}
     </div>
@@ -41,9 +45,10 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
       <div className={styles.month}>
         <caption className={styles.monthLabel}>{month.format('MMMM YYYY')}</caption>
         <WeekHeader startDay={month.clone().startOf('week')} />
-        {weeks.map((week, index) =>
-          <CalendarWeek week={week} key={`${key}-${index}`} onClick={onClick.bind(this)} />
-        )}
+        {weeks.map((week, index) => {
+          const isPastWeek = moment().isAfter(week[0]);
+          return (<CalendarWeek week={week} key={`${key}-${index}`} onClick={onClick.bind(this)} isPastWeek={isPastWeek} />);
+        })}
       </div>
     );
   }
