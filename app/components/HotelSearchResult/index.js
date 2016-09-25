@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import appStyles from 'components/shared/styles.css';
 import styles from './styles.css';
@@ -134,10 +133,13 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
               </span>
 
             </div>
-            <Link className={styles.filterButton} to={`${pathToHotelSearch(searchParams)}/modal/filter`}>
+            <div
+              className={styles.filterButton}
+              onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/filter`)}
+            >
               Filter
               <i className={styles.filterIcon}></i>
-            </Link>
+            </div>
           </div>
         </div>
         {content}
