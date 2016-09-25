@@ -43,6 +43,7 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
   constructor(props) {
     super(props);
     this.state = { isSelectedMonth: false };
+    this.isConcealed = this.isConcealed.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -60,8 +61,17 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
     return affectedMonth || this.state.isSelectedMonth;
   }
 
+  getIdentifiers() {
+    const { identifiers } = this.props;
+    return Object.assign({}, identifiers, { concealed: this.isConcealed });
+  }
+
+  isConcealed(day) {
+    return !day.isSame(this.props.month, 'month');
+  }
+
   render() {
-    const { month, onDayClick, identifiers, selected } = this.props;
+    const { month, onDayClick, selected } = this.props;
     const weeks = getWeeks(month);
     const key = `${month.format('DD')}-${month.format('YY')}`;
     return (
@@ -72,7 +82,7 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
           <CalendarWeek
             week={week}
             key={`${key}-${index}`}
-            identifiers={identifiers}
+            identifiers={this.getIdentifiers()}
             onDayClick={onDayClick}
             selected={selected}
           />

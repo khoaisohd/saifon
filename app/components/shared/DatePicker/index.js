@@ -12,6 +12,7 @@ class DatePicker extends Component {
 
   onDayClick(day) {
     this.setState({ selected: day });
+    this.props.onDayClick(day);
   }
 
   getDayIdentifiers() {
@@ -55,10 +56,12 @@ class DatePicker extends Component {
 
 DatePicker.propTypes = {
   selected: PropTypes.object,
+  onDayClick: PropTypes.func,
 };
 
 DatePicker.defaultProps = {
   selected: moment(),
+  onDayClick: () => {},
 };
 
 export default DatePicker;
