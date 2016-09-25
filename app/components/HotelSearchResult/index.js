@@ -45,12 +45,12 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
 
   renderHotelCard(index) {
     const { displayedHotels, searchParams } = this.props;
-    const hotel = displayedHotels.get(index);
+    const hotel = displayedHotels[index];
     return (
       <HotelCard
-        key={hotel.get('id')}
+        key={hotel.id}
         hotel={hotel}
-        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.get('id')}`)}
+        onTouchTap={() => this.context.router.push(`${pathToHotelSearch(searchParams)}/modal/hotels/${hotel.id}`)}
       />
     );
   }
@@ -78,10 +78,10 @@ class HotelSearchResult extends React.Component { // eslint-disable-line react/p
         <AutoSizer>
           {({ height, width }) => (
             <VirtualScroll
-              overscanRowCount={0}
+              overscanRowCount={4}
               width={width}
               height={height}
-              rowCount={this.props.displayedHotels.size + 1}
+              rowCount={this.props.displayedHotels.length + 1}
               rowHeight={({ index }) => index === 0 ? 100 : 140} // eslint-disable-line no-confusing-arrow
               rowRenderer={({ index }) => index === 0 ? '' : this.renderHotelCard(index - 1)} // eslint-disable-line no-confusing-arrow
               onScroll={({ scrollTop }) => requestAnimationFrame(() => this.handleScroll(scrollTop))}

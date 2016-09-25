@@ -38,17 +38,17 @@ const initialState = fromJS({
 function hotelSearchResultReducer(state = initialState, action) {
   switch (action.type) {
     case TOGGLE_STAR_RATING_FILTER:
-      store.setDisplayedHotels(fromJS([]));
+      store.clear();
       return state
         .setIn(['filter', 'stars', action.starRating, 'selected'],
           !state.getIn(['filter', 'stars', action.starRating, 'selected']));
     case SORT_HOTELS:
-      store.setDisplayedHotels(fromJS([]));
+      store.clear();
       return state
         .set('loading', true)
         .set('sort', action.sort);
     case FETCH_HOTELS:
-      store.setDisplayedHotels(fromJS([]));
+      store.clear();
       return initialState;
     case UPDATE_FILTER:
       return state
@@ -61,7 +61,7 @@ function hotelSearchResultReducer(state = initialState, action) {
     case DISPLAY_RESULT:
       store.setDisplayedHotels(action.hotels);
       return state
-        .set('hasNoResult', action.hotels.isEmpty())
+        .set('hasNoResult', action.hotels.length === 0)
         .set('loading', false);
     default:
       return state;

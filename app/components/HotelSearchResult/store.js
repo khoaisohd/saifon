@@ -1,8 +1,10 @@
-import { fromJS } from 'immutable';
-
 class HotelSearchResultStore {
   constructor() {
-    this.dispalyedHotels = fromJS([]);
+    this.dispalyedHotels = [];
+  }
+
+  clear() {
+    this.dispalyedHotels = [];
   }
 
   setDisplayedHotels(hotels) {

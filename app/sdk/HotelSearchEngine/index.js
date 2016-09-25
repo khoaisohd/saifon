@@ -26,7 +26,8 @@ class HotelSearchEngine {
   findHotels(filters, sort) {
     return Promise.resolve(this.hotels)
       .then(hotels => filterHotels(hotels, filters))
-      .then(filteredHotels => sortHotels(filteredHotels, sort));
+      .then(filteredHotels => sortHotels(filteredHotels, sort))
+      .then(hotels => Object.assign([], hotels));
   }
 }
 

@@ -12,7 +12,7 @@ export function* handleFindHotelsRequest() {
   const filter = yield select(getFilter);
   const sort = yield select(getSort);
   const hotels = yield call(hotelSearchEngine.findHotels.bind(hotelSearchEngine), filter, sort);
-  yield put(displayResult(fromJS(hotels)));
+  yield put(displayResult(hotels));
 }
 
 export function* handleFetchHotelsRequest({ search }) {
