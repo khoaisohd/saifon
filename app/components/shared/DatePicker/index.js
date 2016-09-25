@@ -36,7 +36,7 @@ class DatePicker extends Component {
       <div>
         { months.map((i) => {
           const currentMonth = moment().add(i, 'month');
-          const selectedProp = currentMonth.month() === selected.month() ? { selected } : {};
+          const selectedProp = selected ? { selected } : {};
           return (
             <div key={i} >
               <CalendarMonth

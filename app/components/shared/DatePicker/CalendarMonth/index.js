@@ -27,7 +27,10 @@ const WeekHeader = (props) => {
   return (
     <div className={styles.weekHeader}>
       {week.map((i) => {
-        const displayDay = (<div className={styles.dayHeader} key={`${key}-${i}`}>{currentDay.format('ddd')}</div>);
+        const displayDay = (
+          <div className={styles.dayHeader} key={`${key}-${i}`}>
+            {currentDay.format('ddd')}
+          </div>);
         currentDay = currentDay.clone().add(1, 'day');
         return displayDay;
       })}
@@ -36,6 +39,27 @@ const WeekHeader = (props) => {
 };
 
 class CalendarMonth extends Component { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+    this.state = { isSelectedMonth: false };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const selectedDay = nextProps.selected;
+    const month = nextProps.month;
+    if (selectedDay && month.isSame(selectedDay, 'month')) {
+      this.setState({ isSelectedMonth: true });
+    } else {
+      this.setState({ isSelectedMonth: false });
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const affectedMonth = nextProps.selected.isSame(this.props.month, 'month');
+    return affectedMonth || this.state.isSelectedMonth;
+  }
+
   render() {
     const { month, onDayClick, identifiers, selected } = this.props;
     const weeks = getWeeks(month);
@@ -61,6 +85,7 @@ class CalendarMonth extends Component { // eslint-disable-line react/prefer-stat
 CalendarMonth.propTypes = {
   month: PropTypes.object.isRequired,
   onClick: PropTypes.func,
+  selected: PropTypes.object,
 };
 
 CalendarMonth.defaultProps = {
