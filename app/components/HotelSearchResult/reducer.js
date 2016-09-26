@@ -54,7 +54,7 @@ function hotelSearchResultReducer(state = initialState, action) {
       return state
         .mergeDeep(new Map({ filter: action.filter }));
     case FILTER_BY_PRICE:
-      store.setDisplayedHotels(fromJS([]));
+      store.clear();
       return state
         .setIn(['filter', 'minPrice', 'value'], action.minPrice)
         .setIn(['filter', 'maxPrice', 'value'], action.maxPrice);
