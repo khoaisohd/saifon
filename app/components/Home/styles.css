@@ -8,24 +8,25 @@
 }
 
 .hotelsButton {
-  display: inline-block;
   width: 120px;
   height: 120px;
-  margin: 0 10px;
   font-size: 14px;
   background: url('https://beta.wegostaging.com/images/rounded_btn_bg.png') no-repeat center;
   background-size: cover;
   color: #FFF;
   text-decoration: none;
-  text-align: center;
-  margin-top: 30vh;
   text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .hotelIcon {
   display: block;
   font-size: 50px;
-  margin-left: 10px;
   margin-top: 10px;
   composes: icon-commerical-building from 'components/shared/icons.css';
 }
