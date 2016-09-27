@@ -1,8 +1,8 @@
-import { filterByStarRating, filterByMinPrice, filterByMaxPrice } from 'sdk/HotelSearchEngine/filterHotels';
+import { filterHotelByStarRating, filterHotelByMinPrice, filterHotelByMaxPrice } from 'sdk/HotelSearchEngine/filterHotels';
 import { fromJS } from 'immutable';
 
 describe('filterHotels', () => {
-  describe('#filterByStarRating', () => {
+  describe('#filterHotelByStarRating', () => {
     it('returns true for hotel that has matched star', () => {
       const hotel = { star: 2 };
       const filter = fromJS({
@@ -12,7 +12,7 @@ describe('filterHotels', () => {
           },
         },
       });
-      expect(filterByStarRating(hotel, filter)).to.equal(true);
+      expect(filterHotelByStarRating(filter)(hotel)).to.equal(true);
     });
 
     it('returns false for hotel that does not have matched star', () => {
@@ -24,11 +24,11 @@ describe('filterHotels', () => {
           },
         },
       });
-      expect(filterByStarRating(hotel, filter)).to.equal(false);
+      expect(filterHotelByStarRating(filter)(hotel)).to.equal(false);
     });
   });
 
-  describe('#filterByMinPrice', () => {
+  describe('#filterHotelByMinPrice', () => {
     it('returns true for hotel that is more expensive than the filter value', () => {
       const hotel = {
         cheapestRate: {
@@ -42,7 +42,7 @@ describe('filterHotels', () => {
           value: 70,
         },
       });
-      expect(filterByMinPrice(hotel, filter)).to.equal(true);
+      expect(filterHotelByMinPrice(filter)(hotel)).to.equal(true);
     });
 
     it('returns false for hotel that is cheaper than the filter value', () => {
@@ -58,11 +58,11 @@ describe('filterHotels', () => {
           value: 120,
         },
       });
-      expect(filterByMinPrice(hotel, filter)).to.equal(false);
+      expect(filterHotelByMinPrice(filter)(hotel)).to.equal(false);
     });
   });
 
-  describe('#filterByMaxPrice', () => {
+  describe('#filterHotelByMaxPrice', () => {
     it('returns false for hotel that is more expensive than the filter value', () => {
       const hotel = {
         cheapestRate: {
@@ -76,7 +76,7 @@ describe('filterHotels', () => {
           value: 70,
         },
       });
-      expect(filterByMaxPrice(hotel, filter)).to.equal(false);
+      expect(filterHotelByMaxPrice(filter)(hotel)).to.equal(false);
     });
 
     it('returns true for hotel that is cheaper than the filter value', () => {
@@ -92,7 +92,7 @@ describe('filterHotels', () => {
           value: 120,
         },
       });
-      expect(filterByMaxPrice(hotel, filter)).to.equal(true);
+      expect(filterHotelByMaxPrice(filter)(hotel)).to.equal(true);
     });
   });
 });

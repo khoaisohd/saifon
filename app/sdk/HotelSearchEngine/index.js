@@ -24,10 +24,18 @@ class HotelSearchEngine {
   }
 
   findHotels(filters, sort) {
+    const delay = hotels => new Promise(resolve => {
+      requestAnimationFrame(() => resolve(hotels));
+    });
+
     return Promise.resolve(this.hotels)
+      .then(delay)
       .then(hotels => filterHotels(hotels, filters))
+      .then(delay)
       .then(filteredHotels => sortHotels(filteredHotels, sort))
-      .then(hotels => Object.assign([], hotels));
+      .then(delay)
+      .then(hotels => Object.assign([], hotels))
+      .then(delay);
   }
 }
 

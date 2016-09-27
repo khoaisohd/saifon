@@ -3,11 +3,11 @@ import styles from './index.css';
 import StarRating from 'components/shared/StarRating';
 
 const starViews = {
-  1.0: <StarRating value={1.0} />,
-  2.0: <StarRating value={2.0} />,
-  3.0: <StarRating value={3.0} />,
-  4.0: <StarRating value={4.0} />,
-  5.0: <StarRating value={5.0} />,
+  1: <StarRating value={1} />,
+  2: <StarRating value={2} />,
+  3: <StarRating value={3} />,
+  4: <StarRating value={4} />,
+  5: <StarRating value={5} />,
 };
 
 const HotelCard = props => {

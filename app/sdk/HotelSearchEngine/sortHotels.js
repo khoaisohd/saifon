@@ -19,13 +19,14 @@ const propertyGetter = property => {
 
 const comparator = sort => {
   const getSortValue = propertyGetter(sort.get('property'));
+  const order = sort.get('order');
   return (hotelA, hotelB) => {
     const valA = getSortValue(hotelA);
     const valB = getSortValue(hotelB);
     if (valA === valB) return 0;
     if (valA === null || valA === undefined) return 1;
     if (valB === null || valB === undefined) return -1;
-    return (valA > valB) === (sort.get('order') === 'ASC') ? 1 : -1;
+    return (valA > valB) === (order === 'ASC') ? 1 : -1;
   };
 };
 
