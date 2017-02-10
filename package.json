@@ -210,7 +210,7 @@
     "react-modal": "^1.4.0",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
-    "react-router-redux": "4.0.5",
+    "react-router-redux": "4.0.8",
     "react-router-scroll": "0.2.1",
     "react-slider": "^0.7.0",
     "react-tap-event-plugin": "^1.0.0",
