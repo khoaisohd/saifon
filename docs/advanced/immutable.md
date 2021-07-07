@@ -23,8 +23,6 @@ Answer those questions first before removing ImmutableJS
   
 In [React Advanced Performance](https://facebook.github.io/react/docs/advanced-performance.html), they even mention 
 
-```
-Immutable-js to the rescue
-```
+> ### Immutable-js to the rescue
 
-If there's a performance problem with ImmutableJs, I think there might be something wrong with the way you're using it
+If there's a performance problem with ImmutableJs, I think there might be something wrong with the way you're using it.
